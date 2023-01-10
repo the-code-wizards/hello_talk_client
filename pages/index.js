@@ -21,7 +21,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Package/>
+      <Package />
+      <h2 className='text-[60px]'>TITITITITITITIIT</h2>
     </>
   )
 }
