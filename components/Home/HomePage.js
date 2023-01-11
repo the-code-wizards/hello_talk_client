@@ -90,9 +90,9 @@ const HomePage = () => {
                 <div className="divider"></div>
             </div>
 
-            <div className='max-w-[1240px] mx-auto  lg:p-[40px]'>
-                <div className='grid grid-cols-5 place-items-center'>
-                    <img src="blueOwl.svg" className='max-h-[160px] max-w-[160px]' alt="" />
+            <div className='max-w-[1240px] mx-auto  '>
+                <div className='grid grid-cols-5 my-20'>
+                    <img src="blueOwl.svg" className='max-h-[160px] max-w-[160px] place-self-center' alt="" />
                     <div className='col-span-4'>
                         <h1 className='font-featherBold text-4xl mb-2 text-[#3C3C3C]' >Boost your learning with Super Duolingo</h1>
                         <p>Learning a language on Duolingo is completely free, but you can remove ads and support free education with Super. First 2 weeks on us!</p>
@@ -103,6 +103,28 @@ const HomePage = () => {
             </div>
 
 
+            <div className='max-w-[1240px] mx-auto '>
+                <div className='grid grid-cols-5 my-20'>
+                    <img src="chartLaptop.svg" className='max-h-[160px] max-w-[160px] place-self-center' alt="" />
+                    <div className='col-span-4'>
+                        <h1 className='font-featherBold text-4xl mb-2 text-[#3C3C3C]' >Duolingo for Schools</h1>
+                        <p>Free teacher tools to help students learn languages through the Duolingo app, both in and out of the classroom.</p>
+                        <a href="" className='pt-4 text-[#1cb0f6]'>BRING DUOLINGO TO YOUR CLASSROOM</a>
+                    </div>
+                </div>
+                <div className="divider"></div>
+            </div>
+
+            <div className='max-w-[1240px] mx-auto '>
+                <div className='grid grid-cols-5 my-20'>
+                    <img src="owlchart.svg" className='max-h-[160px] max-w-[160px] place-self-center' alt="" />
+                    <div className='col-span-4'>
+                        <h1 className='font-featherBold text-4xl mb-2 text-[#3C3C3C]' >Effective and efficient courses</h1>
+                        <p>Our courses effectively and efficiently teach reading, listening, and speaking skills. Check out our latest research!</p>
+                        <a href="" className='pt-4 text-[#1cb0f6]'>LEARN MORE ABOUT OUR RESEARCH</a>
+                    </div>
+                </div>
+            </div>
 
 
             {/* ---------------Middle contents ---------------------------- */}
