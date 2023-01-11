@@ -5,6 +5,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    daisyui: {
+      themes: ["light"],
+    },
     extend: {
       fontFamily: {
         featherBold: ["FeatherBold"],
