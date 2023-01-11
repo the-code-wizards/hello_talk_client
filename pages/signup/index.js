@@ -1,11 +1,12 @@
 import React from 'react';
+import Signup from '../../components/Signup/Signup';
 
-const SignUp = () => {
+const index = () => {
     return (
         <div>
-
+            <Signup />
         </div>
     );
 };
 
-export default SignUp;
+export default index;
