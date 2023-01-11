@@ -2,12 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import Package from '../components/packages/Package'
-<<<<<<< HEAD
 import HomePage from '../components/Home/HomePage'
-
-=======
 import Blog from '../components/Blog/Blog'
->>>>>>> 805ea745b7f13abee5d1122f64580f73c20f699c
+
 
 const inter = Inter({ subsets: ['latin'] })
 
