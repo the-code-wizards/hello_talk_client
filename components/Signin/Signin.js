@@ -7,7 +7,7 @@ import useToken from '../hooks/useToken';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { TfiFacebook } from 'react-icons/tfi';
-import {  useNavigate,useLocation } from 'react-router-dom';
+// import {  useNavigate,useLocation } from 'react-router-dom';
 
 const Signin = () => {    
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -23,17 +23,17 @@ const Signin = () => {
 
     // const [updateProfile, updating, updateError] = useUpdateProfile(auth);    
     const [token] = useToken(user || gUser);
-     let navigate = useNavigate();
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
-    let signInError;
+    //  let navigate = useNavigate();
+    // let location = useLocation();
+    // let from = location.state?.from?.pathname || "/";
+    // let signInError;
 
-        useEffect( () => {
-        if (token) {
-            navigate(from, { replace: true });      
-        }
-    },[token, from, navigate])
-    
+    //     useEffect( () => {
+    //     if (token) {
+    //         navigate(from, { replace: true });      
+    //     }
+    // },[token, from, navigate])
+
     if (gLoading || loading) {
         return <h2>loading</h2>
     }
@@ -43,7 +43,7 @@ const Signin = () => {
     }
 
     if (token) {
-        navigate('/')
+        to('/')
     }
 
    
