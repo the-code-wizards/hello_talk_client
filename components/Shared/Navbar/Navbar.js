@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Navbar = () => {
     return (
-        <nav className='bg-[#235390]'>
+        <nav className='bg-[#235390] sticky top-0 '>
             <div className="navbar max-w-[1240px] mx-auto">
                 <div className="navbar-start ">
                     <div className="dropdown">
@@ -33,7 +34,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                    <Link className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]" href="/signin/"> SignIn</Link>
                 </div>
             </div>
         </nav>

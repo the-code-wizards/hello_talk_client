@@ -1,4 +1,5 @@
 import React from 'react';
+import Package from '../packages/Package';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
 
@@ -114,6 +115,13 @@ const HomePage = () => {
                 </div>
                 <div className="divider"></div>
             </div>
+
+            <div>
+                <h1 className='text-3xl text-center font-featherBold mb-8 text-[#3C3C3C]'>Our Packages</h1>
+                <Package />
+                <div className="divider"></div>
+            </div>
+
 
             <div className='max-w-[1240px] mx-auto '>
                 <div className='grid grid-cols-5 my-20'>
