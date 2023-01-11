@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from "next/head";
 import React from 'react';
 import { HiArrowLeft } from 'react-icons/hi';
 import { useForm } from "react-hook-form";
@@ -43,6 +44,10 @@ const Signup = () => {
         await updateProfile({ displayName: data.name });
     };
     return (
+        <>
+         <Head>
+        <title>Hello Talk - Sign Up</title>
+      </Head>
         <div className='p-[30px]'>
             <div className='flex justify-between items-center'>
                 <Link href="/"><HiArrowLeft className="text-2xl cursor-pointer" /></Link>
@@ -104,6 +109,7 @@ const Signup = () => {
                     </div>
             </div>
         </div>
+        </>
     );
 };
 

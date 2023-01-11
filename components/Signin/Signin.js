@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Head from "next/head";
 import { HiArrowLeft } from 'react-icons/hi';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
@@ -51,6 +52,10 @@ const Signin = () => {
         signInWithEmailAndPassword(data.email, data.password)
     };
     return (
+         <>
+         <Head>
+        <title>Hello Talk - Sign In</title>
+      </Head>
         <div className='p-[30px]'>
             <div className='flex justify-between items-center'>
                 <Link href="/"><HiArrowLeft className="text-2xl cursor-pointer" /></Link>
@@ -94,6 +99,7 @@ const Signin = () => {
                     </div>
             </div>
         </div>
+        </>
     );
 };
 
