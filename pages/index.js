@@ -4,6 +4,7 @@ import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import Package from '../components/packages/Package'
 import Blog from '../components/Blog/Blog'
+import Courses from '../components/Courses/Courses'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,6 +24,7 @@ export default function Home() {
       </Head>
 
       <Package/>
+      <Courses></Courses>
     </>
   )
 }
