@@ -4,7 +4,6 @@ import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 import Package from '../components/packages/Package';
 import Blog from '../components/Blog/Blog';
-import Leaderboard from '../components/Leaderboard/Leaderboard';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,8 +21,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Blog></Blog> */}
-      <Leaderboard></Leaderboard>
+      <Blog></Blog>
     </>
   );
 }
