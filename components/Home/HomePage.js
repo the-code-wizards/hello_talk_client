@@ -23,9 +23,9 @@ const HomePage = () => {
                 <div className="hero-content flex-col lg:flex-row lg:justify-between">
                     <Lottie animationData={learning} loop={true} />
                     <div className='max-w-[1240px] mx-auto ml-20'>
-                        <h1 className='text-white text-4xl font-bold text-center font-featherBold'>The free, fun, and effective way to learn a <br /> language!</h1>
-                        <div className='flex flex-col justify-center items-center'>
-                            <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[50%] hover:bg-[#61E002]">Get Started</button>
+                        <h1 className='text-white text-4xl font-bold text-center font-featherBold'>The free, fun, and effective way to learn language!</h1>
+                        <div className='flex flex-col justify-center items-center mt-8'>
+                            <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002]">Get Started</button>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ const HomePage = () => {
 
                     </div>
                     <div className='col-span-4 place-self-center'>
-                        <h1 className='font-featherBold lg:text-4xl sm:text-2xl mb-2 text-[#3C3C3C]  ' >The world’s #1 way to learn a language</h1>
+                        <h1 className='font-featherBold lg:text-4xl sm:text-2xl mb-2 text-[#3C3C3C]  ' >The world’s Top way to learn a language</h1>
                         <p>Learning with Hello Talk is fun, and research shows that it works! With quick, bite-sized lessons, you’ll earn points and unlock new levels while gaining real-world communication skills.</p>
                     </div>
                 </div>
@@ -113,21 +113,8 @@ const HomePage = () => {
                 <div className="divider"></div>
             </div>
 
-
-            <div className='max-w-[1240px] mx-auto '>
-                <div className='grid grid-cols-1  lg:grid-cols-5 my-20'>
-                    <img src="chartLaptop.svg" className='max-h-[160px] max-w-[160px] place-self-center' alt="" />
-                    <div className='col-span-4 '>
-                        <h1 className='font-featherBold lg:text-4xl text-2xl mb-2 text-[#3C3C3C] sm:text-2xl' >Hello Talk for Schools</h1>
-                        <p>Free teacher tools to help students learn languages through the Hello Talk app, both in and out of the classroom.</p>
-                        <a href="" className='pt-4 text-[#1cb0f6]'>BRING Hello Talk TO YOUR CLASSROOM</a>
-                    </div>
-                </div>
-                <div className="divider"></div>
-            </div>
-
             <div>
-                <h1 className='text-3xl text-center font-featherBold mb-8 text-[#3C3C3C]'>Our Packages</h1>
+                <h1 className='text-3xl text-center font-featherBold mb-8 text-[#3C3C3C]'>Packages that you'll love</h1>
                 <Package />
                 <div className="divider"></div>
             </div>
