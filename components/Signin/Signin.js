@@ -8,6 +8,7 @@ import useToken from '../hooks/useToken';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { TfiFacebook } from 'react-icons/tfi';
+import { useNavigate } from 'react-router-dom';
 // import {  useNavigate,useLocation } from 'react-router-dom';
 
 const Signin = () => {    
@@ -36,7 +37,7 @@ const Signin = () => {
     // },[token, from, navigate])
 
     if (gLoading || loading) {
-        return <h2>loading</h2>
+        return <progress className='progress w-full'></progress>
     }
 
       if (error || gError) {
@@ -44,7 +45,7 @@ const Signin = () => {
     }
 
     if (token) {
-        to('/')
+            window.location.href = "/";
     }
 
    
