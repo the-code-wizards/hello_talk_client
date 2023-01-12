@@ -11,16 +11,16 @@ const BlogDetails = () => {
       .then((data) => setBlogDetails(data));
   }, []);
   return (
-    <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
-          <img src={image} alt="Shoes" className="rounded-xl" />
-        </figure>
+    <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
+      <div className="card bg-base-100 shadow-xl">
         <div className="card-body items-center text-center">
           <h2 className="card-title">{title}</h2>
+          <figure className="px-10 pt-10">
+            <img src={image} alt="blog" className="rounded-xl" />
+          </figure>
           <p>{details}</p>
-          <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+          <div className="text-start">
+            <p className="font-semibold uppercase">{author}</p>
           </div>
         </div>
       </div>
