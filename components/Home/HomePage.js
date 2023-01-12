@@ -1,4 +1,5 @@
 import React from 'react';
+import Feedback from '../Feedback/Feedback';
 import Package from '../packages/Package';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
@@ -22,7 +23,7 @@ const HomePage = () => {
                 <div className="hero-content flex-col lg:flex-row lg:justify-between">
                     <Lottie animationData={learning} loop={true} />
                     <div className='max-w-[1240px] mx-auto ml-20'>
-                        <h1 className='text-white text-3xl font-bold text-center font-featherBold'>The free, fun, and effective way to learn a <br /> language!</h1>
+                        <h1 className='text-white text-4xl font-bold text-center font-featherBold'>The free, fun, and effective way to learn a <br /> language!</h1>
                         <div className='flex flex-col justify-center items-center'>
                             <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[50%] hover:bg-[#61E002]">Get Started</button>
                         </div>
@@ -157,8 +158,17 @@ const HomePage = () => {
 
             {/* ---------------Middle contents ---------------------------- */}
 
-            <SendEmailCard></SendEmailCard>
+            <div>
+                <SendEmailCard></SendEmailCard>
+                <div className="divider max-w-[1240px] mx-auto"></div>
+            </div>
+
             {/*  -------------------------Footer------------------*/}
+
+            <div className='mb-32 mt-16 max-w-[1240px] mx-auto'>
+                <h1 className='font-featherBold text-3xl text-center text-[#3C3C3C] my-10 mb-10'>What Our Amazing User Says</h1>
+                <Feedback></Feedback>
+            </div>
             <Footer></Footer>
             {/* -------------------------Footer end--------------*/}
         </div>
