@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /* .main {
   display: flex;
   flex-direction: column;
@@ -238,7 +236,7 @@
   }
 
   .description div { */
-    /* align-items: flex-end;
+/* align-items: flex-end;
     pointer-events: none;
     inset: auto 0 0;
     padding: 2rem;
@@ -278,4 +276,3 @@
     transform: rotate(0deg);
   }
 } */
->>>>>>> 805ea745b7f13abee5d1122f64580f73c20f699c
