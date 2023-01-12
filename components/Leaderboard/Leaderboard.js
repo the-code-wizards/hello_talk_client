@@ -59,7 +59,7 @@ const Leaderboard = () => {
             {/* <!-- head --> */}
             <thead>
               <tr>
-                <th>Top Positions</th>
+                <th className="text-center">Top Positions</th>
                 <th>Name</th>
                 <th>Job</th>
                 <th>Favorite Color</th>
@@ -69,7 +69,7 @@ const Leaderboard = () => {
             <tbody>
               {/* <!-- row 1 --> */}
               <tr>
-                <th>1</th>
+                <th className="text-center">1</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -98,7 +98,7 @@ const Leaderboard = () => {
               </tr>
               {/* <!-- row 2 --> */}
               <tr>
-                <th>2</th>
+                <th className="text-center">2</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -127,7 +127,7 @@ const Leaderboard = () => {
               </tr>
               {/* <!-- row 3 --> */}
               <tr>
-                <th>3</th>
+                <th className="text-center">3</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -156,7 +156,7 @@ const Leaderboard = () => {
               </tr>
               {/* <!-- row 4 --> */}
               <tr>
-                <th>4</th>
+                <th className="text-center">4</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
