@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root,
 [data-theme] {
   background-color: #fff !important;
@@ -32,4 +31,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
+} 

@@ -1,45 +1,29 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import BlogsCard from './BlogsCard';
 
 const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    fetch('https://hello-talk-webserver.vercel.app/blogs')
+      .then((res) => res.json())
+      .then((data) => setBlogs(data));
+  }, []);
   return (
-    <>
-      <div class="grid grid-cols-2 gap-4 m-5">
-        {/* card 1 */}
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-          <figure className="card-body">
-            <Image className="rounded" src="/arch.jpeg" width="200" height="200" alt="Album" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">New album is released!</h2>
-            <small>Author: John Smith</small>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam pariatur amet facere
-              odio cumque totam aspernatur blanditiis sint! Explicabo, laborum?
-            </p>
-            <div className="card-actions justify-end">
-              <Link href="/" className="btn">
-                Details
-              </Link>
-            </div>
-          </div>
-        </div>
-        {/* card 2 */}
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-          <figure>
-            <Image src="/arch.jpeg" width="200" height="200" alt="Album" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">New album is released!</h2>
-            <p>Click the button to listen on Spotiwhy app.</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Listen</button>
-            </div>
-          </div>
-        </div>
+    <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {
+        
+          blogs.map((blog) => (
+          <BlogsCard 
+          key={blog._id}
+          blog={blog}
+          >
+          </BlogsCard>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
