@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css';
 import Package from '../components/packages/Package';
 import Blog from '../components/Blog/Blog';
 import Leaderboard from '../components/Leaderboard/Leaderboard';
+import BlogDetails from '../components/Blog/BlogDetails';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +24,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <Blog></Blog> */}
-      <Leaderboard></Leaderboard>
+      <BlogDetails></BlogDetails>
+      {/* <Leaderboard></Leaderboard> */}
     </>
   );
 }

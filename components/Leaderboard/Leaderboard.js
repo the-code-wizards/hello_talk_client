@@ -3,15 +3,15 @@ import React from 'react';
 const Leaderboard = () => {
   return (
     <>
-      <div className="m-14">
+      <div className="max-w-[1240px] mx-auto p-20 ">
         {/* User's position */}
         <h1 className="text-4xl text-lime-600">This is leaderboard</h1>
-        <div className="overflow-x-auto w-full my-5">
-          <table className="table w-full">
+        <div className=" w-full my-5">
+          <table className="bg-white table w-full">
             {/* <!-- head --> */}
             <thead>
               <tr>
-                <th>Your Positions</th>
+                <th className="text-center">Your Position</th>
                 <th>Name</th>
                 <th>Job</th>
                 <th>Favorite Color</th>
@@ -21,7 +21,7 @@ const Leaderboard = () => {
             <tbody>
               {/* <!-- row 1 --> */}
               <tr>
-                <th>1</th>
+                <th className="text-center">1</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
