@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-const Privacy = () => {
+const index = () => {
   return (
     <section className="mx-36">
       <h2 className="text-center text-5xl font-bold my-20">Privacy Policy</h2>
@@ -1057,4 +1057,4 @@ const Privacy = () => {
   );
 };
 
-export default Privacy;
+export default index;
