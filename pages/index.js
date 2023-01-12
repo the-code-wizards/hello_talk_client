@@ -5,8 +5,7 @@ import HomePage from '../components/Home/HomePage'
 import Blog from '../components/Blog/Blog'
 import Courses from '../components/Courses/Courses'
 
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (
@@ -22,7 +21,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomePage></HomePage>s>
+      <HomePage></HomePage>
     </>
-  )
+  );
 }
