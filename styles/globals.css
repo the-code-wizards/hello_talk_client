@@ -2,10 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root, [data-theme] {
-    background-color: #fff !important;
-    color: hsla(var(--bc) / var(--tw-text-opacity, 1));
-}
 @layer base {
   @font-face {
     font-family: "FeatherBold";
@@ -29,4 +25,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
+} 
