@@ -3,8 +3,8 @@ import { BsFillEmojiHeartEyesFill, BsFillEmojiFrownFill } from 'react-icons/bs';
 
 const Package = () => {
     return (
-        <div className="lg:md:flex lg:md:gap-x-[40px] lg:md:gap-y-[0px] gap-y-[15px] justify-center my-20">
-            <div className="border-[2px] shadow-xl p-[25px] border-[#61B800] rounded-xl shadow-[#8abf9e]  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:shadow-lg duration-300">
+        <div className="lg:md:flex lg:md:gap-x-[40px] lg:md:gap-y-[0px] gap-y-[30px] justify-center my-20 lg:md:px-0 px-6">
+            <div className="lg:md:mb-0 mb-[30px]border-[2px] shadow-xl p-[25px] border-[#61B800] rounded-xl shadow-[#8abf9e]  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:shadow-lg duration-300">
                 <h2 className="text-center text-2xl font-semibold font-featherbold text-[#58CC02]">FREE</h2>
 
                 <ul className="mt-[20px]">
@@ -37,7 +37,7 @@ const Package = () => {
                 <button className="mt-[15px] bg-[#58CC02] border-[#46A302] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#fff] font-bold text-[14px] focus:border-b-[2px] w-[100%] ">Start your journey</button>
             </div>
 
-            <div className="border-[2px] shadow-xl p-[25px] border-[#61B800] rounded-xl shadow-[#8abf9e] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:shadow-lg duration-300">
+            <div className="lg:md:mt-0 mt-[30px] border-[2px] shadow-xl p-[25px] border-[#61B800] rounded-xl shadow-[#8abf9e] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:shadow-lg duration-300">
                 <h2 className="text-center text-2xl font-semibold font-featherbold text-[#58CC02]">PREMIUM</h2>
 
                 <ul className="mt-[20px]">
