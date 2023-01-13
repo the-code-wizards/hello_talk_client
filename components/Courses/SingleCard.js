@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
 
-const SingleCard = ({ packages }) => {
-  const { _id, title, picture, details, offer_price, price } = packages;
+const SingleCard = ({ course }) => {
+  const { _id, title, picture, details, offer_price, price } = course;
+
+  console.log(course)
   return (
     <div className="card card-compact bg-white shadow-2xl">
       <div className="p-3  mx-auto">
