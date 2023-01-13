@@ -1,4 +1,5 @@
 import React from 'react';
+import Feedback from '../Feedback/Feedback';
 import Package from '../packages/Package';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
@@ -133,8 +134,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-
-
+            <Feedback />
             {/* ---------------Middle contents ---------------------------- */}
 
             {/*  -------------------------Footer------------------*/}

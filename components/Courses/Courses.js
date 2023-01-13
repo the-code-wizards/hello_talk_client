@@ -5,7 +5,7 @@ const Courses = () => {
 
     const [courses, setCourses] = useState([])
     useEffect(()=>{
-        fetch('https://hello-talk-webserver.vercel.app/courses')
+        fetch('https://hello-talk-webserver.vercel.app/courses%27)
         .then(res => res.json())
         .then(data => setCourses(data))
     },[])
