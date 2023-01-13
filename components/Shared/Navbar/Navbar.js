@@ -17,7 +17,7 @@ const Navbar = () => {
                             <li><a>Contact</a></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-3xl text-white font-featherBold">Hello Talk</a>
+                    <Link href="/" className="flex text-2xl w-[40px] items-center"><img src="Logo2.png" alt="/" /><a className="btn btn-ghost normal-case text-xl lg:text-3xl text-white font-featherBold ml-[-10px]">Hello Talk</a></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex ">
                     <ul className="menu menu-horizontal px-1 text-white">
