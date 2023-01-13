@@ -2,14 +2,14 @@ import React from 'react';
 
 const SendEmailCard = () => {
     return (
-        <div>
-            <div className="card max-w-[800px] border border-[#61B800] bg-base-100 shadow-xl mx-auto text-[#3C3C3C] my-10">
+        <div className="lg:md:px-0 px-6">
+            <div className=" card lg:md:max-w-[800px] border-[2px] border-[#61B800] shadow-xl mx-auto text-[#3C3C3C] my-10">
                 <div className="card-body ">
-                    <h2 className="text-center font-featherBold text-3xl">Wanna Get Blog Updates?</h2>
-                    <h3 className='text-xl font-bold font-featherBold text-center my-3'>LEAVE YOUR EMAIL AND WE'LL DO THE REST?</h3>
+                    <h2 className="text-center font-featherBold lg:md:text-3xl text-2xl">Wanna Get Blog Updates?</h2>
+                    <h3 className='lg:md:text-xl text-md lg:md:font-bold font-normal font-featherBold text-center my-3'>LEAVE YOUR EMAIL AND WE WILL DO THE REST</h3>
 
                     <div className='flex justify-center my-4'>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-[600px] text-center" />
+                        <input type="text" placeholder="Type here" className="input w-full lg:md:max-w-xl bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]" />
                     </div>
 
                     <div className="flex justify-center">

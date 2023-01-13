@@ -10,9 +10,9 @@ const BlogsCard = ({ blog }) => {
         <img src={image} className="rounded-xl object-cover h-52 w-60" alt="blog-img" />
       </div>
       <div className="flex-1">
-        <h2 className="font-bold  text-2xl text-[#58cc02]">{title}</h2>
+        <h2 className="font-bold  lg:md:text-2xl text-xl text-[#58cc02]">{title}</h2>
         <div>
-          <p className="font-semibold uppercase text-black mt-3">{author}</p>
+          <p className="font-medium uppercase text-black mt-2">{author}</p>
           <p>{details.slice(0, 60)}</p>
         </div>
         <div className="flex items-end justify-end">
