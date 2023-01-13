@@ -6,7 +6,7 @@ const SingleCard = ({ course }) => {
 
   console.log(course)
   return (
-    <div className="card card-compact bg-white shadow-2xl">
+    <div className="card card-compact bg-white shadow-2xl ">
       <div className="p-3  mx-auto">
         <img className="rounded-xl h-44 hover:scale-105 animation-200" src={picture} alt="Shoes" />
       </div>

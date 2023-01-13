@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { BsArrowBarLeft, IconName } from "react-icons/bs";
+import Navbar from '../../components/Shared/Navbar/Navbar';
 
 const Coursedetails = () => {
     const [courseDetails, setCourseDetails] = useState({});
@@ -28,9 +29,11 @@ const Coursedetails = () => {
     }
 
     return (
+        <>
+        <Navbar></Navbar>
         <div>
           <Head><title>{title.slice(0,15)}</title></Head>
-            <div className='max-w-[1240px] mx-auto py-10'>
+            <div className='max-w-[1240px] mx-auto py-20'>
               <div className='flex justify-end py-2'>
                 <Link href='/courses'><button className='btn btn-ghost gap-x-2'><BsArrowBarLeft></BsArrowBarLeft>Back</button></Link>
               </div>
@@ -49,13 +52,14 @@ const Coursedetails = () => {
             </div>
           <div className="card-actions justify-end">
             
-            <button className="btn bg-[#00CC17] border-none px-12">Buy</button>
+            <button className="btn bg-[#00CC17] border-none px-12">Buy now</button>
           </div>
         </div>
     
       </div>
        </div>
         </div>
+        </>
     );
 };
 

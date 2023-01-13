@@ -10,7 +10,7 @@ const Navbar = () => {
                         <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="font-featherBold menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><a>Blog</a></li>
                             <li><a>Courses</a></li>
                             <li><a>Learn</a></li>
@@ -20,9 +20,9 @@ const Navbar = () => {
                     <Link href="/" className="flex text-2xl w-[40px] items-center"><img src="Logo2.png" alt="/" /><a className="btn btn-ghost normal-case text-xl lg:text-3xl text-white font-featherBold ml-[-10px]">Hello Talk</a></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex ">
-                    <ul className="menu menu-horizontal px-1 text-white">
-                        <li><a>Blog</a></li>
-                        <li><a>Courses</a></li>
+                    <ul className="font-featherBold menu menu-horizontal px-1 uppercase text-white">
+                        <li><a><Link href='/blogs'>Blog</Link></a></li>
+                        <li><a><Link href='/courses'>Courses</Link></a></li>
                         <li><a>Learn</a></li>
                         <li><a>Contact</a></li>
                     </ul>

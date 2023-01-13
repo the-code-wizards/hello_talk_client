@@ -10,6 +10,7 @@ const BlogDetails = () => {
       .then((res) => res.json())
       .then((data) => setBlogDetails(data));
   }, []);
+  
   return (
     <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
       <div className="card bg-base-100 shadow-xl">
