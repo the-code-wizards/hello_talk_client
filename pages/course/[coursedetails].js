@@ -1,21 +1,30 @@
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
-const DetailsCard = () => {
 
-  //this is card details page but we didn't use this. In pages component I will crreate a dynamic route called [coursedetails]
+const Coursedetails = () => {
     const [courseDetails, setCourseDetails] = useState({});
     const { title, picture , details, offer_price, price} = courseDetails;
     
+    const router = useRouter();
+    const id  = router.query.coursedetails;
+    console.log(id);
+
+    // const courseid = id.split('-')[1]
+
     useEffect(()=>{
-        fetch(`https://hello-talk-webserver.vercel.app/course/63bef8eb8675bb27211f0c53`)
+        fetch(`https://hello-talk-webserver.vercel.app/course/${id}`)
         .then(res => res.json())
-        .then(data => setCourseDetails(data))
-    },[])
+        .then(data => {
+            setCourseDetails(data)
+            console.log(id);
+        })
+    },[id])
 
     return (
-       <div className='max-w-[1240px] mx-auto my-16'>
+            <div className='max-w-[1240px] mx-auto my-16'>
          <div className="card lg:card-side">
-        <figure><img src={picture}alt="Album"/></figure>
+        <img src={picture}alt="Album" className='md:w-1/2'/>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
           <p>{details}</p>
@@ -29,4 +38,4 @@ const DetailsCard = () => {
     );
 };
 
-export default DetailsCard;
+export default Coursedetails;

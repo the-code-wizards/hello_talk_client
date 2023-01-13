@@ -4,30 +4,6 @@ import SingleCard from './SingleCard';
 
 
 const Courses = () => {
-    const AllPackage = [
-        {
-            id: 1,
-            title:"html 1",
-            picture: "https://img.freepik.com/premium-photo/natural-landscape-botanical-garden_35355-5948.jpg",
-            details: "You can insert any image in your web page by using <img> tag. Following is the simple syntax to use this tag. The <img> tag is an empty tag, which means that, it can contain only list of attributes and it has no closing tag.",
-
-        },
-        {
-            id: 2,
-            title:"html 2",
-            picture: "https://img.freepik.com/premium-photo/natural-landscape-botanical-garden_35355-5948.jpg",
-            details: "You can insert any image in your web page by using <img> tag. Following is the simple syntax to use this tag. The <img> tag is an empty tag, which means that, it can contain only list of attributes and it has no closing tag.",
-
-        },
-        {
-            id: 3,
-            title:"html 3",
-            picture: "https://img.freepik.com/premium-photo/natural-landscape-botanical-garden_35355-5948.jpg",
-            details: "You can insert any image in your web page by using <img> tag. Following is the simple syntax to use this tag. The <img> tag is an empty tag, which means that, it can contain only list of attributes and it has no closing tag.",
-
-        },
-    ]
-
     // const {data: courses = []} = useQuery({
     //     queryKey: ["courses"],
     //     queryFn: async()=>{
