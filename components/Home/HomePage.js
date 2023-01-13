@@ -134,7 +134,6 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-
             <Feedback />
             {/* ---------------Middle contents ---------------------------- */}
 

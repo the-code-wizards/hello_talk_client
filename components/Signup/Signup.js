@@ -30,7 +30,7 @@ const Signup = () => {
     let signUpError;
 
     if (gLoading || loading || updating) {
-        return <h2>loading</h2>
+        return <progress className='progress w-full'></progress>
     }
 
     if (error || gError || updateError) {
@@ -38,7 +38,7 @@ const Signup = () => {
     }
 
     if (token) {
-        to('/')
+        window.location.href = "/";
     }
 
     const onSubmit = async data => {
