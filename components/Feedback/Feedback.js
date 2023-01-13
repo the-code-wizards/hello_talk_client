@@ -28,7 +28,7 @@ const Feedback = () => {
             id: 3,
             name: "MD Asadulla Al Galib",
             img: "/",
-            review: "Just so so. The website lags a lot, has glitches and there is a lot of ads that doesn't let me concentrate on the lessons",
+            review: "Just so so. The website lags a lot, there is a lot of ads that doesn't let me concentrate on the lessons",
             stars: 2
         },
         {
@@ -49,7 +49,7 @@ const Feedback = () => {
             id: 6,
             name: "Mosharaf Hossain",
             img: "/",
-            review: "Just so so. The website lags a lot, has glitches and there is a lot of ads that doesn't let me concentrate on the lessons",
+            review: "Just so so. The website lags a lot, there is a lot of ads that doesn't let me concentrate on the lessons",
             stars: 1
         }
     ]
@@ -73,9 +73,9 @@ const Feedback = () => {
                         return (
                             <div key={data?.id} >
                                 <SwiperSlide>
-                                    <div className="card shadow-2xl py-4 bg-[#f8f8f8]">
+                                    <div className="card shadow-md py-4 border-inherit ">
                                         <div className="avatar flex justify-center">
-                                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                            <div className="w-24 rounded-full ring ring-[#61E002] ring-offset-base-100 ring-offset-2">
                                                 <img src="https://placeimg.com/192/192/people" />
                                             </div>
                                         </div>

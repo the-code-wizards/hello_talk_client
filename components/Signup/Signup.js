@@ -30,7 +30,7 @@ const Signup = () => {
     let signUpError;
 
     if (gLoading || loading || updating) {
-        return <h2>loading</h2>
+        return <progress className='progress w-full'></progress>
     }
 
     if (error || gError || updateError) {
@@ -38,7 +38,7 @@ const Signup = () => {
     }
 
     if (token) {
-        to('/')
+        window.location.href = "/";
     }
 
     const onSubmit = async data => {
@@ -108,7 +108,12 @@ const Signup = () => {
                          onClick={() => signInWithGoogle()}
                             className="justify-center flex items-center mt-[15px] bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] lg:md:w-[15%] w-[50%] hover:bg-[#E5E5E5]" type="submit"><AiOutlineGoogle className="text-red-400 text-[25px] mr-[4px]"/>Google</button>
                     </div>
+                    <div className="mt-4 text-center">
+                        <Link href="/terms" className="cursor-pointer font-bold text-center">Terms and condition</Link>
+                        <Link href="/privacy" className="cursor-pointer font-bold text-center ml-3">Privacy policy</Link>
+                    </div>
             </div>
+               
         </div>
         </>
     );

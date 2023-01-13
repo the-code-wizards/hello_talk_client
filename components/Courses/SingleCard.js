@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
 
-const SingleCard = ({ packages }) => {
-  const { _id, title, picture, details, offer_price, price } = packages;
+const SingleCard = ({ course }) => {
+  const { _id, title, picture, details, offer_price, price } = course;
+
+  console.log(course)
   return (
     <div className="card card-compact bg-white shadow-2xl">
       <div className="p-3  mx-auto">
@@ -19,7 +21,7 @@ const SingleCard = ({ packages }) => {
           </p>
           <h2 className="text-2xl text-[#00CC17] font-bold"> ৳{offer_price}</h2>
         </div>
-        <Link href={`/coursedetails/${_id}`}>
+        <Link href={`/course/${_id}`}>
           <button className="btn bg-[#00CC17] border-none">View Details</button>
         </Link>
       </div>

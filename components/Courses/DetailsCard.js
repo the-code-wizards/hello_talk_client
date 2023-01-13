@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const DetailsCard = () => {
 
+  //this is card details page but we didn't use this. In pages component I will crreate a dynamic route called [coursedetails]
     const [courseDetails, setCourseDetails] = useState({});
     const { title, picture , details, offer_price, price} = courseDetails;
     
