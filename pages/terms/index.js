@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-const Terms = () => {
+const index = () => {
   return (
     <section className="mx-36">
       <h2 className="text-center text-5xl font-bold my-20">
@@ -884,4 +884,4 @@ const Terms = () => {
   );
 };
 
-export default Terms;
+export default index;

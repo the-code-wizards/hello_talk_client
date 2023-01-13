@@ -9,7 +9,7 @@ const useToken = user =>{
             email: email,
         };
         if(email){
-            fetch(`https://polar-lowlands-05694.herokuapp.com/user/${email}`, {
+            fetch(`https://hello-talk-webserver.vercel.app/user/${email}`, {
                 method:'PUT',
                 headers: {
                     'content-type': 'application/json'

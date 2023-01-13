@@ -19,7 +19,7 @@ const SingleCard = ({ packages }) => {
           </p>
           <h2 className="text-2xl text-[#00CC17] font-bold"> ৳{offer_price}</h2>
         </div>
-        <Link href={`/coursedetails/${_id}`}>
+        <Link href={`/course/${_id}`}>
           <button className="btn bg-[#00CC17] border-none">View Details</button>
         </Link>
       </div>
