@@ -3,13 +3,12 @@ import LeaderBoardCard from '../../components/Learn/LeaderBoardCard';
 import LevelBlocks from '../../components/Learn/LevelBlocks';
 import GemCollectionCard from '../../components/Learn/GemCollectionCard';
 import Sidebar from '../../components/Learn/Sidebar';
-import Navbar from '../../components/shared/Navbar/Navbar'
+import LearnNav from '../../components/Learn/LearnNav';
 
 const index = () => {
     return (
         <div>
-            {/* <LearnNav/> */}
-            <Navbar/>
+            <LearnNav/>
             <div className='pt-[6rem] grid grid-cols-[250px_minmax(650px,_1fr)_300px]'>
                 <Sidebar />
                 <LevelBlocks />
