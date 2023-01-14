@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import BlogsCard from './BlogsCard';
 
@@ -14,7 +12,6 @@ const Blog = () => {
     <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {
-        
           blogs.map((blog) => (
           <BlogsCard 
           key={blog._id}

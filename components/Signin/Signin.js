@@ -30,7 +30,7 @@ const Signin = () => {
     //  let navigate = useNavigate();
     // let location = useLocation();
     // let from = location.state?.from?.pathname || "/";
-    // let signInError;
+    let signInError;
 
     //     useEffect( () => {
     //     if (token) {
