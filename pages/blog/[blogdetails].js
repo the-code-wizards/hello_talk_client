@@ -23,7 +23,7 @@ const Blogdetails = () => {
     return (
         <>
         <Navbar></Navbar>
-        <Head><title>{title.slice(0,15)}</title></Head>
+        <Head><title>{title && title.slice(0,15)}</title></Head>
         <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
       <div className="card bg-base-100 shadow-xl w-1/3">
         <div className="card-body items-center text-center">
