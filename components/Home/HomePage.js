@@ -108,14 +108,14 @@ const HomePage = () => {
                     <div className='col-span-4 place-self-center'>
                         <h1 className='font-featherBold lg:md:text-start text-center lg:md:text-4xl mb-2 text-[#3C3C3C] text-2xl' >Boost your learning with Super Hello Talk</h1>
                         <p className="lg:md:text-start text-center">Learning a language on Hello Talk is completely free, but you can remove ads and support free education with Super. First 2 weeks on us!</p>
-                        <a href="" className='pt-4 text-[#1cb0f6] lg:md:text-start text-center'>LEARN MORE ABOUT SUPER Hello Talk</a>
+                        {/* <a href="" className='pt-4 text-[#1cb0f6] lg:md:text-start text-center'>LEARN MORE ABOUT SUPER Hello Talk</a> */}
                     </div>
                 </div>
                 <div className="divider"></div>
             </div>
 
             <div>
-                <h1 className='lg:md:text-3xl text-2xl text-center font-featherBold mb-8 text-[#3C3C3C]'>Packages that you"ll love</h1>
+                <h1 className='lg:md:text-3xl text-2xl text-center font-featherBold mb-8 text-[#3C3C3C]'>Packages that you`&apos;`ll love</h1>
                 <Package />
                 <div className="divider"></div>
             </div>
@@ -138,7 +138,7 @@ const HomePage = () => {
             {/* _______________________________Blog___________________________ */}
 
             <div>
-                <h1 className='font-featherBold lg:md:text-3xl text-2xl text-center text-[#3C3C3C] my-2'>Twinkle twinkle little star, you'll love our chronicle</h1>
+                <h1 className='font-featherBold lg:md:text-3xl text-2xl text-center text-[#3C3C3C] my-2'>Twinkle twinkle little star, you`&apos;`ll love our chronicle</h1>
                 <h2 className='font-featherBold lg:md:text-xl text-lg text-center text-[#3C3C3C]'>Start Reading our blogs</h2>
                 <BlogForHome></BlogForHome>
                 <div className="divider max-w-[1240px] mx-auto"></div>
