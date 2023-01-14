@@ -11,6 +11,9 @@ const Navbar = () => {
         signOut(auth);
         localStorage.removeItem('accessToken');
     };
+    // if(loading){
+    //     <Loader/>
+    // }
     return (
         <nav className='relative z-10'>
             <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)]">
