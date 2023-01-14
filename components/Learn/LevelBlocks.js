@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import blockImg from "../../public/blockMascot.png"
 
-const LevelBlocks = () => {
+const LevelBlocks = () => {    
     const fakeCourseData = [
         {
             id: 1,
