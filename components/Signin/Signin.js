@@ -9,6 +9,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { TfiFacebook } from 'react-icons/tfi';
 import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router'
 // import {  useNavigate,useLocation } from 'react-router-dom';
 
 const Signin = () => { 
@@ -21,20 +22,10 @@ const Signin = () => {
         signInWithEmailAndPassword, 
         user, 
         loading, 
-        error,] = useSignInWithEmailAndPassword(auth);
-
-    // const [updateProfile, updating, updateError] = useUpdateProfile(auth);    
+        error,] = useSignInWithEmailAndPassword(auth);   
     const [token] = useToken(user || gUser);
-    //  let navigate = useNavigate();
-    // let location = useLocation();
-    // let from = location.state?.from?.pathname || "/";
-    // let signInError;
+    let signInError;
 
-    //     useEffect( () => {
-    //     if (token) {
-    //         navigate(from, { replace: true });      
-    //     }
-    // },[token, from, navigate])
 
     if (gLoading || loading) {
         return <progress className='progress w-full'></progress>

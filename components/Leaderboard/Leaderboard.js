@@ -3,185 +3,124 @@ import React from 'react';
 const Leaderboard = () => {
   return (
     <>
-      <div className="max-w-[1240px] mx-auto p-20 ">
-        {/* User's position */}
-        <h1 className="text-4xl text-lime-600">This is leaderboard</h1>
+      {/*------------------ Leaderboard data api theke data call kore map korte hbe ------------ */}
+
+      <div className="max-w-[1240px] mx-auto">
+        {/*----------------- User's position --------------*/}
         <div className=" w-full my-5">
-          <table className="bg-white table w-full">
+          <table className="bg-white table w-full text-center">
             {/* <!-- head --> */}
             <thead>
               <tr>
-                <th className="text-center">Your Position</th>
                 <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-                <th></th>
+                <th>Your Position</th>
+                <th>Gems</th>
               </tr>
             </thead>
             <tbody>
               {/* <!-- row 1 --> */}
               <tr>
-                <th className="text-center">1</th>
                 <td>
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src="/tailwind-css-component-profile-2@56w.png"
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">Hart Hagerty</div>
-                      <div className="text-sm opacity-50">United States</div>
-                    </div>
+                  <div>
+                    <div className="font-bold">Hart Hagerty</div>
                   </div>
                 </td>
-                <td>
-                  Zemlak, Daniel and Leannon
-                  <br />
-                  <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                </td>
-                <td>Purple</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+                <th>1</th>
+                <td>165</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        {/* Top positions members are here */}
+        {/*------------------- Top 5 members are here ---------------------*/}
 
-        <div className="overflow-x-auto w-full">
-          <table className="table w-full">
+        <div className=" w-full my-5">
+          <table className="bg-white table w-full text-center">
             {/* <!-- head --> */}
             <thead>
               <tr>
-                <th className="text-center">Top Positions</th>
                 <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-                <th></th>
+                <th>Your Position</th>
+                <th>Gems</th>
               </tr>
             </thead>
             <tbody>
               {/* <!-- row 1 --> */}
               <tr>
-                <th className="text-center">1</th>
                 <td>
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src="/tailwind-css-component-profile-2@56w.png"
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">Hart Hagerty</div>
-                      <div className="text-sm opacity-50">United States</div>
-                    </div>
+                  <div>
+                    <div className="font-bold">Hart Hagerty</div>
                   </div>
                 </td>
-                <td>
-                  Zemlak, Daniel and Leannon
-                  <br />
-                  <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                </td>
-                <td>Purple</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+                <th>1</th>
+                <td>165</td>
               </tr>
               {/* <!-- row 2 --> */}
               <tr>
-                <th className="text-center">2</th>
                 <td>
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src="/tailwind-css-component-profile-3@56w.png"
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">Brice Swyre</div>
-                      <div className="text-sm opacity-50">China</div>
-                    </div>
+                  <div>
+                    <div className="font-bold">Hart Hagerty</div>
                   </div>
                 </td>
-                <td>
-                  Carroll Group
-                  <br />
-                  <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-                </td>
-                <td>Red</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+                <th>1</th>
+                <td>165</td>
               </tr>
               {/* <!-- row 3 --> */}
               <tr>
-                <th className="text-center">3</th>
                 <td>
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src="/tailwind-css-component-profile-4@56w.png"
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">Marjy Ferencz</div>
-                      <div className="text-sm opacity-50">Russia</div>
-                    </div>
+                  <div>
+                    <div className="font-bold">Hart Hagerty</div>
                   </div>
                 </td>
-                <td>
-                  Rowe-Schoen
-                  <br />
-                  <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-                </td>
-                <td>Crimson</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+                <th>1</th>
+                <td>165</td>
               </tr>
               {/* <!-- row 4 --> */}
               <tr>
-                <th className="text-center">4</th>
                 <td>
-                  <div className="flex items-center space-x-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src="/tailwind-css-component-profile-5@56w.png"
-                          alt="Avatar Tailwind CSS Component"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-bold">Yancy Tear</div>
-                      <div className="text-sm opacity-50">Brazil</div>
-                    </div>
+                  <div>
+                    <div className="font-bold">Hart Hagerty</div>
                   </div>
                 </td>
+                <th>1</th>
+                <td>165</td>
+              </tr>
+              {/* <!-- row 5 --> */}
+              <tr>
                 <td>
-                  Wyman-Ledner
-                  <br />
-                  <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
+                  <div>
+                    <div className="font-bold">Hart Hagerty</div>
+                  </div>
                 </td>
-                <td>Indigo</td>
-                <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+                <th>1</th>
+                <td>165</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/*-------------------- Other members are here --------------------*/}
+
+        <div className=" w-full my-5">
+          <table className="bg-white table w-full text-center">
+            {/* <!-- head --> */}
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Your Position</th>
+                <th>Gems</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* <!-- row 1 --> */}
+              <tr>
+                <td>
+                  <div>
+                    <div className="font-bold">Hart Hagerty</div>
+                  </div>
+                </td>
+                <th>1</th>
+                <td>165</td>
               </tr>
             </tbody>
           </table>
