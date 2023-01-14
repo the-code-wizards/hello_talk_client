@@ -22,20 +22,10 @@ const Signin = () => {
         signInWithEmailAndPassword, 
         user, 
         loading, 
-        error,] = useSignInWithEmailAndPassword(auth);
-
-    // const [updateProfile, updating, updateError] = useUpdateProfile(auth);    
+        error,] = useSignInWithEmailAndPassword(auth);   
     const [token] = useToken(user || gUser);
-    //  let navigate = useNavigate();
-    // let location = useLocation();
-    // let from = location.state?.from?.pathname || "/";
     let signInError;
 
-    //     useEffect( () => {
-    //     if (token) {
-    //         navigate(from, { replace: true });      
-    //     }
-    // },[token, from, navigate])
 
     if (gLoading || loading) {
         return <progress className='progress w-full'></progress>
