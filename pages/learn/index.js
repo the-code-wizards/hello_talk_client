@@ -3,7 +3,6 @@ import LeaderBoardCard from '../../components/Learn/LeaderBoardCard';
 import LevelBlocks from '../../components/Learn/LevelBlocks';
 import GemCollectionCard from '../../components/Learn/GemCollectionCard';
 import Sidebar from '../../components/Learn/Sidebar';
-import LearnNav from '../../components/Learn/LearnNav';
 import Navbar from '../../components/shared/Navbar/Navbar'
 
 const index = () => {
