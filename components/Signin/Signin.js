@@ -13,7 +13,6 @@ import { useRouter } from 'next/router'
 // import {  useNavigate,useLocation } from 'react-router-dom';
 
 const Signin = () => { 
-    const router = useRouter()   
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, 
         handleSubmit, 
