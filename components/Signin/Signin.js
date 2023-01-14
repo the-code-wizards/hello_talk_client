@@ -9,6 +9,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { TfiFacebook } from 'react-icons/tfi';
 import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router'
 // import {  useNavigate,useLocation } from 'react-router-dom';
 
 const Signin = () => { 
