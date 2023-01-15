@@ -5,20 +5,22 @@ import useToken from './useToken';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const useOrderList = () => {
-    const [user] = useAuthState(auth);
-    const [token] = useToken(user);
+    // const [user] = useAuthState(auth);
+    // const [token] = useToken(user);
     const [levels, setLevels] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (accessToken) {
+        // if (accessToken) {
             setLoading(true);
             axios
-                .get(`https://hello-talk-webserver.vercel.app/quizes`, {
-                    headers: {
-                        Authorization: token,
-                    },
-                })
+                .get(`https://hello-talk-webserver.vercel.app/quizes`
+                    // {
+                    // headers: {
+                    //     Authorization: token,
+                    // },
+                // }
+    )
                 .then((res) => {
                     setLevels(res.data);
                 })
@@ -28,8 +30,8 @@ const useOrderList = () => {
                 .finally(() => {
                     setLoading(false);
                 });
-        }
-    }, [token]);
+        // }
+    }, []);
 
     return [levels, loading];
 };
