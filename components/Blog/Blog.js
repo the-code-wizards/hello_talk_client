@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import BlogsCard from './BlogsCard';
 
 const Blog = () => {
-  // check disc bot
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     fetch('https://hello-talk-webserver.vercel.app/blogs')
