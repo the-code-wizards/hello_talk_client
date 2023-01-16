@@ -82,11 +82,11 @@ const FreqAskedQ = () => {
         <title>HelloTalk - FAQ</title>
       </Head>
       <div className="container mx-auto py-20 flex flex-col items-center justify-center">
-        <div className="relative mt-10 rounded-md shadow-sm mx-auto text-center">
+        <div className="relative w-1/2 mt-10 rounded-md shadow-sm text-center">
           <input
             type="search"
-            className="form-input py-2 px-3 block w-full leading-5 transition duration-150 ease-in-out bg-white border border-gray-300 placeholder-gray-500 rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
-            placeholder="Search"
+            className="form-input px-10 py-5 block w-full transition duration-150 ease-in-out bg-white border border-gray-300 placeholder-gray-500 rounded-xl focus:outline-none focus:shadow-outline-blue focus:border-[#61B800]  focus:z-10 text-xl leading-5"
+            placeholder="Type Your Questions Here"
             onChange={handleSearch}
             value={searchTerm}
           />
@@ -103,14 +103,14 @@ const FreqAskedQ = () => {
             </svg>
           </button>
         </div>
-        <h1 className="my-16 text-center text-3xl font-bold">
+        <h1 className="my-16 md:mx-32 mx-3 sm:mx-32 text-center text-3xl font-bold">
           Frequently Asked Questions
         </h1>
-        <div className="accordion md:mx-32 mx-3">
+        <div className="accordion md:mx-32 mx-3 sm:mx-32">
           {filteredFAQs.map((faq, index) => (
             <div
               key={index}
-              className="shadow-md mb-2 collapse collapse-arrow border border-[#333] bg-base-[#ddd] rounded-box"
+              className="shadow-md mb-2 collapse collapse-arrow border  border-[#61B800]   transition ease-in-out delay-150 hover:-translate-y-1 rounded-box"
             >
               <input type="checkbox" />
               <div className="collapse-title text-xl font-medium text-[#000]">
