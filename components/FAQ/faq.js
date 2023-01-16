@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useState } from "react";
 import Navbar from "../Shared/Navbar/Navbar";
 
@@ -78,8 +79,10 @@ const FAQ = () => {
 
   return (
     <>
-      <Navbar></Navbar>
-      <div className="container mx-auto my-20 flex flex-col items-center justify-center">
+      <Head>
+      <title>HelloTalk - FAQ</title>
+      </Head>
+      <div className="container mx-auto py-20 flex flex-col items-center justify-center">
         <div className="relative mt-10 rounded-md shadow-sm mx-auto text-center">
           <input
             type="search"
