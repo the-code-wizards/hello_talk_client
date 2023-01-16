@@ -7,10 +7,12 @@ import LearnNav from '../../components/Learn/LearnNav';
 
 const index = () => {
     return (
-        <div>
+        <div >
             <LearnNav/>
             <div className='pt-[6rem] grid grid-cols-[250px_minmax(650px,_1fr)_300px]'>
-                <Sidebar />
+                <div>
+                    <Sidebar />
+             </div>
                 <LevelBlocks />
                 <div>
                     <LeaderBoardCard />

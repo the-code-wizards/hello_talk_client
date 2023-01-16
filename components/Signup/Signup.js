@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 // import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {    
+    const router = useRouter()
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, 
         handleSubmit, 
@@ -41,8 +42,9 @@ const Signup = () => {
     }
 
     const onSubmit = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password);
-        await updateProfile({ displayName: data.name });
+        console.log(data)
+        await createUserWithEmailAndPassword(data.email, data.password, data?.age);
+        await updateProfile({ displayName: data.name, age: data?.age });
     };
     return (
         <>

@@ -75,7 +75,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div className=' h-[300px] w-[300px] lg:h-[450px] lg:w-[450px] ' >
-                        {/* <Lottie animationData={laptop} loop={true} /> */}
+                        <Lottie animationData={laptop} loop={true} />
                     </div>
                     <div>
                         <div className='grid grid-cols-8 p-5'>
