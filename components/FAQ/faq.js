@@ -104,21 +104,19 @@ const FAQ = () => {
             </svg>
           </button>
         </div>
-        <h1 className="my-20 text-center text-3xl font-bold">
+        <h1 className="my-16 text-center text-3xl font-bold">
           Frequently Asked Questions
         </h1>
-        <div className="accordion mx-36">
+        <div className="accordion mx-32">
           {filteredFAQs.map((faq, index) => (
-            <div key={index} className="border-b border-gray-200">
-              <button
-                className="block p-4 text-lg font-medium leading-5 text-gray-700 focus:outline-none focus:text-gray-900"
-                onClick={() => handleClick(index)}
-              >
+            <div key={index} className="shadow-md mb-2 collapse collapse-arrow border border-[#333] bg-base-[#ddd] rounded-box">
+              <input type="checkbox" />
+              <div className="collapse-title text-xl font-medium text-[#000]">
                 {faq.question}
-              </button>
-              {index === activeIndex && (
-                <div className="p-4 bg-gray-50">{faq.answer}</div>
-              )}
+              </div>
+              <div className="collapse-content text-[#333]">
+                <p>{faq.answer}</p>
+              </div>
             </div>
           ))}
         </div>
