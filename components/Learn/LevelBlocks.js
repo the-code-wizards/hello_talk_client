@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 import blockImg from "../../public/blockMascot.png"
+import useLevels from "../hooks/useLevels"
 
 const LevelBlocks = () => {    
+    const [levels, loading] = useLevels()
+    console.log(levels)
     const fakeCourseData = [
         {
             id: 1,

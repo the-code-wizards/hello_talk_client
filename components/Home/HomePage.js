@@ -21,7 +21,7 @@ const HomePage = () => {
             {/* ---------------Top Banner---------------------------- */}
             <div className="hero min-h-[80vh] pt-[50px] lg:pt-[50px]" style={{ backgroundImage: `url("back.svg")` }}>
                 <div className="hero-content flex-col lg:flex-row lg:justify-between">
-                    <Lottie animationData={learning} loop={true} /> 
+                    <Lottie animationData={learning} loop={true} />
                     <div className='max-w-[1240px] mx-auto lg:ml-20'>
                         <h1 className='text-white text-3xl lg:md:text-4xl font-bold text-center font-featherBold '>The free, fun, and effective way to learn language!</h1>
                         <div className='flex flex-col justify-center items-center mt-8'>
@@ -75,7 +75,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div className=' h-[300px] w-[300px] lg:h-[450px] lg:w-[450px] ' >
-                       <Lottie animationData={laptop} loop={true} />
+                        <Lottie animationData={laptop} loop={true} />
                     </div>
                     <div>
                         <div className='grid grid-cols-8 p-5'>
