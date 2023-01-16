@@ -15,15 +15,15 @@ const DashSidebar = () => {
                     {user &&
                         <>
                             <li><Link href="/dashboard">Dashboard</Link></li>
-                            <li><Link href="/dashboard/orders">Add Blog</Link></li>
-                            <li><Link href="/dashboard/orders">All Blogs</Link></li>
-                            <li><Link href="/dashboard/review">Add Course</Link></li>
-                            <li><Link href="/dashboard/review">Add Offer</Link></li>
-                            <li><Link href="/dashboard/review">All Offers</Link></li>
-                            <li><Link href="/dashboard/review">Make Admin</Link></li>
-                            <li><Link href="/dashboard/review">All Users</Link></li>
-                            <li><Link href="/dashboard/review">Courses Bought</Link></li>
-                            <li><Link href="/dashboard/review">Pro Package Bought</Link></li>
+                            <li><Link href="/dashboard/addblog">Add Blog</Link></li>
+                            <li><Link href="/dashboard/allblogs">All Blogs</Link></li>
+                            <li><Link href="/dashboard/addcourse">Add Course</Link></li>
+                            <li><Link href="/dashboard/addoffer">Add Offer</Link></li>
+                            <li><Link href="/dashboard/alloffers">All Offers</Link></li>
+                            <li><Link href="/dashboard/makeadmin">Make Admin</Link></li>
+                            <li><Link href="/dashboard/allusers">All Users</Link></li>
+                            <li><Link href="/dashboard/coursesbought">Courses Bought</Link></li>
+                            <li><Link href="/dashboard/pkgbought">Pro Package Bought</Link></li>
                         </>
                     }
 

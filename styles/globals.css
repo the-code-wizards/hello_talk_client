@@ -130,7 +130,7 @@ button[disabled] {
   opacity: 0.6;
 } */
 
-input,
+/* input,
 select {
   display: block;
   border: none;
@@ -149,7 +149,7 @@ select {
 
 input::placeholder {
   color: #aab7c4;
-}
+} */
 
 .result,
 .error {
