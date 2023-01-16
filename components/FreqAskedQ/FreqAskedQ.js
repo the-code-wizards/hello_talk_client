@@ -79,7 +79,7 @@ const FreqAskedQ = () => {
   return (
     <>
       <Head>
-      <title>HelloTalk - FAQ</title>
+        <title>HelloTalk - FAQ</title>
       </Head>
       <div className="container mx-auto py-20 flex flex-col items-center justify-center">
         <div className="relative mt-10 rounded-md shadow-sm mx-auto text-center">
@@ -106,9 +106,12 @@ const FreqAskedQ = () => {
         <h1 className="my-16 text-center text-3xl font-bold">
           Frequently Asked Questions
         </h1>
-        <div className="accordion mx-32">
+        <div className="accordion md:mx-32 mx-3">
           {filteredFAQs.map((faq, index) => (
-            <div key={index} className="shadow-md mb-2 collapse collapse-arrow border border-[#333] bg-base-[#ddd] rounded-box">
+            <div
+              key={index}
+              className="shadow-md mb-2 collapse collapse-arrow border border-[#333] bg-base-[#ddd] rounded-box"
+            >
               <input type="checkbox" />
               <div className="collapse-title text-xl font-medium text-[#000]">
                 {faq.question}
