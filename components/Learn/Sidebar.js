@@ -4,6 +4,7 @@ import { GiNotebook } from 'react-icons/gi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaBloggerB } from 'react-icons/fa';
 import { BsStack, BsPeople } from 'react-icons/bs';
+import Link from 'next/link';
 
 const Sidebar = () => {
     const router = useRouter()
@@ -19,11 +20,11 @@ const Sidebar = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu lg:md:p-4 w-80 bg-[#dbf8df] text-[#504f4f] font-bold border-[1px] ">
                     {/* <!-- Sidebar content here --> */}
-                    <li><button className="" type="button" onClick={() => router.push('/learn')}><GiNotebook className="text-xl text-red-400 mr-[5px]" />Learn</button></li>
-                    <li><button type="button" onClick={() => router.push('/shop')}><AiOutlineShoppingCart className="text-xl text-red-400 mr-[5px]" />Shop</button></li>
-                    <li><button type="button" onClick={() => router.push('/blog')}><FaBloggerB className="text-xl text-red-400 mr-[5px]" />Blog</button></li>
-                    <li><button type="button" onClick={() => router.push('/course')}><BsStack className="text-xl text-red-400 mr-[5px]" />Course</button></li>
-                    <li><button type="button" onClick={() => router.push('/community')}><BsPeople className="text-xl text-red-400 mr-[5px]" />Community</button></li>
+                    <li><Link href="/learn" className="" type="button" ><GiNotebook className="text-xl text-red-400 mr-[5px]" />Learn</Link></li>
+                    <li><Link href="/shop" ><AiOutlineShoppingCart className="text-xl text-red-400 mr-[5px]" />Shop</Link></li>
+                    <li><Link href="/blogs" ><FaBloggerB className="text-xl text-red-400 mr-[5px]" />Blog</Link></li>
+                    <li><Link href="/course"><BsStack className="text-xl text-red-400 mr-[5px]" />Course</Link></li>
+                    <li><Link href="/community"><BsPeople className="text-xl text-red-400 mr-[5px]" />Community</Link></li>
                     {/* <li><button type="button" onClick={() => router.push('/community')}><IoPeopleOutline className="text-xl text-red-400 mr-[5px]" />Community</button></li> */}
                 </ul>
 
