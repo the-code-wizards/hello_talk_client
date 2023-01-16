@@ -15,7 +15,7 @@ const Sidebar = () => {
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
-            <div className="drawer-side lg:md:w-[60%] h-[50%] rounded-2xl shadow-xl">
+            <div className="drawer-side lg:md:w-[65%] h-[45%] rounded-2xl shadow-xl">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu lg:md:p-4 w-80 bg-[#dbf8df] text-[#504f4f] font-bold border-[1px] ">
                     {/* <!-- Sidebar content here --> */}

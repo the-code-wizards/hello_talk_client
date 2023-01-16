@@ -139,7 +139,7 @@ const CheckOut = () => {
     }
 
     return (
-        <div className='p-16 border border-inherit bg-[#BFDBFE]'>
+        <div className='p-16 border border-inherit bg-[#BFDBFE] rounded-lg'>
             <form onSubmit={handleSubmit} className="mt-[-40px]">
                 <h2 className='text-2xl text-center'>Pay with card</h2>
                 <label className="label ">
