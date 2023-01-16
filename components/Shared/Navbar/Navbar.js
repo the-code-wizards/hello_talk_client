@@ -16,7 +16,7 @@ const Navbar = () => {
     // }
     return (
         <nav className='relative z-10'>
-            <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)]">
+            <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] ">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
@@ -38,7 +38,7 @@ const Navbar = () => {
                                 <li> <Link className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]" href="/signin">Log In</Link>
                                 </li>
                             }
-                            
+
                         </ul>
                     </div>
                     <Link href="/" className="flex text-2xl w-[50px] items-center"><img src="Logo2.png" alt="/" /><p className="ml-2 normal-case text-xl lg:text-2xl text-white font-featherBold">HelloTalk</p></Link>
@@ -46,8 +46,8 @@ const Navbar = () => {
                 <div className="navbar-end hidden lg:flex ">
                     <ul className="font-featherBold menu menu-horizontal px-1 text-white font-medium">
                         <li><Link href='/blogs'>Blog</Link></li>
-                            <li><Link href='/courses'>Courses</Link></li>
-                            <li><Link href='/learn'>Learn</Link></li>
+                        <li><Link href='/courses'>Courses</Link></li>
+                        <li><Link href='/learn'>Learn</Link></li>
                         <li><Link href='/contact'>Contact Us</Link></li>
 
                         <li>
@@ -71,7 +71,7 @@ const Navbar = () => {
                                     }
                                 </ul>
                             </div>
-                        </li>                       
+                        </li>
                     </ul>
                 </div>
             </div>
