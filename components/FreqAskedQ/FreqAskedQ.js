@@ -1,8 +1,7 @@
 import Head from "next/head";
 import React, { useState } from "react";
-import Navbar from "../Shared/Navbar/Navbar";
 
-const FAQs = [
+const fakeQueData = [
   {
     question: "What are faster results? When will my results be available?",
     answer:
@@ -60,14 +59,14 @@ const FAQs = [
   },
 ];
 
-const FAQ = () => {
+const FreqAskedQ = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredFAQs, setFilteredFAQs] = useState(FAQs);
+  const [filteredFAQs, setFilteredFAQs] = useState(fakeQueData);
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
-    const filteredData = FAQs.filter((faq) =>
+    const filteredData = fakeQueData.filter((faq) =>
       faq.question.toLowerCase().includes(event.target.value.toLowerCase())
     );
     setFilteredFAQs(filteredData);
@@ -125,4 +124,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default FreqAskedQ;
