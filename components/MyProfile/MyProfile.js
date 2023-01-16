@@ -17,7 +17,7 @@ const MyProfile = () => {
     </div>
     </div>
 
-  <div className="mt-6 md:px-[350px]">
+  <div className="mt-6 md:px-[300px]">
   <div>
   <div className="flex mb-2 items-center justify-between">
     <span>Name : </span>

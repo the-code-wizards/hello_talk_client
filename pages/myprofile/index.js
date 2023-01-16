@@ -8,7 +8,7 @@ const index = () => {
     return (
       <div>
         <Navbar></Navbar>
-          <div className='grid grid-cols-[300px_minmax(600px,_1fr)_300px]'>
+          <div className='grid grid-cols-[350px_minmax(500px,_1fr)_350px]'>
             <div>
                 <MyCourses></MyCourses>
             </div>
