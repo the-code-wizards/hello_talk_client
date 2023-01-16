@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 // import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {    
+    const router = useRouter()
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, 
         handleSubmit, 

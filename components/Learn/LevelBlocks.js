@@ -2,10 +2,14 @@ import Link from 'next/link';
 import React from 'react';
 import blockImg from "../../public/blockMascot.png"
 import useLevels from "../hooks/useLevels"
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const LevelBlocks = () => {    
+    const [user, error] = useAuthState(auth);
     const [levels, loading] = useLevels()
     console.log(levels)
+    console.log(user)
     const fakeCourseData = [
         {
             id: 1,
@@ -130,10 +134,13 @@ const LevelBlocks = () => {
     ]
     return (
         <div className="grid grid-cols-7 m-4 gap-x-[12px]">
+            {/* {levels?.map((level) => {
+
+            })} */}
             {fakeCourseData?.map((data) => {
                 return (
                     <>
-                        <Link href={`/learn/${data?.id}`} className="">
+                        <Link href={`/level/${data?.id}`} className="">
                             <div className="flex flex-col justify-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                                 <img className="w-20" src="https://i.ibb.co/TqQyDqg/block-Mascot.png" alt="/" />
                                 <span className="btn bg-gradient-to-r from-green-500 to-[#c1ffab] text-[#fff] p-2 px-4 border-none text-xl font-semibold mt-[-15px] hover:">
