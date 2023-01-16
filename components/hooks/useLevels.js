@@ -14,7 +14,7 @@ const useOrderList = () => {
         // if (accessToken) {
             setLoading(true);
             axios
-                .get(`https://hello-talk-webserver.vercel.app/quizes`
+                .get(`https://hello-talk-webserver.vercel.app/quizes?age=adult`
                     // {
                     // headers: {
                     //     Authorization: token,

@@ -16,13 +16,13 @@ const Navbar = () => {
     // }
     return (
         <nav className='relative z-10'>
-            <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] ">
+            <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] py-0">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="font-featherBold menu menu-compact dropdown-content mt-3 p-2 shadow bg-green-300 rounded-box w-52  font-medium">
+                        <ul tabIndex={0} className="font-featherBold menu menu-compact dropdown-content mt-3 p-2 shadow bg-green-300 rounded-box w-52 ">
                             <li><Link href='/contact'>Profile</Link></li>
                             <li><Link href='/blogs'>Blog</Link></li>
                             <li><Link href='/courses'>Courses</Link></li>
@@ -44,7 +44,7 @@ const Navbar = () => {
                     <Link href="/" className="flex text-2xl w-[50px] items-center"><img src="Logo2.png" alt="/" /><p className="ml-2 normal-case text-xl lg:text-2xl text-white font-featherBold">HelloTalk</p></Link>
                 </div>
                 <div className="navbar-end hidden lg:flex ">
-                    <ul className="font-featherBold menu menu-horizontal px-1 text-white font-medium">
+                    <ul className="font-featherBold menu menu-horizontal px-1 text-white text-[16px]">
                         <li><Link href='/blogs'>Blog</Link></li>
                         <li><Link href='/courses'>Courses</Link></li>
                         <li><Link href='/learn'>Learn</Link></li>
