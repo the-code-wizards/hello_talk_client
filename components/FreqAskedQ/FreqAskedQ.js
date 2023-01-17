@@ -82,10 +82,13 @@ const FreqAskedQ = () => {
         <title>HelloTalk - FAQ</title>
       </Head>
       <div className="container mx-auto py-20 flex flex-col items-center justify-center">
-        <div className="relative w-1/2 mt-10 rounded-md shadow-sm text-center">
+        <h1 className="my-10 md:mx-32 mx-3 sm:mx-32 text-[#61B800] text-center text-5xl font-bold">
+          Frequently Asked Questions
+        </h1>
+        <div className="relative mb-10 w-1/2 rounded-md shadow-sm text-center">
           <input
             type="search"
-            className="form-input px-10 py-5 block w-full transition duration-150 ease-in-out bg-white border border-gray-300 placeholder-gray-500 rounded-xl focus:outline-none focus:shadow-outline-blue focus:border-[#61B800]  focus:z-10 text-xl leading-5"
+            className="form-input px-10 py-3 block w-full transition duration-150 ease-in-out bg-white border border-gray-300 placeholder-gray-500 rounded-xl focus:outline-none focus:shadow-outline-blue focus:border-[#61B800]  focus:z-10 text-xl leading-5"
             placeholder="Type Your Questions Here"
             onChange={handleSearch}
             value={searchTerm}
@@ -103,14 +106,11 @@ const FreqAskedQ = () => {
             </svg>
           </button>
         </div>
-        <h1 className="my-16 md:mx-32 mx-3 sm:mx-32 text-center text-3xl font-bold">
-          Frequently Asked Questions
-        </h1>
         <div className="accordion md:mx-32 mx-3 sm:mx-32">
           {filteredFAQs.map((faq, index) => (
             <div
               key={index}
-              className="shadow-md mb-2 collapse collapse-arrow border  border-[#61B800]   transition ease-in-out delay-150 hover:-translate-y-1 rounded-box"
+              className="shadow-md mb-2 collapse collapse-arrow border transition ease-in-out delay-150 hover:-translate-y-1 rounded-box"
             >
               <input type="checkbox" />
               <div className="collapse-title text-xl font-medium text-[#000]">
