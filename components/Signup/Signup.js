@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Head from "next/head";
-import React from 'react';
+import React, { useState } from 'react';
 import { HiArrowLeft } from 'react-icons/hi';
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import auth from '../../firebase.init';
 import useToken from '../hooks/useToken';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
@@ -13,6 +13,16 @@ import { useRouter } from 'next/router'
 
 const Signup = () => {    
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [age, setAge] = useState(null)
+    const [finalage, setFinalage] = useState('young')
+
+    if(age && age < 18){
+        setFinalage('young') 
+    }
+    else{
+        setFinalage('adult')
+    }
+
     const { register, 
         handleSubmit, 
         watch,
@@ -24,7 +34,7 @@ const Signup = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);    
-    const [token] = useToken(user || gUser);
+    const [token] = useToken(user && finalage || gUser && finalage);
     // const navigate = useNavigate();
     let signUpError;
 
@@ -42,6 +52,7 @@ const Signup = () => {
 
     const onSubmit = async data => {
         console.log(data)
+        setAge(data?.age)
         await createUserWithEmailAndPassword(data.email, data.password, data?.age);
         await updateProfile({ displayName: data.name, age: data?.age });
     };

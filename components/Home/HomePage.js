@@ -3,7 +3,7 @@ import Feedback from '../Feedback/Feedback';
 import Package from '../packages/Package';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
-// import Lottie from "lottie-react";
+import Lottie from "lottie-react";
 import learning from "../../resourses/lottieJson/online-learning.json";
 import laptop from "../../resourses/lottieJson/laptop.json";
 import SendEmailCard from './SendEmailCard';
