@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import Navbar from '../../components/Shared/Navbar/Navbar'
+import axios from 'axios';
+import Link from 'next/link';
+import SingleLevel from '../../components/Learn/SingleLevel';
 
 const Level = () => {
-     const router = useRouter()
-  const { id } = router.query
-    console.log(id)
-
     return (
         <div>
-            <Navbar/>
+            <Navbar />
+            <SingleLevel/>
+           
         </div>
     );
 };

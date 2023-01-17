@@ -132,13 +132,13 @@ const LevelBlocks = () => {
     //         level: 30,
     //     }
     // ]
-    const allLevels = levels[0];
+    // const allLevels = levels[0];
     return (
         <div className="grid lg:md:grid-cols-7 grid-cols-3 gap-x-[5px] lg:md:mt-4 mt-2 m-4 lg:md:gap-x-[12px]">
             {/* {levels?.map((level) => {
 
             })} */}
-            {allLevels?.levels?.map((level) => {
+            {levels?.map((level) => {
                 return (
                     <>
                         <Link href={`/level/${level?.level}`} className="">
