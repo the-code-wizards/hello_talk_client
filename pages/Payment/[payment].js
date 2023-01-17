@@ -1,7 +1,7 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
-import CheckOut from './CheckOut';
+import CheckOut from '../../components/Payment/CheckOut';
 import { useForm } from "react-hook-form";
 import Navbar from '../../components/Shared/Navbar/Navbar';
 import { useRouter } from 'next/router';
