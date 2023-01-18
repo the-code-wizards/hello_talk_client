@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Navbar from '../../components/Shared/Navbar/Navbar';
 import Head from 'next/head';
-import Loader from '../../components/shared/Loader/Loader';
+// import Loader from '../../components/shared/Loader/Loader';
 
 const Blogdetails = () => {
 
@@ -21,7 +21,7 @@ const Blogdetails = () => {
       .then((data) => setBlogDetails(data));
   }, [blogid]);
 
-  loading && <Loader />
+  // loading && <Loader />
   return (
     <>
       <Navbar></Navbar>
