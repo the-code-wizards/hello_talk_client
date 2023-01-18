@@ -46,10 +46,10 @@ const SingleLevel = () => {
     return (
         <div className='pt-20 px-16'>
             <Link href="/learn" className=''>Go Back</Link>
-            <div className='px-8 pt-8'>
+            <div className='px-8 pt-8 shadow-xl'>
                 {showScore ? (
                     <>
-                        <h2>You Scored {score} out of {lv?.question?.length}</h2>
+                        <h2 classNam="text-2xl font-featherbold text-green-400 ">You Scored {score} out of {lv?.question?.length}</h2>
                     </>)
                     :
                     singleLevel[0]?.question ?

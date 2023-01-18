@@ -27,6 +27,7 @@ const Navbar = () => {
                             <li><Link href='/blogs'>Blog</Link></li>
                             <li><Link href='/courses'>Courses</Link></li>
                             <li><Link href='/learn'>Learn</Link></li>
+                             <li><Link href='/faq'>FAQ</Link></li>
                             <li><Link href='/contact'>Contact Us</Link></li>
                             {user ?
                                 <>
@@ -48,29 +49,32 @@ const Navbar = () => {
                         <li><Link href='/blogs'>Blog</Link></li>
                         <li><Link href='/courses'>Courses</Link></li>
                         <li><Link href='/learn'>Learn</Link></li>
+                        <li><Link href='/faq'>FAQ</Link></li>
                         <li><Link href='/contact'>Contact Us</Link></li>
+                        {!user && <li><Link className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
+                            href="/signin">Log In</Link></li>}
 
                         <li>
-                            <div className="dropdown dropdown-end">
-                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-10 rounded-full">
-                                        <img src={user?.photoURL} />
-                                    </div>
-                                </label>
-                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-[250%] p-2 shadow bg-green-200 rounded-box w-52 font-bold text-[#333]">
-                                    <li><Link href='/profile'>Profile</Link></li>
-                                    {user ?
-                                        <>
-                                            <li><Link href='/dashboard'>Dashboard</Link></li>
-                                            <li> <button className="mx-auto mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]" onClick={logout}>Log Out</button>
-                                            </li>
-                                        </>
-                                        :
-                                        <li> <Link className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]" href="/signin">Log In</Link>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
+                            {!user ?
+                                <>
+                                </>
+                                : <div className="dropdown dropdown-end">
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img src={user?.photoURL} />
+                                        </div>
+                                    </label>
+                                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-[250%] p-2 shadow bg-green-200 rounded-box w-52 font-bold text-[#333]">
+                                        <li><Link href='/profile'>Profile</Link></li>
+                                        {user &&
+                                            <>
+                                                <li><Link href='/dashboard'>Dashboard</Link></li>
+                                                <li> <button className="mx-auto mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]" onClick={logout}>Log Out</button>
+                                                </li>
+                                            </>                                            
+                                        }
+                                    </ul>
+                                </div>}
                         </li>
                     </ul>
                 </div>
