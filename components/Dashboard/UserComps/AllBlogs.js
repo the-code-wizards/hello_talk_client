@@ -3,7 +3,18 @@ import useBlogs from '../../hooks/useBlogs';
 
 const AllBlogs = () => {
   const [blogs, loading] = useBlogs();
-  console.log(blogs);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [filteredBlogs, setFilteredBlogs] = useState(blogs);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    const filteredData = blogs.filter((blog) =>
+      blog.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    setFilteredBlogs(filteredData);
+  };
+  // console.log(blogs);
 
   return (
     <div className="md:pt-[5rem] pt-3 w-full">
@@ -14,6 +25,8 @@ const AllBlogs = () => {
             type="search"
             placeholder="Type here"
             className="input input-bordered w-full max-w-xs"
+            onChange={handleSearch}
+            value={searchTerm}
           />
           <button className="btn btn-primary mx-2">Search</button>
         </div>
@@ -41,8 +54,8 @@ const AllBlogs = () => {
                     </td>
                     <td>
                       <div>
-                        <button className='btn btn-accent'>Edit</button>
-                        <button className='btn btn-error mx-1'>Delete</button>
+                        <button className="btn btn-accent">Edit</button>
+                        <button className="btn btn-error mx-1">Delete</button>
                       </div>
                     </td>
                   </tr>
