@@ -17,11 +17,12 @@ const Signup = () => {
     const [age, setAge] = useState(null)
     const [finalage, setFinalage] = useState('young')
 
-    if(age && age < 18){
-        setFinalage('young') 
-    }
-    else{
-        setFinalage('adult')
+    if(age){
+        if(age < 18)
+            setFinalage('young') 
+        else{
+            setFinalage('adult')
+        }
     }
 
     const { register, 
@@ -35,8 +36,7 @@ const Signup = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);    
-    const [token] = useToken(user && finalage || gUser && finalage);
-    // const navigate = useNavigate();
+    const [token] = useToken(user || gUser )
     let signUpError;
 
     if (gLoading || loading || updating) {
@@ -52,11 +52,41 @@ const Signup = () => {
     }
 
     const onSubmit = async data => {
-        console.log(data)
-        setAge(data?.age)
+        const name = data.displaName;
+        const email = data.email;
+        const age = data.age;
+        let getage
+        if(age < 18 && age > 0){
+            getage = 'young'
+        }
+        else if(age >= 18){
+            getage = 'adult'
+        }
+
+        const userbio = {
+            name, 
+            email, 
+            getage, 
+            role: 'user'
+        }
+        fetch(`https://hello-talk-webserver.vercel.app/user`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userbio)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.acknowledged){
+                alert("Account created")
+            }
+        })
         await createUserWithEmailAndPassword(data.email, data.password, data?.age);
         await updateProfile({ displayName: data.name, age: data?.age });
     };
+
     return (
         <>
          <Head>

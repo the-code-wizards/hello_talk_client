@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useToken = user =>{
+const useToken = (user, age) =>{
     console.log(user);
     const [token, setToken] = useState('');
 
@@ -11,7 +11,7 @@ const useToken = user =>{
             email: email,
         };
         if(email){
-            fetch(`https://hello-talk-webserver.vercel.app/user/${email}`, {
+            fetch(`https://hello-talk-webserver.vercel.app/users/${email}`, {
                 method:'PUT',
                 headers: {
                     'content-type': 'application/json'
