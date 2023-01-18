@@ -23,8 +23,10 @@ const LevelBlocks = () => {
             <Link href={`/level/${level?.level}`} className="">
               <div className="flex flex-col justify-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 items-center">
                 <img className="w-20" src="https://i.ibb.co/TqQyDqg/block-Mascot.png" alt="/" />
-                <span className="btn bg-gradient-to-r from-green-500 to-[#c1ffab] text-[#fff] p-2 
-                px-10 border-none text-xl font-semibold mt-[-15px] ">
+                <span
+                  className="btn bg-gradient-to-r from-green-500 to-[#c1ffab] text-[#fff] p-2 
+                px-10 border-none text-xl font-semibold mt-[-15px] "
+                >
                   {level?.level}
                 </span>
               </div>
