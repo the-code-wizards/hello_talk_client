@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Lottie from "lottie-react";
 import confetti from "../../resourses/lottieJson/confetti.json";
-import Loader from '../shared/Loader';
+import Loader from '../shared/Loader/Loader';
 
 const SingleLevel = () => {
     const router = useRouter()
@@ -35,7 +35,7 @@ const SingleLevel = () => {
     }, [level]);
 
     loading && <Loader />
-    
+
     const lv = singleLevel[0];
 
     const handleAnswerOptionClick = (opt) => {
@@ -70,9 +70,9 @@ const SingleLevel = () => {
                 <div className='px-8 pb-8 shadow-xl'>
                     {showScore ? (
                         <>
-                           <div className="w-[200px] h-[200px]">
+                            <div className="w-[200px] h-[200px]">
                                 <Lottie animationData={confetti} loop={true} />
-                           </div>
+                            </div>
                             <h2 className="text-2xl font-featherbold text-green-400 text-center">Congratulations! <br />
                                 You Scored {score} out of {lv?.question?.length}</h2>
                         </>)
@@ -94,7 +94,7 @@ const SingleLevel = () => {
                                 <p className="text-[16px]">{lv?.story}</p>
                             </>
                     }
-                    
+
                 </div>
             </div></>
     );
