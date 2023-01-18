@@ -9,6 +9,7 @@ import laptop from "../../resourses/lottieJson/laptop.json";
 import SendEmailCard from './SendEmailCard';
 import Blog from '../Blog/Blog';
 import BlogForHome from '../Blog/BlogForHome';
+import { Helmet } from 'react-helmet';
 
 
 const HomePage = () => {
@@ -160,6 +161,10 @@ const HomePage = () => {
             </div>
             <Footer></Footer>
             {/* -------------------------Footer end--------------*/}
+
+            <Helmet>
+                <script src="//code.tidio.co/jpb1zs7dudyjfplraox9y0swxennxjjh.js" async></script>
+            </Helmet>
         </div>
     );
 };
