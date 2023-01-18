@@ -45,7 +45,7 @@ const Blog = () => {
         </button>
       </div>
       <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {blogs.map((blog) => (
             <BlogsCard key={blog._id} blog={blog}></BlogsCard>
           ))}
