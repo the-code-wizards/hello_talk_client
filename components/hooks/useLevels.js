@@ -10,17 +10,13 @@ const useOrderList = () => {
     const [levels, setLevels] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    
+
     useEffect(() => {
         // if (accessToken) {
             setLoading(true);
             axios
-                .get(`https://hello-talk-webserver.vercel.app/quizes?age=adult`
-                    // {
-                    // headers: {
-                    //     Authorization: token,
-                    // },
-                // }
-    )
+                .get(`https://hello-talk-webserver.vercel.app/levels`)
                 .then((res) => {
                     setLevels(res.data);
                 })
