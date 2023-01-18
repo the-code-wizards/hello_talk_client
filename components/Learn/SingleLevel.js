@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Lottie from "lottie-react";
 import confetti from "../../resourses/lottieJson/confetti.json";
-import Loader from '../shared/Loader/Loader';
+// import Loader from '../shared/Loader/Loader';
 
 const SingleLevel = () => {
     const router = useRouter()
@@ -33,7 +33,7 @@ const SingleLevel = () => {
             });
     }, [level]);
 
-    loading && <Loader />
+    // loading && <Loader />
 
     const lv = singleLevel[0];
 
