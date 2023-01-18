@@ -11,7 +11,6 @@ const SingleLevel = () => {
     const router = useRouter()
     const { level } = router.query
     const [singleLevel, setSingleLevel] = useState([])
-    // const [optData, setOptData] = useState();
     const [loading, setLoading] = useState(true)
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
