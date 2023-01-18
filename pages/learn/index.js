@@ -6,10 +6,14 @@ import Sidebar from '../../components/Learn/Sidebar';
 import LearnNav from '../../components/Learn/LearnNav';
 import BottomNav from '../../components/Learn/BottomNav';
 import Navbar from '../../components/Shared/Navbar/Navbar';
+import Head from 'next/head';
 
 const index = () => {
     return (
         <div >
+            <Head>
+                <title>HelloTalk - Learning Panel</title>
+            </Head>
             <Navbar/>
             <div className='pt-[6rem] grid lg:md:grid-cols-[250px_minmax(650px,_1fr)_300px]'>
                 <div className="lg:md:block hidden">
