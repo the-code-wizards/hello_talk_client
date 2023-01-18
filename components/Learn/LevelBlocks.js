@@ -9,9 +9,6 @@ import Loader from '../shared/Loader/Loader';
 const LevelBlocks = () => {
   const [user, error] = useAuthState(auth);
   const [levels, loading] = useLevels();
-  console.log(levels[0]);
-  console.log(user);
-  const allLevels = levels[0];
 
   loading && <Loader />
 
