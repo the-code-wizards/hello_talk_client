@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Navbar from '../../components/Shared/Navbar/Navbar';
 import Head from 'next/head';
+import Loader from '../../components/shared/Loader';
 
 const Blogdetails = () => {
 
-    
+    const [loading, setLoading] = useState(true)
     const [blogDetails, setBlogDetails] = useState({});
 
     const router = useRouter();
@@ -14,12 +15,13 @@ const Blogdetails = () => {
     const { _id, title, details, author, date, image } = blogDetails;
   
     useEffect(() => {
+      setLoading(true)
       fetch(`https://hello-talk-webserver.vercel.app/blogs/${blogid}`)
         .then((res) => res.json())
         .then((data) => setBlogDetails(data));
     }, [blogid]);
 
-
+  loading && <Loader />
     return (
         <>
         <Navbar></Navbar>

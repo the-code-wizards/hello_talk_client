@@ -5,7 +5,7 @@ import { CiFaceFrown, CiFaceMeh, CiFaceSmile } from 'react-icons/ci';
 const GemCollectionCard = () => {
     return (
         <div>
-            <div className="mt-6">
+            <div className="lg:md:mt-6 mt-2 lg:md:mb-0 mb-28">
                 <div className="card shadow-xl p-2 m-4 border-[2px] border-green-400">
                     <div className="flex justify-center my-2">
                         <RiVipDiamondLine className="text-[#1FC2FF] text-4xl mr-[4px]" />
@@ -19,20 +19,6 @@ const GemCollectionCard = () => {
                             <div className="flex gap-x-[4px] text-yellow-400 text-2xl font-bold"><CiFaceFrown /><CiFaceMeh /><CiFaceSmile /></div>
                         </div>
                         
-                        <div>
-                            {/* <textarea className="textarea textarea-bordered" placeholder="leave us a review"></textarea> */}
-                        </div>
-
-                        {/* <div className="text-center my-4">
-                            <div className="rating">
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                            </div>
-                            <p className="text-[12px] text-[#333]">leave us a review</p>
-                        </div> */}
                         <div className="card-actions">
                             <button className="border-[#1FC2FF] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] w-[100%] rounded-xl text-[#1FC2FF] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] px-4">Past Performance</button>
                         </div>

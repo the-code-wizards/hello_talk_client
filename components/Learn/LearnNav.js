@@ -3,6 +3,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import Navbar from '../Shared/Navbar/Navbar';
 
 const LearnNav = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -15,6 +16,9 @@ const LearnNav = () => {
     //     <Loader/>
     // }
     return (
+        // <>
+        //     <Navbar/>
+        // </>
         <nav className='relative z-10'>
             <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)]">
                 <div className="navbar-start ">
@@ -54,7 +58,7 @@ const LearnNav = () => {
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img src="https://placeimg.com/80/80/people" />
+                                        <img src={user?.photoURL} />
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-[250%] p-2 shadow bg-green-200 rounded-box w-52 font-bold text-[#333]">
@@ -75,7 +79,6 @@ const LearnNav = () => {
                     </ul>
                 </div>
             </div>
-
         </nav>
 
     );

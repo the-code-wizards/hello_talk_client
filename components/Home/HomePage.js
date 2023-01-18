@@ -9,7 +9,7 @@ import laptop from "../../resourses/lottieJson/laptop.json";
 import SendEmailCard from './SendEmailCard';
 import Blog from '../Blog/Blog';
 import BlogForHome from '../Blog/BlogForHome';
-import Helmet from "react-helmet"
+import { Helmet } from 'react-helmet';
 
 
 const HomePage = () => {
@@ -22,11 +22,11 @@ const HomePage = () => {
             {/* ---------------Top Banner---------------------------- */}
             <div className="hero min-h-[80vh] pt-[50px] lg:pt-[50px]" style={{ backgroundImage: `url("back.svg")` }}>
                 <div className="hero-content flex-col lg:flex-row lg:justify-between">
-                    <Lottie animationData={learning} loop={true} /> 
+                    <Lottie animationData={learning} loop={true} />
                     <div className='max-w-[1240px] mx-auto lg:ml-20'>
                         <h1 className='text-white text-3xl lg:md:text-4xl font-bold text-center font-featherBold '>The free, fun, and effective way to learn language!</h1>
                         <div className='flex flex-col justify-center items-center mt-8'>
-                            <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002]">Get Started</button>
+                            <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]">Get Started</button>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className=' h-[300px] w-[300px] lg:h-[450px] lg:w-[450px] ' >
-                             <Lottie animationData={laptop} loop={true} /> 
+                            <Lottie animationData={laptop} loop={true} />
                         </div>
                         <div>
                             <div className='grid grid-cols-8 p-5'>
@@ -162,11 +162,9 @@ const HomePage = () => {
             <Footer></Footer>
             {/* -------------------------Footer end--------------*/}
 
-            {/* _____________________________Live Chat ______________________ */}
             <Helmet>
                 <script src="//code.tidio.co/jpb1zs7dudyjfplraox9y0swxennxjjh.js" async></script>
             </Helmet>
-            {/* _____________________________Live Chat end ______________________ */}
         </div>
     );
 };
