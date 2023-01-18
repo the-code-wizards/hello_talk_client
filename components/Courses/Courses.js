@@ -9,7 +9,9 @@ import Navbar from '../Shared/Navbar/Navbar';
 
 const Courses = () => {
     const [loading, setLoading] = useState(true)
-    const [courses, setCourses] = useState([])
+    const [courses, setCourses] = useState([]);
+    const [quiz, setQuiz] = useState([]);
+    console.log(quiz);
 
     useEffect(()=>{
         fetch('https://hello-talk-webserver.vercel.app/courses')
@@ -17,6 +19,14 @@ const Courses = () => {
         .then(data => {
             setCourses(data)
             setLoading(false)
+        })
+    },[])
+
+    useEffect(()=>{
+        fetch('https://hello-talk-webserver.vercel.app/quizes?age=adult')
+        .then(res => res.json())
+        .then(data => {
+            setQuiz(data)
         })
     },[])
 
