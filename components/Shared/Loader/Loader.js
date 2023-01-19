@@ -1,13 +1,11 @@
-import React from 'react';
+import React from "react";
 import Lottie from "lottie-react";
-import loader from "../../../resourses/lottieJson/loader.json";
+import loader from "../../../resources/lottieJson/loader.json";
 
 const Loader = () => {
     return (
-        <div>
-            <div className="w-[200px] h-[200px]">
-                <Lottie animationData={loader} loop={true} />
-            </div>
+        <div className="w-[300px] h-[300px] mx-auto">
+            <Lottie animationData={loader} loop={true} />
         </div>
     );
 };

@@ -2,16 +2,24 @@ import React, { useEffect, useState } from 'react';
 
 const DetailsCard = () => {
 
-  //this is card details page but we didn't use this. In pages component I will crreate a dynamic route called [coursedetails]
+const [loading, setLoading] = useState(true)
     const [courseDetails, setCourseDetails] = useState({});
     const { title, picture , details, offer_price, price} = courseDetails;
     
-    useEffect(()=>{
-        fetch(`https://hello-talk-webserver.vercel.app/course/63bef8eb8675bb27211f0c53`)
-        .then(res => res.json())
-        .then(data => setCourseDetails(data))
-    },[])
-
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`https://hello-talk-webserver.vercel.app/course/63bef8eb8675bb27211f0c53`
+    )
+      .then((res) => {
+        setCourseDetails(res?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
     return (
        <div className='max-w-[1240px] mx-auto my-16'>
          <div className="card lg:card-side">

@@ -12,9 +12,6 @@ const LearnNav = () => {
         signOut(auth);
         localStorage.removeItem('accessToken');
     };
-    // if(loading){
-    //     <Loader/>
-    // }
     return (
         // <>
         //     <Navbar/>
