@@ -82,22 +82,14 @@ const AddBlog = () => {
                     <option value="Free">Free</option>
                     <option value="Premium">Premium</option>
                   </select>
-                  {blogStatus === 'Premium' && (
-                    <>
-                      <input
-                        type="number"
-                        placeholder="Price"
-                        className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                        {...register('price')}
-                      />
-                      <input
-                        type="number"
-                        placeholder="Gems"
-                        className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                        {...register('priceGem')}
-                      />
-                    </>
-                  )}
+
+                  <input
+                    type="number"
+                    placeholder="Gems"
+                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
+                    {...register('priceGem')}
+                  />
+
                   <input
                     type="url"
                     placeholder="Blog Image URL"
