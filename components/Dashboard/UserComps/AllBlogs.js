@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useBlogs from '../../hooks/useBlogs';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaRegGem, FaTrash } from 'react-icons/fa';
+import Link from 'next/link';
 
 const AllBlogs = () => {
   const [blogs, loading] = useBlogs();
@@ -42,7 +43,7 @@ const AllBlogs = () => {
 
         <input
           type="search"
-          placeholder="Type here"
+          placeholder="Type Blog Title here"
           className="input input-bordered"
           style={{ width: '50%' }}
           onChange={handleSearch}
@@ -54,7 +55,7 @@ const AllBlogs = () => {
         ) : (
           <div className="overflow-x-auto">
             <table className="table" style={{ width: '100%' }}>
-              <thead className='text-center'>
+              <thead className="text-center">
                 <tr>
                   <th>Blog Title</th>
                   <th>Author</th>
@@ -64,17 +65,33 @@ const AllBlogs = () => {
               </thead>
               {filteredBlogs.map((blog) => {
                 return (
-                  <tbody className='text-center' key={blog?._id}>
+                  <tbody className="text-center" key={blog?._id}>
                     <tr>
                       <td>{blog?.title}</td>
-                      <td>{blog?.author}</td>
+                      <td>{blog?.author_name}</td>
                       <td>
-                        <div className="badge badge-secondary">secondary</div>
-                        <div className="badge badge-accent">{blog?.package}</div>
+                        {/* <div className="badge badge-secondary">secondary</div>
+                        <div className="badge badge-accent">{blog?.package}</div> */}
+                        <div className="">
+                          {blog?.package === 'free' && (
+                            <label className="badge badge-accent">Free</label>
+                          )}
+                          {blog?.package === 'premium' && (
+                            <button className="badge badge-secondary">
+                              <span className="mr-2 flex items-center">
+                                <FaRegGem className="mr-1"></FaRegGem>
+                                {gems}
+                              </span>{' '}
+                              <label htmlFor="my-blog-6">Unlock</label>
+                            </button>
+                          )}
+                        </div>
                       </td>
                       <td>
                         <div>
-                          <label className="btn btn-accent mx-1"><FaEdit/></label>
+                          <label className="btn btn-accent mx-1">
+                            <FaEdit />
+                          </label>
                           <label className="btn btn-error" onClick={() => handleDelete(blog?._id)}>
                             <FaTrash />
                           </label>
