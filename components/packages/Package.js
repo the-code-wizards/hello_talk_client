@@ -34,7 +34,7 @@ const Package = () => {
                     </li>
                 </ul>
 
-          <button class="mt-[15px] bg-[#58CC02] border-[#46A302] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#fff] font-bold text-[14px] focus:border-b-[2px] w-[100%] ">Start your journey</button>
+                <button className="mt-[15px] bg-[#58CC02] border-[#46A302] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#fff] font-bold text-[14px] focus:border-b-[2px] w-[100%] ">Start your journey</button>
             </div>
 
             <div className="lg:md:mt-0 mt-[30px] border-[2px] shadow-xl p-[25px] border-[#61B800] rounded-xl shadow-[#8abf9e] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:shadow-lg duration-300">
@@ -67,7 +67,7 @@ const Package = () => {
                     </li>
                 </ul>
 
-          <button class="mt-[15px] bg-[#58CC02] border-[#46A302] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#fff] font-bold text-[14px] focus:border-b-[2px] w-[100%]">Buy Now</button>
+                <button className="mt-[15px] bg-[#58CC02] border-[#46A302] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#fff] font-bold text-[14px] focus:border-b-[2px] w-[100%]">Buy Now</button>
             </div>
         </div>
     );

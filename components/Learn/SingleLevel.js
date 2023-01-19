@@ -4,8 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import Head from 'next/head';
 import Lottie from "lottie-react";
-import confetti from "../../resourses/lottieJson/confetti.json";
-import Loader from '../shared/Loader/Loader';
+import confetti from "../../resources/lottieJson/confetti.json";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
@@ -24,8 +23,8 @@ const SingleLevel = () => {
         if (!user) {
             window.location.href = "/signin";
         }
-}, []);
-   
+    }, []);
+
     // console.log(optData)
     useEffect(() => {
         setLoading(true);
@@ -42,7 +41,6 @@ const SingleLevel = () => {
             });
     }, [level]);
 
-    // loading && <Loader />
 
     const lv = singleLevel[0];
 
@@ -79,7 +77,7 @@ const SingleLevel = () => {
                     <h2 className="text-xl text-green-500 font-bold text-center mb-2">Sign In To Level Up</h2></>
                     : <>
                         <div className='px-8 pb-8 shadow-xl'>
-                            {loading === true ? <Loader /> :
+                            {
                                 showScore ? (
                                     <>
                                         <div className="w-[200px] h-[200px]">
