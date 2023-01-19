@@ -27,6 +27,9 @@ const DashSidebar = () => {
                 <Link href="/dashboard/addcourse">Add Course</Link>
               </li>
               <li>
+                <Link href="/dashboard/allcourses">All Course</Link>
+              </li>
+              <li>
                 <Link href="/dashboard/addoffer">Add Offer</Link>
               </li>
               <li>
