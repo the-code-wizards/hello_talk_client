@@ -8,7 +8,7 @@ const BlogsCard = ({ blog }) => {
       <div className="flex items-end justify-start">
         <img
           src={image}
-          className="rounded-l-lg object-cover h-80 w-60"
+          className="rounded-l-lg object-cover h-72 w-40"
           alt="blog-img"
         />
       </div>
@@ -29,7 +29,7 @@ const BlogsCard = ({ blog }) => {
                 <p className="font-medium capitalize text-black mt-2">
                   {author}
                 </p>
-                <p class="text-sm">Date</p>
+                <p class="text-sm">{date}</p>
               </div>
             </div>
           </div>
