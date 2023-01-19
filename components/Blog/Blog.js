@@ -2,34 +2,34 @@ import React, { useEffect, useState } from "react";
 import BlogsCard from "./BlogsCard";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [activeIndex, setActiveIndex] = useState(-1);
+  const [searchValue, setSearchValue] = useState("");
+  const [activeIndex, setActiveIndex] = useState(-1);
 
-  // const handleSearch = (event) => {
-  //   setSearchTerm(event.target.value);
-  //   const filteredData = blogs.filter((faq) =>
-  //     faq.question.toLowerCase().includes(event.target.value.toLowerCase())
-  //   );
-  //   setBlogs(blogs);
-  // };
-
-  // const handleClick = (index) => {
-  //   setActiveIndex(index === activeIndex ? -1 : index);
-  // };
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value);
+    const filtered = blogs.filter((blog) =>
+      blog.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    setBlogs(filtered);
+  };
+  const handleClick = (index) => {
+    setActiveIndex(index === activeIndex ? -1 : index);
+  };
   useEffect(() => {
     fetch("https://hello-talk-webserver.vercel.app/blogs")
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
+  console.log(blogs);
   return (
     <>
-      <div className="relative justify-center my-10 mx-32 rounded-md shadow-sm text-center">
+      <div className="relative justify-center mt-10 mx-64 rounded-md shadow-sm text-center">
         <input
           type="search"
-          className="form-input px-10 py-3 block w-full transition duration-150 ease-in-out bg-white border border-gray-300 placeholder-gray-500 rounded-xl focus:outline-none focus:shadow-outline-blue focus:border-[#61B800]  focus:z-10 text-xl leading-5"
+          className="form-input px-5 py-2 block w-full transition duration-150 ease-in-out bg-white border border-gray-300 placeholder-gray-500 rounded-xl focus:outline-none focus:shadow-outline-blue focus:border-[#61B800]  focus:z-10 text-xl leading-5"
           placeholder="Type Your Blogs Here"
-          // onChange={handleSearch}
-          // value={searchInput}
+          value={searchValue}
+          onChange={handleSearch}
         />
         <button
           type="submit"
@@ -45,7 +45,7 @@ const Blog = () => {
         </button>
       </div>
       <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {blogs.map((blog) => (
             <BlogsCard key={blog._id} blog={blog}></BlogsCard>
           ))}

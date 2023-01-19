@@ -75,7 +75,6 @@ const FreqAskedQ = () => {
   const handleClick = (index) => {
     setActiveIndex(index === activeIndex ? -1 : index);
   };
-
   return (
     <>
       <Head>

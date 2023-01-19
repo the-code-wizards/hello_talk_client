@@ -4,11 +4,12 @@ import Package from '../packages/Package';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
 import Lottie from "lottie-react";
-import learning from "../../resourses/lottieJson/online-learning.json";
-import laptop from "../../resourses/lottieJson/laptop.json";
+import learning from "../../resources/lottieJson/online-learning.json";
+import laptop from "../../resources/lottieJson/laptop.json";
 import SendEmailCard from './SendEmailCard';
 import Blog from '../Blog/Blog';
 import BlogForHome from '../Blog/BlogForHome';
+import { Helmet } from 'react-helmet';
 
 
 const HomePage = () => {
@@ -160,6 +161,10 @@ const HomePage = () => {
             </div>
             <Footer></Footer>
             {/* -------------------------Footer end--------------*/}
+
+            <Helmet>
+                <script src="//code.tidio.co/jpb1zs7dudyjfplraox9y0swxennxjjh.js" async></script>
+            </Helmet>
         </div>
     );
 };
