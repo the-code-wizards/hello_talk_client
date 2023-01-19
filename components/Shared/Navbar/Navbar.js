@@ -6,14 +6,10 @@ import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
-
   const logout = () => {
     signOut(auth);
     localStorage.removeItem('accessToken');
   };
-  // if(loading){
-  //     <Loader/>
-  // }
   return (
     <nav className="relative z-10">
       <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] py-0">

@@ -5,7 +5,6 @@ import CourseCard from "./CourseCard";
 import SingleCard from "./SingleCard";
 import { BsArrowBarLeft, IconName } from "react-icons/bs";
 import Navbar from "../Shared/Navbar/Navbar";
-//all courses data in here
 
 const Courses = () => {
   const [loading, setLoading] = useState(true);
@@ -20,9 +19,6 @@ const Courses = () => {
       });
   }, []);
 
-  if (loading) {
-    return <progress className="progress w-full "></progress>;
-  }
 
   return (
     <>

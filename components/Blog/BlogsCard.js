@@ -82,4 +82,5 @@ const BlogsCard = ({ blog }) => {
   );
 };
 
+
 export default BlogsCard;
