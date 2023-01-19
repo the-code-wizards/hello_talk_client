@@ -1,6 +1,6 @@
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
-import AllBlogs from '../../components/Dashboard/UserComps/AllUsers';
+import AllBlogs from '../../components/Dashboard/UserComps/AllBlogs';
 import Navbar from '../../components/Shared/Navbar/Navbar';
 
 const allblogs = () => {

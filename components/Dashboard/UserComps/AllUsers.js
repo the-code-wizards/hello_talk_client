@@ -26,7 +26,7 @@ const AllUsers = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await fetch(`https://hello-talk-webserver.vercel.app/allusers/${userId}`, {
+      await fetch(`https://hello-talk-webserver.vercel.app/profile/${userId}`, {
         method: 'DELETE',
       });
       // update the courses state and re-render the component
@@ -76,11 +76,6 @@ const AllUsers = () => {
                       <td>{user?.country}</td>
                       <td>
                         <div>
-                          <Link href={`/editblog/${user?._id}`}>
-                            <label className="btn btn-accent mx-1">
-                              <FaEdit />
-                            </label>
-                          </Link>
                           <label className="btn btn-error" onClick={() => handleDelete(user?._id)}>
                             <FaTrash />
                           </label>
