@@ -4,6 +4,7 @@ import blockImg from '../../public/blockMascot.png';
 import useLevels from '../hooks/useLevels';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loader from '../shared/Loader/Loader';
 // import Loader from '../shared/Loader/Loader';
 
 const LevelBlocks = () => {
@@ -14,7 +15,8 @@ const LevelBlocks = () => {
 
   return (
     <div className="grid lg:md:grid-cols-6 grid-cols-3 gap-x-[10px] lg:md:mt-4 mt-2 m-4 lg:md:gap-x-[12px] h-[10px]">
-      {levels?.map((level) => {
+      {loading === true ? <Loader /> :
+        levels?.map((level) => {
         return (
           <>
             <Link href={`/level/${level?.level}`} className="">

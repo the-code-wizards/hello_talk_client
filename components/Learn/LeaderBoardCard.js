@@ -1,6 +1,7 @@
 import React from 'react';
 import { TbCrown } from 'react-icons/tb';
 import { useRouter } from 'next/router'
+import Link from 'next/link';
 
 const LeaderBoardCard = () => {
     const router = useRouter()
@@ -15,7 +16,10 @@ const LeaderBoardCard = () => {
                 <div className="card-body items-center text-center mt-[-20px]">
                     <h2 className="italic font-bold text-xxl text-[#333]">Einstein Jackson</h2>
                     <div className="card-actions">
-                        <button type="button" onClick={() => router.push('/leaderboard')} className="bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] w-[100%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] px-4">See Leader Board</button>
+                        <Link href="/leaderboard">
+                            <button type="button" className="bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] w-[100%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] px-4">See Leader Board</button>
+                        </Link>
+                        
                     </div>
                 </div>
             </div>
