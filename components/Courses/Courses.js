@@ -5,8 +5,6 @@ import CourseCard from "./CourseCard";
 import SingleCard from "./SingleCard";
 import { BsArrowBarLeft, IconName } from "react-icons/bs";
 import Navbar from "../Shared/Navbar/Navbar";
-import Loader from "../shared/Loader/Loader";
-//all courses data in here
 
 const Courses = () => {
   const [loading, setLoading] = useState(true);
@@ -21,9 +19,6 @@ const Courses = () => {
       });
   }, []);
 
-  if (loading === true) {
-    return <Loader/>;
-  }
 
   return (
     <>

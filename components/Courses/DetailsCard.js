@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Loader from '../shared/Loader/Loader';
 
 const DetailsCard = () => {
 
@@ -21,10 +20,6 @@ const [loading, setLoading] = useState(true)
         setLoading(false);
       });
   }, []);
-  if (loading === true) {
-    return <Loader/>
-  }
-
     return (
        <div className='max-w-[1240px] mx-auto my-16'>
          <div className="card lg:card-side">

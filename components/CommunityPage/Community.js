@@ -1,21 +1,21 @@
 import React from 'react';
 import Sidebar from '../Learn/Sidebar';
 import Lottie from "lottie-react";
-import community from "../../resourses/lottieJson/community.json";
+import community from "../../resources/lottieJson/community.json";
 
 const Community = () => {
     return (
         <div className=''>
             <div className='grid grid-cols-2 max-w-[1240px] mx-auto '>
                 <div className='place-self-center p-4'>
-                    <h1 className='text-[60px] '>Welcome to the <br /> HelloTalk Community!</h1>
+                    <h1 className='text-6xl text-green-400 font-featherbold'>Welcome to the <br /> HelloTalk Community!</h1>
                     <p className='text-[20px]'>A place where you can find great tips and helpful solutions from other HelloTalk users</p>
                     <div className='grid grid-cols-7 place-items-center pt-3'>
-                        <div class="flex items-center justify-center col-span-4">
-                            <div class="flex border-2 rounded">
-                                <input type="text" class="px-4 py-2 w-60" placeholder="Search..." />
-                                <button class="flex items-center justify-center px-4 border-l">
-                                    <svg class="w-6 h-6 text-gray-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                        <div className="flex items-center justify-center col-span-4">
+                            <div className="flex border-2 rounded">
+                                <input type="text" className="px-4 py-2 w-60" placeholder="Search..." />
+                                <button className="flex items-center justify-center px-4 border-l">
+                                    <svg className="w-6 h-6 text-gray-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24">
                                         <path
                                             d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />

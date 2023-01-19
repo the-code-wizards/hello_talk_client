@@ -18,7 +18,7 @@ const BlogsCard = ({ blog }) => {
           {title}
         </h2>
         <div>
-          <div class="flex items-center py-2">
+          <div className="flex items-center py-2">
             <div className="flex">
               <div className="avatar mr-5">
                 <div className="w-12 rounded-full">
