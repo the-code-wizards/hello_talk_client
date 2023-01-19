@@ -24,7 +24,7 @@ const EditBlog = () => {
                 <div className="w-[100%]">
                   <input
                     type="text"
-                    defaultValue={}
+                    defaultValue={e.value}
                     placeholder="Blog Title"
                     className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                     {...register('courseTitle')}

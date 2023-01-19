@@ -77,21 +77,20 @@ const AllBlogs = () => {
                             <label className="badge badge-accent">Free</label>
                           )}
                           {blog?.package === 'premium' && (
-                            <button className="badge badge-secondary">
-                              <span className="mr-2 flex items-center">
-                                <FaRegGem className="mr-1"></FaRegGem>
-                                {gems}
-                              </span>{' '}
-                              <label htmlFor="my-blog-6">Unlock</label>
-                            </button>
+                            <label className="badge badge-secondary">
+                              <FaRegGem className="mr-1"></FaRegGem>
+                              <label htmlFor="my-blog-6">Premium</label>
+                            </label>
                           )}
                         </div>
                       </td>
                       <td>
                         <div>
-                          <label className="btn btn-accent mx-1">
-                            <FaEdit />
-                          </label>
+                          <Link href={`/editblog/${blog?._id}`}>
+                            <label className="btn btn-accent mx-1">
+                              <FaEdit />
+                            </label>
+                          </Link>
                           <label className="btn btn-error" onClick={() => handleDelete(blog?._id)}>
                             <FaTrash />
                           </label>

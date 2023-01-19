@@ -9,6 +9,7 @@ const AddBlog = () => {
     formState: { errors },
   } = useForm();
   const [blogStatus, setBlogStatus] = useState('');
+  console.log(blogStatus);
   const onAddBlog = async (data) => {
     console.log(data);
   };
