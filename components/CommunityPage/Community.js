@@ -2,10 +2,12 @@ import React from 'react';
 import Sidebar from '../Learn/Sidebar';
 import Lottie from "lottie-react";
 import community from "../../resources/lottieJson/community.json";
+import Navbar from '../Shared/Navbar/Navbar';
 
 const Community = () => {
     return (
         <div className=''>
+            <Navbar/>
             <div className='grid grid-cols-2 max-w-[1240px] mx-auto '>
                 <div className='place-self-center p-4'>
                     <h1 className='text-6xl text-green-400 font-featherbold'>Welcome to the <br /> HelloTalk Community!</h1>
