@@ -31,7 +31,7 @@ const EditBlog = () => {
 
   return (
     <div>
-      
+      <h1 className="text-2xl">{title}</h1>
     </div>
   );
 };
