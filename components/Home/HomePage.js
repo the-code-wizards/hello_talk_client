@@ -6,6 +6,7 @@ import Navbar from '../Shared/Navbar/Navbar';
 import Lottie from "lottie-react";
 import learning from "../../resources/lottieJson/online-learning.json";
 import laptop from "../../resources/lottieJson/laptop.json";
+import banner from "../../resources/lottieJson/laptop.json";
 import SendEmailCard from './SendEmailCard';
 import Blog from '../Blog/Blog';
 import BlogForHome from '../Blog/BlogForHome';
@@ -20,11 +21,18 @@ const HomePage = () => {
             {/* ---------------Header end------------------------ */}
 
             {/* ---------------Top Banner---------------------------- */}
-            <div className="hero min-h-[80vh] pt-[50px] lg:pt-[50px]" style={{ backgroundImage: `url("back.svg")` }}>
+            <div className="hero min-h-[90vh] pt-[50px] lg:pt-[50px]"
+                style={{ backgroundImage: `url("back.svg")` }}
+            >
                 <div className="hero-content flex-col lg:flex-row lg:justify-between">
+                    <div data-aos="fade-right"
+                     data-aos-duration="1000"
+                     >
                     <Lottie animationData={learning} loop={true} />
-                    <div className='max-w-[1240px] mx-auto lg:ml-20'>
-                        <h1 className='text-white text-3xl lg:md:text-4xl font-bold text-center font-featherBold '>The free, fun, and effective way to learn language!</h1>
+                    </div>
+                    <div  data-aos="fade-left"
+                    data-aos-duration="1000" className='max-w-[1240px] mx-auto lg:ml-20'>
+                        <h1 className='text-[#ffffff] text-3xl lg:md:text-4xl font-bold text-center font-featherBold '>The free, fun, and effective way to learn language!</h1>
                         <div className='flex flex-col justify-center items-center mt-8'>
                             <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]">Get Started</button>
                         </div>
@@ -35,11 +43,12 @@ const HomePage = () => {
 
             {/* ---------------Middle contents ---------------------------- */}
             <div className="lg:md:px-0 px-4">
-                <div className='max-w-[1240px] mx-auto lg:p-[40px] lg:md:mt-4 mt-6'>
+                <div data-aos="fade-right"
+                data-aos-easing="linear"
+                data-aos-duration="1000" className='max-w-[1240px] mx-auto lg:p-[40px] lg:md:mt-4 mt-6'>
                     <div className='grid grid-cols-1  lg:grid-cols-5 '>
                         <div className='col-span-1 place-self-center'>
                             <img src="Logo.png" className='max-h-[160px] mx-w-[160px] ' alt="" />
-
                         </div>
                         <div className='col-span-4 place-self-center'>
                             <h1 className='font-featherBold lg:md:text-start text-center lg:md:text-4xl text-2xl mb-2 text-[#3C3C3C]' >The world’s Top way to learn a language</h1>
@@ -50,7 +59,9 @@ const HomePage = () => {
                 </div>
 
 
-                <div className='max-w-[1240px] mx-auto'>
+                <div data-aos="fade-up"
+                data-aos-easing="linear"
+                data-aos-duration="1000"  className='max-w-[1240px] mx-auto'>
                     <div>
                         <h1 className='font-featherBold lg:md:text-4xl text-2xl text-center text-[#3C3C3C] mb-10'>Why you’ll love learning with Hello Talk</h1>
                     </div>
@@ -103,7 +114,9 @@ const HomePage = () => {
                     <div className="divider"></div>
                 </div>
 
-                <div className='max-w-[1240px] mx-auto  '>
+                <div data-aos="fade-down"
+                    data-aos-easing="linear"
+                    data-aos-duration="1500" className='max-w-[1240px] mx-auto'>
                     <div className='grid grid-cols-1  lg:grid-cols-5 my-10'>
                         <img src="Logo2.png" className='max-h-[160px] max-w-[160px] place-self-center' alt="" />
                         <div className='col-span-4 place-self-center'>
@@ -115,14 +128,18 @@ const HomePage = () => {
                     <div className="divider"></div>
                 </div>
 
-                <div>
+                <div data-aos="fade-up"
+                    data-aos-easing="linear"
+                    data-aos-duration="1000">
                     <h1 className='lg:md:text-3xl text-2xl text-center font-featherBold mb-8 text-[#3C3C3C]'>Packages that you`&apos;`ll love</h1>
                     <Package />
                     <div className="divider"></div>
                 </div>
 
 
-                <div className='max-w-[1240px] mx-auto '>
+                <div data-aos="fade-left"
+                    data-aos-easing="linear"
+                    data-aos-duration="1500" className='max-w-[1240px] mx-auto '>
                     <div className='grid grid-cols-1  lg:grid-cols-5 my-10'>
                         <div className='col-span-1 place-self-center'>
                             <img src="Logo.png" className='max-h-[160px] max-w-[160px] place-self-center' alt="" />
@@ -138,7 +155,8 @@ const HomePage = () => {
 
                 {/* _______________________________Blog___________________________ */}
 
-                <div>
+                <div data-aos="fade-up"
+                    data-aos-duration="1500">
                     <h1 className='font-featherBold lg:md:text-3xl text-2xl text-center text-[#3C3C3C] my-2'>Twinkle twinkle little star, you`&apos;`ll love our chronicle</h1>
                     <h2 className='font-featherBold lg:md:text-xl text-lg text-center text-[#3C3C3C]'>Start Reading our blogs</h2>
                     <BlogForHome></BlogForHome>
@@ -147,14 +165,16 @@ const HomePage = () => {
 
                 {/* ---------------Middle contents ---------------------------- */}
 
-                <div>
+                <div data-aos="fade-up">
                     <SendEmailCard></SendEmailCard>
                     <div className="divider max-w-[1240px] mx-auto"></div>
                 </div>
 
                 {/*  -------------------------Footer------------------*/}
 
-                <div className='mb-32 mt-16 max-w-[1240px] mx-auto hidden lg:md:block'>
+                <div data-aos="fade-left"
+                    data-aos-easing="linear"
+                    data-aos-duration="1500" className='mb-32 mt-16 max-w-[1240px] mx-auto hidden lg:md:block'>
                     <h1 className='font-featherBold text-3xl text-center text-[#3C3C3C] my-10 mb-10'>What Our Amazing User Says</h1>
                     <Feedback></Feedback>
                 </div>
