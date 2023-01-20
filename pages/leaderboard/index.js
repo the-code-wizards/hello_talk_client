@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import React from 'react';
 import Leaderboard from '../../components/Leaderboard/Leaderboard';
-import LearnNav from '../../components/Learn/LearnNav';
 import Sidebar from '../../components/Learn/Sidebar';
+import Navbar from '../../components/Shared/Navbar/Navbar';
 
 const index = () => {
   return (
     <div>
       <Head>
-        <title>Hello Talk - Learn</title>
+        <title>HelloTalk - Leaderboard</title>
       </Head>
-      <LearnNav />
-      <div className="grid grid-cols-[250px_minmax(650px,_1fr)_300px]">
+      <Navbar />
+      <div className="pt-[6rem] grid grid-cols-[250px_minmax(950px,_1fr)] gap-x-[15px]">
         <Sidebar />
         <div>
           <Leaderboard />

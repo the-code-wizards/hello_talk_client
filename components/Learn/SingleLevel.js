@@ -80,10 +80,10 @@ const SingleLevel = () => {
                             {
                                 showScore ? (
                                     <>
-                                        <div className="w-[200px] h-[200px]">
+                                        <div className="w-[300px] h-[300px]  mx-auto">
                                             <Lottie animationData={confetti} loop={true} />
                                         </div>
-                                        <h2 className="text-2xl font-featherbold text-green-400 text-center">Congratulations! <br />
+                                        <h2 className="text-2xl font-bold text-green-400 text-center">Congratulations! <br />
                                             You Scored {score} out of {lv?.question?.length}</h2>
                                     </>)
                                     :
