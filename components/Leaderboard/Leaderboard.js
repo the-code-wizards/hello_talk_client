@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 const Leaderboard = () => {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
+  
 
   useEffect(() => {
     setLoading(true);
@@ -18,7 +19,12 @@ const Leaderboard = () => {
         setLoading(false);
       });
   }, []);
-  console.log(users)
+
+  users.sort((a, b) => a?.gems - b?.gems);
+  // console.log(users)
+  // users?.map((user) => (
+  //    user?.gems.sort(function (a, b) { return a - b })
+  // ))
   return (
     <>
       {/*------------------ Leaderboard data api theke data call kore map korte hbe ------------ */}
@@ -41,10 +47,10 @@ const Leaderboard = () => {
               <tr>
                 <td className="bg-[#fff] text-green-400">
                   <div>
-                    <div className="font-bold">Hart Hagerty</div>
+                    <div className="font-bold">Afnan Ferdousi</div>
                   </div>
                 </td>
-                <th className="bg-[#fff] text-green-400">1</th>
+                <th className="bg-[#fff] text-green-400">afnanferdousi550@gmail.com</th>
                 <th className="bg-[#fff] text-green-400">1</th>
                 <td className="bg-[#fff] text-green-400">165</td>
               </tr>
@@ -67,15 +73,19 @@ const Leaderboard = () => {
             </thead>
             <tbody>
               {users?.map((user) => {
-                console.log(user);
-                <tr className="bg-beige text-[#333]">
-                  <td>
-                      {user?.name}               
-                  </td>
-                  <td> {user?.email}</td>
-                  <td>1</td>
-                  <td>165</td>
-                </tr>
+                console.log(user?.email);
+                return (
+                  <>
+                    <tr className="bg-[#edffdf] border-none text-[#333] shadow-lg">
+                      <td className="bg-[#edffdf] border-none text-[#333]">
+                        {user?.name ? user?.name : user?.email}
+                      </td>
+                      <td className="bg-[#edffdf] border-none text-[#333]">{user?.email}</td>
+                      <td className="bg-[#edffdf] border-none text-[#333]">1</td>
+                      <td className="bg-[#edffdf] border-none text-[#333]">165</td>
+                    </tr>
+                  </>
+                )
               })}
             </tbody>
           </table>
