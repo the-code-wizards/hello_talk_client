@@ -1,10 +1,47 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import CustomButton from "../CustomDesign/CustomButton/CustomButton";
+
 
 const MyProfile = () => {
   const [user] = useAuthState(auth)
+  const [loading,setLoading] =useState(true);
+  const [profile, setProfile] =useState({});
+  console.log(profile);
+  const {name, age,education,district, country,number,email}= profile;
+
+  useEffect(() => {
+    // if (accessToken) {
+        setLoading(true);
+        axios
+            .get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
+            .then((res) => {
+                setProfile(res?.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    // }
+}, []);
+
+  // useEffect(()=>{
+  //   fetch(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setProfile(data)
+  //     console.log(data)
+  //     setLoading(false);
+  //   })
+
+  // },[])
+
+  if(loading){
+    return <h2>loading...</h2>
+  }
 
   const handleEditProfile=(event) =>{
     event.preventDefault();
@@ -51,10 +88,12 @@ const MyProfile = () => {
 
 
   return (
-   <div className="py-32">
-    <div className="flex justify-center flex-col">
+   <div className="py-32 px-20">
+    <div className="flex justify-center flex-col shadow-xl my-4">
     
-    <div className="flex justify-center">
+    <div className="flex justify-center flex-col items-center">
+      <h3 className="text-4xl text-[#00E019] font-bold my-4">My Profile</h3>
+      
     <div className="avatar">
   <div className="w-32 rounded-full border-2-[#00E019]">
     <img src={user?.photoURL ? user?.photoURL : "https://www.pngitem.com/pimgs/m/581-5813504_avatar-dummy-png-transparent-png.png"} alt="profile images" />
@@ -62,39 +101,39 @@ const MyProfile = () => {
     </div>
     </div>
 
-  <div className="mt-6 md:px-[260px]">
-  <div>
+  <div className="mt-6 grid lg:md:grid-cols-2 md:px-[50px] gap-5">
+  {/* <div> */}
   <div className="flex mb-2 items-center justify-between">
-    <span>Name : </span>
-    <input type="text" value={user?.displayName} placeholder="Name" className="input input-bordered w-full max-w-lg ml-2 " readOnly />
+    <span>Name: </span>
+    <input type="text" defaultValue={name} placeholder="Name" className="input input-bordered w-full  ml-2 " disabled />
   </div>
 
   <div className="flex mb-2 items-center justify-between">
-    <span>Age : </span>
-    <input type="text" placeholder="Age" className="input input-bordered w-full max-w-lg ml-2 " />
+    <span>Age: </span>
+    <input type="text" defaultValue={age} placeholder="Age" className="input input-bordered w-full ml-2 " disabled/>
   </div>
 
   <div className="flex mb-2 items-center justify-between">
-    <span>Education : </span>
-    <input type="text" placeholder="Education" className="input input-bordered w-full max-w-lg ml-2 " />
+    <span>Education: </span>
+    <input type="text" defaultValue={education} placeholder="Education" className="input input-bordered w-full ml-2 " disabled/>
   </div>
   <div className="flex mb-2 items-center justify-between">
-    <span>District : </span>
-    <input type="text" placeholder="District" className="input input-bordered w-full max-w-lg ml-2 " />
+    <span>District: </span>
+    <input type="text" defaultValue={district} placeholder="District" className="input input-bordered w-full ml-2 " disabled/>
   </div>
   <div className="flex mb-2 items-center justify-between">
-    <span>Country : </span>
-    <input type="text" placeholder="Country" className="input input-bordered w-full max-w-lg ml-2 " />
+    <span>Country: </span>
+    <input type="text" defaultValue={country} placeholder="Country" className="input input-bordered w-full ml-2 " disabled/>
   </div>
   <div className="flex mb-2 items-center justify-between">
-    <span>Number : </span>
-    <input type="number" placeholder="Number" className="input input-bordered w-full max-w-lg ml-2 " />
+    <span>Number: </span>
+    <input type="number" defaultValue={number} placeholder="Number" className="input input-bordered w-full ml-2 " disabled/>
   </div>
   <div className="flex mb-2 items-center justify-between">
-    <span>Email : </span>
-    <input type="text" value={user?.email} placeholder="Email" className="input input-bordered w-full max-w-lg ml-2 " readOnly/>
+    <span>Email: </span>
+    <input type="text" value={email} placeholder="Email" className="input input-bordered w-full ml-2 " disabled/>
   </div>
-  </div>
+  {/* </div> */}
   
   </div>
 <div className="form-control my-5">
@@ -111,31 +150,31 @@ const MyProfile = () => {
   <form onSubmit={handleEditProfile}>
   <div className=" mb-2">
     <span className="">Name</span>
-    <input type="text" name="name" placeholder="Name" className="input input-bordered w-full mt-1" />
+    <input type="text" name="name" defaultValue={name} placeholder="Name" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Age</span>
-    <input type="text" name="age" placeholder="Age" className="input input-bordered w-full mt-1" />
+    <input type="text" name="age" defaultValue={age} placeholder="Age" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Education</span>
-    <input type="text" name="education" placeholder="Education" className="input input-bordered w-full mt-1" />
+    <input type="text" name="education" defaultValue={education} placeholder="Education" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">District</span>
-    <input type="text" name="district" placeholder="District" className="input input-bordered w-full mt-1" />
+    <input type="text" name="district" defaultValue={district} placeholder="District" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Country</span>
-    <input type="text" name="country" placeholder="Country" className="input input-bordered w-full mt-1" />
+    <input type="text" name="country" defaultValue={country} placeholder="Country" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Number</span>
-    <input type="number" name="number" placeholder="Number" className="input input-bordered w-full mt-1" />
+    <input type="number" name="number" defaultValue={number} placeholder="Number" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Email</span>
-    <input type="email" name="email" placeholder="Email" className="input input-bordered w-full mt-1" />
+    <input type="email" name="email" defaultValue={email} placeholder="Email" className="input input-bordered w-full mt-1" disabled/>
   </div>
    
     <div className="modal-action">
