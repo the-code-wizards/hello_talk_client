@@ -8,7 +8,7 @@ const Community = () => {
     return (
         <div className=''>
             <Navbar/>
-            <div className='grid grid-cols-2 max-w-[1240px] mx-auto '>
+            <div className='grid grid-cols-2 max-w-[1240px] mx-auto pt-[6rem] '>
                 <div className='place-self-center p-4'>
                     <h1 className='text-6xl text-green-400 font-featherbold'>Welcome to the <br /> HelloTalk Community!</h1>
                     <p className='text-[20px]'>A place where you can find great tips and helpful solutions from other HelloTalk users</p>
