@@ -5,6 +5,7 @@ import CheckOut from '../../components/Payment/CheckOut';
 import { useForm } from "react-hook-form";
 import Navbar from '../../components/Shared/Navbar/Navbar';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 
 const Payment = () => {
@@ -33,6 +34,10 @@ const Payment = () => {
         return <progress className='progress w-full '></progress>
     }
     return (
+        <>
+        <Head>
+            <title>HelloTalk - Checkout</title>
+        </Head>
         <div >
             <Navbar></Navbar>
             <div className='grid grid-cols-12 pt-24'>
@@ -68,6 +73,7 @@ const Payment = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

@@ -12,32 +12,32 @@ import { useRouter } from 'next/router'
 import Lottie from "lottie-react";
 import signup from '../../resources/lottieJson/signup.json'
 
-const Signup = () => {    
+const Signup = () => {
     const router = useRouter()
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [age, setAge] = useState(null)
     const [finalage, setFinalage] = useState('young')
 
-    if(age){
-        if(age < 18)
-            setFinalage('young') 
-        else{
+    if (age) {
+        if (age < 18)
+            setFinalage('young')
+        else {
             setFinalage('adult')
         }
     }
 
-    const { register, 
-        handleSubmit, 
+    const { register,
+        handleSubmit,
         watch,
         formState: { errors } } = useForm();
-     const [
+    const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);    
-    const [token] = useToken(user || gUser )
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [token] = useToken(user || gUser)
     let signUpError;
 
     if (gLoading || loading || updating) {
@@ -57,17 +57,17 @@ const Signup = () => {
         const email = data.email;
         const age = data.age;
         let getage
-        if(age < 18 && age > 0){
+        if (age < 18 && age > 0) {
             getage = 'young'
         }
-        else if(age >= 18){
+        else if (age >= 18) {
             getage = 'adult'
         }
 
         const userbio = {
-            name, 
-            email, 
-            getage, 
+            name,
+            email,
+            getage,
             role: 'user',
             gems: 0
         }
@@ -78,30 +78,30 @@ const Signup = () => {
             },
             body: JSON.stringify(userbio)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.acknowledged){
-                swal.success("Congratulations! Account created successfully")
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    swal.success("Congratulations! Account created successfully")
+                }
+            })
         await createUserWithEmailAndPassword(data.email, data.password, data?.age);
         await updateProfile({ displayName: data.name, age: data?.age });
     };
 
     return (
         <>
-         <Head>
-        <title>Hello Talk - Sign Up</title>
-      </Head>
+            <Head>
+                <title>HelloTalk - Sign Up</title>
+            </Head>
             <div className='p-[30px] max-h-screen'>
-            <div className='flex justify-between items-center '>
-                <Link href="/"><HiArrowLeft className="text-2xl cursor-pointer" /></Link>
-                
+                <div className='flex justify-between items-center '>
+                    <Link href="/"><HiArrowLeft className="text-2xl cursor-pointer" /></Link>
+
                     <button type="button" onClick={() => router.push('/signin')} className='bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-[18px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] hover:bg-[#ece7e7]'>
-                   LOGIN
-                </button>
-            </div>
+                        LOGIN
+                    </button>
+                </div>
                 <div className="grid grid-cols-[600px_minmax(600px,1fr)] gap-x-[20px] ">
                     <div className="w-[100%] h-[150px]">
                         <Lottie animationData={signup} loop={true} />
@@ -163,8 +163,8 @@ const Signup = () => {
                         </div>
                     </div>
                 </div>
-               
-        </div>
+
+            </div>
         </>
     );
 };
