@@ -90,7 +90,7 @@ const AllCourses = () => {
                       </td>
                       <td>
                         <div>
-                          <Link href={`/editblog/${course?._id}`}>
+                          <Link href={`/editcourse/${course?._id}`}>
                             <label className="btn btn-accent mx-1">
                               <FaEdit />
                             </label>
