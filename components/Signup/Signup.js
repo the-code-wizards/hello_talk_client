@@ -107,7 +107,7 @@ const Signup = () => {
                         <Lottie animationData={signup} loop={true} />
                     </div>
                     <div>
-                        {/* <h2 className='lg:md:text-2xl text-lg text-center lg:md:mt-4 mt-10 text-[#3C3C3C] font-featherBold'>Create Your Profile</h2> */}
+                        <h2 className='lg:md:text-2xl text-lg text-center lg:md:mt-4 mt-10 text-[#3C3C3C] font-featherBold'>Create Your Account</h2>
                         <div className="mt-[25px] my-auto w-full">
                             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
                                 <input type="number"
