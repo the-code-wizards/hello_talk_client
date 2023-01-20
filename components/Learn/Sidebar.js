@@ -21,6 +21,7 @@ const Sidebar = () => {
                 <ul className="menu lg:md:p-4 w-80 bg-[#dbf8df] text-[#504f4f] font-bold border-[1px] ">
                     {/* <!-- Sidebar content here --> */}
                     <li><Link href="/learn" className="" type="button" ><GiNotebook className="text-xl text-red-400 mr-[5px]" />Learn</Link></li>
+                    <li><Link href="/flashcards" className="" type="button" ><GiNotebook className="text-xl text-red-400 mr-[5px]" />Flashcards</Link></li>
                     <li><Link href="/shop" ><AiOutlineShoppingCart className="text-xl text-red-400 mr-[5px]" />Shop</Link></li>
                     <li><Link href="/blogs" ><FaBloggerB className="text-xl text-red-400 mr-[5px]" />Blog</Link></li>
                     <li><Link href="/course"><BsStack className="text-xl text-red-400 mr-[5px]" />Course</Link></li>

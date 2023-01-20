@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import HomePage from '../components/Home/HomePage';
 import Flashcards from '../components/Flashcards/Flashcards';
-import Payment from './Payment/[payment]';
 import Community from '../components/CommunityPage/Community';
 
 const inter = Inter({ subsets: ['latin'] });
