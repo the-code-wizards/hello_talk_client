@@ -21,6 +21,7 @@ const index = () => {
             
         </div>
         <Footer></Footer>
+      
       </div>
     );
 };

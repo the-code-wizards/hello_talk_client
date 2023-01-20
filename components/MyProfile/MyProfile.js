@@ -5,13 +5,58 @@ import CustomButton from "../CustomDesign/CustomButton/CustomButton";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth)
+
+  const handleEditProfile=(event) =>{
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const numAge = form.age.value;
+    const education = form.education.value;
+    const district = form.district.value;
+    const country = form.country.value;
+    const number = form.number.value;
+    const email = form.email.value;
+    let age;
+    if(numAge < 18 && numAge > 0){
+      age = "young"
+    }
+    else if(numAge >= 18 ){
+      age ="adult"
+    }  
+    console.log(name,age,education, district, country, number, email);
+    const userProfile ={
+      name,
+      age,
+      realAge: numAge,
+      education,
+      district,
+      country,
+      number,
+      email
+    }
+    fetch(`https://hello-talk-webserver.vercel.app/upuser `,{
+      method:"POST",
+      headers:{
+        'content-type': 'application/json',
+
+      },
+      body: JSON.stringify(userProfile)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      location.reload(true);
+    })
+  }
+
+
   return (
    <div className="py-32">
     <div className="flex justify-center flex-col">
     
     <div className="flex justify-center">
     <div className="avatar">
-  <div className="w-32 rounded-full">
+  <div className="w-32 rounded-full border-2-[#00E019]">
     <img src={user?.photoURL ? user?.photoURL : "https://www.pngitem.com/pimgs/m/581-5813504_avatar-dummy-png-transparent-png.png"} alt="profile images" />
   </div>
     </div>
@@ -63,38 +108,42 @@ const MyProfile = () => {
 <input type="checkbox" id="edit-profile-modal" className="modal-toggle" />
 <div className="modal">
   <div className="modal-box">
+  <form onSubmit={handleEditProfile}>
   <div className=" mb-2">
     <span className="">Name</span>
-    <input type="text" placeholder="Name" className="input input-bordered w-full mt-1" />
+    <input type="text" name="name" placeholder="Name" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Age</span>
-    <input type="text" placeholder="Age" className="input input-bordered w-full mt-1" />
+    <input type="text" name="age" placeholder="Age" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
-    <span className="">Eduction</span>
-    <input type="text" placeholder="Eduction" className="input input-bordered w-full mt-1" />
+    <span className="">Education</span>
+    <input type="text" name="education" placeholder="Education" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">District</span>
-    <input type="text" placeholder="District" className="input input-bordered w-full mt-1" />
+    <input type="text" name="district" placeholder="District" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Country</span>
-    <input type="text" placeholder="Country" className="input input-bordered w-full mt-1" />
+    <input type="text" name="country" placeholder="Country" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Number</span>
-    <input type="number" placeholder="Number" className="input input-bordered w-full mt-1" />
+    <input type="number" name="number" placeholder="Number" className="input input-bordered w-full mt-1" />
   </div>
   <div className=" mb-2">
     <span className="">Email</span>
-    <input type="email" placeholder="Email" className="input input-bordered w-full mt-1" />
+    <input type="email" name="email" placeholder="Email" className="input input-bordered w-full mt-1" />
   </div>
    
     <div className="modal-action">
-      <label htmlFor="edit-profile-modal" className="btn">Submit</label>
+     <label htmlFor="edit-profile-modal">  
+      <button type="submit"  className="btn">Submit</button>
+      </label>
     </div>
+  </form>
   </div>
 </div>
 </div>
