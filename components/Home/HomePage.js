@@ -26,12 +26,12 @@ const HomePage = () => {
             >
                 <div className="hero-content flex-col lg:flex-row lg:justify-between">
                     <div data-aos="fade-right"
-                     data-aos-duration="1000"
-                     >
-                    <Lottie animationData={learning} loop={true} />
+                        data-aos-duration="1000"
+                    >
+                        <Lottie animationData={learning} loop={true} />
                     </div>
-                    <div  data-aos="fade-left"
-                    data-aos-duration="1000" className='max-w-[1240px] mx-auto lg:ml-20'>
+                    <div data-aos="fade-left"
+                        data-aos-duration="1000" className='max-w-[1240px] mx-auto lg:ml-20'>
                         <h1 className='text-[#ffffff] text-3xl lg:md:text-4xl font-bold text-center font-featherBold '>The free, fun, and effective way to learn language!</h1>
                         <div className='flex flex-col justify-center items-center mt-8'>
                             <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]">Get Started</button>
@@ -44,15 +44,15 @@ const HomePage = () => {
             {/* ---------------Middle contents ---------------------------- */}
             <div className="lg:md:px-0 px-4">
                 <div data-aos="fade-right"
-                data-aos-easing="linear"
-                data-aos-duration="1000" className='max-w-[1240px] mx-auto lg:p-[40px] lg:md:mt-4 mt-6'>
+                    data-aos-easing="linear"
+                    data-aos-duration="1000" className='max-w-[1240px] mx-auto lg:p-[40px] lg:md:mt-4 mt-6'>
                     <div className='grid grid-cols-1  lg:grid-cols-5 '>
                         <div className='col-span-1 place-self-center'>
                             <img src="Logo.png" className='max-h-[160px] mx-w-[160px] ' alt="" />
                         </div>
                         <div className='col-span-4 place-self-center'>
                             <h1 className='font-featherBold lg:md:text-start text-center lg:md:text-4xl text-2xl mb-2 text-[#3C3C3C]' >The world’s Top way to learn a language</h1>
-                            <p className="lg:md:text-start text-center">Learning with Hello Talk is fun, and research shows that it works! With quick, bite-sized lessons, you’ll earn points and unlock new levels while gaining real-world communication skills.</p>
+                            <p className="lg:md:text-start text-center">Learning with HelloTalk is fun, and research shows that it works! With quick, bite-sized lessons, you’ll earn points and unlock new levels while gaining real-world communication skills.</p>
                         </div>
                     </div>
                     <div className="divider"></div>
@@ -60,10 +60,10 @@ const HomePage = () => {
 
 
                 <div data-aos="fade-up"
-                data-aos-easing="linear"
-                data-aos-duration="1000"  className='max-w-[1240px] mx-auto'>
+                    data-aos-easing="linear"
+                    data-aos-duration="1000" className='max-w-[1240px] mx-auto'>
                     <div>
-                        <h1 className='font-featherBold lg:md:text-4xl text-2xl text-center text-[#3C3C3C] mb-10'>Why you’ll love learning with Hello Talk</h1>
+                        <h1 className='font-featherBold lg:md:text-4xl text-2xl text-center text-[#3C3C3C] mb-10'>Why you’ll love learning with HelloTalk</h1>
                     </div>
                     <div className='grid grid-cols-1  lg:grid-cols-3 place-items-center'>
                         <div>
@@ -120,9 +120,9 @@ const HomePage = () => {
                     <div className='grid grid-cols-1  lg:grid-cols-5 my-10'>
                         <img src="Logo2.png" className='max-h-[160px] max-w-[160px] place-self-center' alt="" />
                         <div className='col-span-4 place-self-center'>
-                            <h1 className='font-featherBold lg:md:text-start text-center lg:md:text-4xl mb-2 text-[#3C3C3C] text-2xl' >Boost your learning with Super Hello Talk</h1>
-                            <p className="lg:md:text-start text-center">Learning a language on Hello Talk is completely free, but you can remove ads and support free education with Super. First 2 weeks on us!</p>
-                            {/* <a href="" className='pt-4 text-[#1cb0f6] lg:md:text-start text-center'>LEARN MORE ABOUT SUPER Hello Talk</a> */}
+                            <h1 className='font-featherBold lg:md:text-start text-center lg:md:text-4xl mb-2 text-[#3C3C3C] text-2xl' >Boost your learning with Super HelloTalk</h1>
+                            <p className="lg:md:text-start text-center">Learning a language on HelloTalk is completely free, but you can remove ads and support free education with Super. First 2 weeks on us!</p>
+                            {/* <a href="" className='pt-4 text-[#1cb0f6] lg:md:text-start text-center'>LEARN MORE ABOUT SUPER HelloTalk</a> */}
                         </div>
                     </div>
                     <div className="divider"></div>

@@ -40,7 +40,7 @@ const Coursedetails = () => {
           <div className="card lg:card-side">
             <img src={picture} alt={title} className='w-1/2' />
             <div className="card-body">
-              <h2 className="card-title">{title}</h2>
+              <h2 className="card-title text-[#00CC17] text-2xl">{title}</h2>
               <p>{details}</p>
               <div>
                 <p><span className='font-semibold'>Module:</span> 20</p>
@@ -52,7 +52,7 @@ const Coursedetails = () => {
               </div>
               <div className="card-actions justify-end">
 
-                <Link href={`/payment/${id}`}><button className="btn bg-[#00CC17] border-none px-12">Buy now</button></Link>
+                <Link href={`/payment/${id}`}><button className="btn bg-[#00CC17] border-none px-12 text-[#fff]">Buy now</button></Link>
               </div>
             </div>
 
