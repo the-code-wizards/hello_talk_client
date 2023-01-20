@@ -8,46 +8,18 @@ const MyProfile = () => {
   const [user] = useAuthState(auth)
   const [loading,setLoading] =useState(true);
   const [profile, setProfile] =useState({});
-  console.log(profile);
-  const {name, age,education,district, country,number,email}= profile;
+  console.log(user);
+  const {name, age,education,district, country,number,email,realAge}= profile;
 
-  useEffect(() => {
-    // if (accessToken) {
-        setLoading(true);
-        axios
-            .get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
-            .then((res) => {
-                setProfile(res?.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    // }
-}, []);
+//  
 
-  // useEffect(()=>{
-  //   fetch(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     setProfile(data)
-  //     console.log(data)
-  //     setLoading(false);
-  //   })
-
-  // },[])
-
-  if(loading){
-    return <h2>loading...</h2>
-  }
 
   const handleEditProfile=(event) =>{
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const numAge = form.age.value;
+    const realAge = form.age.value;
     const education = form.education.value;
     const district = form.district.value;
     const country = form.country.value;
@@ -64,14 +36,14 @@ const MyProfile = () => {
     const userProfile ={
       name,
       age,
-      realAge: numAge,
+      realAge,
       education,
       district,
       country,
       number,
       email
     }
-    fetch(`https://hello-talk-webserver.vercel.app/upuser `,{
+    fetch(`https://hello-talk-webserver.vercel.app/upuser?email=${user?.email}`,{
       method:"POST",
       headers:{
         'content-type': 'application/json',
@@ -84,6 +56,38 @@ const MyProfile = () => {
       console.log(data)
       location.reload(true);
     })
+  }
+  
+  useEffect(() => {
+        // if (accessToken) {
+            setLoading(true);
+            axios
+                .get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
+                .then((res) => {
+                    setProfile(res?.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        // }
+    }, [user]);
+
+  // useEffect(()=>{
+  //   fetch(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setProfile(data)
+  //     console.log(data)
+  //     setLoading(false);
+  //   })
+
+  // },[user])
+
+  if(loading){
+    return <h2>loading...</h2>
   }
 
 
@@ -110,7 +114,7 @@ const MyProfile = () => {
 
   <div className="flex mb-2 items-center justify-between">
     <span>Age: </span>
-    <input type="text" defaultValue={age} placeholder="Age" className="input input-bordered w-full ml-2 " disabled/>
+    <input type="text" defaultValue={realAge} placeholder="Age" className="input input-bordered w-full ml-2 " disabled/>
   </div>
 
   <div className="flex mb-2 items-center justify-between">
@@ -131,7 +135,7 @@ const MyProfile = () => {
   </div>
   <div className="flex mb-2 items-center justify-between">
     <span>Email: </span>
-    <input type="text" value={email} placeholder="Email" className="input input-bordered w-full ml-2 " disabled/>
+    <input type="text" value={user?.email} placeholder="Email" className="input input-bordered w-full ml-2 " disabled/>
   </div>
   {/* </div> */}
   
@@ -155,7 +159,7 @@ const MyProfile = () => {
   </div>
   <div className=" mb-2">
     <span className="">Age</span>
-    <input type="text" name="age" defaultValue={age} placeholder="Age" className="input input-bordered w-full mt-1"/>
+    <input type="text" name="age" defaultValue={realAge} placeholder="Age" className="input input-bordered w-full mt-1"/>
   </div>
   <div className=" mb-2">
     <span className="">Education</span>
@@ -175,7 +179,7 @@ const MyProfile = () => {
   </div>
   <div className=" mb-2">
     <span className="">Email</span>
-    <input type="email" name="email" defaultValue={email} placeholder="Email" className="input input-bordered w-full mt-1" disabled/>
+    <input type="email" name="email" defaultValue={user?.email} placeholder="Email" className="input input-bordered w-full mt-1" disabled/>
   </div>
    
     <div className="modal-action">
