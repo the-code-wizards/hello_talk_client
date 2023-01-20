@@ -67,7 +67,8 @@ const Signup = () => {
             name, 
             email, 
             getage, 
-            role: 'user'
+            role: 'user',
+            gems: 0
         }
         fetch(`https://hello-talk-webserver.vercel.app/user`, {
             method: "POST",
@@ -145,7 +146,6 @@ const Signup = () => {
                 </form>             
 
                     <div className="flex justify-center gap-x-[5px]">
-                        <button className="justify-center flex items-center mt-[15px] bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[15%] w-[50%] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] hover:bg-[#E5E5E5]" type="submit"><TfiFacebook className="text-blue-400 text-[25px] mr-[4px]"/>Facebook</button>
                         <button  
                          onClick={() => signInWithGoogle()}
                             className="justify-center flex items-center mt-[15px] bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] lg:md:w-[15%] w-[50%] hover:bg-[#E5E5E5]" type="submit"><AiOutlineGoogle className="text-red-400 text-[25px] mr-[4px]"/>Google</button>
