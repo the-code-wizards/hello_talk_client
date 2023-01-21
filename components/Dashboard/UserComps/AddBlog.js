@@ -55,7 +55,7 @@ const AddBlog = () => {
       author_name,
       author_img,
       image,
-      tags,
+      tag: tags,
       package: getPack,
       gems: my_package,
     };
