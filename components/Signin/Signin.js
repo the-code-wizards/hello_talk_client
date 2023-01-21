@@ -53,11 +53,11 @@ const Signin = () => {
             <div className="min-h-screen"  style={{ backgroundImage: `url("back.svg")` }}>
                 <div className='flex justify-between items-center p-[30px]'>
                     <Link href="/"><HiArrowLeft className="text-2xl cursor-pointer" /></Link>
-                    <button type="button" onClick={() => router.push('/signup')} className='bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-[18px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] hover:bg-[#ece7e7]'>
+                    <Link href="/signup"><button type="button" className='bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-[18px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] hover:bg-[#ece7e7]'>
                         SIGN UP
-                    </button>
+                    </button></Link>
                 </div>
-            <div className=' my-auto '>
+            <div className=' my-auto pb-8'>
                 <div className="px-[23%] ">
                     {/* <div className="w-[100%] h-[150px]">
                         <Lottie animationData={signin} loop={true} />
