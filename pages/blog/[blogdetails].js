@@ -30,31 +30,31 @@ const Blogdetails = () => {
   return (
     <>
       <Navbar></Navbar>
-      <div className="card hero min-h-screen pt-[6rem]">
-        <div className="hero-content flex-col mx-10 shadow-xl rounded-md ">
+      <div className="card hero lg:md:min-h-screen lg:md:pt-[6rem] pt-[4rem]">
+        <div className="hero-content flex-col lg:md:mx-10 mx-2 shadow-xl rounded-md ">
           <figure className="pb-4">
-            <img src={image} alt="blog" className="rounded-xl h-[350px]" />
+            <img src={image} alt="blog" className="rounded-xl lg:md:h-[350px]" />
           </figure>
-          <div className="card-body py-5">
+          <div className="card-body lg:md:py-5 p-0">
             
-            <h2 className="card-title text-[#58cc02] text-2xl">{title}</h2>
-            <p>{details}</p>
+            <h2 className="card-title text-[#58cc02] lg:md:text-2xl text-lg">{title}</h2>
+            <p className="text-[16px]">{details}</p>
             <div class="flex items-center mt-4">
-              <div className="flex">
+              <div className="flex items-center">
                 <div className="avatar mr-5">
-                  <div className="w-12 rounded-full">
+                  <div className="lg:md:w-12 w-8 h-8 rounded-full">
                     <img src={author_img} />
                   </div>
                 </div>
                 <div>
-                  <p className="font-medium capitalize text-black mt-2">
+                  <p className="font-medium capitalize text-black mt-2 text-[16px] lg:md:text-[20px]">
                     {author_name}
                   </p>
-                  <p className="text-sm">{date}</p>
+                  <p className="lg:md:text-sm text-[12px]">{date}</p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center py-2 mx-3">
+            <div className="flex items-center py-2 mx-3 lg:md:text-[18px] text-[16px]">
               <Link href={`/blogs`}>
                 <FaArrowLeft></FaArrowLeft>
               </Link>
