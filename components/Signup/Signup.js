@@ -56,6 +56,7 @@ const Signup = () => {
         const name = data.displaName;
         const email = data.email;
         const age = data.age;
+
         let getage
         if (age < 18 && age > 0) {
             getage = 'young'
@@ -68,6 +69,7 @@ const Signup = () => {
             name,
             email,
             getage,
+            age,
             role: 'user',
             gems: 0
         }
