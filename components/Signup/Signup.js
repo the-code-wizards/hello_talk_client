@@ -4,10 +4,11 @@ import React, { useState } from 'react';
 import { HiArrowLeft } from 'react-icons/hi';
 import { set, useForm } from "react-hook-form";
 import auth from '../../firebase.init';
-import useToken from '../hooks/useToken';
+// import useToken from '../hooks/useToken';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { useRouter } from 'next/router'
+import swal from 'sweetalert';
 
 const Signup = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -33,15 +34,18 @@ const Signup = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-    const [token] = useToken(user || gUser)
-    let signUpError;
+    // const [token] = useToken(user || gUser)
+    const token = user ? user?.user?.accessToken : gUser?.user?.accessToken;
+    const [signUpError, setSignUpError] = useState();
 
     if (gLoading || loading || updating) {
         return <progress className='progress w-full'></progress>
     }
 
     if (error || gError || updateError) {
-        signUpError = <p className='text-red-500 font-bold'><small>{error?.message || gError?.message || updateError?.message}</small></p>
+        setSignUpError(error?.message || gError?.message || updateError?.message);
+        if (signUpError)
+            return <p className='text-red-500 font-bold'><small>{signUpError}</small></p>
     }
 
     if (token) {
@@ -76,9 +80,10 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged) {
                     swal.success("Congratulations! Account created successfully")
+                }else{
+                    swal.error("OOPS! Something wen wrong :(")
                 }
             })
         await createUserWithEmailAndPassword(data.email, data.password, data?.age);

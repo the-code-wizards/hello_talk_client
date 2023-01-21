@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import Head from "next/head";
 import { HiArrowLeft } from 'react-icons/hi';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
-import useToken from '../hooks/useToken';
+// import useToken from '../hooks/useToken';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { TfiFacebook } from 'react-icons/tfi';
@@ -25,8 +25,8 @@ const Signin = () => {
         user,
         loading,
         error,] = useSignInWithEmailAndPassword(auth);
-    const [token] = useToken(user || gUser);
-    let signInError;
+    const token = user ? user?.user?.accessToken : gUser?.user?.accessToken;
+    const [signInError, setSignInError] = useState();
 
 
     if (gLoading || loading) {
@@ -34,7 +34,9 @@ const Signin = () => {
     }
 
     if (error || gError) {
-        signInError = <p className='text-red-500 font-bold'><small>{error?.message || gError?.message}</small></p>
+        setSignInError(error?.message || gError?.message);
+        if (signInError)
+            return <p className='text-red-500 font-bold'><small>{signInError}</small></p>
     }
 
     if (token) {
