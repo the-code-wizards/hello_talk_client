@@ -17,9 +17,9 @@ const Flashcards = () => {
         'When purchased, a test with faster results will reduce the turnaround time from 48 hours to 12 hours, though tests will still receive the same level of human proctoring and AI scoring as standard tests.',
     },
     {
-      question: 'When and where can I take the Hello Talk Test?',
+      question: 'When and where can I take the HelloTalk Test?',
       answer:
-        'One of the advantages of the Hello Talk Test is that you can choose your own testing environment and testing time. There are a few general guidelines to help you consider where and when to take the test.',
+        'One of the advantages of the HelloTalk Test is that you can choose your own testing environment and testing time. There are a few general guidelines to help you consider where and when to take the test.',
     },
     {
       question: 'Can I memorize answers from other sources to use for my writing responses?',
@@ -38,19 +38,19 @@ const Flashcards = () => {
         'Try to respond naturally with answers you are coming up with in the moment. Even if you have practiced answers to similar types of questions, your response should directly address the topic and be in your own words.',
     },
     {
-      question: 'How many chances do I get to take the Hello Talk English Test when I purchase it?',
+      question: 'How many chances do I get to take the HelloTalk English Test when I purchase it?',
       answer:
         'This website supports the latest versions of Chrome, Firefox, and Safari. We recommend using a desktop or laptop computer with a stable internet connection.',
     },
     {
-      question: 'Can I purchase a Hello Talk English Test coupon from a third-party seller?',
+      question: 'Can I purchase a HelloTalk English Test coupon from a third-party seller?',
       answer:
-        'No. Coupons sold by third parties online are not official and will not work for the Hello Talk English Test. We cannot issue refunds for coupons purchased through third parties.',
+        'No. Coupons sold by third parties online are not official and will not work for the HelloTalk English Test. We cannot issue refunds for coupons purchased through third parties.',
     },
     {
       question: 'How can I change my email address?',
       answer:
-        "You can change your Hello Talk English Test account's email address using this settings page.",
+        "You can change your HelloTalk English Test account's email address using this settings page.",
     },
     {
       question: 'How can I reset my password?',
@@ -66,7 +66,7 @@ const Flashcards = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="lg:md:px-10 lg:md:py-52 px-8">
         <Swiper
           slidesPerView={3}

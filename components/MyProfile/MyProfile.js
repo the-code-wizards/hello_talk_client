@@ -89,7 +89,7 @@ const MyProfile = () => {
 
 
   return (
-   <div className="py-32 px-20">
+   <div className="py-24 px-20">
     <div className="flex justify-center flex-col shadow-xl my-4">
     
     <div className="flex justify-center flex-col items-center">
@@ -148,6 +148,7 @@ const MyProfile = () => {
 <input type="checkbox" id="edit-profile-modal" className="modal-toggle" />
 <div className="modal">
   <div className="modal-box">
+  <label htmlFor="edit-profile-modal" className="btn btn-sm bg-[#00E019] border-none  absolute right-2 top-2">Close</label>
   <form onSubmit={handleEditProfile}>
   <div className=" mb-2">
     <span className="">Name</span>
@@ -155,7 +156,7 @@ const MyProfile = () => {
   </div>
   <div className=" mb-2">
     <span className="">Age</span>
-    <input type="text" name="age" defaultValue={age} placeholder="Age" className="input input-bordered w-full mt-1" />
+    <input type="text" name="age" defaultValue={age} placeholder="Age" className="input input-bordered w-full mt-1"/>
   </div>
   <div className=" mb-2">
     <span className="">Education</span>
@@ -180,7 +181,7 @@ const MyProfile = () => {
    
     <div className="modal-action">
      <label htmlFor="edit-profile-modal">  
-      <button type="submit"  className="btn">Submit</button>
+      <button type="submit"  className="btn bg-[#00E019] border-none">Submit</button>
       </label>
     </div>
   </form>

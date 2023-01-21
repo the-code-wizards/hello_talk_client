@@ -5,6 +5,7 @@ import CheckOut from '../../components/Payment/CheckOut';
 import { useForm } from "react-hook-form";
 import Navbar from '../../components/Shared/Navbar/Navbar';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 
 const Payment = () => {
@@ -25,6 +26,7 @@ const Payment = () => {
                     console.log(data);
                     setLoading(false);
                 })
+                .catch((e) => console.log(e))
         }
     }, [id])
     const stripePromise = loadStripe('pk_test_51M7c2bCrl3dQ57EJh6p0K0ILccXLLoZic6xAgaQnZ7ZrsQKLI2WbssYPxb0rR44ixMD9YIfKS224Axx1rhaR51Ug00qVpJJN6x');
@@ -33,6 +35,10 @@ const Payment = () => {
         return <progress className='progress w-full '></progress>
     }
     return (
+        <>
+        <Head>
+            <title>HelloTalk - Checkout</title>
+        </Head>
         <div >
             <Navbar></Navbar>
             <div className='grid grid-cols-12 pt-24'>
@@ -68,6 +74,7 @@ const Payment = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

@@ -30,13 +30,16 @@ const Blogdetails = () => {
   return (
     <>
       <Navbar></Navbar>
-      <div className="card hero min-h-screen">
-        <div className="hero-content flex-col lg:flex-row  mx-10 shadow-xl rounded-md ">
+      <div className="card hero min-h-screen pt-[6rem]">
+        <div className="hero-content flex-col mx-10 shadow-xl rounded-md ">
           <figure className="pb-4">
-            <img src={image} alt="blog" className="rounded-xl" />
+            <img src={image} alt="blog" className="rounded-xl h-[350px]" />
           </figure>
           <div className="card-body py-5">
-            <div class="flex items-center">
+            
+            <h2 className="card-title text-[#58cc02] text-2xl">{title}</h2>
+            <p>{details}</p>
+            <div class="flex items-center mt-4">
               <div className="flex">
                 <div className="avatar mr-5">
                   <div className="w-12 rounded-full">
@@ -51,8 +54,6 @@ const Blogdetails = () => {
                 </div>
               </div>
             </div>
-            <h2 className="card-title text-[#58cc02] text-2xl">{title}</h2>
-            <p>{details}</p>
             <div className="flex items-center py-2 mx-3">
               <Link href={`/blogs`}>
                 <FaArrowLeft></FaArrowLeft>

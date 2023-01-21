@@ -16,26 +16,26 @@ const BlogsCard = ({ blog }) => {
   } = blog;
   console.log(tag);
   return (
-    <div className="flex md:flex-row flex-col items-center gap-4 rounded-xl shadow-md hover:shadow-2xl">
+    <div className="flex md:flex-row flex-col items-center gap-2 rounded-xl shadow-md hover:shadow-2xl">
       <div className="flex items-end justify-start">
         <img
           src={image}
-          className="rounded-l-lg object-cover h-64 w-40"
+          className="rounded-l-lg object-cover h-40 w-40"
           alt="blog-img"
         />
       </div>
       <div className="flex-1 px-5">
-        <div className="py-4">
-          <span className="badge">Badge</span>
-          {/* <>
+        <div className="">
+          {/* <span className="badge">Badge</span> */}
+          <>
           {tag?.map((ta) => {
             <Fragment>{ta}</Fragment>;
           })}
-        </> */}
-          <h2 className="font-bold  lg:md:text-2xl text-xl text-[#58cc02]">
+        </>
+          <h2 className="font-bold lg:md:text-2xl text-xl text-[#58cc02]">
             {title}
           </h2>
-          <p>{details.slice(0, 60)}</p>
+          <p className="text-[15px]">{details.slice(0, 60)}...</p>
         </div>
         <div className="flex items-end justify-end">
           {my_package === "free" && (
