@@ -6,6 +6,7 @@ import auth from "../../firebase.init";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth)
+  console.log(user);
   const [loading,setLoading] =useState(true);
   const [profile, setProfile] =useState({});
   console.log(profile);
