@@ -44,6 +44,9 @@ const AddBlog = () => {
     if (getPack === 'premium') {
       my_package = '3';
     }
+
+    const tags = tag.split(' ');
+
     const blogDetail = {
       _id,
       title,
@@ -52,7 +55,7 @@ const AddBlog = () => {
       author_name,
       author_img,
       image,
-      tag,
+      tags,
       package: getPack,
       gems: my_package,
     };
@@ -165,7 +168,7 @@ const AddBlog = () => {
                       },
                     })}
                   >
-                    <option value="natural">Natural</option>
+                    <option value="natural">Neutral</option>
                     <option value="young">Young</option>
                     <option value="adult">Adult</option>
                   </select>
