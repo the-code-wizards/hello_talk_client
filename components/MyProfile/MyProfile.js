@@ -6,6 +6,7 @@ import auth from "../../firebase.init";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth)
+  console.log(user);
   const [loading,setLoading] =useState(true);
   const [profile, setProfile] =useState({});
   console.log(profile);
@@ -60,7 +61,7 @@ const MyProfile = () => {
     else if(numAge >= 18 ){
       age ="adult"
     }  
-    console.log(name,age,education, district, country, number, email);
+    console.log(name, age ,education, district, country, number, email);
     const userProfile ={
       name,
       age,
@@ -71,7 +72,7 @@ const MyProfile = () => {
       number,
       email
     }
-    fetch(`https://hello-talk-webserver.vercel.app/upuser `,{
+    fetch(`https://hello-talk-webserver.vercel.app/upuser?email=${user?.email}`,{
       method:"POST",
       headers:{
         'content-type': 'application/json',

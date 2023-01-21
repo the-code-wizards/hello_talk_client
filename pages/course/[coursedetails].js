@@ -52,7 +52,7 @@ const Coursedetails = () => {
               </div>
               <div className="card-actions justify-end">
 
-                <Link href={`/payment/${id}`}><button className="btn bg-[#00CC17] border-none px-12 text-[#fff]">Buy now</button></Link>
+                <Link href={`/payments/${id}`}><button className="btn bg-[#00CC17] border-none px-12 text-[#fff]">Buy now</button></Link>
               </div>
             </div>
 
