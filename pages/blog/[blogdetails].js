@@ -3,6 +3,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useRouter } from "next/router";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import Link from "next/link";
+import Head from "next/head";
 const Blogdetails = () => {
   const [blogDetails, setBlogDetails] = useState({});
 
@@ -29,6 +30,9 @@ const Blogdetails = () => {
 
   return (
     <>
+      <Head>
+        <title>HelloTalk - {title}</title>
+      </Head>
       <Navbar></Navbar>
       <div className="card hero lg:md:min-h-screen lg:md:pt-[6rem] pt-[4rem]">
         <div className="hero-content flex-col lg:md:mx-10 mx-2 shadow-xl rounded-md ">
