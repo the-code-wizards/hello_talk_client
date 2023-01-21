@@ -4,7 +4,7 @@ import Head from "next/head";
 import { HiArrowLeft } from 'react-icons/hi';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
-// import useToken from '../hooks/useToken';
+import useToken from '../hooks/useToken';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { TfiFacebook } from 'react-icons/tfi';
@@ -25,7 +25,7 @@ const Signin = () => {
         user,
         loading,
         error,] = useSignInWithEmailAndPassword(auth);
-    // const [token] = useToken(user || gUser);
+    const [token] = useToken(user || gUser);
     let signInError;
 
 
