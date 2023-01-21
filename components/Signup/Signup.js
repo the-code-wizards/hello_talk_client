@@ -102,7 +102,7 @@ const Signup = () => {
                         LOGIN
                     </button></Link>
                 </div>
-                <div className="my-auto">
+                <div className="my-auto pb-8">
                     {/* <div className="w-[100%] h-[150px]">
                         <Lottie animationData={signup} loop={true} />
                     </div> */}

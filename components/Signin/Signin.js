@@ -58,17 +58,17 @@ const Signin = () => {
                     </button></Link>
                 </div>
             <div className=' my-auto pb-8'>
-                <div className="px-[23%] ">
+                    <div className="lg:md:px-[23%] px-[5%]">
                     {/* <div className="w-[100%] h-[150px]">
                         <Lottie animationData={signin} loop={true} />
                     </div> */}
                         <div className="border-[2px] rounded-xl w-full bg-[#fff]">
-                        <h2 className='lg:md:text-2xl text-lg text-center lg:md:mt-4 mt-10 text-[#3C3C3C] font-featherBold'>Log in</h2>
+                            <h2 className='lg:md:text-2xl text-lg text-center lg:md:mt-4 mt-2 text-[#3C3C3C] font-featherBold'>Log in</h2>
                         <div className="mt-[50px] my-auto ">
                             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
                                 <input type="email"
                                     placeholder="Email"
-                                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
+                                    className="input lg:md:w-full max-w-sm lg:md:max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                                     {...register("email", {
                                         required: {
                                             value: true,
@@ -77,7 +77,7 @@ const Signin = () => {
                                     })} />
                                 <input type="password"
                                     placeholder="Password"
-                                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
+                                    className="input lg:md:w-full max-w-sm lg:md:max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                                     {...register("password", {
                                         required: {
                                             value: true,
@@ -85,7 +85,7 @@ const Signin = () => {
                                         }
                                     })} />
 
-                                <button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[40%] w-[100%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]" type="submit">LOG IN</button>
+                                    <button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[40%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]" type="submit">LOG IN</button>
                                 {/* <div className="text-center font-bold text-lg my-[20px]">OR</div> */}
                             </form>
 
@@ -94,10 +94,10 @@ const Signin = () => {
                                     onClick={() => signInWithGoogle()}
                                     className="justify-center flex items-center mt-[15px] bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] lg:md:w-[40%] w-[50%] hover:bg-[#E5E5E5]" type="submit"><AiOutlineGoogle className="text-red-400 text-[25px] mr-[4px]" />Google</button>
                             </div>
-                            <div className="mt-4 text-center pb-4">
-                                <Link href="/terms" className="cursor-pointer font-bold text-center">Terms and condition</Link>
-                                <Link href="/privacy" className="cursor-pointer font-bold text-center ml-3">Privacy policy</Link>
-                            </div>
+                                <div className="mt-4 text-center pb-4">
+                                    <Link href="/terms" className="cursor-pointer lg:md:font-bold text-center ml-3 text-medium text-[15px]">Terms and condition</Link>
+                                    <Link href="/privacy" className="cursor-pointer lg:md:font-bold text-center ml-3 text-medium text-[15px]">Privacy policy</Link>
+                                </div>
                         </div>
                     </div>
                 </div>
