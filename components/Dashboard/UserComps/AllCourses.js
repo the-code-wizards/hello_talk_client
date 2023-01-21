@@ -46,7 +46,7 @@ const AllCourses = () => {
         <input
           type="search"
           placeholder="Type Course Title here"
-          className="input input-bordered"
+          className="input bg-white input-bordered"
           style={{ width: '50%' }}
           onChange={handleSearch}
           value={searchTerm}
@@ -55,9 +55,9 @@ const AllCourses = () => {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="table" style={{ width: '100%' }}>
-              <thead className="">
+          <div className="overflow-x-auto my-2 shadow-2xl rounded">
+            <table className="table-compact" style={{ width: '100%' }}>
+              <thead className="text-center">
                 <tr>
                   <th>Course Title</th>
                   <th>Details</th>
@@ -67,7 +67,7 @@ const AllCourses = () => {
               </thead>
               {filteredCourses.map((course) => {
                 return (
-                  <tbody className="" key={course?._id}>
+                  <tbody className="text-center" key={course?._id}>
                     <tr>
                       <td>{course?.title}</td>
                       {/* <td>{course?.picture}</td> */}

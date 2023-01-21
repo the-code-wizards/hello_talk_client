@@ -7,9 +7,9 @@ const allblogs = () => {
   return (
     <div>
       <Navbar />
-      <div className="grid  lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
+      <div className="grid lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
         <DashSidebar />
-        <AllBlogs/>
+        <AllBlogs />
       </div>
     </div>
   );
