@@ -6,11 +6,11 @@ import auth from "../../firebase.init";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth)
-  console.log(user);
+  console.log("User: ", user);
   const [loading,setLoading] =useState(true);
   const [profile, setProfile] =useState({});
   console.log(profile);
-  const {name, age,education,district, country,number,email}= profile;
+  const {name, age,education,district, country,number,email, realAge}= profile;
 
   useEffect(() => {
     // if (accessToken) {
