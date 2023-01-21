@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { HiArrowLeft } from 'react-icons/hi';
 import { set, useForm } from "react-hook-form";
 import auth from '../../firebase.init';
-import useToken from '../hooks/useToken';
+// import useToken from '../hooks/useToken';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { useRouter } from 'next/router'
