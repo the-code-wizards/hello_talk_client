@@ -20,7 +20,7 @@ const BlogsCard = ({ blog }) => {
       <div className="flex items-end justify-start">
         <img
           src={image}
-          className="rounded-l-lg object-cover h-40 w-40"
+          className="lg:md:rounded-l-lg rounded-lg object-cover lg:md:h-40 lg:md:w-40 w-full lg:md:p-0 p-4"
           alt="blog-img"
         />
       </div>
