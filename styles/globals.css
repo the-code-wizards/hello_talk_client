@@ -10,17 +10,20 @@
 
 @layer base {
   @font-face {
-    font-family: "FeatherBold";
-    src: url("../public/Fonts/feather_bold.ttf");
+    font-family: 'FeatherBold';
+    src: url('../public/Fonts/feather_bold.ttf');
   }
 }
 
 html,
+.theme-white {
+  background-color: #fff !important;
+}
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -78,7 +81,7 @@ a {
 
 body,
 html {
-  background-color: #f6f9fc00;
+  /* background-color: #f6f9fc00; */
   font-size: 18px;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
@@ -181,8 +184,7 @@ More info: https://stripe.com/docs/stripe-js/reference#element-options
   margin: 10px 0 20px 0;
   max-width: 500px;
   padding: 10px 14px;
-  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
-    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
   border-radius: 4px;
   background: white;
 }
@@ -192,8 +194,7 @@ More info: https://stripe.com/docs/stripe-js/reference#element-options
 .StripeElementP24--focus,
 .StripeElementEPS--focus,
 .StripeElementFpx--focus {
-  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px,
-    rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
   -webkit-transition: all 150ms ease;
   transition: all 150ms ease;
 }
