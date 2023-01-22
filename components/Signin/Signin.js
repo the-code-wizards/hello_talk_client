@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRouter } from 'next/router'
 import Lottie from "lottie-react";
 import signin from '../../resources/lottieJson/login.json'
+import Cookies from 'js-cookie';
 
 const Signin = () => {
     const router = useRouter()
@@ -40,6 +41,7 @@ const Signin = () => {
     }
 
     if (token) {
+        Cookies.set("loggedin", "true");
         window.location.href = "/";
     }
 
