@@ -56,10 +56,10 @@ const AllCourses = () => {
           <div>Loading...</div>
         ) : (
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
-            <table className="table-compact" style={{ width: '100%' }}>
+            <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr>
-                  <th>Course Title</th>
+                <tr className="bg-[#ddd]">
+                  <th className='text-start'>Course Title</th>
                   <th>Details</th>
                   <th>Offer Price</th>
                   <th>Action</th>
@@ -69,7 +69,7 @@ const AllCourses = () => {
                 return (
                   <tbody className="text-center" key={course?._id}>
                     <tr>
-                      <td>{course?.title}</td>
+                      <td className='text-start'>{course?.title}</td>
                       {/* <td>{course?.picture}</td> */}
                       <td>{course?.details.slice(0, 40)}...</td>
                       <td>

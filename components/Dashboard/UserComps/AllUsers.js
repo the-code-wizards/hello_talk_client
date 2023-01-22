@@ -56,10 +56,10 @@ const AllUsers = () => {
           <div>Loading...</div>
         ) : (
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
-            <table className="table-compact" style={{ width: '100%' }}>
+            <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr>
-                  <th>User Name</th>
+                <tr className="bg-[#ddd]">
+                  <th className='text-start'>User Name</th>
                   <th>Email</th>
                   <th>Mobile Number</th>
                   <th>Country</th>
@@ -70,7 +70,7 @@ const AllUsers = () => {
                 return (
                   <tbody className="text-center" key={user?._id}>
                     <tr>
-                      <td>{user?.name}</td>
+                      <td className='text-start'>{user?.name}</td>
                       <td>{user?.email}</td>
                       <td>{user?.number}</td>
                       <td>{user?.country}</td>
