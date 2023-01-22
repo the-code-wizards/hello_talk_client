@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import confetti from "../../resources/lottieJson/confetti.json";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loader from '../shared/Loader/Loader';
 
 const SingleLevel = () => {
     const router = useRouter()
@@ -19,11 +20,11 @@ const SingleLevel = () => {
     const [score, setScore] = useState(0);
     const [gems, setGems] = useState();
 
-    useEffect(() => {
-        if (!user) {
-            window.location.href = "/signin";
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (!user) {
+    //         window.location.href = "/signin";
+    //     }
+    // }, []);
 
     // console.log(optData)
     useEffect(() => {
@@ -66,16 +67,50 @@ const SingleLevel = () => {
             setGems(2)
         }
     }, [score, lv?.question?.length]);
+
+    useEffect(() => {
+        if (gems !== 0) {
+            fetch(`https://hello-talk-webserver.vercel.app/addgem?${user?.email}`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(gems)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log( data);
+                })
+                .catch(error => {
+            console.log(error);
+        });
+        }
+
+    }, [user]);
+
+    // axios.put('https://hello-talk-webserver.vercel.app/addgem', data)
+    //     .then(response => {
+    //         console.log(response);
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     });
+
+    const nextLevel = () => {
+        setGems(1)
+        window.location.href = `/level/${parseInt(lv?.level) + 1}`
+    }
+    if (loading) {
+        return <Loader />
+    }
     return (
         <>
             <Head>
                 <title>Level {lv?.level}</title>
             </Head>
             <div className='px-16 pt-8'>
-                {/* <Link href="/learn" className=''>Go Back</Link> */}
-                {!user ? <>
-                    <h2 className="text-xl text-green-500 font-bold text-center mb-2">Sign In To Level Up</h2></>
-                    : <>
+                {
+                    <>
                         <div className='px-8 pb-8 shadow-xl'>
                             {
                                 showScore ? (
@@ -112,11 +147,7 @@ const SingleLevel = () => {
                             <Link href={`/level/${parseInt(lv?.level) - 1}`}>
                                 <button className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]">PREV</button>
                             </Link>
-                            <Link
-                                onClick={() => setGems(1)}
-                                href={`/level/${parseInt(lv?.level) + 1}`}>
-                                <button className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]">NEXT</button>
-                            </Link>
+                            <button onClick={nextLevel} className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]">NEXT</button>
                         </div></>
                 }
             </div></>
