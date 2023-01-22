@@ -137,9 +137,6 @@ const Navbar = () => {
                       tabIndex={0}
                       className="menu menu-compact dropdown-content mt-[250%] p-2 shadow bg-green-200 rounded-box w-52 font-bold text-[#333]"
                     >
-                      <li>
-                        <Link href="/myprofile">Profile</Link>
-                      </li>
                       {user && (
                         <>
                           <li>

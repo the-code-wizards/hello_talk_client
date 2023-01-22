@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import Head from "next/head";
 import { HiArrowLeft } from 'react-icons/hi';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
-import useToken from '../hooks/useToken';
+// import useToken from '../hooks/useToken';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { TfiFacebook } from 'react-icons/tfi';
@@ -25,8 +25,8 @@ const Signin = () => {
         user,
         loading,
         error,] = useSignInWithEmailAndPassword(auth);
-    const [token] = useToken(user || gUser);
-    let signInError;
+    const token = user ? user?.user?.accessToken : gUser?.user?.accessToken;
+    const [signInError, setSignInError] = useState();
 
 
     if (gLoading || loading) {
@@ -34,7 +34,9 @@ const Signin = () => {
     }
 
     if (error || gError) {
-        signInError = <p className='text-red-500 font-bold'><small>{error?.message || gError?.message}</small></p>
+        setSignInError(error?.message || gError?.message);
+        if (signInError)
+            return <p className='text-red-500 font-bold'><small>{signInError}</small></p>
     }
 
     if (token) {
@@ -50,24 +52,25 @@ const Signin = () => {
             <Head>
                 <title>HelloTalk - Sign In</title>
             </Head>
-            <div className='p-[30px] min-h-screen my-auto'>
-                <div className='flex justify-between items-center'>
+            <div className="min-h-screen"  style={{ backgroundImage: `url("back.svg")` }}>
+                <div className='flex justify-between items-center p-[30px]'>
                     <Link href="/"><HiArrowLeft className="text-2xl cursor-pointer" /></Link>
-                    <button type="button" onClick={() => router.push('/signup')} className='bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-[18px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] hover:bg-[#ece7e7]'>
+                    <Link href="/signup"><button type="button" className='bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-[18px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] hover:bg-[#ece7e7]'>
                         SIGN UP
-                    </button>
+                    </button></Link>
                 </div>
-                <div className="grid grid-cols-[600px_minmax(600px,1fr)] gap-x-[20px] ">
-                    <div className="w-[100%] h-[150px]">
+            <div className=' my-auto pb-8'>
+                    <div className="lg:md:px-[23%] px-[5%]">
+                    {/* <div className="w-[100%] h-[150px]">
                         <Lottie animationData={signin} loop={true} />
-                    </div>
-                    <div>
-                        <h2 className='lg:md:text-2xl text-lg text-center lg:md:mt-4 mt-10 text-[#3C3C3C] font-featherBold'>Log in</h2>
+                    </div> */}
+                        <div className="border-[2px] rounded-xl w-full bg-[#fff]">
+                            <h2 className='lg:md:text-2xl text-lg text-center lg:md:mt-4 mt-2 text-[#3C3C3C] font-featherBold'>Log in</h2>
                         <div className="mt-[50px] my-auto ">
                             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
                                 <input type="email"
                                     placeholder="Email"
-                                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
+                                    className="input lg:md:w-full max-w-sm lg:md:max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                                     {...register("email", {
                                         required: {
                                             value: true,
@@ -76,7 +79,7 @@ const Signin = () => {
                                     })} />
                                 <input type="password"
                                     placeholder="Password"
-                                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
+                                    className="input lg:md:w-full max-w-sm lg:md:max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                                     {...register("password", {
                                         required: {
                                             value: true,
@@ -84,8 +87,8 @@ const Signin = () => {
                                         }
                                     })} />
 
-                                <button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[40%] w-[100%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]" type="submit">LOG IN</button>
-                                <div className="text-center font-bold text-lg my-[20px]">OR</div>
+                                    <button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[40%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]" type="submit">LOG IN</button>
+                                {/* <div className="text-center font-bold text-lg my-[20px]">OR</div> */}
                             </form>
 
                             <div className="flex justify-center gap-x-[5px]">
@@ -93,13 +96,14 @@ const Signin = () => {
                                     onClick={() => signInWithGoogle()}
                                     className="justify-center flex items-center mt-[15px] bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] lg:md:w-[40%] w-[50%] hover:bg-[#E5E5E5]" type="submit"><AiOutlineGoogle className="text-red-400 text-[25px] mr-[4px]" />Google</button>
                             </div>
-                            <div className="mt-4 text-center">
-                                <Link href="/terms" className="cursor-pointer font-bold text-center">Terms and condition</Link>
-                                <Link href="/privacy" className="cursor-pointer font-bold text-center ml-3">Privacy policy</Link>
-                            </div>
+                                <div className="mt-4 text-center pb-4">
+                                    <Link href="/terms" className="cursor-pointer lg:md:font-bold text-center ml-3 text-medium text-[15px]">Terms and condition</Link>
+                                    <Link href="/privacy" className="cursor-pointer lg:md:font-bold text-center ml-3 text-medium text-[15px]">Privacy policy</Link>
+                                </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </>
     );

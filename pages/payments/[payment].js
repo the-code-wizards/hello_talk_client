@@ -26,6 +26,7 @@ const Payment = () => {
                     console.log(data);
                     setLoading(false);
                 })
+                .catch((e) => console.log(e))
         }
     }, [id])
     const stripePromise = loadStripe('pk_test_51M7c2bCrl3dQ57EJh6p0K0ILccXLLoZic6xAgaQnZ7ZrsQKLI2WbssYPxb0rR44ixMD9YIfKS224Axx1rhaR51Ug00qVpJJN6x');

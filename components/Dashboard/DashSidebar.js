@@ -2,11 +2,12 @@ import Link from 'next/link';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { BsChevronDown } from 'react-icons/bs';
 
 const DashSidebar = () => {
   const [user] = useAuthState(auth);
   return (
-    <div className="drawer drawer-mobile pt-[4.5rem]">
+    <div className="drawer drawer-mobile pt-[4.5rem] sticky">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
@@ -18,23 +19,42 @@ const DashSidebar = () => {
                 <Link href="/dashboard">Dashboard</Link>
               </li>
               <li>
-                <Link href="/dashboard/addblog">Add Blog</Link>
+                <Link href="/dashboard/myprofile">My Profile</Link>
               </li>
-              <li>
-                <Link href="/dashboard/allblogs">All Blogs</Link>
-              </li>
-              <li>
-                <Link href="/dashboard/addcourse">Add Course</Link>
-              </li>
-              <li>
-                <Link href="/dashboard/allcourses">All Course</Link>
-              </li>
-              <li>
-                <Link href="/dashboard/addoffer">Add Offer</Link>
-              </li>
-              <li>
-                <Link href="/dashboard/alloffers">All Offers</Link>
-              </li>
+              <div className="collapse">
+                <input type="checkbox" className="peer" />
+                <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
+                  Blogs
+                  <div className="ml-2">
+                    <BsChevronDown />
+                  </div>
+                </div>
+                <div className="collapse-content bg-[#194881] text-primary-content peer-checked:bg-[#194881] peer-checked:text-secondary-content">
+                  <li>
+                    <Link href="/dashboard/addblog">Add Blog</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/allblogs">All Blogs</Link>
+                  </li>
+                </div>
+              </div>
+              <div className="collapse">
+                <input type="checkbox" className="peer" />
+                <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
+                  Courses
+                  <div className="ml-2">
+                    <BsChevronDown />
+                  </div>
+                </div>
+                <div className="collapse-content bg-[#194881] text-primary-content peer-checked:bg-[#194881] peer-checked:text-secondary-content">
+                  <li>
+                    <Link href="/dashboard/addcourse">Add Course</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/allcourses">All Course</Link>
+                  </li>
+                </div>
+              </div>
               <li>
                 <Link href="/dashboard/makeadmin">Make Admin</Link>
               </li>
