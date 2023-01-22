@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { FaRegWindowClose, FaTimes } from "react-icons/fa";
 
 
 const MyProfile = () => {
@@ -151,7 +152,7 @@ const MyProfile = () => {
 <input type="checkbox" id="edit-profile-modal" className="modal-toggle" />
 <div className="modal">
   <div className="modal-box">
-  <label htmlFor="edit-profile-modal" className="btn btn-sm bg-[#00E019] border-none  absolute right-2 top-2">Close</label>
+  <label htmlFor="edit-profile-modal" className="btn btn-sm bg-[#00E019] border-none  text-white absolute right-2 top-2"><FaTimes></FaTimes> </label>
   <form onSubmit={handleEditProfile}>
   <div className=" mb-2">
     <span className="">Name</span>
