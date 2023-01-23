@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import useUsers from '../../hooks/useUsers';
 import { FaEdit, FaRegGem, FaTrash } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
+import admin from '../../../public/admin-logo.png';
 
 const AllUsers = () => {
   const [users, loading] = useUsers();
@@ -22,6 +24,26 @@ const AllUsers = () => {
       user?.name?.toLowerCase().includes(event.target.value.toLowerCase())
     );
     setFilteredUsers(filteredData);
+  };
+
+  const [loader, setLoader] = useState(false);
+
+  const handleAdmin = (userId) => {
+    setLoader(true);
+
+    fetch(`https://hello-talk-webserver.vercel.app/makeadmin?email=${userId}`, {
+      method: 'PUT',
+      headers: {
+        'content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLoader(false);
+        alert('Make admin successful');
+        location.reload(true);
+      });
   };
 
   const handleDelete = async (userId) => {
@@ -59,7 +81,7 @@ const AllUsers = () => {
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
                 <tr className="bg-[#ddd]">
-                  <th className='text-start'>User Name</th>
+                  <th className="text-start">User Name</th>
                   <th>Email</th>
                   <th>Mobile Number</th>
                   <th>Country</th>
@@ -70,13 +92,35 @@ const AllUsers = () => {
                 return (
                   <tbody className="text-center" key={user?._id}>
                     <tr>
-                      <td className='text-start'>{user?.name}</td>
+                      <td className="text-start">{user?.name}</td>
                       <td>{user?.email}</td>
                       <td>{user?.number}</td>
                       <td>{user?.country}</td>
                       <td>
-                        <div>
-                          <label className="btn btn-error" onClick={() => handleDelete(user?._id)}>
+                        <div className="flex items-center gap-x-1">
+                          {/* <Image src={admin} width={50} height={50} alt="admin-logo"></Image> */}
+                          {!loading ? (
+                            <>
+                              {user?.role === 'admin' ? (
+                                <button className="btn btn-accent btn-sm" disabled>
+                                  Admin
+                                </button>
+                              ) : (
+                                <button
+                                  className="btn btn-accent btn-sm"
+                                  onClick={() => handleAdmin(user?.email)}
+                                >
+                                  Admin
+                                </button>
+                              )}
+                            </>
+                          ) : (
+                            <button className="btn btn-accent btn-sm">Loading...</button>
+                          )}
+                          <label
+                            className="btn btn-error btn-sm"
+                            onClick={() => handleDelete(user?._id)}
+                          >
                             <FaTrash />
                           </label>
                         </div>
