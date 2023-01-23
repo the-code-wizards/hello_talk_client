@@ -9,6 +9,7 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { useRouter } from 'next/router'
 import swal from 'sweetalert';
+import Cookies from 'js-cookie';
 
 const Signup = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -49,6 +50,8 @@ const Signup = () => {
     }
 
     if (token) {
+        Cookies.set("loggedin", "true");
+        console.log("cookies",Cookies)
         window.location.href = "/";
     }
 
