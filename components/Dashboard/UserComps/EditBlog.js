@@ -95,7 +95,7 @@ const EditBlog = () => {
                     <input
                       type="url"
                       placeholder="Author Image URL"
-                      defaultValue={blogDetails?.author_img}
+                      defaultValue={author_img}
                       className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                       {...register('image')}
                     />
@@ -133,9 +133,9 @@ const EditBlog = () => {
                       </>
                     )}
                     <input
-                      type="url"
+                      type="text"
                       placeholder="Blog Image URL"
-                      defaultValue={blogDetails?.image}
+                      defaultValue={image}
                       className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                       {...register('image')}
                     />
