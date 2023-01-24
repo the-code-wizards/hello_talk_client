@@ -6,9 +6,11 @@ import { signOut } from 'firebase/auth';
 import Lottie from "lottie-react";
 import gems from "../../../resources/lottieJson/gem.json";
 import Cookies from 'js-cookie';
+import useSingleUser from '../../hooks/useSingleUser';
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [singleUser] = useSingleUser()
   const logout = () => {
     signOut(auth);
     Cookies.set("loggedin", "false");
@@ -124,9 +126,9 @@ const Navbar = () => {
               <></>
             ) : (
               <>
-                  <li><div className="w-[125px] flex">
+                  <li><div className="w-[100px] flex gap-0">
                     <Lottie animationData={gems} loop={true} />
-                    <p>90</p>
+                    <p>{singleUser?.gems}</p>
                   </div></li>
                 <li>
                   <div className="dropdown dropdown-end">
