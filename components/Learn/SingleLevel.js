@@ -17,25 +17,25 @@ const SingleLevel = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
-    const [gems, setGems] = useState();
+    const [gems, setGems] = useState(0);
     console.log('Gem: ',gems);
     const mygem = {
         mGem: gems
     }
 
-            if(gems > 0){
-                fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`,{
-                method: "POST",
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(mygem)
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-            }
+        if(gems > 0){
+            fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`,{
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(mygem)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+        }
 
         
     useEffect(() => {
