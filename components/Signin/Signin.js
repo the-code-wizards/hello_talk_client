@@ -28,6 +28,7 @@ const Signin = () => {
         error,] = useSignInWithEmailAndPassword(auth);
     const token = user ? user?.user?.accessToken : gUser?.user?.accessToken;
     const [signInError, setSignInError] = useState();
+    const [postDate, setPostDate] = useState(new Date());
 
 
     if (gLoading || loading) {
@@ -43,6 +44,34 @@ const Signin = () => {
     if (token) {
         Cookies.set("loggedin", "true");
         window.location.href = "/";
+    }
+    const googleSubmit = () => {
+        const gData = {
+            name: gUser?.user?.displayName,
+            email: gUser?.user?.email,
+            profileImg: gUser?.user?.photoURL,
+            getage: 'young',
+            joined_date: moment(joined_date).format('MMMM Do YYYY, h:mm:ss a'),
+            role: 'user',
+            gems: 0
+        }
+        console.log(gData)
+        fetch(`https://hello-talk-webserver.vercel.app/user`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(gData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    swal("Congratulations! Account created successfully")
+                } else {
+                    swal("OOPS! Something wen wrong :(")
+                }
+            })
     }
 
 
