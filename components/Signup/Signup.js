@@ -95,9 +95,9 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    swal.success("Congratulations! Account created successfully")
+                    swal("Congratulations! Account created successfully")
                 }else{
-                    swal.error("OOPS! Something wen wrong :(")
+                    swal("OOPS! Something wen wrong :(")
                 }
             })
         await createUserWithEmailAndPassword(data.email, data.password, data?.age);

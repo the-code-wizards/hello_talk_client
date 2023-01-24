@@ -126,9 +126,9 @@ const Navbar = () => {
               <></>
             ) : (
               <>
-                  <li><div className="w-[100px] flex gap-0">
+                  <li><div className="w-[95px] flex gap-0">
                     <Lottie animationData={gems} loop={true} />
-                    <p>{singleUser?.gems}</p>
+                    <p className="text-[17px] font-bold">{singleUser?.gems}</p>
                   </div></li>
                 <li>
                   <div className="dropdown dropdown-end">
