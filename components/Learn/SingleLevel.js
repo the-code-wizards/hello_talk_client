@@ -23,9 +23,7 @@ const SingleLevel = () => {
     const mygem = {
         mGem: gems
     }
-    const comp_level = {
-        completed_lv: lv?.level
-    }
+    
 
             if(gems > 0){
                 fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`,{
@@ -66,7 +64,9 @@ const SingleLevel = () => {
 
 
     const lv = singleLevel[0];
-
+    const comp_level = {
+        completed_lv: lv?.level
+    }
     const handleAnswerOptionClick = (opt) => {
         if (opt === lv?.question[currentQuestion]?.answer) {
             setScore(score + 1);
