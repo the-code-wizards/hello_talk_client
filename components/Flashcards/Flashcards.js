@@ -66,7 +66,7 @@ const Flashcards = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="lg:md:px-10 lg:md:py-52 px-8">
         <Swiper
           slidesPerView={3}

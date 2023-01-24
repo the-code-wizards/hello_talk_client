@@ -18,12 +18,32 @@ const SingleLevel = () => {
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
     const [gems, setGems] = useState();
+    console.log('Gem: ',gems);
+    const mygem = {
+        mGem: gems
+    }
 
+            if(gems > 0){
+                fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`,{
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(mygem)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+            }
+
+        
     useEffect(() => {
         if (!user) {
             window.location.href = "/signin";
         }
     }, []);
+
 
     // console.log(optData)
     useEffect(() => {

@@ -6,7 +6,9 @@ const Blog = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const handleSearch = (event) => {
-    setSearchValue(event.target.value);
+    if(event?.target?.value !== " "){
+      setSearchValue(event.target.value);
+    }
     const filtered = blogs.filter((blog) =>
       blog.title.toLowerCase().includes(event.target.value.toLowerCase())
     );
@@ -23,11 +25,11 @@ const Blog = () => {
   console.log(blogs);
   return (
     <>
-      <div className="relative justify-center mt-10 mx-64 rounded-md shadow-sm text-center">
+      <div className="relative justify-center mt-10 lg:md:mx-64 mx-8 rounded-md shadow-sm text-center">
         <input
           type="search"
-          className="form-input px-5 py-2 block w-full transition duration-150 ease-in-out bg-white border border-gray-300 placeholder-gray-500 rounded-xl focus:outline-none focus:shadow-outline-blue focus:border-[#61B800]  focus:z-10 text-xl leading-5"
-          placeholder="Type Your Blogs Here"
+          className="form-input px-5 py-2 block w-full transition duration-150 ease-in-out bg-white border border-gray-300 placeholder-gray-500 placeholder:text-[18px] rounded-md focus:outline-none focus:shadow-outline-blue focus:border-[#61B800]  focus:z-10 text-xl leading-5"
+          placeholder="Blog title"
           value={searchValue}
           onChange={handleSearch}
         />

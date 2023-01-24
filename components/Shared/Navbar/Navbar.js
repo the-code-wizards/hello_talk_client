@@ -5,11 +5,13 @@ import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import Lottie from "lottie-react";
 import gems from "../../../resources/lottieJson/gem.json";
+import Cookies from 'js-cookie';
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
   const logout = () => {
     signOut(auth);
+    Cookies.set("loggedin", "false");
     localStorage.removeItem('accessToken');
   };
   return (
@@ -35,7 +37,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="font-featherBold menu menu-compact dropdown-content mt-3 p-2 shadow bg-green-300 rounded-box w-52 "
+              className="font-featherBold menu menu-compact dropdown-content mt-3 p-2 shadow bg-green-200 rounded-box w-52 "
             >
               <li>
                 <Link href="/contact">Profile</Link>
@@ -63,7 +65,7 @@ const Navbar = () => {
                   <li>
                     {' '}
                     <button
-                      className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
+                      className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
                       onClick={logout}
                     >
                       Log Out
@@ -137,9 +139,6 @@ const Navbar = () => {
                       tabIndex={0}
                       className="menu menu-compact dropdown-content mt-[250%] p-2 shadow bg-green-200 rounded-box w-52 font-bold text-[#333]"
                     >
-                      <li>
-                        <Link href="/myprofile">Profile</Link>
-                      </li>
                       {user && (
                         <>
                           <li>

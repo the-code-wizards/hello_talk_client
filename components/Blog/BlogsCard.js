@@ -14,13 +14,13 @@ const BlogsCard = ({ blog }) => {
     gems,
     package: my_package,
   } = blog;
-  console.log(tag);
+  // console.log(tag);
   return (
     <div className="flex md:flex-row flex-col items-center gap-2 rounded-xl shadow-md hover:shadow-2xl">
       <div className="flex items-end justify-start">
         <img
           src={image}
-          className="rounded-l-lg object-cover h-40 w-40"
+          className="lg:md:rounded-l-lg rounded-lg object-cover lg:md:h-40 lg:md:w-40 w-full lg:md:p-0 p-4"
           alt="blog-img"
         />
       </div>
@@ -29,7 +29,7 @@ const BlogsCard = ({ blog }) => {
           {/* <span className="badge">Badge</span> */}
           <>
           {tag?.map((ta) => {
-            <Fragment>{ta}</Fragment>;
+            <Fragment>#{ta}</Fragment>;
           })}
         </>
           <h2 className="font-bold lg:md:text-2xl text-xl text-[#58cc02]">
