@@ -52,8 +52,11 @@ const EditCourse = () => {
   } = useForm();
   const [courseStatus, setCourseStatus] = useState('');
   console.log(courseStatus);
-  const onEditCourse = async (data) => {
-    console.log(data);
+  const onEditCourse = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = 
+    console.log(event);
   };
 
   return (
@@ -64,7 +67,7 @@ const EditCourse = () => {
             <h2 className="card-title text-[#333]">Edit Course</h2>
 
             <div className="shadow-xl py-4 px-[8px]">
-              <form onSubmit={handleSubmit(onEditCourse)}>
+              <form onSubmit={onEditCourse}>
                 <div className="w-full flex justify-between gap-x-[10px]">
                   <div className="w-[100%]">
                     <input
