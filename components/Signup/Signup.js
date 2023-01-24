@@ -54,11 +54,11 @@ const Signup = () => {
             return <p className='text-red-500 font-bold'><small>{signUpError}</small></p>
     }
 
-    // if (token) {
-    //     Cookies.set("loggedin", "true");
-    //     console.log("cookies",Cookies)
-    //     window.location.href = "/";
-    // }
+    if (token) {
+        Cookies.set("loggedin", "true");
+        console.log("cookies",Cookies)
+        window.location.href = "/";
+    }
     console.log(gUser)
     
 

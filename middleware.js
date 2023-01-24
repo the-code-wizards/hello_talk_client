@@ -7,12 +7,12 @@ export default function middleware(req) {
     let url = req.url
     console.log(verify)
 
-    // if (verify === false && url.includes('/dashboard') || !verify && url.includes('/level') || !verify && url.includes('/payment')) {
-    //     return NextResponse.redirect("http://localhost:3000/signin");
-    // }
+    if (verify === false && url.includes('/dashboard') || !verify && url.includes('/level') || !verify && url.includes('/payment')) {
+        return NextResponse.redirect("http://localhost:3000/signin");
+    }
 
-    // if (verify === true && url === "http://localhost:3000/signin" || verify === true && url === "http://localhost:3000/signup") {
-    //     return NextResponse.redirect("http://localhost:3000");
-    // }
+    if (verify === true && url === "http://localhost:3000/signin" || verify === true && url === "http://localhost:3000/signup") {
+        return NextResponse.redirect("http://localhost:3000");
+    }
 
 }
