@@ -6,7 +6,7 @@ const Blog = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const handleSearch = (event) => {
-    if(event?.target?.value !== " "){
+    if (event?.target?.value !== " ") {
       setSearchValue(event.target.value);
     }
     const filtered = blogs.filter((blog) =>
