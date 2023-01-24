@@ -37,11 +37,16 @@ const Blogdetails = () => {
       <div className="card hero lg:md:min-h-screen lg:md:pt-[6rem] pt-[4rem]">
         <div className="hero-content flex-col lg:md:mx-10 mx-2 shadow-xl rounded-md ">
           <figure className="pb-4">
-            <img src={image} alt="blog" className="rounded-xl lg:md:h-[350px]" />
+            <img
+              src={image}
+              alt="blog"
+              className="rounded-xl lg:md:h-[350px]"
+            />
           </figure>
           <div className="card-body lg:md:py-5 p-0">
-            
-            <h2 className="card-title text-[#58cc02] lg:md:text-2xl text-lg">{title}</h2>
+            <h2 className="card-title text-[#58cc02] lg:md:text-2xl text-lg">
+              {title}
+            </h2>
             <p className="text-[16px]">{details}</p>
             <div class="flex items-center mt-4">
               <div className="flex items-center">

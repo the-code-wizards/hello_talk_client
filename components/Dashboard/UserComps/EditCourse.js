@@ -29,7 +29,7 @@ const EditCourse = () => {
     // if (accessToken) {
     setLoading(true);
     axios
-      .get(`https://hello-talk-webserver.vercel.app/courses/${courseid}`)
+      .get(`https://hello-talk-webserver.vercel.app/course/${courseid}`)
       .then((res) => {
         setCourseDetails(res.data);
       })
