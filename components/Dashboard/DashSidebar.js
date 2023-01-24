@@ -11,7 +11,7 @@ const DashSidebar = () => {
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="h-full menu p-4  w-64 bg-[#194881] gap-y-2 text-[#fff]">
+        <ul className="h-full menu p-4 w-64 bg-[#194881] gap-y-2 text-[#fff]">
           {/* <!-- Sidebar content here --> */}
           {user && (
             <>
@@ -55,9 +55,6 @@ const DashSidebar = () => {
                   </li>
                 </div>
               </div>
-              <li>
-                <Link href="/dashboard/makeadmin">Make Admin</Link>
-              </li>
               <li>
                 <Link href="/dashboard/allusers">All Users</Link>
               </li>
