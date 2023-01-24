@@ -15,6 +15,7 @@ const Signup = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [age, setAge] = useState(null)
     const [finalage, setFinalage] = useState('young')
+    const [postDate, setPostDate] = useState(new Date());
 
     if (age) {
         if (age < 18)
@@ -76,7 +77,9 @@ const Signup = () => {
             getage,
             age,
             role: 'user',
-            gems: 0
+            gems: 0,
+            completed_lv: [],
+            joined_date: moment(joined_date).format('MMMM Do YYYY, h:mm:ss a')
         }
         fetch(`https://hello-talk-webserver.vercel.app/user`, {
             method: "POST",
