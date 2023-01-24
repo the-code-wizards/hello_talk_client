@@ -28,6 +28,11 @@ const Signin = () => {
         error,] = useSignInWithEmailAndPassword(auth);
     const token = user ? user?.user?.accessToken : gUser?.user?.accessToken;
     const [signInError, setSignInError] = useState();
+    const currentdate = new Date();
+    const date = currentdate.toLocaleDateString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 
 
     if (gLoading || loading) {
@@ -44,6 +49,35 @@ const Signin = () => {
         Cookies.set("loggedin", "true");
         window.location.href = "/";
     }
+    const googleSubmit = () => {
+        const gData = {
+            name: gUser?.user?.displayName,
+            email: gUser?.user?.email,
+            profileImg: gUser?.user?.photoURL,
+            getage: 'young',
+            joined_date: date,
+            role: 'user',
+            gems: 0
+        }
+        console.log(gData)
+        fetch(`https://hello-talk-webserver.vercel.app/user`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(gData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    swal("Congratulations! Account created successfully")
+                } else {
+                    swal("OOPS! Something wen wrong :(")
+                }
+            })
+    }
+
 
 
     const onSubmit = data => {
@@ -95,7 +129,10 @@ const Signin = () => {
 
                             <div className="flex justify-center gap-x-[5px]">
                                 <button
-                                    onClick={() => signInWithGoogle()}
+                                    onClick={() => {
+                                            googleSubmit()
+                                            signInWithGoogle()
+                                        }}
                                     className="justify-center flex items-center mt-[15px] bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] lg:md:w-[40%] w-[50%] hover:bg-[#E5E5E5]" type="submit"><AiOutlineGoogle className="text-red-400 text-[25px] mr-[4px]" />Google</button>
                             </div>
                                 <div className="mt-4 text-center pb-4">
