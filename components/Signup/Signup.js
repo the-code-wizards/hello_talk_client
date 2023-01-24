@@ -59,34 +59,8 @@ const Signup = () => {
         console.log("cookies",Cookies)
         window.location.href = "/";
     }
-    const googleSubmit =  () => {
-        const gData = {
-            name: gUser?.user?.displayName,
-            email:gUser?.user?.email,
-            profileImg: gUser?.user?.photoURL,
-            getage : 'young',
-            joined_date: date,
-            role: 'user',
-            gems: 0
-        }
-        console.log(gData)
-         fetch(`https://hello-talk-webserver.vercel.app/user`, {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(gData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.acknowledged) {
-                    swal("Congratulations! Account created successfully")
-                }else{
-                    swal("OOPS! Something wen wrong :(")
-                }
-            })
-    }
+    console.log(gUser)
+    
 
     const onSubmit = async (data) => {
         const name = data?.displayName
@@ -121,15 +95,54 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    swal.success("Congratulations! Account created successfully")
+                    swal("Congratulations! Account created successfully")
                 }else{
-                    swal.error("OOPS! Something wen wrong :(")
+                    swal("OOPS! Something wen wrong :(")
                 }
             })
         await createUserWithEmailAndPassword(data.email, data.password, data?.age);
         await updateProfile({ displayName: data.name, age: data?.age });
     };
 
+
+    const googleSubmit = async() => {
+        try {         
+            if (gLoading) {
+                return <progress className='progress w-full'></progress>
+            }
+            else if (gUser?.user?.email) {
+                const gData = {
+                    name: gUser?.user?.displayName,
+                    email: gUser?.user?.email,
+                    profileImg: gUser?.user?.photoURL,
+                    getage: 'young',
+                    joined_date: date,
+                    role: 'user',
+                    gems: 0
+                }
+                console.log(gData)
+                await fetch(`https://hello-talk-webserver.vercel.app/user`, {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(gData)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.acknowledged) {
+                            swal("Congratulations! Account created successfully")
+                        } else {
+                            swal("OOPS! Something wen wrong :(")
+                        }
+                    })
+            } 
+        } catch (err) {
+            console.log(err)
+        }
+       
+    }
     return (
         <>
             <Head>
@@ -195,9 +208,10 @@ const Signup = () => {
 
                             <div className="flex justify-center gap-x-[5px]">
                                 <button
-                                    onClick={() => {
-                                        googleSubmit()
-                                        signInWithGoogle()}}
+                                    onClick={() => {                                        
+                                            signInWithGoogle()
+                                            gUser?.user?.email && googleSubmit()   
+                                    }}
                                     className="justify-center flex items-center mt-[15px] bg-[#fff] border-[#CECECE] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-[#1cb0f6] font-bold text-[14px] focus:border-b-[2px] lg:md:w-[40%] w-[50%] hover:bg-[#E5E5E5]" type="submit"><AiOutlineGoogle className="text-red-400 text-[25px] mr-[4px]" />Google</button>
                             </div>
                             <div className="mt-4 text-center pb-4">

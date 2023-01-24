@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import Lottie from "lottie-react";
 import signin from '../../resources/lottieJson/login.json'
 import Cookies from 'js-cookie';
+import swal from 'sweetalert';
 
 const Signin = () => {
     const router = useRouter()
