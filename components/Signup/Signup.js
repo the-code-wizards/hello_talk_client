@@ -55,10 +55,12 @@ const Signup = () => {
         console.log("cookies",Cookies)
         window.location.href = "/";
     }
+    console.log(gUser)
 
     const onSubmit = async data => {
-        const name = data.displaName;
-        const email = data.email;
+        console.log(data)
+        const name = data.displayName ? data.displayName : gUser?.user?.displayName;
+        const email = data.email ? data.email : gUser?.user?.email;
         const age = data.age;
 
         let getage

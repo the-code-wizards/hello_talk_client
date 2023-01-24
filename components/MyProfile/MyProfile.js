@@ -3,48 +3,19 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { FaTimes, IconName } from "react-icons/fa";
+import useSingleUser from "../hooks/useSingleUser";
+import Loader from "../shared/Loader";
 
 
 const MyProfile = () => {
   const [user] = useAuthState(auth)
   // console.log("User: ", user);
   const [loading,setLoading] =useState(true);
-  const [profile, setProfile] =useState({});
-  console.log(profile);
-  const {name, age,education,district, country,number,email, realAge}= profile;
-
-  useEffect(() => {
-    // if (accessToken) {
-        setLoading(true);
-        axios
-            .get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
-            .then((res) => {
-                setProfile(res?.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    // }
-}, []);
-
-  // useEffect(()=>{
-  //   fetch(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     setProfile(data)
-  //     console.log(data)
-  //     setLoading(false);
-  //   })
-
-  // },[])
-
+  const [singleUser] = useSingleUser()
+  const { name, age, education, district, country, number, email, realAge } = singleUser;
   if(loading){
-    return <h2>loading...</h2>
+    return <Loader/>
   }
-
   const handleEditProfile=(event) =>{
     event.preventDefault();
     const form = event.target;
