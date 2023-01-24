@@ -18,7 +18,7 @@ const ContactForm = () => {
                         <Lottie animationData={contactGif} loop={true}></Lottie>
                     </div>
                 </div>
-                <form action="https://formsubmit.co/your@email.com" method="POST" className="space-y-6 ng-untouched ng-pristine ng-valid">
+                <form action="https://formsubmit.co/afnanferdousi550@gmail.com" method="POST" className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div>
                         <label for="name" className="text-sm">Full name</label>
                         <input id="name" name='name' type="text" placeholder="" className="w-full p-3 rounded bg-gray-100" />
