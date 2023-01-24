@@ -247,10 +247,10 @@ const HomePage = () => {
 
         {/* ---------------Middle contents ---------------------------- */}
 
-        <div data-aos="fade-up">
+        {/* <div data-aos="fade-up">
           <SendEmailCard></SendEmailCard>
           <div className="divider max-w-[1240px] mx-auto"></div>
-        </div>
+        </div> */}
 
         {/*  -------------------------Footer------------------*/}
 
