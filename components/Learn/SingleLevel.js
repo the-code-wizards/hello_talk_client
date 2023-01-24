@@ -7,7 +7,7 @@ import Lottie from "lottie-react";
 import confetti from "../../resources/lottieJson/confetti.json";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import Loader from '../shared/Loader';
+import loader from "../../resources/lottieJson/loader.json";
 
 const SingleLevel = () => {
     const router = useRouter()
@@ -110,7 +110,9 @@ const SingleLevel = () => {
 
     }
     if(loading){
-        return <Loader/>
+        return <div className="w-[300px] h-[300px] mx-auto">
+            <Lottie animationData={loader} loop={true} />
+        </div>
     }
     return (
         <>
