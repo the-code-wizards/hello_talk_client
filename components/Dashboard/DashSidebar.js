@@ -59,6 +59,9 @@ const DashSidebar = () => {
                 <Link href="/dashboard/allusers">All Users</Link>
               </li>
               <li>
+                <Link href="/dashboard/admins">Admins</Link>
+              </li>
+              <li>
                 <Link href="/dashboard/coursesbought">Courses Bought</Link>
               </li>
               <li>
