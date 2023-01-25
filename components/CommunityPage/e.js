@@ -38,8 +38,8 @@ export default function Modal() {
                                     <p className="my-4 text-slate-500 text-lg leading-relaxed">
                                         I always felt like I could do anything. That`&apos;`s the main
                                         thing people are controlled by! Thoughts- their perception
-                                        of themselves! They're slowed down by their perception of
-                                        themselves. If you're taught you can`&apos;`t do anything, you
+                                        of themselves! They`&apos;`re slowed down by their perception of
+                                        themselves. If you`&apos;`re taught you can`&apos;`t do anything, you
                                         won`&apos;`t do anything. I was taught I could do everything.
                                     </p>
                                 </div>
