@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import swal from 'sweetalert';
 import auth from '../../firebase.init';
 
 const WriteaPost = () => {
@@ -24,7 +25,8 @@ const WriteaPost = () => {
             post: text,
             email: user.email,
             postTime: date,
-            title: title
+            title: title,
+            photoUrl: user.photoURL
         }
 
         fetch("https://hello-talk-webserver.vercel.app/addapost", {
@@ -39,6 +41,11 @@ const WriteaPost = () => {
                 console.log(res)
                 // navigate("/dashboard/myproducts")
                 // reset()
+                swal(
+                    'Your questions is posted!',
+                    'Possible reponse is near !',
+                    'success'
+                )
             })
 
     }
@@ -56,8 +63,6 @@ const WriteaPost = () => {
                 <div>
                     <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2 h-[36px] w-[600px]  bg-[#F0F2F5] px-2' onClick={() => setShowModal(true)} />
                 </div>
-
-                {/* Put this part before </body> tag */}
 
                 {showModal ? (
                     <>
