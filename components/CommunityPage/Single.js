@@ -66,6 +66,31 @@ const Single = ({ user, singlePost }) => {
     }, [])
 
     const handleLike = () => {
+        const postLike = {
+            email: user.email,
+            postTime: Date(),
+            pid: _id
+        }
+        fetch("https://hello-talk-webserver.vercel.app/postLike", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(postLike)
+        })
+            .then(res => res.json())
+            .then(res => {
+                // console.log(res)
+                // // navigate("/dashboard/myproducts")
+                // if (res.acknowledged === true) {
+                //     swal(
+                //         'Your questions is posted!',
+                //         'Possible reponse is near !',
+                //         'success'
+                //     )
+                //     form.reset()
+                // }
+            })
 
     }
 
