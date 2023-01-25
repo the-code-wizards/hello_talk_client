@@ -134,7 +134,7 @@ const Single = ({ user, singlePost }) => {
                         comments.map(comment =>
                             <SingleComment
                                 key={comment._id}
-                                comment={comment}
+                                postComment={comment}
                             >
                             </SingleComment>
                         )
