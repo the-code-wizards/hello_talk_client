@@ -61,18 +61,7 @@ const EditBlog = () => {
     formState: { errors },
   } = useForm();
   const [blogStatus, setBlogStatus] = useState('');
-  console.log(blogStatus);
-  // const {
-  //   _id,
-  //   title,
-  //   details,
-  //   date,
-  //   author_name,
-  //   author_img,
-  //   image,
-  //   tag,
-  //   package: my_package,
-  // } = blogDetails;
+  // console.log(blogStatus);
 
   const onEditBlog = (e) => {
     e.preventDefault();
