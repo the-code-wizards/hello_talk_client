@@ -54,7 +54,6 @@ const Community = () => {
                                 <div className='col-span-3 mt-8'>
                                     {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
                                     <Profile></Profile>
-
                                     {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}
                                     <TopAuthor></TopAuthor>
                                 </div>
