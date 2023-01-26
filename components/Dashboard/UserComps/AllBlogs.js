@@ -28,7 +28,11 @@ const AllBlogs = () => {
     try {
       await fetch(`https://hello-talk-webserver.vercel.app/blogs/${blogId}`, {
         method: 'DELETE',
-      });
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
       // update the blogs state and re-render the component
       // ...
     } catch (error) {
@@ -57,8 +61,8 @@ const AllBlogs = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className='bg-[#ddd]'>
-                  <th className='text-start'>Blog Title</th>
+                <tr className="bg-[#ddd]">
+                  <th className="text-start">Blog Title</th>
                   <th>Author</th>
                   <th>Status</th>
                   <th>Action</th>
@@ -68,7 +72,7 @@ const AllBlogs = () => {
                 return (
                   <tbody className="text-center" key={blog?._id}>
                     <tr>
-                      <td className='text-start'>{blog?.title}</td>
+                      <td className="text-start">{blog?.title}</td>
                       <td>{blog?.author_name}</td>
                       <td>
                         {/* <div className="badge badge-secondary">secondary</div>
