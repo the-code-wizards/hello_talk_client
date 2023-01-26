@@ -1,8 +1,8 @@
 import React from 'react';
 import { AiTwotoneLike } from 'react-icons/ai';
 
-const SingleComment = ({ postComment }) => {
-    const { name, comment, email, postTime, photoUrl, pid } = postComment
+const SingleComment = ({ comment }) => {
+    const { name, comment, email, postTime, photoUrl, pid } = comment
     return (
         <div>
             <div className='mt-3 flex  items-center'>

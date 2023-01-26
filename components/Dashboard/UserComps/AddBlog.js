@@ -45,7 +45,7 @@ const AddBlog = () => {
       my_package = '3';
     }
 
-    const tags = tag.split(' ');
+    const tags = tag.split(',');
 
     const blogDetail = {
       _id,
@@ -106,7 +106,7 @@ const AddBlog = () => {
                   />
                   <input
                     type="text"
-                    placeholder="Blog Tags"
+                    placeholder="Use comma(,) for multiple tags"
                     className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                     {...register('tag', {
                       required: {
