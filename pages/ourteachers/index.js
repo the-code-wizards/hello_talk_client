@@ -6,11 +6,11 @@ import Footer from "../../components/shared/Footer/Footer";
 const index = () => {
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
       <div className="max-w-[1240px] mx-auto">
         <OurTeachers></OurTeachers>
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 };
