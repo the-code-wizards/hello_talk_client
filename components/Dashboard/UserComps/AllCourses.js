@@ -76,7 +76,7 @@ const AllCourses = () => {
                       <td className="text-left">{course?.title}</td>
                       {/* <td>{course?.picture}</td> */}
                       <td className="text-left">
-                        {course?.details.length > 40 ? (
+                        {course?.details?.length > 40 ? (
                           <>{course?.details.slice(0, 40)}...</>
                         ) : (
                           <>{course?.details}</>

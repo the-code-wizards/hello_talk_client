@@ -16,8 +16,11 @@ const AddCourse = () => {
   } = useForm();
   const [courseStatus, setCourseStatus] = useState('');
   const onAddCourse = async (data) => {
-    const { _id, picture, title, details, price, offer_price, date } = data;
+    const { _id, picture, title, details, price, offer_price, date, module_links } = data;
     // console.log(data);
+
+    const links = module_links.split('\n');
+
     const courseDetail = {
       _id,
       picture,
@@ -26,6 +29,7 @@ const AddCourse = () => {
       price,
       offer_price,
       date,
+      module_links: links,
     };
     fetch(`https://hello-talk-webserver.vercel.app/course`, {
       method: 'POST',
@@ -81,6 +85,17 @@ const AddCourse = () => {
                       },
                     })}
                   />
+                  <input
+                    type="url"
+                    placeholder="Course Image URL"
+                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
+                    {...register('picture', {
+                      required: {
+                        value: true,
+                        message: 'Course Image URL is required',
+                      },
+                    })}
+                  />
                 </div>
                 <div className="w-[100%]">
                   <textarea
@@ -93,15 +108,13 @@ const AddCourse = () => {
                       },
                     })}
                   />
-
-                  <input
-                    type="url"
-                    placeholder="Course Image URL"
-                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                    {...register('picture', {
+                  <textarea
+                    className="textarea w-full h-[155px] max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] "
+                    placeholder="Use space for multiple links"
+                    {...register('module_links', {
                       required: {
                         value: true,
-                        message: 'Course Image URL is required',
+                        message: 'Module Links is required',
                       },
                     })}
                   />

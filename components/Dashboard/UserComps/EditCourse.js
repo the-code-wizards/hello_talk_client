@@ -23,6 +23,7 @@ const EditCourse = () => {
     price,
     date,
     offer_price,
+    module_links,
     // author_img,
     // image,
     // tag,
@@ -66,6 +67,9 @@ const EditCourse = () => {
     const details = form.details.value;
     const price = form.price.value;
     const offer_price = form.offer_price.value;
+    const getModuleLinks = form.module_links.value;
+    const module_links = getModuleLinks.split('\n');
+
 
     const editCourseBody = {
       title1: title,
@@ -74,6 +78,7 @@ const EditCourse = () => {
       date1: newDate,
       price1: price,
       offer_price1: offer_price,
+      module_links1: module_links,
     };
     console.log('Edit course', editCourseBody);
     fetch(`https://hello-talk-webserver.vercel.app/upcourse?id=${_id}`, {
@@ -136,10 +141,17 @@ const EditCourse = () => {
                   <div className="w-[100%]">
                     <textarea
                       className="textarea w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] "
-                      placeholder="Blog Content"
+                      placeholder="Course Content"
                       defaultValue={details}
                       // {...register('details')}
                       name="details"
+                    />
+                    <textarea
+                      className="textarea w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] "
+                      placeholder="Module Links"
+                      defaultValue={module_links}
+                      // {...register('details')}
+                      name="module_links"
                     />
                   </div>
                 </div>
