@@ -9,6 +9,12 @@ const EditCourse = () => {
   const router = useRouter();
   const courseid = router.query.editcoursedetail;
 
+  const currentdate = new Date();
+  const newDate = currentdate.toLocaleDateString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
   const {
     _id,
     picture,
@@ -29,7 +35,7 @@ const EditCourse = () => {
     // if (accessToken) {
     setLoading(true);
     axios
-      .get(`https://hello-talk-webserver.vercel.app/courses/${courseid}`)
+      .get(`https://hello-talk-webserver.vercel.app/course/${courseid}`)
       .then((res) => {
         setCourseDetails(res.data);
       })
@@ -51,9 +57,35 @@ const EditCourse = () => {
     formState: { errors },
   } = useForm();
   const [courseStatus, setCourseStatus] = useState('');
-  console.log(courseStatus);
-  const onEditCourse = async (data) => {
-    console.log(data);
+  // console.log(courseStatus);
+  const onEditCourse = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const picture = form.picture.value;
+    const title = form.title.value;
+    const details = form.details.value;
+    const price = form.price.value;
+    const offer_price = form.offer_price.value;
+
+    const editCourseBody = {
+      title,
+      picture,
+      details,
+      date: newDate,
+      price,
+      offer_price,
+    };
+    fetch(`https://hello-talk-webserver.vercel.app/upcourse/${_id}`, {
+      method: 'POST',
+      headers: { 'content-Type': 'application/json' },
+      // authorization: `bearer ${localStorage.getItem("s-token")}`,
+      body: JSON.stringify(editCourseBody),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert('Edit Course Successfull');
+        console.log(data);
+      });
   };
 
   return (
@@ -64,7 +96,7 @@ const EditCourse = () => {
             <h2 className="card-title text-[#333]">Edit Course</h2>
 
             <div className="shadow-xl py-4 px-[8px]">
-              <form onSubmit={handleSubmit(onEditCourse)}>
+              <form onSubmit={onEditCourse}>
                 <div className="w-full flex justify-between gap-x-[10px]">
                   <div className="w-[100%]">
                     <input
@@ -72,28 +104,32 @@ const EditCourse = () => {
                       placeholder="Course Title"
                       defaultValue={title}
                       className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                      {...register('courseTitle')}
+                      // {...register('courseTitle')}
+                      name="title"
                     />
                     <input
                       type="text"
                       placeholder="Regular Price"
                       defaultValue={price}
                       className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                      {...register('price')}
+                      // {...register('price')}
+                      name="price"
                     />
                     <input
                       type="text"
                       placeholder="Offer Price"
                       defaultValue={offer_price}
                       className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                      {...register('offer_price')}
+                      // {...register('offer_price')}
+                      name="offer_price"
                     />
                     <input
                       type="url"
                       placeholder="Course Image URL"
                       defaultValue={picture}
                       className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                      {...register('image')}
+                      // {...register('image')}
+                      name="picture"
                     />
                   </div>
                   <div className="w-[100%]">
@@ -101,40 +137,9 @@ const EditCourse = () => {
                       className="textarea w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] "
                       placeholder="Blog Content"
                       defaultValue={details}
-                      {...register('details')}
+                      // {...register('details')}
+                      name="details"
                     />
-
-                    {/* <select
-                      className="select select-bordered w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                      onChange={(e) => setBlogStatus(e.target.value)}
-                      {...register('status')}
-                    >
-                      <option value="Free">Free</option>
-                      <option value="Premium">Premium</option>
-                    </select>
-                    {blogStatus === 'Premium' && (
-                      <>
-                        <input
-                          type="number"
-                          placeholder="Price"
-                          className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                          {...register('price')}
-                        />
-                        <input
-                          type="number"
-                          placeholder="Gems"
-                          className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                          {...register('priceGem')}
-                        />
-                      </>
-                    )} */}
-                    {/* <input
-                      type="url"
-                      placeholder="Blog Image URL"
-                      defaultValue={picture}
-                      className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                      {...register('image')}
-                    /> */}
                   </div>
                 </div>
                 <button

@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import useSingleUser from '../hooks/useSingleUser';
 
 const Leaderboard = () => {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
-  
+  const [singleUser] = useSingleUser()
+  const [userRank, setUserRank] = useState()
+  const [sortedArray, setSortedArray] = useState()
 
   useEffect(() => {
     setLoading(true);
@@ -20,11 +23,24 @@ const Leaderboard = () => {
       });
   }, []);
 
-  users.sort((a, b) => a?.gems - b?.gems);
-  // console.log(users)
-  // users?.map((user) => (
-  //    user?.gems.sort(function (a, b) { return a - b })
-  // ))
+  useEffect(() => {
+    if (users) {
+      setSortedArray(users.sort((a, b) => b.gems - a.gems));
+    }
+  }, [users])
+
+  useEffect(() => {
+    if (sortedArray && singleUser) {
+      let userRank;
+      sortedArray.forEach((user, index) => {
+        if (user.email === singleUser.email) {
+          userRank = index + 1;
+        }
+      });
+      setUserRank(userRank);
+    }
+  }, [sortedArray, singleUser])
+  let rank = 1;
   return (
     <>
       {/*------------------ Leaderboard data api theke data call kore map korte hbe ------------ */}
@@ -47,12 +63,12 @@ const Leaderboard = () => {
               <tr>
                 <td className="bg-[#fff] text-green-400">
                   <div>
-                    <div className="font-bold">Afnan Ferdousi</div>
+                    <div className="font-bold capitalize">{singleUser?.name}</div>
                   </div>
                 </td>
-                <th className="bg-[#fff] text-green-400">afnanferdousi550@gmail.com</th>
-                <th className="bg-[#fff] text-green-400">1</th>
-                <td className="bg-[#fff] text-green-400">165</td>
+                <th className="bg-[#fff] text-green-400">{singleUser?.email}</th>
+                <th className="bg-[#fff] text-green-400">{userRank}</th>
+                <td className="bg-[#fff] text-green-400">{singleUser?.gems}</td>
               </tr>
             </tbody>
           </table>
@@ -72,17 +88,18 @@ const Leaderboard = () => {
               </tr>
             </thead>
             <tbody>
-              {users?.map((user) => {
-                console.log(user?.email);
+              {sortedArray?.map((user,index) => {
+                        
                 return (
                   <>
+                   {/* {user?.email === singleUser?.email && setUserRank(rank)} */}
                     <tr className="bg-[#edffdf] border-none text-[#333] shadow-lg">
                       <td className="bg-[#edffdf] border-none text-[#333]">
-                        {user?.name ? user?.name : user?.email}
+                        {user?.name}
                       </td>
                       <td className="bg-[#edffdf] border-none text-[#333]">{user?.email}</td>
-                      <td className="bg-[#edffdf] border-none text-[#333]">1</td>
-                      <td className="bg-[#edffdf] border-none text-[#333]">165</td>
+                      <td className="bg-[#edffdf] border-none text-[#333]">{index+1}</td>
+                      <td className="bg-[#edffdf] border-none text-[#333]">{user?.gems}</td>
                     </tr>
                   </>
                 )

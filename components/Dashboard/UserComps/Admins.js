@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useUsers from '../../hooks/useUsers';
 import { FaTrash } from 'react-icons/fa';
 
-const AllUsers = () => {
+const Admins = () => {
   const [users, loading] = useUsers();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -25,31 +25,11 @@ const AllUsers = () => {
 
   const [loader, setLoader] = useState(false);
 
-  const handleAdmin = (userId) => {
-    setLoader(true);
-
-    fetch(`https://hello-talk-webserver.vercel.app/makeadmin?email=${userId}`, {
-      method: 'PUT',
-      headers: {
-        'content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setLoader(false);
-        alert('Make admin successful');
-        location.reload(true);
-      });
-  };
-
   const handleDelete = async (userId) => {
     try {
       await fetch(`https://hello-talk-webserver.vercel.app/profile/${userId}`, {
         method: 'DELETE',
       });
-      // update the courses state and re-render the component
-      // ...
     } catch (error) {
       console.error(error);
     } finally {
@@ -60,7 +40,7 @@ const AllUsers = () => {
   return (
     <div className="md:pt-[5rem] pt-3">
       <div className="card-body" style={{ width: '100%' }}>
-        <h2 className="card-title text-[#333]">All Users</h2>
+        <h2 className="card-title text-[#333]">All Admins</h2>
 
         <input
           type="search"
@@ -88,40 +68,24 @@ const AllUsers = () => {
               {filteredUsers.map((user) => {
                 return (
                   <tbody className="text-center" key={user?._id}>
-                    <tr>
-                      <td className="text-start">{user?.name}</td>
-                      <td>{user?.email}</td>
-                      <td>{user?.number}</td>
-                      <td>{user?.country}</td>
-                      <td>
-                        <div className="flex items-center gap-x-1">
-                          {!loading ? (
-                            <>
-                              {user?.role === 'admin' ? (
-                                <button className="btn btn-accent btn-sm" disabled>
-                                  Admin
-                                </button>
-                              ) : (
-                                <button
-                                  className="btn btn-accent btn-sm"
-                                  onClick={() => handleAdmin(user?.email)}
-                                >
-                                  Admin
-                                </button>
-                              )}
-                            </>
-                          ) : (
-                            <button className="btn btn-accent btn-sm">Loading...</button>
-                          )}
+                    {user?.role === 'admin' ? (
+                      <tr>
+                        <td className="text-start">{user?.name}</td>
+                        <td>{user?.email}</td>
+                        <td>{user?.number}</td>
+                        <td>{user?.country}</td>
+                        <td>
                           <label
                             className="btn btn-error btn-sm"
                             onClick={() => handleDelete(user?._id)}
                           >
                             <FaTrash />
                           </label>
-                        </div>
-                      </td>
-                    </tr>
+                        </td>
+                      </tr>
+                    ) : (
+                      <></>
+                    )}
                   </tbody>
                 );
               })}
@@ -133,4 +97,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default Admins;
