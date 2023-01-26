@@ -68,14 +68,15 @@ const EditCourse = () => {
     const offer_price = form.offer_price.value;
 
     const editCourseBody = {
-      title,
-      picture,
-      details,
-      date: newDate,
-      price,
-      offer_price,
+      title1: title,
+      picture1: picture,
+      details1: details,
+      date1: newDate,
+      price1: price,
+      offer_price1: offer_price,
     };
-    fetch(`https://hello-talk-webserver.vercel.app/upcourse/${_id}`, {
+    console.log('Edit course', editCourseBody);
+    fetch(`https://hello-talk-webserver.vercel.app/upcourse?id=${_id}`, {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,
