@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddCourse = () => {
+  const currentdate = new Date();
+  const date = currentdate.toLocaleDateString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
   const {
     register,
     handleSubmit,
@@ -10,7 +16,31 @@ const AddCourse = () => {
   } = useForm();
   const [courseStatus, setCourseStatus] = useState('');
   const onAddCourse = async (data) => {
-    console.log(data);
+    const { _id, picture, title, details, price, offer_price, date, module_links } = data;
+    // console.log(data);
+
+    const links = module_links.split('\n');
+
+    const courseDetail = {
+      _id,
+      picture,
+      title,
+      details,
+      price,
+      offer_price,
+      date,
+      module_links: links,
+    };
+    fetch(`https://hello-talk-webserver.vercel.app/course`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(courseDetail),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert('Course Added');
+        console.log(data);
+      });
   };
   return (
     <div className=" pt-[4rem] w-full">
@@ -26,7 +56,7 @@ const AddCourse = () => {
                     type="text"
                     placeholder="Course Title"
                     className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                    {...register('courseTitle', {
+                    {...register('title', {
                       required: {
                         value: true,
                         message: 'Course Title is required',
@@ -35,9 +65,9 @@ const AddCourse = () => {
                   />
                   <input
                     type="text"
-                    placeholder="Author Name"
+                    placeholder="Regular Price"
                     className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                    {...register('author', {
+                    {...register('price', {
                       required: {
                         value: true,
                         message: 'Author Name is required',
@@ -46,12 +76,23 @@ const AddCourse = () => {
                   />
                   <input
                     type="text"
-                    placeholder="Course Tags"
+                    placeholder="Offer Price"
                     className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                    {...register('tags', {
+                    {...register('offer_price', {
                       required: {
                         value: true,
                         message: 'Course Tags is required',
+                      },
+                    })}
+                  />
+                  <input
+                    type="url"
+                    placeholder="Course Image URL"
+                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
+                    {...register('picture', {
+                      required: {
+                        value: true,
+                        message: 'Course Image URL is required',
                       },
                     })}
                   />
@@ -60,51 +101,20 @@ const AddCourse = () => {
                   <textarea
                     className="textarea w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] "
                     placeholder="Course Content"
-                    {...register('courseContent', {
+                    {...register('details', {
                       required: {
                         value: true,
                         message: 'Course Content is required',
                       },
                     })}
                   />
-
-                  <select
-                    className="select select-bordered w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                    onChange={(e) => setCourseStatus(e.target.value)}
-                    {...register('status', {
+                  <textarea
+                    className="textarea w-full h-[155px] max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] "
+                    placeholder="Use space for multiple links"
+                    {...register('module_links', {
                       required: {
                         value: true,
-                        message: 'Status is required',
-                      },
-                    })}
-                  >
-                    <option value="Free">Free</option>
-                    <option value="Premium">Premium</option>
-                  </select>
-                  {courseStatus === 'Premium' && (
-                    <>
-                      <input
-                        type="number"
-                        placeholder="Price"
-                        className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                        {...register('price')}
-                      />
-                      <input
-                        type="number"
-                        placeholder="Gems"
-                        className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                        {...register('priceGem')}
-                      />
-                    </>
-                  )}
-                  <input
-                    type="url"
-                    placeholder="Course Image URL"
-                    className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                    {...register('image', {
-                      required: {
-                        value: true,
-                        message: 'Course Image URL is required',
+                        message: 'Module Links is required',
                       },
                     })}
                   />
