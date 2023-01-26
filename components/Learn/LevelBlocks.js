@@ -1,10 +1,30 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useRef } from 'react';
 import blockImg from '../../public/blockMascot.png';
 import useLevels from '../hooks/useLevels';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useSingleUser from '../hooks/useSingleUser';
+import Cert from './Cert';
+import ReactToPrint from 'react-to-print';
+
+// const CertPrinter = () => {
+//   let componentRef = useRef()
+//   return (
+//     <>
+//       <Cert ref={componentRef} />
+//       <ReactToPrint
+//         trigger={() => (
+//           <button className="btn btn-primary text-white my-3 w-25 mx-auto">Print Certificate</button>
+//         )}
+//         content={() => componentRef?.current}
+//         pageStyle={`@page {
+//                     size: 500mm 297mm;
+//                   }`}
+//       />
+//     </>
+//   )
+// }
 
 const LevelBlocks = () => {
   const [user, error] = useAuthState(auth);
@@ -14,12 +34,19 @@ const LevelBlocks = () => {
   // console.log(levels)
 
   return (
-    <div className="grid lg:md:grid-cols-6 grid-cols-3 gap-x-[10px] lg:md:mt-4 mt-2 m-4 lg:md:gap-x-[12px] h-[10px]">
+    <div className="flex flex-col items-center">
+       {singleUser?.completed_lv && singleUser?.completed_lv.length === level?.length &&
+                <>
+                <Link href="/printcert"><button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[100%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]">Print Your Certificate</button></Link>
+                </>}
+      
+    <div className="grid lg:md:grid-cols-6 grid-cols-3 gap-x-[10px] lg:md:mt-4 mt-2 m-4 lg:md:gap-x-[12px] h-[10px] lg:md:ml-4">
       {
         levels?.map((level) => { 
           // console.log(level)
           return (
             <>
+             
               {
                 singleUser?.completed_lv?.includes(level?.level) ?
                   <>
@@ -50,6 +77,7 @@ const LevelBlocks = () => {
             </>
           );
         })}
+    </div>
     </div>
   );
 };
