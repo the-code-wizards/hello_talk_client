@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const EditBlog = () => {
+  // const navigate = useNavigate();
   const [blogDetails, setBlogDetails] = useState({});
 
   const router = useRouter();
@@ -25,6 +27,7 @@ const EditBlog = () => {
     image,
     tag,
     package: my_package,
+    age,
   } = blogDetails;
 
   // useEffect(() => {
@@ -60,35 +63,53 @@ const EditBlog = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const [blogStatus, setBlogStatus] = useState('');
+  const [blogStatus, setBlogStatus] = useState('free');
   // console.log(blogStatus);
 
   const onEditBlog = (e) => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
+    const author_name = form.author_name.value;
     const details = form.details.value;
     const tag = form.tag.value;
-    const getPack = form.package.value;
+    const getPack = blogStatus;
+    const myAge = form.age.value;
+    let userAge;
+    if (myAge) {
+      if (myAge < 18) {
+        userAge = 'young';
+      }
+      if (myAge >= 18) {
+        userAge = 'adult';
+      }
+      // if ((myAge = ' ')) {
+      //   userAge = 'neutral';
+      // }
+    }
     let my_package;
     if (getPack === 'premium') {
-      my_package = '3';
+      my_package = 3;
+    } else {
+      my_package = null;
     }
 
     const tags = tag.split(',');
     const editBlogBody = {
-
-      title,
-      details,
-      date: newDate,
-      author_name,
-      author_img,
-      image,
-      tag: tags,
-      package: getPack,
-      gems: my_package,
+      title1: title,
+      details1: details,
+      date1: newDate,
+      author_name1: author_name,
+      author_img1: author_img,
+      image1: image,
+      tag1: tags,
+      package1: getPack,
+      gems1: my_package,
+      age1: userAge,
     };
-    fetch(`https://hello-talk-webserver.vercel.app/upblog/${_id}`, {
+    // console.log('edit blog body', editBlogBody);
+
+    fetch(`https://hello-talk-webserver.vercel.app/upblog?id=${_id}`, {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,
@@ -96,9 +117,29 @@ const EditBlog = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert('Edit blog Successfull');
-        console.log(data);
+        alert('Edit blog Successful');
+        // navigate("/allblogs");
+        // window.location('/allblogs');
       });
+
+    // axios({
+    //   method: 'POST',
+    //   url: `https://hello-talk-webserver.vercel.app/upblog?id=${_id}`,
+    //   data: editBlogBody,
+    // });
+    // useEffect(() => {
+    //   fetch(`https://hello-talk-webserver.vercel.app/upblog/${_id}`, {
+    //     method: 'POST',
+    //     headers: { 'content-Type': 'application/json' },
+    //     // authorization: `bearer ${localStorage.getItem("s-token")}`,
+    //     body: JSON.stringify(editBlogBody),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       alert('Edit blog Successful');
+    //       console.log(data);
+    //     });
+    // }, []);
 
     // console.log('This is data', title, details, tag, getPack);
   };
@@ -159,8 +200,8 @@ const EditBlog = () => {
                       // {...register('status')}
                       name="package"
                     >
-                      <option value="Free">Free</option>
-                      <option value="Premium">Premium</option>
+                      <option value="free">Free</option>
+                      <option value="premium">Premium</option>
                     </select>
                     {/* {blogStatus === 'Premium' && (
                       <>
@@ -181,13 +222,14 @@ const EditBlog = () => {
                       </>
                     )} */}
 
-                    {/* <input
+                    <input
                       type="text"
-                      placeholder="Blog Image URL"
-                      defaultValue={image}
+                      placeholder="Age"
+                      defaultValue={age}
                       className="input w-full max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
-                      {...register('image')}
-                    /> */}
+                      // {...register('image')}
+                      name="age"
+                    />
                   </div>
                 </div>
                 <button
