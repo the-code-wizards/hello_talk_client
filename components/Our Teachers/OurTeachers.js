@@ -1,6 +1,8 @@
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import OurTeacher from "./OurTeacher";
+import Navbar from '../shared/Navbar/Navbar';
+import Footer from '../shared/Footer/Footer';
 
 const OurTeachers = () => {
   const [teachers, setTeachers] = useState([]);
@@ -11,6 +13,7 @@ const OurTeachers = () => {
   }, []);
   return (
    <>
+   <Navbar/>
    <Head>
     <title>HelloTalk - Our Teachers</title>
    </Head>
@@ -23,7 +26,9 @@ const OurTeachers = () => {
           <OurTeacher key={teacher.id} teacher={teacher}></OurTeacher>
         ))}
       </div>
-    </section></>
+    </section>
+    <Footer/>
+    </>
   );
 };
 

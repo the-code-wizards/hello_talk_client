@@ -1,9 +1,12 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import Navbar from '../shared/Navbar/Navbar';
+import Footer from '../shared/Footer/Footer';
 
 const OurTeam = () => {
   return (
     <div>
+      <Navbar/>
       <section className="py-6 text-gray-800">
         <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
           <p className="p-2 mt-5 text-sm  tracking-wider text-center uppercase font-featherbold">
@@ -170,6 +173,7 @@ const OurTeam = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

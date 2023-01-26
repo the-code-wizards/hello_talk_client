@@ -10,11 +10,9 @@ const index = () => {
       <Head>
         <title>HelloTalk - Our Team</title>
       </Head>
-      <Navbar/>
       <div className="max-w-[1240px] mx-auto">
         <OurTeam></OurTeam>
       </div>
-      <Footer/>
     </div>
   );
 };
