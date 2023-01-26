@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
-
-
-const CheckOut = () => {
+const CheckOut = ({ id, ammount }) => {
+    const [user, error] = useAuthState(auth);
     const [cardError, setCarderror] = useState("")
     const [success, setSuccess] = useState("")
     const [processing, setProcessing] = useState(false)
@@ -11,11 +12,13 @@ const CheckOut = () => {
 
     const stripe = useStripe();
     const elements = useElements();
+
+
     const order = {
-        price: 50,
-        email: "1@gmail.com",
-        name: "galib",
-        _id: 56
+        price: ammount,
+        email: user.email,
+        name: user.displayName,
+        _id: id
     }
 
     const { price, name, _id, ind } = order;
@@ -82,8 +85,8 @@ const CheckOut = () => {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: name,
-                        email: email
+                        name: user.displayName,
+                        email: user.email
                     },
                 },
             },
