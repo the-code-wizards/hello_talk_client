@@ -81,7 +81,7 @@ const FreqAskedQ = () => {
         <title>HelloTalk - FAQ</title>
       </Head>
       <div className="container mx-auto py-20 flex flex-col items-center justify-center">
-        <h1 className="my-10 md:mx-32 mx-3 sm:mx-32 text-[#61B800] text-center text-5xl font-bold">
+        <h1 className="my-10 md:mx-32 mx-3 sm:mx-32 text-[#61B800] text-center text-4xl font-bold">
           Frequently Asked Questions
         </h1>
         <div className="relative mb-10 w-1/2 rounded-md shadow-sm text-center">

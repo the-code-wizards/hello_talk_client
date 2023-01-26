@@ -8,6 +8,7 @@ import BottomNav from "../../components/Learn/BottomNav";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import Head from "next/head";
 import SendEmailCard from "../../components/Home/SendEmailCard";
+import Link from "next/link";
 
 const index = () => {
   return (
@@ -20,19 +21,22 @@ const index = () => {
         <div className="lg:md:block hidden">
           <Sidebar />
         </div>
-        <LevelBlocks />
         <div>
-          <LeaderBoardCard />
-          <GemCollectionCard />
+          {/* <Link href="/printcert"><button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[40%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] mx-auto">Print Your Certificate</button></Link> */}
+          <LevelBlocks />
+        </div>
+        <div>
+          {/* <LeaderBoardCard /> */}
+          <SendEmailCard></SendEmailCard>
+          {/* <GemCollectionCard /> */}
         </div>
       </div>
       <div className="lg:md:hidden block">
         <BottomNav />
       </div>
-      <div className="divider max-w-[1240px] mx-auto"></div>
-      <div data-aos="fade-up">
-        <SendEmailCard></SendEmailCard>
-      </div>
+      {/* <div data-aos="fade-up">
+        
+      </div> */}
     </div>
   );
 };

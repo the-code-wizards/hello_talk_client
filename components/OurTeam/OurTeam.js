@@ -6,10 +6,10 @@ const OurTeam = () => {
     <div>
       <section className="py-6 text-gray-800">
         <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
-          <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">
+          <p className="p-2 mt-5 text-sm  tracking-wider text-center uppercase font-featherbold">
             HelloTalk Team
           </p>
-          <h1 className="text-4xl font-bold leading-none text-center sm:text-5xl">
+          <h1 className="mb-10 md:mx-32 mx-3 sm:mx-32 text-[#61B800] text-center text-4xl font-bold">
             Meet Our Team
           </h1>
           <div className="flex flex-row flex-wrap-reverse justify-center mt-8">
@@ -96,7 +96,7 @@ const OurTeam = () => {
               />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leading-snug">
-                  Afnan Fardousi
+                  Afnan Ferdousi
                 </p>
                 <p>Full-Stack Developer</p>
               </div>
