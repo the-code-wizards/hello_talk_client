@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
-import Navbar from '../shared/Navbar/Navbar';
-import Footer from '../shared/Footer/Footer';
+import Navbar from '../Shared/Navbar/Navbar';
+import Footer from '../Shared/Footer/Footer';
 
 const OurTeam = () => {
   return (
