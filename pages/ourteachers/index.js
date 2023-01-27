@@ -1,7 +1,5 @@
 import React from "react";
 import OurTeachers from "../../components/Our Teachers/OurTeachers";
-import Navbar from "../../components/shared/Navbar/Navbar";
-import Footer from "../../components/shared/Footer/Footer";
 
 const index = () => {
   return (
