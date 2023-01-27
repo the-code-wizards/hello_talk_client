@@ -12,11 +12,12 @@ const MyProfile = () => {
   const [loading,setLoading] =useState(true);
   const [singleUser] = useSingleUser()
   const { name, age, education, district, country, number, email, realAge } = singleUser;
-  if(loading){
-    return <div className="w-[300px] h-[300px] mx-auto">
-      <Lottie animationData={loader} loop={true} />
-    </div>
-  }
+  console.log(singleUser)
+  // if(loading){
+  //   return <div className="w-[300px] h-[300px] mx-auto">
+  //     <Lottie animationData={loader} loop={true} />
+  //   </div>
+  // }
   const handleEditProfile=(event) =>{
     event.preventDefault();
     const form = event.target;
