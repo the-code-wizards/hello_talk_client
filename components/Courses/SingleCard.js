@@ -19,6 +19,9 @@ const SingleCard = ({ course }) => {
 
   console.log(enrolled)
   console.log(singleUser)
+
+  const productData = enrolled?.map((single) => single?.productId);
+  
   return (
     <div className="card card-compact bg-white shadow-2xl ">
       <div className="p-3  mx-auto">
@@ -35,7 +38,7 @@ const SingleCard = ({ course }) => {
           </p>
           <h2 className="text-2xl text-[#00CC17] font-bold"> ৳{offer_price}</h2>
         </div>
-        {enrolled?.filter(e => e?.productId === _id) ?
+        {productData.includes(_id) ?
           <Link href={`/course/enrolled/${_id}`}><button className="btn  bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[100%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] ">Enrolled</button></Link>
           :
           <Link href={`/course/${_id}`}>
