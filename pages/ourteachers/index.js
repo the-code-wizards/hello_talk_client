@@ -5,7 +5,7 @@ const index = () => {
   return (
     <div>
       {/* <Navbar/> */}
-      <div className="max-w-[1240px] mx-auto">
+      <div className="">
         <OurTeachers></OurTeachers>
       </div>
       {/* <Footer/> */}
