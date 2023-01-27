@@ -1,12 +1,18 @@
-import React from 'react';
-import OurTeam from '../../components/OurTeam/OurTeam';
+import Head from "next/head";
+import React from "react";
+import OurTeam from "../../components/OurTeam/OurTeam";
 
 const index = () => {
-    return (
-        <div className='max-w-[1240px] mx-auto'>
-            <OurTeam></OurTeam>
-        </div>
-    );
+  return (
+    <div>
+      <Head>
+        <title>HelloTalk - Our Team</title>
+      </Head>
+      <div className="max-w-[1240px] mx-auto">
+        <OurTeam></OurTeam>
+      </div>
+    </div>
+  );
 };
 
 export default index;

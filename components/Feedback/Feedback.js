@@ -1,70 +1,70 @@
-import React, { useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 // import required modules
-import { Pagination, Navigation } from 'swiper';
+import { Pagination, Navigation } from "swiper";
 
 const Feedback = () => {
   const fakeRevData = [
     {
       id: 1,
-      name: 'Afnan Ferdousi',
-      img: '/',
+      name: "Afnan Ferdousi",
+      img: "/",
       review:
-        'Loved the experince so far. They provide authentic and helpful contents to improve our language skill',
+        "Loved the experince so far. They provide authentic and helpful contents to improve our language skill",
       stars: 4,
     },
     {
       id: 2,
-      name: 'Abdullah Al Shaimpn',
-      img: '/',
+      name: "Abdullah Al Shaimpn",
+      img: "/",
       review:
-        'Loved the experince so far. They provide authentic and helpful contents to improve our language skill',
+        "Loved the experince so far. They provide authentic and helpful contents to improve our language skill",
       stars: 5,
     },
     {
       id: 3,
-      name: 'MD Asadulla Al Galib',
-      img: '/',
+      name: "MD Asadulla Al Galib",
+      img: "/",
       review:
         "Just so so. The website lags a lot, there is a lot of ads that doesn't let me concentrate on the lessons",
       stars: 2,
     },
     {
       id: 4,
-      name: 'Sujoy Paul',
-      img: '/',
+      name: "Sujoy Paul",
+      img: "/",
       review:
-        'They have amazing customer service. I surely will tell all the people I know to use their website!',
+        "They have amazing customer service. I surely will tell all the people I know to use their website!",
       stars: 4,
     },
     {
       id: 5,
-      name: 'Kasib Mohammad Chowdhury',
-      img: '/',
+      name: "Kasib Mohammad Chowdhury",
+      img: "/",
       review:
-        'They have amazing customer service. I surely will tell all the people I know to use their website!',
+        "They have amazing customer service. I surely will tell all the people I know to use their website!",
       stars: 4,
     },
     {
       id: 6,
-      name: 'Mosharaf Hossain',
-      img: '/',
+      name: "Mosharaf Hossain",
+      img: "/",
       review:
         "Just so so. The website lags a lot, there is a lot of ads that doesn't let me concentrate on the lessons",
       stars: 1,
     },
   ];
   return (
-    <div className="lg:md:px-10 px-8">
+    <div className="lg:md:sm:px-15 px-8">
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={30}
-        slidesPerGroup={3}
+        slidesPerGroup={1}
         loop={true}
         loopFillGroupWithBlank={true}
         pagination={{
@@ -78,9 +78,9 @@ const Feedback = () => {
           return (
             <div key={data?.id}>
               <SwiperSlide>
-                <div className="card shadow-md py-4 border-inherit ">
+                <div className="card shadow-2xl my-10 py-4 border-inherit ">
                   <div className="avatar flex justify-center">
-                    <div className="w-24 rounded-full ring ring-[#61E002] ring-offset-base-100 ring-offset-2">
+                    <div className="w-24 rounded-full my-3 ring ring-[#61E002] ring-offset-base-100 ring-offset-2">
                       <img src="https://placeimg.com/192/192/people" />
                     </div>
                   </div>
