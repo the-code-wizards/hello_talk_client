@@ -63,6 +63,7 @@ const LevelBlocks = () => {
                     </Link></>
                   :
                   <>
+                   <Link href={`/level/${level.level}`} className="">
                     <div data-tip="Complete previous level" className="tooltip-success tooltip:text-[10px] tooltip flex flex-col justify-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 items-center">
                         <img className="w-20" src="https://i.ibb.co/TqQyDqg/block-Mascot.png" alt="/" />
                         <span
@@ -71,7 +72,8 @@ const LevelBlocks = () => {
                         >
                           {level.level}
                         </span>
-                      </div>
+                    </div>
+                  </Link>
                   </>
               }
             </>
