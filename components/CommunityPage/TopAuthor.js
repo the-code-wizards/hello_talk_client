@@ -3,13 +3,13 @@ import React from 'react';
 const TopAuthor = () => {
     return (
         <div>
-            <div className="card w-80 bg-base-100 shadow-xl">
-                <div className='bg-[#92deff] rounded-t-lg p-2'>
+            <div className="card w-80 bg-[#fff] shadow-xl">
+                <div className='card shadow-xl p-2 m-4 border-[2px] border-green-400'>
                     <h1 className='text-[24px] mt-2 text-center bg-white rounded-lg'>Top Helpful Author</h1>
                     <div className='grid grid-cols-10 '>
                         <div className='col-span-3 place-self-center mt-4'>
                             <div className="avatar ">
-                                <div className="w-16 rounded-full ring ring-[#189bd3] ring-offset-base-100 ring-offset-2">
+                                <div className="w-16 rounded-full ring ring-[#189bd3] ring-offset-[#fff] ring-offset-2">
                                     <img src="https://placeimg.com/192/192/people" />
                                 </div>
                             </div>

@@ -51,7 +51,7 @@ const Community = () => {
                                 </div>
 
                                 {/* >>>>>>>> Leader chart <<<<<<<<<<<<<<<<  */}
-                                <div className='col-span-3 mt-8'>
+                                <div className='col-span-3 mt-8 pr-2'>
                                     {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
                                     <Profile></Profile>
                                     {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}

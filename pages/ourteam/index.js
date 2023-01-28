@@ -8,7 +8,7 @@ const index = () => {
       <Head>
         <title>HelloTalk - Our Team</title>
       </Head>
-      <div className="max-w-[1240px] mx-auto">
+      <div className="">
         <OurTeam></OurTeam>
       </div>
     </div>
