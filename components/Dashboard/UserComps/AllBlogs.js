@@ -61,7 +61,7 @@ const AllBlogs = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#ddd]">
+                <tr className="bg-[#ddd] text-black">
                   <th className="text-start">Blog Title</th>
                   <th>Author</th>
                   <th>Status</th>
@@ -92,11 +92,14 @@ const AllBlogs = () => {
                       <td>
                         <div>
                           <Link href={`/editblog/${blog?._id}`}>
-                            <label className="btn btn-accent mx-1">
+                            <label className="btn bg-[#20d720] text-[#fff] border-none mx-1">
                               <FaEdit />
                             </label>
                           </Link>
-                          <label className="btn btn-error" onClick={() => handleDelete(blog?._id)}>
+                          <label
+                            className="btn bg-[#eb3131] text-[#fff] border-none"
+                            onClick={() => handleDelete(blog?._id)}
+                          >
                             <FaTrash />
                           </label>
                         </div>

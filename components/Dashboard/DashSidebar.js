@@ -51,7 +51,7 @@ const DashSidebar = () => {
                     <Link href="/dashboard/addcourse">Add Course</Link>
                   </li>
                   <li>
-                    <Link href="/dashboard/allcourses">All Course</Link>
+                    <Link href="/dashboard/allcourses">All Courses</Link>
                   </li>
                 </div>
               </div>
@@ -63,9 +63,6 @@ const DashSidebar = () => {
               </li>
               <li>
                 <Link href="/dashboard/coursesbought">Courses Bought</Link>
-              </li>
-              <li>
-                <Link href="/dashboard/pkgbought">Pro Package Bought</Link>
               </li>
             </>
           )}
