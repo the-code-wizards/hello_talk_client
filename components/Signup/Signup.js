@@ -96,6 +96,7 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
+                    localStorage.setItem('email', email)
                     swal("Congratulations! Account created successfully", "success")
                     // googleSubmit()
                 } else {

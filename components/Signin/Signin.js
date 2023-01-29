@@ -82,6 +82,7 @@ const Signin = () => {
 
 
     const onSubmit = data => {
+         localStorage.setItem('email',data.email)
         signInWithEmailAndPassword(data.email, data.password, data.age);
     };
     return (
