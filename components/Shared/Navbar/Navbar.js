@@ -15,6 +15,7 @@ const Navbar = () => {
     signOut(auth);
     Cookies.set("loggedin", "false");
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('email')
   };
   return (
     <nav className="relative z-10">
@@ -145,8 +146,8 @@ const Navbar = () => {
                 <li>
                   <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                      <div className="w-10 rounded-full bg-green-300">
-                          {user?.photoURL ? <img src={user?.photoURL} /> : <span className="text-2xl">{user?.displayName.slice(0,2)}</span>}
+                      <div className="w-10 rounded-full bg-green-400">
+                          {user?.photoURL ? <img src={user?.photoURL} /> : <span className="flex justify-center mt-[15px] text-[1.2rem]">{user?.displayName.slice(0,2)}</span>}
                       </div>
                     </label>
                     <ul
