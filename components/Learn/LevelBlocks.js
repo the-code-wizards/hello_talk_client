@@ -8,7 +8,7 @@ import auth from '../../firebase.init';
 const LevelBlocks = () => {
   const [user, error] = useAuthState(auth);
   const [levels, loading] = useLevels();
-
+console.log(levels)
 
   return (
     <div className="grid lg:md:grid-cols-6 grid-cols-3 gap-x-[10px] lg:md:mt-4 mt-2 m-4 lg:md:gap-x-[12px] h-[10px]">

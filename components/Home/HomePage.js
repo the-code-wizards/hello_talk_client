@@ -7,10 +7,10 @@ import Lottie from "lottie-react";
 import learning from "../../resources/lottieJson/online-learning.json";
 import laptop from "../../resources/lottieJson/laptop.json";
 import banner from "../../resources/lottieJson/laptop.json";
-import SendEmailCard from "./SendEmailCard";
 import Blog from "../Blog/Blog";
 import BlogForHome from "../Blog/BlogForHome";
 import { Helmet } from "react-helmet";
+import SendEmail from "../SendEmail/SendEmail";
 
 const HomePage = () => {
   return (
@@ -247,10 +247,10 @@ const HomePage = () => {
 
         {/* ---------------Middle contents ---------------------------- */}
 
-        {/* <div data-aos="fade-up">
-          <SendEmailCard></SendEmailCard>
+        <div data-aos="fade-up">
+          <SendEmail></SendEmail>
           <div className="divider max-w-[1240px] mx-auto"></div>
-        </div> */}
+        </div>
 
         {/*  -------------------------Footer------------------*/}
 
