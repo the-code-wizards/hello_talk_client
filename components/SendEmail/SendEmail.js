@@ -32,7 +32,7 @@ const SendEmail = () => {
     const form = e.target;
     const comments = form.comments.value;
     const comment = { name, email, comments };
-    fetch(`https://hello-talk-webserver.vercel.app/postreview`, {
+    fetch(``, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(comment),
@@ -53,7 +53,7 @@ const SendEmail = () => {
       <div className=" card lg:md:max-w-[800px] border-[2px] border-[#61B800] shadow-xl mx-auto text-[#3C3C3C] my-10">
         <div className="card-body ">
           <h2 className="text-center font-featherBold lg:md:text-3xl text-2xl">
-            Give Us You Email Address
+            Give Us Your Email Address
           </h2>
           <form onSubmit={reviewHandler}>
             <div className="flex justify-center my-4">
