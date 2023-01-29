@@ -22,16 +22,18 @@
     "lottie-react": "^2.3.1",
     "next": "13.1.1",
     "react": "18.2.0",
-    "react-animated-3d-card": "^1.0.2",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.41.5",
     "react-icons": "^4.7.1",
-    "react-query": "^3.39.2",
+    "react-player": "^2.11.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.6.2",
+    "react-to-print": "^2.14.11",
     "sweetalert": "^2.1.2",
-    "swiper": "^8.4.5"
+    "swiper": "^8.4.5",
+    "talkjs": "^0.15.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",

@@ -1,7 +1,6 @@
 import { FaArrowRight } from "react-icons/fa";
 import React from "react";
 import Link from "next/link";
-// import Card from "react-animated-3d-card";
 
 const OurTeacher = ({ teacher }) => {
   const { _id, name, image, qualification } = teacher;

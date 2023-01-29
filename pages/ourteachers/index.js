@@ -3,8 +3,12 @@ import OurTeachers from "../../components/Our Teachers/OurTeachers";
 
 const index = () => {
   return (
-    <div className="max-w-[1240px] mx-auto">
-      <OurTeachers></OurTeachers>
+    <div>
+      {/* <Navbar/> */}
+      <div className="">
+        <OurTeachers></OurTeachers>
+      </div>
+      {/* <Footer/> */}
     </div>
   );
 };

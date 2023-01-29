@@ -26,9 +26,13 @@ const AllCourses = () => {
 
   const handleDelete = async (courseId) => {
     try {
-      await fetch(`https://hello-talk-webserver.vercel.app/courses/${courseId}`, {
+      await fetch(`https://hello-talk-webserver.vercel.app/course/${courseId}`, {
         method: 'DELETE',
-      });
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
       // update the courses state and re-render the component
       // ...
     } catch (error) {
@@ -58,8 +62,8 @@ const AllCourses = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#ddd]">
-                  <th className='text-start'>Course Title</th>
+                <tr className="bg-[#ddd] text-black">
+                  <th className="text-start">Course Title</th>
                   <th>Details</th>
                   <th>Offer Price</th>
                   <th>Action</th>
@@ -67,12 +71,18 @@ const AllCourses = () => {
               </thead>
               {filteredCourses.map((course) => {
                 return (
-                  <tbody className="text-center" key={course?._id}>
+                  <tbody className="text-left" key={course?._id}>
                     <tr>
-                      <td className='text-start'>{course?.title}</td>
+                      <td className="text-left">{course?.title}</td>
                       {/* <td>{course?.picture}</td> */}
-                      <td>{course?.details.slice(0, 40)}...</td>
-                      <td>
+                      <td className="text-left">
+                        {course?.details?.length > 40 ? (
+                          <>{course?.details.slice(0, 40)}...</>
+                        ) : (
+                          <>{course?.details}</>
+                        )}
+                      </td>
+                      <td className="text-center">
                         {/* <div className="badge badge-secondary">secondary</div>
                         <div className="badge badge-accent">{blog?.package}</div> */}
                         {/* <div className="">
@@ -91,12 +101,12 @@ const AllCourses = () => {
                       <td>
                         <div>
                           <Link href={`/editcourse/${course?._id}`}>
-                            <label className="btn btn-accent mx-1">
+                            <label className="btn bg-[#20d720] text-[#fff] border-none mx-1">
                               <FaEdit />
                             </label>
                           </Link>
                           <label
-                            className="btn btn-error"
+                            className="btn bg-[#eb3131] text-[#fff] border-none"
                             onClick={() => handleDelete(course?._id)}
                           >
                             <FaTrash />

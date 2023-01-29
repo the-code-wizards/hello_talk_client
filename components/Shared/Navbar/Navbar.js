@@ -15,6 +15,7 @@ const Navbar = () => {
     signOut(auth);
     Cookies.set("loggedin", "false");
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('email')
   };
   return (
     <nav className="relative z-10">
@@ -52,6 +53,12 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/learn">Learn</Link>
+              </li>
+              <li>
+                <Link href="/ourteam">Team</Link>
+              </li>
+              <li>
+                <Link href="/ourteachers">Teachers</Link>
               </li>
               <li>
                 <Link href="/faq">FAQ</Link>
@@ -106,6 +113,12 @@ const Navbar = () => {
               <Link href="/learn">Learn</Link>
             </li>
             <li>
+              <Link href="/ourteam">Team</Link>
+            </li>
+            <li>
+              <Link href="/ourteachers">Teachers</Link>
+            </li>
+            <li>
               <Link href="/faq">FAQ</Link>
             </li>
             <li>
@@ -126,15 +139,15 @@ const Navbar = () => {
               <></>
             ) : (
               <>
-                  <li><div className="w-[100px] flex gap-0">
+                  <li><div className="w-[95px] flex gap-0">
                     <Lottie animationData={gems} loop={true} />
-                    <p>{singleUser?.gems}</p>
+                    <p className="text-[17px] font-bold">{singleUser?.gems}</p>
                   </div></li>
                 <li>
                   <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                      <div className="w-10 rounded-full">
-                        <img src={user?.photoURL} />
+                      <div className="w-10 rounded-full bg-green-400">
+                          {user?.photoURL ? <img src={user?.photoURL} /> : <span className="flex justify-center mt-[15px] text-[1.2rem]">{user?.displayName.slice(0,2)}</span>}
                       </div>
                     </label>
                     <ul

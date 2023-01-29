@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import swal from 'sweetalert';
+import useSingleUser from '../hooks/useSingleUser';
 
-
-
-const CheckOut = () => {
+const CheckOut = ({ id, ammount }) => {
+    const [user, error] = useAuthState(auth);
+    const [singleUser] = useSingleUser()
     const [cardError, setCarderror] = useState("")
     const [success, setSuccess] = useState("")
     const [processing, setProcessing] = useState(false)
@@ -11,11 +15,13 @@ const CheckOut = () => {
 
     const stripe = useStripe();
     const elements = useElements();
+
+
     const order = {
-        price: 50,
-        email: "1@gmail.com",
-        name: "galib",
-        _id: 56
+        price: ammount,
+        email: user.email,
+        name: user.displayName,
+        _id: id
     }
 
     const { price, name, _id, ind } = order;
@@ -46,12 +52,12 @@ const CheckOut = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
-        const email = form.email.value;
+        // const email = form.email.value;
         const phone = form.phone.value;
         const address = form.address.value;
 
-        console.log(email, phone, address)
-
+        // console.log(email, phone, address)
+// 
         if (!stripe || !elements) {
             // Stripe.js has not loaded yet. Make sure to disable
             // form submission until Stripe.js has loaded.
@@ -82,8 +88,8 @@ const CheckOut = () => {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: name,
-                        email: email
+                        name: user.displayName,
+                        email: user.email
                     },
                 },
             },
@@ -101,7 +107,7 @@ const CheckOut = () => {
             const payment = {
                 price,
                 transectionId: paymentIntent.id,
-                email,
+                email: singleUser?.email,
                 productId: _id,
                 phone,
                 address
@@ -119,19 +125,11 @@ const CheckOut = () => {
                     if (data.insertedId) {
                         setSuccess("Congratulation! Your payment completed")
                         setTransectonId(paymentIntent.id)
-                        // fetch(`https://sell-point-server.vercel.app/deleteproduct/${booking?.ind}`, {
-                        //     method: 'DELETE',
-                        // })
-                        //     .then(res => res.json())
-                        //     .then(data => {
-                        //         if (data.deletedCount > 0) {
-                        //             toast.success(`Seller deleted successfully`)
-                        //         }
-                        //     })
-                        alert("payment successful")
+                        swal("payment successful", "success")
                         form.reset()
                     }
                 })
+            window.location.href = `/course/enrolled/${_id}`;
 
         }
         console.log("paymentIntent", paymentIntent)
@@ -142,12 +140,12 @@ const CheckOut = () => {
         <div className='p-16 border border-inherit bg-[#BFDBFE] rounded-lg'>
             <form onSubmit={handleSubmit} className="mt-[-40px]">
                 <h2 className='text-2xl text-center'>Pay with card</h2>
-                <label className="label ">
+                {/* <label className="label ">
                     <span className="label-text">Your Email:</span>
                 </label>
                 <div className="form-control h-[3rem]">
                     <input name="email" type="text" placeholder="Your Email" className="input input-bordered input-info h-[3rem]" required />
-                </div>
+                </div> */}
                 <label className="label ">
                     <span className="label-text">Your Phone Number:</span>
                 </label>

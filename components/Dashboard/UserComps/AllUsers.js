@@ -77,9 +77,10 @@ const AllUsers = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#ddd]">
+                <tr className="bg-[#ddd] text-black">
                   <th className="text-start">User Name</th>
                   <th>Email</th>
+                  <th>Role</th>
                   <th>Mobile Number</th>
                   <th>Country</th>
                   <th>Action</th>
@@ -91,6 +92,7 @@ const AllUsers = () => {
                     <tr>
                       <td className="text-start">{user?.name}</td>
                       <td>{user?.email}</td>
+                      <td>{user?.role}</td>
                       <td>{user?.number}</td>
                       <td>{user?.country}</td>
                       <td>
@@ -98,12 +100,15 @@ const AllUsers = () => {
                           {!loading ? (
                             <>
                               {user?.role === 'admin' ? (
-                                <button className="btn btn-accent btn-sm" disabled>
+                                <button
+                                  className="btn bg-[#20d720] text-[#fff] border-none btn-sm"
+                                  disabled
+                                >
                                   Admin
                                 </button>
                               ) : (
                                 <button
-                                  className="btn btn-accent btn-sm"
+                                  className="btn bg-[#20d720] text-[#fff] border-none btn-sm"
                                   onClick={() => handleAdmin(user?.email)}
                                 >
                                   Admin
@@ -111,10 +116,12 @@ const AllUsers = () => {
                               )}
                             </>
                           ) : (
-                            <button className="btn btn-accent btn-sm">Loading...</button>
+                            <button className="btn bg-[#20d720] text-[#fff] border-none btn-sm">
+                              Loading...
+                            </button>
                           )}
                           <label
-                            className="btn btn-error btn-sm"
+                            className="btn bg-[#eb3131] text-[#fff] border-none btn-sm"
                             onClick={() => handleDelete(user?._id)}
                           >
                             <FaTrash />
