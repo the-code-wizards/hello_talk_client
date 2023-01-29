@@ -21,6 +21,7 @@ const DashSidebar = () => {
               <li>
                 <Link href="/dashboard/myprofile">My Profile</Link>
               </li>
+              {/*--------------- Blogs ---------------------*/}
               <div className="collapse">
                 <input type="checkbox" className="peer" />
                 <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
@@ -38,6 +39,7 @@ const DashSidebar = () => {
                   </li>
                 </div>
               </div>
+              {/*---------------- Courses -----------------*/}
               <div className="collapse">
                 <input type="checkbox" className="peer" />
                 <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
@@ -52,6 +54,24 @@ const DashSidebar = () => {
                   </li>
                   <li>
                     <Link href="/dashboard/allcourses">All Courses</Link>
+                  </li>
+                </div>
+              </div>
+              {/*------------ Teachers ----------------*/}
+              <div className="collapse">
+                <input type="checkbox" className="peer" />
+                <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
+                  Teachers
+                  <div className="ml-2">
+                    <BsChevronDown />
+                  </div>
+                </div>
+                <div className="collapse-content bg-[#194881] text-primary-content peer-checked:bg-[#194881] peer-checked:text-secondary-content">
+                  <li>
+                    <Link href="/dashboard/addteacher">Add Teacher</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/allteachers">All Teachers</Link>
                   </li>
                 </div>
               </div>
