@@ -21,7 +21,7 @@ const DashSidebar = () => {
               <li>
                 <Link href="/dashboard/myprofile">My Profile</Link>
               </li>
-              {/*--------------- Blogs ---------------------*/}
+              {/*--------------- Blogs ----------------*/}
               <div className="collapse">
                 <input type="checkbox" className="peer" />
                 <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">

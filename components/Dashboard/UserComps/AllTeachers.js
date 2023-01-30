@@ -42,12 +42,12 @@ const AllTeachers = () => {
   return (
     <div className="md:pt-[5rem] pt-3">
       <div className="card-body" style={{ width: '100%' }}>
-        <h2 className="card-title text-[#333]">All Teachers</h2>
+        <h2 className="card-title text-[#1d4d87]">All Teachers</h2>
 
         <input
           type="search"
           placeholder="Type teacher's name here"
-          className="input bg-white input-bordered"
+          className="input bg-[#d7d5ff]"
           style={{ width: '50%' }}
           onChange={handleSearch}
           value={searchTerm}
@@ -59,7 +59,7 @@ const AllTeachers = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#ddd] text-black">
+                <tr className="bg-[#1d4d87] text-white">
                   <th className="text-start">Name</th>
                   <th>Qualification</th>
                   <th>Details</th>
@@ -69,7 +69,7 @@ const AllTeachers = () => {
               {filteredUsers.map((teacher) => {
                 return (
                   <tbody className="text-center" key={teacher?._id}>
-                    <tr>
+                    <tr className="bg-[#d7d5ff] text-[#1d4d87]">
                       <td className="text-start">{teacher?.name}</td>
                       <td>{teacher?.qualification}</td>
                       <td>{teacher?.details}</td>

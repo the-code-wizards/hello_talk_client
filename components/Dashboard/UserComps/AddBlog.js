@@ -14,11 +14,11 @@ const AddBlog = () => {
   //   package: my_package,
   // } = blogDetails;
 
-  const currentdate = new Date();
-  const date = currentdate.toLocaleDateString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  const currentDate = new Date();
+  // const date = currentdate.toLocaleDateString('en-US', {
+  //   hour: '2-digit',
+  //   minute: '2-digit',
+  // });
 
   const {
     register,
@@ -33,7 +33,7 @@ const AddBlog = () => {
       _id,
       title,
       details,
-      date,
+      // date,
       author_name,
       author_img,
       image,
@@ -51,7 +51,7 @@ const AddBlog = () => {
       _id,
       title,
       details,
-      date,
+      date: currentDate,
       author_name,
       author_img,
       image,
@@ -76,9 +76,9 @@ const AddBlog = () => {
     <div className=" pt-[4rem] w-full">
       <div className="">
         <div className="card-body">
-          <h2 className="card-title text-[#333]">Add Blog</h2>
+          <h2 className="card-title text-[#1d4d87]">Add Blog</h2>
 
-          <div className="shadow-xl py-4 px-[8px]">
+          <div className="shadow-xl rounded py-4 px-[8px]">
             <form onSubmit={handleSubmit(onAddBlog)}>
               <div className="w-full flex justify-between gap-x-[10px]">
                 <div className="w-[100%]">
