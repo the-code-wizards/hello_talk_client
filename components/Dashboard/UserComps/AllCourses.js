@@ -62,7 +62,7 @@ const AllCourses = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#ddd]">
+                <tr className="bg-[#ddd] text-black">
                   <th className="text-start">Course Title</th>
                   <th>Details</th>
                   <th>Offer Price</th>
@@ -101,12 +101,12 @@ const AllCourses = () => {
                       <td>
                         <div>
                           <Link href={`/editcourse/${course?._id}`}>
-                            <label className="btn btn-accent mx-1">
+                            <label className="btn bg-[#20d720] text-[#fff] border-none mx-1">
                               <FaEdit />
                             </label>
                           </Link>
                           <label
-                            className="btn btn-error"
+                            className="btn bg-[#eb3131] text-[#fff] border-none"
                             onClick={() => handleDelete(course?._id)}
                           >
                             <FaTrash />

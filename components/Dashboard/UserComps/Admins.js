@@ -57,7 +57,7 @@ const Admins = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#ddd]">
+                <tr className="bg-[#ddd] text-black">
                   <th className="text-start">User Name</th>
                   <th>Email</th>
                   <th>Mobile Number</th>
@@ -76,7 +76,7 @@ const Admins = () => {
                         <td>{user?.country}</td>
                         <td>
                           <label
-                            className="btn btn-error btn-sm"
+                            className="btn bg-[#eb3131] text-[#fff] border-none btn-sm"
                             onClick={() => handleDelete(user?._id)}
                           >
                             <FaTrash />

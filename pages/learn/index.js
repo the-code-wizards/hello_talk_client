@@ -7,8 +7,8 @@ import LearnNav from "../../components/Learn/LearnNav";
 import BottomNav from "../../components/Learn/BottomNav";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import Head from "next/head";
-import SendEmailCard from "../../components/Home/SendEmailCard";
 import Link from "next/link";
+import LeaveReview from "../../components/Learn/LeaveReview";
 
 const index = () => {
   return (
@@ -27,7 +27,7 @@ const index = () => {
         </div>
         <div>
           {/* <LeaderBoardCard /> */}
-          <SendEmailCard></SendEmailCard>
+          <LeaveReview/>
           {/* <GemCollectionCard /> */}
         </div>
       </div>
