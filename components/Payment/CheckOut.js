@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import swal from 'sweetalert';
+import useSingleUser from '../hooks/useSingleUser';
 
 const CheckOut = ({ id, ammount }) => {
     const [user, error] = useAuthState(auth);
+    const [singleUser] = useSingleUser()
     const [cardError, setCarderror] = useState("")
     const [success, setSuccess] = useState("")
     const [processing, setProcessing] = useState(false)
@@ -49,12 +52,12 @@ const CheckOut = ({ id, ammount }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
-        const email = form.email.value;
+        // const email = form.email.value;
         const phone = form.phone.value;
         const address = form.address.value;
 
-        console.log(email, phone, address)
-
+        // console.log(email, phone, address)
+// 
         if (!stripe || !elements) {
             // Stripe.js has not loaded yet. Make sure to disable
             // form submission until Stripe.js has loaded.
@@ -104,7 +107,7 @@ const CheckOut = ({ id, ammount }) => {
             const payment = {
                 price,
                 transectionId: paymentIntent.id,
-                email,
+                email: singleUser?.email,
                 productId: _id,
                 phone,
                 address
@@ -122,19 +125,11 @@ const CheckOut = ({ id, ammount }) => {
                     if (data.insertedId) {
                         setSuccess("Congratulation! Your payment completed")
                         setTransectonId(paymentIntent.id)
-                        // fetch(`https://sell-point-server.vercel.app/deleteproduct/${booking?.ind}`, {
-                        //     method: 'DELETE',
-                        // })
-                        //     .then(res => res.json())
-                        //     .then(data => {
-                        //         if (data.deletedCount > 0) {
-                        //             toast.success(`Seller deleted successfully`)
-                        //         }
-                        //     })
-                        alert("payment successful")
+                        swal("payment successful", "success")
                         form.reset()
                     }
                 })
+            window.location.href = `/course/enrolled/${_id}`;
 
         }
         console.log("paymentIntent", paymentIntent)
@@ -145,12 +140,12 @@ const CheckOut = ({ id, ammount }) => {
         <div className='p-16 border border-inherit bg-[#BFDBFE] rounded-lg'>
             <form onSubmit={handleSubmit} className="mt-[-40px]">
                 <h2 className='text-2xl text-center'>Pay with card</h2>
-                <label className="label ">
+                {/* <label className="label ">
                     <span className="label-text">Your Email:</span>
                 </label>
                 <div className="form-control h-[3rem]">
                     <input name="email" type="text" placeholder="Your Email" className="input input-bordered input-info h-[3rem]" required />
-                </div>
+                </div> */}
                 <label className="label ">
                     <span className="label-text">Your Phone Number:</span>
                 </label>

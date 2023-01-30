@@ -4,7 +4,7 @@ const SidebarCommunityPage = () => {
     return (
         <div>
             <aside class="w-full" aria-label="Sidebar ">
-                <div class="px-3 py-4 overflow-y-auto rounded bg-[#F0F2F5] dark:bg-gray-800 pt-24">
+                <div class="px-3 py-4 overflow-y-auto rounded bg-[#F0F2F5]  pt-24">
                     <ul class="space-y-2 ">
                         <li>
                             <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">

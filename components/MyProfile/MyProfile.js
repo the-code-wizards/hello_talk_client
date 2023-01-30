@@ -2,20 +2,22 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { FaTimes, IconName } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import useSingleUser from "../hooks/useSingleUser";
-import Loader from "../shared/Loader";
-
+import loader from "../../resources/lottieJson/loader.json";
+import Lottie from "lottie-react";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth)
-  // console.log("User: ", user);
   const [loading,setLoading] =useState(true);
   const [singleUser] = useSingleUser()
   const { name, age, education, district, country, number, email, realAge } = singleUser;
-  if(loading){
-    return <Loader/>
-  }
+  console.log(singleUser)
+  // if(loading){
+  //   return <div className="w-[300px] h-[300px] mx-auto">
+  //     <Lottie animationData={loader} loop={true} />
+  //   </div>
+  // }
   const handleEditProfile=(event) =>{
     event.preventDefault();
     const form = event.target;
