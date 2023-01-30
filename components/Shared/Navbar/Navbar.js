@@ -3,19 +3,19 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
-import Lottie from "lottie-react";
-import gems from "../../../resources/lottieJson/gem.json";
+import Lottie from 'lottie-react';
+import gems from '../../../resources/lottieJson/gem.json';
 import Cookies from 'js-cookie';
 import useSingleUser from '../../hooks/useSingleUser';
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [singleUser] = useSingleUser()
+  const [singleUser] = useSingleUser();
   const logout = () => {
     signOut(auth);
-    Cookies.set("loggedin", "false");
+    Cookies.set('loggedin', 'false');
     localStorage.removeItem('accessToken');
-    localStorage.removeItem('email')
+    localStorage.removeItem('email');
   };
   return (
     <nav className="relative z-10">
@@ -23,6 +23,22 @@ const Navbar = () => {
         <div className="navbar-start ">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <label htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -139,15 +155,23 @@ const Navbar = () => {
               <></>
             ) : (
               <>
-                  <li><div className="w-[95px] flex gap-0">
+                <li>
+                  <div className="w-[95px] flex gap-0">
                     <Lottie animationData={gems} loop={true} />
                     <p className="text-[17px] font-bold">{singleUser?.gems}</p>
-                  </div></li>
+                  </div>
+                </li>
                 <li>
                   <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                       <div className="w-10 rounded-full bg-green-400">
-                          {user?.photoURL ? <img src={user?.photoURL} /> : <span className="flex justify-center mt-[15px] text-[1.2rem]">{user?.displayName.slice(0,2)}</span>}
+                        {user?.photoURL ? (
+                          <img src={user?.photoURL} />
+                        ) : (
+                          <span className="flex justify-center mt-[15px] text-[1.2rem]">
+                            {user?.displayName.slice(0, 2)}
+                          </span>
+                        )}
                       </div>
                     </label>
                     <ul
