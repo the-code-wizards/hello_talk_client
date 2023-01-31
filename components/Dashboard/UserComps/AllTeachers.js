@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import useTeachers from '../../hooks/useTeachers';
 
 const AllTeachers = () => {
@@ -59,10 +60,10 @@ const AllTeachers = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#1d4d87] text-white">
-                  <th className="text-start">Name</th>
-                  <th>Qualification</th>
-                  <th>Details</th>
+                <tr className="bg-[#1d4d87]  text-white">
+                  <th className="text-start border-r-2 border-white">Name</th>
+                  <th className="text-start border-r-2 border-white">Qualification</th>
+                  <th className="text-start border-r-2 border-white">Details</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -70,12 +71,23 @@ const AllTeachers = () => {
                 return (
                   <tbody className="text-center" key={teacher?._id}>
                     <tr className="bg-[#d7d5ff] text-[#1d4d87]">
-                      <td className="text-start">{teacher?.name}</td>
-                      <td>{teacher?.qualification}</td>
-                      <td>{teacher?.details}</td>
+                      <td className="text-start border-r-2 border-b-2 border-white">
+                        {teacher?.name}
+                      </td>
+                      <td className="text-start border-r-2 border-b-2 border-white">
+                        {teacher?.qualification}
+                      </td>
+                      <td className="text-start border-r-2 border-b-2 border-white">
+                        {teacher?.details}
+                      </td>
 
-                      <td>
-                        <div className="flex items-center gap-x-1">
+                      <td className="border-b-2 border-white">
+                        <div className="items-center">
+                          <Link href={`/editteacher/${teacher?._id}`}>
+                            <label className="btn bg-[#20d720] text-[#fff] border-none btn-sm my-2">
+                              <FaEdit />
+                            </label>
+                          </Link>
                           <label
                             className="btn bg-[#eb3131] text-[#fff] border-none btn-sm"
                             onClick={() => handleDelete(teacher?._id)}
