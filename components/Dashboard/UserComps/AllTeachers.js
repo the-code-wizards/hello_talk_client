@@ -25,19 +25,19 @@ const AllTeachers = () => {
 
   const [loader, setLoader] = useState(false);
 
-  // const handleDelete = async (userId) => {
-  //   try {
-  //     await fetch(`https://hello-talk-webserver.vercel.app/profile/${userId}`, {
-  //       method: 'DELETE',
-  //     });
-  //     // update the courses state and re-render the component
-  //     // ...
-  //   } catch (error) {
-  //     console.error(error);
-  //   } finally {
-  //     location.reload(true);
-  //   }
-  // };
+  const handleDelete = async (userId) => {
+    try {
+      await fetch(`https://hello-talk-webserver.vercel.app/removeteacher?id=${userId}`, {
+        method: 'DELETE',
+      })
+        .then((res) => res.json())
+        .then((data) => {});
+    } catch (error) {
+      console.error(error);
+    } finally {
+      location.reload(true);
+    }
+  };
 
   return (
     <div className="md:pt-[5rem] pt-[4.5rem]">
