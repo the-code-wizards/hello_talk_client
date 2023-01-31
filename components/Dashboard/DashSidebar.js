@@ -7,7 +7,7 @@ import { BsChevronDown } from 'react-icons/bs';
 const DashSidebar = () => {
   const [user] = useAuthState(auth);
   return (
-    <div className="drawer md:drawer-mobile drawer-end md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 h-screen">
+    <div className="drawer md:drawer-mobile md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 h-screen">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* <!-- Page content here --> */}
