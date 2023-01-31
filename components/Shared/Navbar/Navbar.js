@@ -38,6 +38,7 @@ const Navbar = () => {
                 />
               </svg>
             </label>
+            {/* DashSidebar mobile device toggler */}
             <label htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
