@@ -38,14 +38,14 @@ const Admins = () => {
   };
 
   return (
-    <div className="md:pt-[5rem] pt-3">
+    <div className="md:pt-[5rem] pt-[4.5rem]">
       <div className="card-body" style={{ width: '100%' }}>
-        <h2 className="card-title text-[#333]">All Admins</h2>
+        <h2 className="card-title text-[#1d4d87]">All Admins</h2>
 
         <input
           type="search"
           placeholder="Type User Name here"
-          className="input bg-white input-bordered"
+          className="input bg-[#d7d5ff]"
           style={{ width: '50%' }}
           onChange={handleSearch}
           value={searchTerm}
@@ -57,7 +57,7 @@ const Admins = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#ddd] text-black">
+                <tr className="bg-[#1d4d87] text-white">
                   <th className="text-start">User Name</th>
                   <th>Email</th>
                   <th>Mobile Number</th>
@@ -69,7 +69,7 @@ const Admins = () => {
                 return (
                   <tbody className="text-center" key={user?._id}>
                     {user?.role === 'admin' ? (
-                      <tr>
+                      <tr className='bg-[#d7d5ff] text-[#1d4d87]'>
                         <td className="text-start">{user?.name}</td>
                         <td>{user?.email}</td>
                         <td>{user?.number}</td>

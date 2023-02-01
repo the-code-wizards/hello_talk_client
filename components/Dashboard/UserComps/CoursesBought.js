@@ -3,7 +3,7 @@ import useCourses from '../../hooks/useCourses';
 import { FaEdit, FaRegGem, FaTrash } from 'react-icons/fa';
 import Link from 'next/link';
 
-const AllCourses = () => {
+const CoursesBought = () => {
   const [courses, loading] = useCourses();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -45,8 +45,7 @@ const AllCourses = () => {
   return (
     <div className="md:pt-[5rem] pt-[4.5rem]">
       <div className="card-body" style={{ width: '100%' }}>
-        <h2 className="card-title text-[#1d4d87]">All Courses</h2>
-
+        <h2 className="card-title text-[#1d4d87]">Course Revenue</h2>
         <input
           type="search"
           placeholder="Type Course Title here"
@@ -64,9 +63,9 @@ const AllCourses = () => {
               <thead className="text-center">
                 <tr className="bg-[#1d4d87] text-white">
                   <th className="text-start">Course Title</th>
-                  <th>Details</th>
+                  <th>Total Sold</th>
                   <th>Offer Price</th>
-                  <th>Action</th>
+                  <th>Total Revenue</th>
                 </tr>
               </thead>
               {filteredCourses.map((course) => {
@@ -75,44 +74,9 @@ const AllCourses = () => {
                     <tr className="bg-[#d7d5ff] text-[#1d4d87]">
                       <td className="text-left">{course?.title}</td>
                       {/* <td>{course?.picture}</td> */}
-                      <td className="text-left">
-                        {course?.details?.length > 40 ? (
-                          <>{course?.details.slice(0, 40)}...</>
-                        ) : (
-                          <>{course?.details}</>
-                        )}
-                      </td>
-                      <td className="text-center">
-                        {/* <div className="badge badge-secondary">secondary</div>
-                        <div className="badge badge-accent">{blog?.package}</div> */}
-                        {/* <div className="">
-                          {course?.package === 'free' && (
-                            <label className="badge badge-accent">Free</label>
-                          )}
-                          {course?.package === 'premium' && (
-                            <label className="badge badge-secondary">
-                              <FaRegGem className="mr-1"></FaRegGem>
-                              <label htmlFor="my-blog-6">Premium</label>
-                            </label>
-                          )}
-                        </div> */}
-                        {course?.offer_price}
-                      </td>
-                      <td>
-                        <div>
-                          <Link href={`/editcourse/${course?._id}`}>
-                            <label className="btn bg-[#20d720] text-[#fff] border-none mx-1">
-                              <FaEdit />
-                            </label>
-                          </Link>
-                          <label
-                            className="btn bg-[#eb3131] text-[#fff] border-none"
-                            onClick={() => handleDelete(course?._id)}
-                          >
-                            <FaTrash />
-                          </label>
-                        </div>
-                      </td>
+                      <td className="text-center">2</td>
+                      <td className="text-center">{course?.offer_price}</td>
+                      <td className="text-center">{2 * course?.offer_price}</td>
                     </tr>
                   </tbody>
                 );
@@ -125,4 +89,4 @@ const AllCourses = () => {
   );
 };
 
-export default AllCourses;
+export default CoursesBought;

@@ -43,13 +43,13 @@ const AllBlogs = () => {
   };
 
   return (
-    <div className="md:pt-[5rem] pt-3">
+    <div className="md:pt-[5rem] pt-[4.5rem]">
       <div className="card-body" style={{ width: '100%' }}>
-        <h2 className="card-title text-[#333]">All Blogs</h2>
+        <h2 className="card-title text-[#1d4d87]">All Blogs</h2>
         <input
           type="search"
           placeholder="Type Blog Title here"
-          className="input bg-white input-bordered"
+          className="input bg-[#d7d5ff]"
           style={{ width: '50%' }}
           onChange={handleSearch}
           value={searchTerm}
@@ -61,7 +61,7 @@ const AllBlogs = () => {
           <div className="overflow-x-auto my-2 shadow-2xl rounded">
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
-                <tr className="bg-[#ddd] text-black">
+                <tr className="bg-[#1d4d87] text-white">
                   <th className="text-start">Blog Title</th>
                   <th>Author</th>
                   <th>Status</th>
@@ -71,7 +71,7 @@ const AllBlogs = () => {
               {filteredBlogs.map((blog) => {
                 return (
                   <tbody className="text-center" key={blog?._id}>
-                    <tr>
+                    <tr className="bg-[#d7d5ff] text-[#1d4d87]">
                       <td className="text-start">{blog?.title}</td>
                       <td>{blog?.author_name}</td>
                       <td>
