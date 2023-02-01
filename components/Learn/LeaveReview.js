@@ -50,7 +50,7 @@ const LeaveReview = () => {
         return <h2>loading</h2>;
     }
     return (
-        <div className="lg:md:pr-[15px]">
+        <div className="lg:md:mt-0 mt-[30rem] lg:md:pr-[15px] lg:md:pl-0 pl-[20px] lg:md:mb-0 mb-[6rem]">
             <Link className="flex justify-center mt-4" href="/leaderboard">
                 <button type="button" className="bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] w-[80%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] px-4 text-center">See Leader Board</button>
             </Link>
