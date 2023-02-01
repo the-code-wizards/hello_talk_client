@@ -17,7 +17,7 @@ const SinglePost = () => {
             .then(data => setPosts(data))
 
     }, [])
-    console.log(posts)
+    // console.log(posts)
 
 
     return (

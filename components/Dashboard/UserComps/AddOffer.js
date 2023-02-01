@@ -13,7 +13,7 @@ const AddOffer = () => {
     console.log(data);
   };
   return (
-    <div className=" pt-[4rem] w-full">
+    <div className=" pt-[4.5rem] w-full">
       <div className="">
         <div className="card-body">
           <h2 className="card-title text-[#333]">Add Offer</h2>
