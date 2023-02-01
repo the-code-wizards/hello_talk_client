@@ -1,23 +1,18 @@
 import React from 'react';
-import Lottie from "lottie-react";
-import community from "../../resources/lottieJson/community.json";
-import Navbar from '../Shared/Navbar/Navbar';
-import Link from 'next/link';
-
-import { GiNotebook } from 'react-icons/gi';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { FaBloggerB } from 'react-icons/fa';
-import { BsStack, BsPeople } from 'react-icons/bs';
 import SidebarCommunityPage from './Sidebar';
 import TopAuthor from './TopAuthor';
 import Profile from './Profile';
 import SinglePost from './SinglePost';
 import WriteaPost from './WriteaPost';
+import CNavBar from './CNavBar';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Community = () => {
+    const [user, error] = useAuthState(auth);
     return (
         <div >
-            <Navbar />
+            <CNavBar></CNavBar>
             <div className='grid grid-cols-5'>
                 <div className='col-span-1 pt-18 bg-[#F0F2F5] h-screen sticky top-0'>
                     <SidebarCommunityPage></SidebarCommunityPage>
@@ -46,7 +41,10 @@ const Community = () => {
                         <div className=' mx-auto '>
                             <div className='grid grid-cols-9 p-2 gap-6 '>
                                 <div className='col-span-6 '>
-                                    <WriteaPost></WriteaPost>
+                                    {
+                                        user &&
+                                        <WriteaPost></WriteaPost>
+                                    }
                                     <SinglePost></SinglePost>
                                 </div>
 
