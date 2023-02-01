@@ -115,7 +115,7 @@ const Dashboard = () => {
       </ResponsiveContainer>
 
       {/* Social Media Links */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-3">
+      <div className="grid md:gap-0 gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:my-3 my-5">
         {/* Social FB */}
         <div className="card card-compact w-80 text-white shadow-xl">
           <div className="bg-[#3B5998]">
