@@ -48,7 +48,7 @@ const Signin = () => {
 
     if (token) {
         Cookies.set("loggedin", "true");
-        router.push = "/";
+        // router.push = "/";
     }
     const googleSubmit = () => {
         const gData = {

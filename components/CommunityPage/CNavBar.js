@@ -25,7 +25,7 @@ const CNavBar = () => {
 
     useEffect(() => {
         const changeColor = () => {
-            if (window.scrollY >= 700) {
+            if (window.scrollY >= 200) {
                 setColor('#ffffff');
                 setTextColor('#235490');
             } else {
