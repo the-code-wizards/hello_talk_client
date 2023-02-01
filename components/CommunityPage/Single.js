@@ -17,9 +17,6 @@ const Single = ({ user, singlePost }) => {
     const router = useRouter()
 
 
-
-
-
     const commentRender = () => {
         if (commentView === "") {
             setCommentView("hidden")

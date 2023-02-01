@@ -27,7 +27,7 @@ const Posts = () => {
         fetchPosts()
     }, []);
 
-    console.log(posts)
+    // console.log(posts)
 
     // Get Current Posts 
 
