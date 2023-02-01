@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddCourse = () => {
-  const currentdate = new Date();
-  const date = currentdate.toLocaleDateString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  const currentDate = new Date();
+  // const date = currentdate.toLocaleDateString('en-US', {
+  //   hour: '2-digit',
+  //   minute: '2-digit',
+  // });
 
   const {
     register,
@@ -28,7 +28,7 @@ const AddCourse = () => {
       details,
       price,
       offer_price,
-      date,
+      date: currentDate,
       module_links: links,
     };
     fetch(`https://hello-talk-webserver.vercel.app/course`, {
@@ -43,7 +43,7 @@ const AddCourse = () => {
       });
   };
   return (
-    <div className=" pt-[4rem] w-full">
+    <div className=" pt-[4.5rem] w-full">
       <div className="">
         <div className="card-body">
           <h2 className="card-title text-[#333]">Add Course</h2>
