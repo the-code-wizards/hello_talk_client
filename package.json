@@ -31,6 +31,7 @@
     "react-query": "^3.39.3",
     "react-router-dom": "^6.6.2",
     "react-to-print": "^2.14.11",
+    "recharts": "^2.3.2",
     "sweetalert": "^2.1.2",
     "swiper": "^8.4.5",
     "talkjs": "^0.15.6"
