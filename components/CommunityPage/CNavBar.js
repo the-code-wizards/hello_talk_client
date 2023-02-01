@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
+import Cookies from 'js-cookie';
 
 
 const CNavBar = () => {
@@ -66,12 +68,34 @@ const CNavBar = () => {
                     <li>
                         <Link href="/contact" className='p-3'>Contact Us</Link>
                     </li>
+                    {
+                        !user ?
+                            <li>
+                                {' '}
+                                <Link
+                                    className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
+                                    href="/signin"
+                                >
+                                    Log In
+                                </Link>
+                            </li>
+                            :
+                            <>
+                            </>
+                    }
+
+
                     <div className="dropdown dropdown-end my-[-12px]">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src={user?.photoURL} />
-                            </div>
-                        </label>
+                        {
+                            user ?
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL} />
+                                    </div>
+                                </label>
+                                :
+                                <></>
+                        }
                         <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                             {user ? (
                                 <>
@@ -85,17 +109,11 @@ const CNavBar = () => {
                                         </button>
                                     </li>
                                 </>
-                            ) : (
-                                <li>
-                                    {' '}
-                                    <Link
-                                        className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
-                                        href="/signin"
-                                    >
-                                        Log In
-                                    </Link>
-                                </li>
-                            )}
+                            ) :
+                                <>
+
+                                </>
+                            }
                         </ul>
                     </div>
                 </ul>
@@ -128,23 +146,54 @@ const CNavBar = () => {
                 <div
                     className={
                         nav
-                            ? 'sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300'
-                            : 'sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300'
+                            ? 'sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white text-center ease-in duration-300'
+                            : 'sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white text-center ease-in duration-300'
                     }
                 >
-                    <ul>
-                        <li onClick={handleNav} className='p-2 text-xl hover:text-gray-500'>
-                            <Link href='/'>Home</Link>
+                    <ul className='text-gray-700'>
+                        <li>
+                            <Link href="/contact" className='p-5'>Profile</Link>
                         </li>
-                        <li onClick={handleNav} className='p-2 text-xl hover:text-gray-500'>
-                            <Link href='/#gallery'>Gallery</Link>
+                        <li>
+                            <Link href="/blogs" className='p-5'>Blog</Link>
                         </li>
-                        <li onClick={handleNav} className='p-2 text-xl hover:text-gray-500'>
-                            <Link href='/work'>Work</Link>
+                        <li>
+                            <Link href="/courses" className='p-5'>Courses</Link>
                         </li>
-                        <li onClick={handleNav} className='p-2 text-xl hover:text-gray-500'>
-                            <Link href='/contact'>Contact</Link>
+                        <li>
+                            <Link href="/learn" className='p-5'>Learn</Link>
                         </li>
+                        <li>
+                            <Link href="/faq" className='p-5'>FAQ</Link>
+                        </li>
+                        <li>
+                            <Link href="/contact" className='p-5'>Contact Us</Link>
+                        </li>
+                        {user ?
+                            <li>
+                                <Link href="/dashboard">Dashboard</Link>
+                            </li>
+                            :
+                            <></>
+
+                        }
+
+                        {
+                            !user ?
+                                <li>
+                                    {' '}
+                                    <Link
+                                        className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
+                                        href="/signin"
+                                    >
+                                        Log In
+                                    </Link>
+                                </li>
+                                :
+                                <>
+                                </>
+                        }
+
                     </ul>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import auth from '../../firebase.init';
 import Single from './Single';
 
 
-const SinglePost = () => {
+const Posts = () => {
 
     const [user, error] = useAuthState(auth);
     const [posts, setPosts] = useState([])
@@ -34,4 +34,4 @@ const SinglePost = () => {
     );
 };
 
-export default SinglePost;
+export default Posts;
