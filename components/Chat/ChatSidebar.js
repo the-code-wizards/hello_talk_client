@@ -3,15 +3,17 @@ import useSingleUser from '../hooks/useSingleUser'
 import useUsers from '../hooks/useUsers';
 import Messages from './Messages';
 
-const ChatSidebar = () => {
+const ChatSidebar = ({setCurrent}) => {
     const [singleUser] = useSingleUser()
     const [users] = useUsers()
-    const [current, setCurrent] = useState('');
+    // const [current, setCurrent] = useState('');
     console.log(singleUser)
     return (
-        <div  className="grid lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
-            <div className="p-[15px] bg-[#2D61A0]">
-            <div className="flex items-center gap-x-[10px]">
+        <div className="drawer md:drawer-mobile  md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 h-screen">
+            <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-side bg-[#2D61A0] lg:md:pr-[30px] lg:md:pt-[20px]">
+                <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
+            <div className="flex items-center gap-x-[10px] ml-2">
                 <div className="avatar online">
                     <div className="w-10 rounded-full">
                         <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
@@ -22,12 +24,12 @@ const ChatSidebar = () => {
             <input
                 type="search"
                 placeholder="Search name"
-                className="input w-full max-w-xs bg-[#ddd] mt-3 h-9" />
+                className="input w-full max-w-sm bg-[#ddd] mt-3 h-9 ml-2" />
             <div>
                <div className="mt-4">
                     {users?.map((user) => {
                         return (
-                            <div onClick={() => setCurrent(user)} key={user?._id} className="flex items-center gap-x-[10px] mb-2 hover:bg-[#6595cf] active:bg-[#6595cf] focus:bg-[#6595cf] rounded-lg p-[5px] pointer">
+                            <div onClick={() => setCurrent(user)} key={user?._id} className="flex items-center gap-x-[10px] mb-2 hover:bg-[#6595cf] active:bg-[#6595cf] focus:bg-[#6595cf] rounded-lg p-[5px] cursor-pointer">
                                 <div className="avatar ">
                                     <div className="w-10 rounded-full">
                                         <img alt="/" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
@@ -40,9 +42,9 @@ const ChatSidebar = () => {
                </div>
             </div>
         </div>
-        <div>
+        {/* <div className="hidden">
                 <Messages current={current} />
-        </div>
+        </div> */}
         </div>
     );
 };

@@ -1,17 +1,11 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from "next/head";
 import { HiArrowLeft } from 'react-icons/hi';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
-// import useToken from '../hooks/useToken';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { AiOutlineGoogle } from 'react-icons/ai';
-import { TfiFacebook } from 'react-icons/tfi';
-import { useNavigate } from 'react-router-dom';
 import { useRouter } from 'next/router'
-import Lottie from "lottie-react";
-import signin from '../../resources/lottieJson/login.json'
 import Cookies from 'js-cookie';
 import swal from 'sweetalert';
 
@@ -27,7 +21,7 @@ const Signin = () => {
         user,
         loading,
         error,] = useSignInWithEmailAndPassword(auth);
-    const token = user ? user?.user?.accessToken : gUser?.user?.accessToken;
+    const token = user && user?.user?.accessToken;
     const [signInError, setSignInError] = useState();
     const currentdate = new Date();
     const date = currentdate.toLocaleDateString("en-US", {
@@ -39,48 +33,20 @@ const Signin = () => {
     if (gLoading || loading) {
         return <progress className='progress w-full'></progress>
     }
-
-    if (error || gError) {
-        setSignInError(error?.message || gError?.message);
-        if (signInError)
-            return <p className='text-red-500 font-bold'><small>{signInError}</small></p>
-    }
-
+if(error){
+    console.log(error)
+}
+    // useEffect(() => {
+    //     if (error || gError) {
+    //         setSignInError(error?.message || gError?.message);
+    //     }
+    // }, [error, gError]);
+console.log(user)
     if (token) {
         Cookies.set("loggedin", "true");
-        // router.push = "/";
+        window.location.href = '/';
     }
-    const googleSubmit = () => {
-        const gData = {
-            name: gUser?.user?.displayName,
-            email: gUser?.user?.email,
-            profileImg: gUser?.user?.photoURL,
-            getage: 'young',
-            joined_date: date,
-            role: 'user',
-            gems: 0
-        }
-        console.log(gData)
-        fetch(`https://hello-talk-webserver.vercel.app/user`, {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(gData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.acknowledged) {
-                    swal("Congratulations! Account created successfully")
-                } else {
-                    swal("OOPS! Something wen wrong :(")
-                }
-            })
-    }
-
-
-
+   
     const onSubmit = data => {
         localStorage.setItem('email', data.email)
         signInWithEmailAndPassword(data.email, data.password, data.age);
@@ -99,9 +65,6 @@ const Signin = () => {
                 </div>
                 <div className=' my-auto pb-8'>
                     <div className="lg:md:px-[23%] px-[5%]">
-                        {/* <div className="w-[100%] h-[150px]">
-                        <Lottie animationData={signin} loop={true} />
-                    </div> */}
                         <div className="border-[2px] rounded-xl w-full bg-[#fff]">
                             <h2 className='lg:md:text-2xl text-lg text-center lg:md:mt-4 mt-2 text-[#3C3C3C] font-featherBold'>Log in</h2>
                             <div className="mt-[50px] my-auto ">
