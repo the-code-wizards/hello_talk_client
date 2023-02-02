@@ -17,6 +17,7 @@ const Navbar = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('email');
   };
+  console.log(singleUser)
   return (
     <nav className="relative z-10">
       <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] py-0">
@@ -159,7 +160,7 @@ const Navbar = () => {
                 <li>
                   <div className="w-[95px] flex gap-0">
                     <Lottie animationData={gems} loop={true} />
-                    <p className="text-[17px] font-bold">{singleUser?.gems}</p>
+                      <p className="text-[17px] font-bold">{singleUser && singleUser?.gems}</p>
                   </div>
                 </li>
                 <li>
