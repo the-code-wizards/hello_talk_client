@@ -19,7 +19,7 @@ const OurTeam = () => {
             <div className="flex flex-col hover:-translate-y-6 duration-500 hover:shadow-2xl justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-gray-800 hover:bg-white hover:text-gray-800 text-gray-100">
               <img
                 alt=""
-                className="self-center flex-shrink-0 w-28 h-28 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
+                className="self-center flex-shrink-0 w-28 h-28 -mt-12 bg-center bg-cover rounded-full bg-gray-500 object-cover"
                 src="https://media.discordapp.net/attachments/1063400454056312872/1063400669802938478/HAS-V20.jpg?width=420&height=609"
               />
               <div className="flex-1 my-4">
@@ -44,7 +44,7 @@ const OurTeam = () => {
             <div className="flex flex-col hover:-translate-y-6 duration-500 hover:shadow-2xl hover:bg-white hover:text-gray-800 justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-gray-800 text-gray-100">
               <img
                 alt=""
-                className="self-center flex-shrink-0 w-28 h-28 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
+                className="self-center flex-shrink-0 w-28 h-28 -mt-12 bg-center bg-cover rounded-full bg-gray-500 "
                 src="https://media.discordapp.net/attachments/1063400454056312872/1063405036702539846/322006678_898904951270318_570334744420783429_n.jpg?width=609&height=609"
               />
               <div className="flex-1 my-4">

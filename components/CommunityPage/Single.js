@@ -42,7 +42,7 @@ const Single = ({ user, singlePost }) => {
             pid: _id
         }
         // console.log(postComment)
-        fetch("https://hello-talk-webserver.vercel.app/postcomment", {
+        fetch("http://localhost:5000/community/postcomment", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -66,7 +66,7 @@ const Single = ({ user, singlePost }) => {
     }
 
     useEffect(() => {
-        fetch(`https://hello-talk-webserver.vercel.app/comment/${_id}`)
+        fetch(`http://localhost:5000/community/comment/${_id}`)
             .then(res => res.json())
             .then(data => setComments(data))
 
@@ -74,14 +74,13 @@ const Single = ({ user, singlePost }) => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/like?email=${user?.email}&id=${_id}`)
+        fetch(`http://localhost:5000/community/like?email=${user?.email}&id=${_id}`)
             .then(res => res.json())
             .then(res => {
                 if (res.length >= 1) {
                     SetLikeButton(true)
-                    // setLikeStatus(true)
-                    // console.log(likeStatus)
                 }
+                // console.log(res)
             })
 
     }, [user?.email, _id])
@@ -92,7 +91,7 @@ const Single = ({ user, singlePost }) => {
             postTime: Date(),
             pid: _id
         }
-        fetch("https://hello-talk-webserver.vercel.app/postlike", {
+        fetch("http://localhost:5000/community/postlike", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -101,19 +100,19 @@ const Single = ({ user, singlePost }) => {
         })
             .then(res => res.json())
             .then(res => {
-                // console.log(res)
+                console.log(res)
                 SetLikeButton(true)
             })
 
     }
 
     const handleUnlike = () => {
-        fetch(`http://localhost:5000/like/${_id}`, {
+        fetch(`http://localhost:5000/community/like/${_id}`, {
             method: "DELETE",
         })
             .then(res => res.json())
             .then(res => {
-                // console.log(res)
+                console.log(res)
                 if (res.deletedCount >= 1) {
                     SetLikeButton(false)
                 }
@@ -171,7 +170,12 @@ const Single = ({ user, singlePost }) => {
                                 <div className='grid grid-cols-1 place-items-center col-span-1'>
                                     <div className="avatar">
                                         <div className="w-8 rounded-full">
-                                            <img src={user?.photoURL} alt="Profile Picture" />
+                                            {
+                                                user?.photoURL ?
+                                                    <img src={user?.photoURL} alt="Profile Picture" />
+                                                    :
+                                                    <img src="https://i.ibb.co/8zkT4zS/istockphoto-1300845620-612x612.jpg" alt="Profile Picture" />
+                                            }
                                         </div>
                                     </div>
                                 </div>
