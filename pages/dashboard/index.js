@@ -8,7 +8,9 @@ const index = () => {
     <div>
       <Navbar />
       <div className="grid lg:md:grid-cols-[300px_minmax(800px,_1fr)]">
-        <DashSidebar />
+        <div className="">
+          <DashSidebar />
+        </div>
         <Dashboard />
       </div>
     </div>
