@@ -86,11 +86,11 @@ const WriteaPost = () => {
                                             <label className="label">
                                                 <span className="label-text">Question Title:</span>
                                             </label>
-                                            <input type="text" name="title" placeholder="Type here" className="input input-bordered w-full" />
+                                            <input type="text" name="title" placeholder="Type here" className="input input-bordered w-full" required />
                                             <label className="label">
                                                 <span className="label-text"> Questions on details:</span>
                                             </label>
-                                            <textarea name='textarea' className="textarea w-[600px] input-bordered " placeholder="Your question"></textarea>
+                                            <textarea name='textarea' className="textarea w-[600px] input-bordered " placeholder="Your question" required></textarea>
 
                                         </div>
                                         {/*footer*/}

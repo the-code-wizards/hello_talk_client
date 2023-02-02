@@ -5,11 +5,17 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import swal from 'sweetalert';
 import auth from '../../firebase.init';
 import SingleComment from './SingleComment';
+import { comment } from 'postcss';
+import { useNavigation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const Single = ({ user, singlePost }) => {
     const [commentView, setCommentView] = useState("hidden")
     const [showModal, setShowModal] = useState(false);
     const [comments, setComments] = useState([])
+    const [likeButton, SetLikeButton] = useState(false)
+    const router = useRouter()
+
 
     const commentRender = () => {
         if (commentView === "") {
@@ -49,7 +55,7 @@ const Single = ({ user, singlePost }) => {
                 // navigate("/dashboard/myproducts")
                 if (res.acknowledged === true) {
                     swal(
-                        'Your questions is posted!',
+                        'Your comment is posted!',
                         'Possible reponse is near !',
                         'success'
                     )
@@ -63,7 +69,22 @@ const Single = ({ user, singlePost }) => {
         fetch(`https://hello-talk-webserver.vercel.app/comment/${_id}`)
             .then(res => res.json())
             .then(data => setComments(data))
+
+
     }, [])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/like?email=${user?.email}&id=${_id}`)
+            .then(res => res.json())
+            .then(res => {
+                if (res.length >= 1) {
+                    SetLikeButton(true)
+                    // setLikeStatus(true)
+                    // console.log(likeStatus)
+                }
+            })
+
+    }, [user?.email, _id])
 
     const handleLike = () => {
         const postLike = {
@@ -71,7 +92,7 @@ const Single = ({ user, singlePost }) => {
             postTime: Date(),
             pid: _id
         }
-        fetch("https://hello-talk-webserver.vercel.app/postLike", {
+        fetch("https://hello-talk-webserver.vercel.app/postlike", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -81,19 +102,27 @@ const Single = ({ user, singlePost }) => {
             .then(res => res.json())
             .then(res => {
                 // console.log(res)
-                // // navigate("/dashboard/myproducts")
-                // if (res.acknowledged === true) {
-                //     swal(
-                //         'Your questions is posted!',
-                //         'Possible reponse is near !',
-                //         'success'
-                //     )
-                //     form.reset()
-                // }
+                SetLikeButton(true)
             })
 
     }
 
+    const handleUnlike = () => {
+        fetch(`http://localhost:5000/like/${_id}`, {
+            method: "DELETE",
+        })
+            .then(res => res.json())
+            .then(res => {
+                // console.log(res)
+                if (res.deletedCount >= 1) {
+                    SetLikeButton(false)
+                }
+            })
+
+    }
+    const navigateLogin = () => {
+        window.location.href = "/signin";
+    }
 
 
     return (
@@ -116,43 +145,67 @@ const Single = ({ user, singlePost }) => {
                 <div className="divider my-[-2px] "></div>
                 <div className='flex justify-between'>
                     <div className='flex justify-center'>
-                        <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
+
+                        {
+                            likeButton ?
+                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span></button>
+                                :
+                                <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
+                        }
                         <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
-                            <button onClick={commentRender}><BiCommentDetail /></button>
-                            <h1 className='ml-1'>1 replies</h1>
+                            <button onClick={commentRender} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
                         </div>
                     </div>
                     <div>
                         <p className='text-[12px]'>Last Activity: {name} | {postTime}</p>
                     </div>
                 </div>
-                <div className={`px-8 pt-8 ${commentView}`}>
-                    <h2 className='text-md'>Replies </h2>
-                    <div className="divider my-[-2px] "></div>
 
+
+
+                <div className={`px-8 pt-3 ${commentView}`}>
+                    <h2 className='text-md my-2 '>Add a Comment</h2>
                     {
-                        comments.map(comment =>
-                            <SingleComment
-                                key={comment._id}
-                                comment={comment}
-                            >
-                            </SingleComment>
-                        )
-                    }
-
-                    <h2 className='text-md my-2 ml-2'>Add a Comment</h2>
-
-                    <div className='grid grid-cols-12'>
-                        <div className='grid grid-cols-1 place-items-end col-span-1'>
-                            <div className="avatar">
-                                <div className="w-8 rounded-full">
-                                    <img src={user?.photoURL} alt="Profile Picture" />
+                        user ?
+                            <div className='grid grid-cols-12 ml-[-10px] my-2'>
+                                <div className='grid grid-cols-1 place-items-center col-span-1'>
+                                    <div className="avatar">
+                                        <div className="w-8 rounded-full">
+                                            <img src={user?.photoURL} alt="Profile Picture" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2 h-[36px] w-full  bg-[#F0F2F5] px-2 col-span-11' onClick={() => setShowModal(true)} />
-                    </div>
+                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11' onClick={() => setShowModal(true)} />
+                            </div>
+                            :
+                            <>
+                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11 mb-2' onClick={() => router.push("/signin/")} />
+                            </>
+                    }
+                    {
+                        comments.length ?
+                            <>
+                                <h2 className='text-md'>Replies </h2>
+                                <div className="divider my-[-2px] "></div>
+
+                                <div className='mb-3'>
+                                    {
+                                        comments.map(comment =>
+                                            <SingleComment
+                                                key={comment._id}
+                                                postComment={comment}
+                                            >
+                                            </SingleComment>
+                                        )
+                                    }
+
+                                </div>
+                            </>
+                            :
+                            <>
+                            </>
+                    }
 
                     {showModal ? (
                         <>
@@ -194,6 +247,7 @@ const Single = ({ user, singlePost }) => {
                             <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                         </>
                     ) : null}
+
                 </div>
             </div>
         </div>

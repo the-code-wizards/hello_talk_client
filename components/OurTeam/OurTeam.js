@@ -6,7 +6,7 @@ import Footer from '../Shared/Footer/Footer';
 const OurTeam = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <section className="py-6 text-gray-800">
         <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
           <p className="p-2 mt-5 text-sm  tracking-wider text-center uppercase font-featherbold">
@@ -148,23 +148,23 @@ const OurTeam = () => {
             <div className="flex flex-col hover:-translate-y-6 duration-500 hover:shadow-2xl hover:bg-white hover:text-gray-800 justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-gray-800 text-gray-100">
               <img
                 alt=""
-                className="self-center flex-shrink-0 w-28 h-28 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
-                src="https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/323215767_534953851906582_4341610148010284504_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=174925&_nc_ohc=l2DQ3skLmXkAX-fW5xZ&tn=Wba6xEO5uQwvECFN&_nc_ht=scontent.fcgp7-1.fna&oh=00_AfCRpMGw1H6h50Jbz8LiW8wC7WPwND7UDmuv5nKebRjA1A&oe=63D27EE1"
+                className="self-center flex-shrink-0 w-28 h-28 -mt-12 bg-center bg-cover rounded-full bg-gray-500 object-cover"
+                src="https://i.ibb.co/RP0bBSk/IMG-20221208-200202-351-1.jpg"
               />
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leading-snug">Galib</p>
+                <p className="text-xl font-semibold leading-snug">Md. Asadullah Al Galib</p>
                 <p>Full-Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-5 text-xl border-t-2">
-                <a href="">
-                  {" "}
+                <a href="https://www.facebook.com/Galib.8/">
+                  {""}
                   <FaFacebook></FaFacebook>
                 </a>
-                <a href="">
+                <a href="https://github.com/Galib6">
                   {" "}
                   <FaGithub></FaGithub>{" "}
                 </a>
-                <a href="">
+                <a href="https://www.linkedin.com/in/algalib2/">
                   {" "}
                   <FaLinkedin></FaLinkedin>{" "}
                 </a>
@@ -173,7 +173,7 @@ const OurTeam = () => {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
