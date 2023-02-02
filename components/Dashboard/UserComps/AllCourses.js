@@ -63,9 +63,9 @@ const AllCourses = () => {
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
                 <tr className="bg-[#1d4d87] text-white">
-                  <th className="text-start">Course Title</th>
-                  <th>Details</th>
-                  <th>Offer Price</th>
+                  <th className="text-start border-r-2 border-white">Course Title</th>
+                  <th className="text-start border-r-2 border-white">Details</th>
+                  <th className="text-start border-r-2 border-white">Offer Price</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -73,16 +73,18 @@ const AllCourses = () => {
                 return (
                   <tbody className="text-left" key={course?._id}>
                     <tr className="bg-[#d7d5ff] text-[#1d4d87]">
-                      <td className="text-left">{course?.title}</td>
+                      <td className="text-start border-r-2 border-b-2 border-white">
+                        {course?.title}
+                      </td>
                       {/* <td>{course?.picture}</td> */}
-                      <td className="text-left">
+                      <td className="text-start border-r-2 border-b-2 border-white">
                         {course?.details?.length > 40 ? (
                           <>{course?.details.slice(0, 40)}...</>
                         ) : (
                           <>{course?.details}</>
                         )}
                       </td>
-                      <td className="text-center">
+                      <td className="text-start border-r-2 border-b-2 border-white">
                         {/* <div className="badge badge-secondary">secondary</div>
                         <div className="badge badge-accent">{blog?.package}</div> */}
                         {/* <div className="">
@@ -98,15 +100,15 @@ const AllCourses = () => {
                         </div> */}
                         {course?.offer_price}
                       </td>
-                      <td>
+                      <td className="text-center border-r-2 border-b-2 border-white">
                         <div>
                           <Link href={`/editcourse/${course?._id}`}>
-                            <label className="btn bg-[#20d720] text-[#fff] border-none mx-1">
+                            <label className="btn bg-[#20d720] text-[#fff] border-none btn-sm mx-1 my-2">
                               <FaEdit />
                             </label>
                           </Link>
                           <label
-                            className="btn bg-[#eb3131] text-[#fff] border-none"
+                            className="btn bg-[#eb3131] text-[#fff] border-none btn-sm"
                             onClick={() => handleDelete(course?._id)}
                           >
                             <FaTrash />
