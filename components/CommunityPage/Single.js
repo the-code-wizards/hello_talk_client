@@ -6,15 +6,15 @@ import swal from 'sweetalert';
 import auth from '../../firebase.init';
 import SingleComment from './SingleComment';
 import { comment } from 'postcss';
+import { useNavigation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 const Single = ({ user, singlePost }) => {
     const [commentView, setCommentView] = useState("hidden")
     const [showModal, setShowModal] = useState(false);
     const [comments, setComments] = useState([])
     const [likeButton, SetLikeButton] = useState(false)
-    // const [likeStatus, setLikeStatus] = useState(false)
-
-
+    const router = useRouter()
 
 
     const commentRender = () => {
@@ -101,19 +101,27 @@ const Single = ({ user, singlePost }) => {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 SetLikeButton(true)
-                // // navigate("/dashboard/myproducts")
-                // if (res.acknowledged === true) {
-                //     swal(
-                //         'Your questions is posted!',
-                //         'Possible reponse is near !',
-                //         'success'
-                //     )
-                //     form.reset()
-                // }
             })
 
+    }
+
+    const handleUnlike = () => {
+        fetch(`http://localhost:5000/like/${_id}`, {
+            method: "DELETE",
+        })
+            .then(res => res.json())
+            .then(res => {
+                // console.log(res)
+                if (res.deletedCount >= 1) {
+                    SetLikeButton(false)
+                }
+            })
+
+    }
+    const navigateLogin = () => {
+        window.location.href = "/signin";
     }
 
 
@@ -140,7 +148,7 @@ const Single = ({ user, singlePost }) => {
 
                         {
                             likeButton ?
-                                <button className='flex bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Liked</span></button>
+                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span></button>
                                 :
                                 <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
                         }
@@ -157,17 +165,24 @@ const Single = ({ user, singlePost }) => {
 
                 <div className={`px-8 pt-3 ${commentView}`}>
                     <h2 className='text-md my-2 '>Add a Comment</h2>
-                    <div className='grid grid-cols-12 ml-[-10px] my-2'>
-                        <div className='grid grid-cols-1 place-items-center col-span-1'>
-                            <div className="avatar">
-                                <div className="w-8 rounded-full">
-                                    <img src={user?.photoURL} alt="Profile Picture" />
+                    {
+                        user ?
+                            <div className='grid grid-cols-12 ml-[-10px] my-2'>
+                                <div className='grid grid-cols-1 place-items-center col-span-1'>
+                                    <div className="avatar">
+                                        <div className="w-8 rounded-full">
+                                            <img src={user?.photoURL} alt="Profile Picture" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11' onClick={() => setShowModal(true)} />
-                    </div>
+                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11' onClick={() => setShowModal(true)} />
+                            </div>
+                            :
+                            <>
+                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11 mb-2' onClick={() => router.push("/signin/")} />
+                            </>
+                    }
                     {
                         comments.length ?
                             <>

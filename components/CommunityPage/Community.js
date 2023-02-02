@@ -2,11 +2,12 @@ import React from 'react';
 import SidebarCommunityPage from './Sidebar';
 import TopAuthor from './TopAuthor';
 import Profile from './Profile';
-import SinglePost from './SinglePost';
+import SinglePost from './Posts';
 import WriteaPost from './WriteaPost';
 import CNavBar from './CNavBar';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Posts from './Posts';
 
 const Community = () => {
     const [user, error] = useAuthState(auth);
@@ -45,7 +46,7 @@ const Community = () => {
                                         user &&
                                         <WriteaPost></WriteaPost>
                                     }
-                                    <SinglePost></SinglePost>
+                                    <Posts></Posts>
                                 </div>
 
                                 {/* >>>>>>>> Leader chart <<<<<<<<<<<<<<<<  */}
