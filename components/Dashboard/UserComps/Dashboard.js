@@ -59,16 +59,16 @@ const data = [
 
 const Dashboard = () => {
   return (
-    <div className="md:pt-[6rem] pt-[4.5rem] px-2">
+    <div className="md:pt-[6rem] pt-[4.5rem] px-2 -z-10">
       <div className="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-3">
         {/* Card 1 */}
         <div className="card card-compact w-80 bg-[#321FDB] text-white shadow-xl">
           <div className="p-5">
             <p>26K</p>
             <h2 className="card-title">Users</h2>
-            {/* <LineChart width={50} height={50}>
+            <LineChart width={50} height={50}>
               <Line dataKey="pv" />
-            </LineChart> */}
+            </LineChart>
           </div>
         </div>
         {/* card 2 */}
@@ -76,9 +76,9 @@ const Dashboard = () => {
           <div className="p-5">
             <p>$6200</p>
             <h2 className="card-title">Income</h2>
-            {/* <LineChart width={50} height={50}>
+            <LineChart width={50} height={50}>
               <Line dataKey="pv" />
-            </LineChart> */}
+            </LineChart>
           </div>
         </div>
         {/* Card 3 */}
@@ -86,9 +86,9 @@ const Dashboard = () => {
           <div className="p-5">
             <p>2.49%</p>
             <h2 className="card-title">Conversion Rate</h2>
-            {/* <LineChart width={50} height={50}>
+            <LineChart width={50} height={50}>
               <Line dataKey="pv" />
-            </LineChart> */}
+            </LineChart>
           </div>
         </div>
       </div>
