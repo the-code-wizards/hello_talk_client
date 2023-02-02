@@ -170,7 +170,12 @@ const Single = ({ user, singlePost }) => {
                                 <div className='grid grid-cols-1 place-items-center col-span-1'>
                                     <div className="avatar">
                                         <div className="w-8 rounded-full">
-                                            <img src={user?.photoURL} alt="Profile Picture" />
+                                            {
+                                                user?.photoURL ?
+                                                    <img src={user?.photoURL} alt="Profile Picture" />
+                                                    :
+                                                    <img src="https://i.ibb.co/8zkT4zS/istockphoto-1300845620-612x612.jpg" alt="Profile Picture" />
+                                            }
                                         </div>
                                     </div>
                                 </div>

@@ -90,7 +90,12 @@ const CNavBar = () => {
                             user ?
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img src={user?.photoURL} />
+                                        {
+                                            user?.photoURL ?
+                                                <img src={user?.photoURL} alt="Profile Picture" />
+                                                :
+                                                <img src="https://i.ibb.co/8zkT4zS/istockphoto-1300845620-612x612.jpg" alt="Profile Picture" />
+                                        }
                                     </div>
                                 </label>
                                 :
