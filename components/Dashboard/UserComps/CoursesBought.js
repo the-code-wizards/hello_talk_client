@@ -62,21 +62,27 @@ const CoursesBought = () => {
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
                 <tr className="bg-[#1d4d87] text-white">
-                  <th className="text-start">Course Title</th>
-                  <th>Total Sold</th>
-                  <th>Offer Price</th>
-                  <th>Total Revenue</th>
+                  <th className="text-start border-r-2 border-white">Course Title</th>
+                  <th className="text-center border-r-2 border-white">Total Sold</th>
+                  <th className="text-center border-r-2 border-white">Offer Price</th>
+                  <th className="text-center border-r-2 border-white">Total Revenue</th>
                 </tr>
               </thead>
               {filteredCourses.map((course) => {
                 return (
                   <tbody className="text-left" key={course?._id}>
                     <tr className="bg-[#d7d5ff] text-[#1d4d87]">
-                      <td className="text-left">{course?.title}</td>
+                      <td className="text-start border-r-2 border-b-2 border-white">
+                        {course?.title}
+                      </td>
                       {/* <td>{course?.picture}</td> */}
-                      <td className="text-center">2</td>
-                      <td className="text-center">{course?.offer_price}</td>
-                      <td className="text-center">{2 * course?.offer_price}</td>
+                      <td className="text-center border-r-2 border-b-2 border-white">2</td>
+                      <td className="text-center border-r-2 border-b-2 border-white">
+                        {course?.offer_price}
+                      </td>
+                      <td className="text-center border-r-2 border-b-2 border-white">
+                        {2 * course?.offer_price}
+                      </td>
                     </tr>
                   </tbody>
                 );
