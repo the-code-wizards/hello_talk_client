@@ -11,13 +11,13 @@ const index = () => {
                 <title>HelloTalk - Messages</title>
             </Head>
             <Navbar />
-            <div className="pt-[4.8rem] grid lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
+            <div className="pt-[4.4rem] ">
                 <div className="lg:md:block hidden">
                     <ChatSidebar/>
                 </div>
-                <div>
+                {/* <div>
                     <Messages />
-                </div>
+                </div> */}
                 <div>
                 </div>
             </div>
