@@ -11,7 +11,7 @@ const TopAuthor = () => {
     const [slicedData, setslicedData] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/community/topAuthors")
+        fetch("https://hello-talk-webserver.vercel.app/community/topAuthors")
             .then(res => res.json())
             .then(data => {
                 if (data.length >= 1) {
@@ -50,7 +50,7 @@ const TopAuthor = () => {
             // console.log(item)
             const { email, name } = item
             // console.log(email)
-            fetch(`http://localhost:5000/community/commentcount?email=${email}`)
+            fetch(`https://hello-talk-webserver.vercel.app/community/commentcount?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     const userData = {
@@ -81,7 +81,7 @@ const TopAuthor = () => {
     };
 
     const topAuthorList = (sortedUser) => {
-        fetch('http://localhost:5000/community/topAuthors', {
+        fetch('https://hello-talk-webserver.vercel.app/community/topAuthors', {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json'
