@@ -27,7 +27,7 @@ const Admins = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await fetch(`http://localhost:5000/profile/${userId}`, {
+      await fetch(`https://hello-talk-webserver.vercel.app/profile/${userId}`, {
         method: 'DELETE',
       });
     } catch (error) {

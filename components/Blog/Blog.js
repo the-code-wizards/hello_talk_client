@@ -18,7 +18,7 @@ const Blog = () => {
     setActiveIndex(index === activeIndex ? -1 : index);
   };
   useEffect(() => {
-    fetch("http://localhost:5000/blogs")
+    fetch("https://hello-talk-webserver.vercel.app/blogs")
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);

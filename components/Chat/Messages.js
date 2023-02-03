@@ -32,7 +32,7 @@ const Messages = ({ current }) => {
             msg: data?.msg
         }
         try {
-            const response = await axios.post('http://localhost:5000/send-message', msgData
+            const response = await axios.post('https://hello-talk-webserver.vercel.app/send-message', msgData
                 // , {
                 // headers: {
                 //     'Authorization': `Bearer ${token}`
@@ -49,7 +49,7 @@ const Messages = ({ current }) => {
     }
 
     const getMessages = async () => {
-        await axios.get(`http://localhost:5000/get-messages/${current?._id}`)
+        await axios.get(`https://hello-talk-webserver.vercel.app/get-messages/${current?._id}`)
             .then((res) => {
                 console.log(res)
                 setMessages(res.data);

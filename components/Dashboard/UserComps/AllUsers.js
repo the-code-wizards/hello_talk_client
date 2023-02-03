@@ -28,7 +28,7 @@ const AllUsers = () => {
   const handleAdmin = (userId) => {
     setLoader(true);
 
-    fetch(`http://localhost:5000/makeadmin?email=${userId}`, {
+    fetch(`https://hello-talk-webserver.vercel.app/makeadmin?email=${userId}`, {
       method: 'PUT',
       headers: {
         'content-Type': 'application/json',
@@ -45,7 +45,7 @@ const AllUsers = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await fetch(`http://localhost:5000/profile/${userId}`, {
+      await fetch(`https://hello-talk-webserver.vercel.app/profile/${userId}`, {
         method: 'DELETE',
       });
       // update the courses state and re-render the component

@@ -11,7 +11,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5000/allusers`)
+    axios.get(`https://hello-talk-webserver.vercel.app/allusers`)
       .then((res) => {
         setUsers(res.data);
       })

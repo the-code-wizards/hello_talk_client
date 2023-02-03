@@ -26,7 +26,7 @@ const AllBlogs = () => {
 
   const handleDelete = async (blogId) => {
     try {
-      await fetch(`http://localhost:5000/blogs/${blogId}`, {
+      await fetch(`https://hello-talk-webserver.vercel.app/blogs/${blogId}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())

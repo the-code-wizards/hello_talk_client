@@ -11,7 +11,7 @@ const useToken = (user, age) => {
             email: email,
         };
         if (email) {
-            fetch(`http://localhost:5000/profile/${email}`, {
+            fetch(`https://hello-talk-webserver.vercel.app/profile/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json'

@@ -9,7 +9,7 @@ const useOrderList = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`http://localhost:5000/levels`)
+        axios.get(`https://hello-talk-webserver.vercel.app/levels`)
             .then((res) => {
                 setLevels(res.data);
             })

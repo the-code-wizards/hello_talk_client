@@ -8,7 +8,7 @@ const SingleCard = ({ course }) => {
   const [loading, setLoading] = useState()
   const [enrolled, setEnrolled] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/userpayments?email=${singleUser?.email}`)
+    fetch(`https://hello-talk-webserver.vercel.app/userpayments?email=${singleUser?.email}`)
       .then(res => res.json())
       .then(data => {
         setEnrolled(data)

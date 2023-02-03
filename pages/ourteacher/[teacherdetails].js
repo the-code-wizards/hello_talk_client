@@ -7,7 +7,7 @@ const Teacherdetails = () => {
 
   const { _id, details, name, image } = teacherDetails;
   useEffect(() => {
-    fetch(`http://localhost:5000/teacher/${teacherid}`)
+    fetch(`https://hello-talk-webserver.vercel.app/teacher/${teacherid}`)
       .then((res) => res.json())
       .then((data) => {
         setTeacherDetails(data);

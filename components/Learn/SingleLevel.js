@@ -28,7 +28,7 @@ const SingleLevel = () => {
     }
 
     if (gems > 0) {
-        fetch(`http://localhost:5000/addgem?email=${user?.email}`, {
+        fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +52,7 @@ const SingleLevel = () => {
 
     useEffect(() => {
         setLoadingTwo(true);
-        axios.get(`http://localhost:5000/levels/${level}`
+        axios.get(`https://hello-talk-webserver.vercel.app/levels/${level}`
         )
             .then((res) => {
                 setSingleLevel(res?.data);
@@ -104,7 +104,7 @@ const SingleLevel = () => {
                 router.push(`/level/${parseInt(lv?.level) + 1}`)
             }
 
-            fetch(`http://localhost:5000/savelevel?email=${user?.email}`, {
+            fetch(`https://hello-talk-webserver.vercel.app/savelevel?email=${user?.email}`, {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

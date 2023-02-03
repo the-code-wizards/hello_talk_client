@@ -8,7 +8,7 @@ const useCourses = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/courses`)
+      .get(`https://hello-talk-webserver.vercel.app/courses`)
       .then((res) => {
         setCourses(res.data);
       })

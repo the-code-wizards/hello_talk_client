@@ -63,7 +63,7 @@ const Register = () => {
                 },
             };
             const body = JSON.stringify(userbio);
-            const res = await axios.post("http://localhost:5000/registration", body, config);
+            const res = await axios.post("https://hello-talk-webserver.vercel.app/registration", body, config);
             if (res?.status === 200) {
                 setLoading(false)
                 setToken(res?.data?.token)
@@ -105,7 +105,7 @@ const Register = () => {
             gems: 0
         }
         console.log(gData)
-        fetch(`http://localhost:5000/user`, {
+        fetch(`https://hello-talk-webserver.vercel.app/user`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

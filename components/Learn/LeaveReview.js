@@ -14,7 +14,7 @@ const LeaveReview = () => {
         setLoading(true);
         axios
             .get(
-                `http://localhost:5000/profile?email=${user?.email}`
+                `https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`
             )
             .then((res) => {
                 setProfile(res?.data);
@@ -33,7 +33,7 @@ const LeaveReview = () => {
         const form = e.target;
         const comments = form.comments.value;
         const comment = { name, email, comments };
-        fetch(`http://localhost:5000/postreview`, {
+        fetch(`https://hello-talk-webserver.vercel.app/postreview`, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(comment),

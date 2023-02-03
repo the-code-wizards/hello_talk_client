@@ -86,7 +86,7 @@ const Signup = () => {
             joined_date: date,
             gems: 0
         }
-        fetch(`http://localhost:5000/user`, {
+        fetch(`https://hello-talk-webserver.vercel.app/user`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -122,7 +122,7 @@ const Signup = () => {
     //                 gems: 0
     //             }
     //             console.log(gData)
-    //             fetch(`http://localhost:5000/user`, {
+    //             fetch(`https://hello-talk-webserver.vercel.app/user`, {
     //                 method: "POST",
     //                 headers: {
     //                     'content-type': 'application/json'

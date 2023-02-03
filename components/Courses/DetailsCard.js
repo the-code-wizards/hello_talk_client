@@ -8,7 +8,7 @@ const DetailsCard = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5000/course/63bef8eb8675bb27211f0c53`
+    axios.get(`https://hello-talk-webserver.vercel.app/course/63bef8eb8675bb27211f0c53`
     )
       .then((res) => {
         setCourseDetails(res?.data);

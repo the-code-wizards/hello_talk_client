@@ -18,7 +18,7 @@ const EnrolledCourse = () => {
     console.log(courseDetails);
     useEffect(() => {
         setLoading(true);
-        axios.get(`http://localhost:5000/course/${id}`)
+        axios.get(`https://hello-talk-webserver.vercel.app/course/${id}`)
             .then((res) => {
                 setCourseDetails(res.data);
             })
@@ -30,7 +30,7 @@ const EnrolledCourse = () => {
             });
     }, [id]);
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/course/${id}`)
+    //     fetch(`https://hello-talk-webserver.vercel.app/course/${id}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setCourseDetails(data)

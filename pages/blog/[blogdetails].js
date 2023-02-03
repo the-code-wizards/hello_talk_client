@@ -23,7 +23,7 @@ const Blogdetails = () => {
   } = blogDetails;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${blogid}`)
+    fetch(`https://hello-talk-webserver.vercel.app/blogs/${blogid}`)
       .then((res) => res.json())
       .then((data) => setBlogDetails(data));
   }, [blogid]);

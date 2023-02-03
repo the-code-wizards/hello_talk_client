@@ -18,7 +18,7 @@ const Coursedetails = () => {
   console.log(id);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/course/${id}`)
+    fetch(`https://hello-talk-webserver.vercel.app/course/${id}`)
       .then(res => res.json())
       .then(data => {
         setCourseDetails(data)
