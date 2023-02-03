@@ -2,12 +2,35 @@ import React, { useEffect, useState } from 'react';
 import useSingleUser from '../hooks/useSingleUser'
 import useUsers from '../hooks/useUsers';
 import Messages from './Messages';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import axios from 'axios';
 
 const ChatSidebar = ({setCurrent}) => {
-    const [singleUser] = useSingleUser()
+    // const [singleUser] = useSingleUser()
     const [users] = useUsers()
+    const [user, error] = useAuthState(auth);
     // const [current, setCurrent] = useState('');
-    console.log(singleUser)
+    const [singleUser, setSingleUser] = useState({});
+    const [loading, setLoading] = useState(true);
+
+
+
+    useEffect(() => {
+        setLoading(true);
+        axios.get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
+            .then((res) => {
+                setSingleUser(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [user]);
+
+    console.log(user)
     return (
         <div className="drawer md:drawer-mobile  md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 h-screen">
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />

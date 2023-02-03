@@ -3,11 +3,14 @@ import { useForm } from 'react-hook-form';
 import { AiOutlineSend } from 'react-icons/ai';
 import useSingleUser from '../hooks/useSingleUser'; 
 import axios from 'axios';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Messages = ({ current }) => {
     const [singleUser] = useSingleUser()
     const [messages, setMessages] = useState();
     const [token, setToken] = useState()
+    const [user, error] = useAuthState(auth);
     const {
         register,
         handleSubmit,
@@ -43,9 +46,9 @@ const Messages = ({ current }) => {
         }
         console.log(msgData)
     }
-    console.log(current)
+    console.log(user)
     return (
-        <div className="py-[15px] md:pt-[5.3rem] pt-[5rem]">
+        <div className="py-[15px] md:pt-[5rem] pt-[5rem]">
             {!current ? 
                 <>
                     <h2 className="text-center text-bold text-xl">NO CONTACT CHOSEN</h2>
