@@ -12,7 +12,7 @@ const useSingleUser = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
+        axios.get(`http://localhost:5000/profile?email=${user?.email}`)
             .then((res) => {
                 setSingleUser(res.data);
             })

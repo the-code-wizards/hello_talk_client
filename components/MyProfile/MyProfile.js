@@ -56,7 +56,7 @@ const MyProfile = () => {
       email,
     };
     fetch(
-      `https://hello-talk-webserver.vercel.app/upuser?email=${user?.email}`,
+      `http://localhost:5000/upuser?email=${user?.email}`,
       {
         method: "POST",
         headers: {

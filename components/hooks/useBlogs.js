@@ -8,8 +8,8 @@ const useBlogs = () => {
   useEffect(() => {
     setLoading(true);
     axios.get(
-        `https://hello-talk-webserver.vercel.app/blogs`
-      )
+      `http://localhost:5000/blogs`
+    )
       .then((res) => {
         setBlogs(res.data);
       })

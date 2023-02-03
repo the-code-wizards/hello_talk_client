@@ -19,7 +19,7 @@ const EditTeacher = () => {
     // if (accessToken) {
     setLoading(true);
     axios
-      .get(`https://hello-talk-webserver.vercel.app/teacher/${courseid}`)
+      .get(`http://localhost:5000/teacher/${courseid}`)
       .then((res) => {
         setTeacherDetails(res.data);
       })
@@ -58,7 +58,7 @@ const EditTeacher = () => {
       qualification1: qualification,
     };
     console.log('Edit teacher', editTeacherBody);
-    fetch(`https://hello-talk-webserver.vercel.app/updateteacher?id=${_id}`, {
+    fetch(`http://localhost:5000/updateteacher?id=${_id}`, {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,

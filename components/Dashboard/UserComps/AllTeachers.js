@@ -28,11 +28,11 @@ const AllTeachers = () => {
 
   const handleDelete = async (userId) => {
     try {
-      await fetch(`https://hello-talk-webserver.vercel.app/removeteacher?id=${userId}`, {
+      await fetch(`http://localhost:5000/removeteacher?id=${userId}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())
-        .then((data) => {});
+        .then((data) => { });
     } catch (error) {
       console.error(error);
     } finally {

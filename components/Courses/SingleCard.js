@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSingleUser from '../hooks/useSingleUser';
 
 const SingleCard = ({ course }) => {
@@ -8,7 +8,7 @@ const SingleCard = ({ course }) => {
   const [loading, setLoading] = useState()
   const [enrolled, setEnrolled] = useState([])
   useEffect(() => {
-    fetch(`https://hello-talk-webserver.vercel.app/userpayments?email=${singleUser?.email}`)
+    fetch(`http://localhost:5000/userpayments?email=${singleUser?.email}`)
       .then(res => res.json())
       .then(data => {
         setEnrolled(data)
@@ -21,7 +21,7 @@ const SingleCard = ({ course }) => {
   console.log(singleUser)
 
   const productData = enrolled?.map((single) => single?.productId);
-  
+
   return (
     <div className="card card-compact bg-white shadow-2xl ">
       <div className="p-3  mx-auto">

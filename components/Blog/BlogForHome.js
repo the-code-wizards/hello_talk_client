@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const BlogForHome = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
-    fetch("https://hello-talk-webserver.vercel.app/hblogs")
+    fetch("http://localhost:5000/hblogs")
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);

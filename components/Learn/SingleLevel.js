@@ -22,24 +22,24 @@ const SingleLevel = () => {
     const [gems, setGems] = useState();
     const [singleUser, loading] = useSingleUser()
     const [localEmail, setLocalEmail] = useState()
-    console.log('Gem: ',gems);
+    console.log('Gem: ', gems);
     const mygem = {
         mGem: gems
-    }   
+    }
 
-            if(gems > 0){
-                fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`,{
-                method: "POST",
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(mygem)
-            })
+    if (gems > 0) {
+        fetch(`http://localhost:5000/addgem?email=${user?.email}`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(mygem)
+        })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
             })
-            .catch((e) => {console.log(e)})
+            .catch((e) => { console.log(e) })
     }
     useEffect(() => {
         setLocalEmail(localStorage.getItem('email'))
@@ -48,11 +48,11 @@ const SingleLevel = () => {
         }
     }, [])
 
-    
+
 
     useEffect(() => {
         setLoadingTwo(true);
-        axios.get(`https://hello-talk-webserver.vercel.app/levels/${level}`
+        axios.get(`http://localhost:5000/levels/${level}`
         )
             .then((res) => {
                 setSingleLevel(res?.data);
@@ -65,7 +65,7 @@ const SingleLevel = () => {
             });
     }, [level]);
 
-console.log(router)
+    console.log(router)
     const lv = singleLevel[0];
     const comp_level = {
         completed_lv: lv?.level
@@ -83,28 +83,28 @@ console.log(router)
         }
     };
     const prevLevel = () => {
-           router.push(`/level/${parseInt(lv?.level) - 1}`) 
+        router.push(`/level/${parseInt(lv?.level) - 1}`)
     }
-    const nextLevel = () => {   
+    const nextLevel = () => {
         if (singleUser?.completed_lv?.includes(lv?.level)) {
             setGems(0)
-        } 
+        }
         else {
             if (score !== null) {
                 const percentage = score / lv?.question?.length
                 if (percentage > .5) {
                     setGems(3)
-                } else{
+                } else {
                     setGems(2)
                 }
-               router.push(`/level/${parseInt(lv?.level) + 1}`) 
+                router.push(`/level/${parseInt(lv?.level) + 1}`)
             }
             else {
                 setGems(1)
-                router.push(`/level/${parseInt(lv?.level) + 1}`) 
+                router.push(`/level/${parseInt(lv?.level) + 1}`)
             }
 
-            fetch(`https://hello-talk-webserver.vercel.app/savelevel?email=${user?.email}`, {
+            fetch(`http://localhost:5000/savelevel?email=${user?.email}`, {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -116,10 +116,10 @@ console.log(router)
                     console.log(data);
                 })
                 .catch((e) => { console.log(e) })
-}
+        }
 
     }
-    if(loading || loadingTwo){
+    if (loading || loadingTwo) {
         return <div className="w-[300px] h-[300px] mx-auto">
             <Lottie animationData={loader} loop={true} />
         </div>
@@ -167,7 +167,7 @@ console.log(router)
 
                         </div>
                         <div className="flex justify-between">
-                                <button onClick={prevLevel} className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]">PREV</button>
+                            <button onClick={prevLevel} className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]">PREV</button>
                             <button onClick={nextLevel} className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]">NEXT</button>
                         </div></>
                 }

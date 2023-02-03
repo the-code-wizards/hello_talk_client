@@ -18,7 +18,7 @@ const EnrolledCourse = () => {
     console.log(courseDetails);
     useEffect(() => {
         setLoading(true);
-        axios.get(`https://hello-talk-webserver.vercel.app/course/${id}`)
+        axios.get(`http://localhost:5000/course/${id}`)
             .then((res) => {
                 setCourseDetails(res.data);
             })
@@ -30,7 +30,7 @@ const EnrolledCourse = () => {
             });
     }, [id]);
     // useEffect(() => {
-    //     fetch(`https://hello-talk-webserver.vercel.app/course/${id}`)
+    //     fetch(`http://localhost:5000/course/${id}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setCourseDetails(data)
@@ -49,10 +49,10 @@ const EnrolledCourse = () => {
                 <title>{title}</title>
             </Head>
             <div className="px-8">
-               <div className="py-10 pt-[6rem] pb-[4rem]">
+                <div className="py-10 pt-[6rem] pb-[4rem]">
                     <h2 className=' text-[#61B800] text-4xl font-bold '>{title}</h2>
                     <h4 className="text-lg font-featherbold">Lingua Marina</h4>
-               </div>
+                </div>
 
                 <div className="grid lg:md:grid-cols-3 grid-cols-1 lg:md:gap-x-[8px] gap-y-4 ">
                     {

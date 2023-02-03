@@ -26,7 +26,7 @@ const CoursesBought = () => {
 
   const handleDelete = async (courseId) => {
     try {
-      await fetch(`https://hello-talk-webserver.vercel.app/course/${courseId}`, {
+      await fetch(`http://localhost:5000/course/${courseId}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())

@@ -23,7 +23,7 @@ const AddTeacher = () => {
       date: currentDate,
       image,
     };
-    fetch('https://hello-talk-webserver.vercel.app/addteacher', {
+    fetch('http://localhost:5000/addteacher', {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,

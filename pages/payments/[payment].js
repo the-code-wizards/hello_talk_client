@@ -20,7 +20,7 @@ const Payment = () => {
 
     useEffect(() => {
         if (id) {
-            fetch(`https://hello-talk-webserver.vercel.app/course/${id}`)
+            fetch(`http://localhost:5000/course/${id}`)
                 .then(res => res.json())
                 .then(data => {
                     setCourseDetails(data)

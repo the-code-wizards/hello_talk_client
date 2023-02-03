@@ -18,7 +18,7 @@ const Posts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true)
-            const res = await axios.get("https://hello-talk-webserver.vercel.app/communityposts")
+            const res = await axios.get("http://localhost:5000/communityposts")
             const data = res.data
             setPosts(data)
             setTotalPost(data.length)

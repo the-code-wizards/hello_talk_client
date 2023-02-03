@@ -31,7 +31,7 @@ const AddCourse = () => {
       date: currentDate,
       module_links: links,
     };
-    fetch(`https://hello-talk-webserver.vercel.app/course`, {
+    fetch(`http://localhost:5000/course`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(courseDetail),

@@ -11,7 +11,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://hello-talk-webserver.vercel.app/allusers`)
+    axios.get(`http://localhost:5000/allusers`)
       .then((res) => {
         setUsers(res.data);
       })
@@ -88,17 +88,17 @@ const Leaderboard = () => {
               </tr>
             </thead>
             <tbody>
-              {sortedArray?.map((user,index) => {
-                        
+              {sortedArray?.map((user, index) => {
+
                 return (
                   <>
-                   {/* {user?.email === singleUser?.email && setUserRank(rank)} */}
+                    {/* {user?.email === singleUser?.email && setUserRank(rank)} */}
                     <tr className="bg-[#edffdf] border-none text-[#333] shadow-lg">
                       <td className="bg-[#edffdf] border-none text-[#333]">
                         {user?.name}
                       </td>
                       <td className="bg-[#edffdf] border-none text-[#333]">{user?.email}</td>
-                      <td className="bg-[#edffdf] border-none text-[#333]">{index+1}</td>
+                      <td className="bg-[#edffdf] border-none text-[#333]">{index + 1}</td>
                       <td className="bg-[#edffdf] border-none text-[#333]">{user?.gems}</td>
                     </tr>
                   </>

@@ -14,7 +14,7 @@ const SendEmailCard = () => {
     setLoading(true);
     axios
       .get(
-        `https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`
+        `http://localhost:5000/profile?email=${user?.email}`
       )
       .then((res) => {
         setProfile(res?.data);
@@ -33,7 +33,7 @@ const SendEmailCard = () => {
     const form = e.target;
     const comments = form.comments.value;
     const comment = { name, email, comments };
-    fetch(`https://hello-talk-webserver.vercel.app/postreview`, {
+    fetch(`http://localhost:5000/postreview`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(comment),
@@ -51,13 +51,13 @@ const SendEmailCard = () => {
   }
   return (
     <div className="lg:md:px-0 px-3 pr-3">
-        <Link className="flex justify-center mt-4" href="/leaderboard">
-          <button type="button" className="bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] w-[80%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] px-4 text-center">See Leader Board</button>
-        </Link>
+      <Link className="flex justify-center mt-4" href="/leaderboard">
+        <button type="button" className="bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] w-[80%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] px-4 text-center">See Leader Board</button>
+      </Link>
       <div className=" card border-[2px] border-[#61B800] shadow-xl text-center text-[#3C3C3C] my-10">
         <div className="card-body ">
           <h2 className="text-center font-featherBold lg:md:text-[1.2rem] text-xl">
-           leave us a review
+            leave us a review
           </h2>
           <form onSubmit={reviewHandler}>
             <div className="flex justify-center my-4">

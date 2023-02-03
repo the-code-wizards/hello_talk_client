@@ -36,7 +36,7 @@ const EditCourse = () => {
     // if (accessToken) {
     setLoading(true);
     axios
-      .get(`https://hello-talk-webserver.vercel.app/course/${courseid}`)
+      .get(`http://localhost:5000/course/${courseid}`)
       .then((res) => {
         setCourseDetails(res.data);
       })
@@ -81,7 +81,7 @@ const EditCourse = () => {
       module_links1: module_links,
     };
     console.log('Edit course', editCourseBody);
-    fetch(`https://hello-talk-webserver.vercel.app/upcourse?id=${_id}`, {
+    fetch(`http://localhost:5000/upcourse?id=${_id}`, {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,

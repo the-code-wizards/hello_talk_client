@@ -28,7 +28,7 @@ const TopAuthor = () => {
     const reloadFetch = () => {
         const fetchPosts = async () => {
             setLoading(true)
-            fetch(`https://hello-talk-webserver.vercel.app/allusers`)
+            fetch(`http://localhost:5000/allusers`)
                 .then(res => res.json())
                 .then(data => {
                     setUsers(data)

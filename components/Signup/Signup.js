@@ -56,7 +56,7 @@ const Signup = () => {
 
     if (token) {
         Cookies.set("loggedin", "true");
-        console.log("cookies",Cookies)
+        console.log("cookies", Cookies)
         window.location.href = "/";
     }
     console.log(gUser)
@@ -86,7 +86,7 @@ const Signup = () => {
             joined_date: date,
             gems: 0
         }
-        fetch(`https://hello-talk-webserver.vercel.app/user`, {
+        fetch(`http://localhost:5000/user`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -106,48 +106,48 @@ const Signup = () => {
         await createUserWithEmailAndPassword(data.email, data.password, data?.age);
         await updateProfile({ displayName: data.name, age: data?.age });
     };
-//     const googleSubmit = () => {
-//         console.log(gUser)
-//         try {
-//             if (gLoading) {
-//                 return <progress className='progress w-full'></progress>
-//             }
-//             const gData = {
-//                 name: gUser?.user?.displayName,
-//                 email: gUser?.user?.email,
-//                 profileImg: gUser?.user?.photoURL,
-//                 getage: 'young',
-//                 joined_date: date,
-//                 role: 'user',
-//                 gems: 0
-//             }
-//             console.log(gData)
-//             fetch(`https://hello-talk-webserver.vercel.app/user`, {
-//                 method: "POST",
-//                 headers: {
-//                     'content-type': 'application/json'
-//                 },
-//                 body: JSON.stringify(gData)
-//             })
-//                 .then(res => res.json())
-//                 .then(data => {
-//                     console.log(data)
-//                     if (data.acknowledged) {
-//                         swal("Congratulations! Account created successfully")
-//                     } else {
-//                         swal("OOPS! Something wen wrong :(")
-//                     }
-//                 })
-//         } catch (err) {
-//             console.log(err)
-//         }
-//     }
-//     useEffect(() => {
-//         if(gLoading === false)
-// {
-//      googleSubmit()
-// }       
-//     }, [gUser])
+    //     const googleSubmit = () => {
+    //         console.log(gUser)
+    //         try {
+    //             if (gLoading) {
+    //                 return <progress className='progress w-full'></progress>
+    //             }
+    //             const gData = {
+    //                 name: gUser?.user?.displayName,
+    //                 email: gUser?.user?.email,
+    //                 profileImg: gUser?.user?.photoURL,
+    //                 getage: 'young',
+    //                 joined_date: date,
+    //                 role: 'user',
+    //                 gems: 0
+    //             }
+    //             console.log(gData)
+    //             fetch(`http://localhost:5000/user`, {
+    //                 method: "POST",
+    //                 headers: {
+    //                     'content-type': 'application/json'
+    //                 },
+    //                 body: JSON.stringify(gData)
+    //             })
+    //                 .then(res => res.json())
+    //                 .then(data => {
+    //                     console.log(data)
+    //                     if (data.acknowledged) {
+    //                         swal("Congratulations! Account created successfully")
+    //                     } else {
+    //                         swal("OOPS! Something wen wrong :(")
+    //                     }
+    //                 })
+    //         } catch (err) {
+    //             console.log(err)
+    //         }
+    //     }
+    //     useEffect(() => {
+    //         if(gLoading === false)
+    // {
+    //      googleSubmit()
+    // }       
+    //     }, [gUser])
 
     return (
         <>

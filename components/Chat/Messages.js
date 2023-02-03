@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineSend } from 'react-icons/ai';
-import useSingleUser from '../hooks/useSingleUser'; 
+import useSingleUser from '../hooks/useSingleUser';
 import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -11,6 +11,7 @@ const Messages = ({ current }) => {
     const [messages, setMessages] = useState();
     const [token, setToken] = useState()
     const [user, error] = useAuthState(auth);
+    console.log(current);
     const {
         register,
         handleSubmit,
@@ -19,12 +20,12 @@ const Messages = ({ current }) => {
     } = useForm();
 
     useEffect(() => {
-       setToken(localStorage.getItem('token'))
-    },[])
+        setToken(localStorage.getItem('token'))
+    }, [])
 
 
-    const sendMsg = async(data) => {
-        const msgData ={
+    const sendMsg = async (data) => {
+        const msgData = {
             sender: singleUser?.name,
             senderId: singleUser?._id,
             recId: current?._id,
@@ -46,13 +47,34 @@ const Messages = ({ current }) => {
         }
         console.log(msgData)
     }
+
+    const getMessages = async () => {
+        await axios.get(`http://localhost:5000/get-messages/${current?._id}`)
+            .then((res) => {
+                console.log(res)
+                setMessages(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                // setLoading(false);
+            });
+    }
+    useEffect(() => {
+        if (current?._id) {
+            getMessages()
+        }
+        // setLoading(true);
+
+    }, [current?._id]);
     console.log(user)
     return (
         <div className="py-[15px] md:pt-[5rem] pt-[5rem]">
-            {!current ? 
+            {!current ?
                 <>
                     <h2 className="text-center text-bold text-xl">NO CONTACT CHOSEN</h2>
-                </> 
+                </>
                 :
                 <div>
                     <div key={current?._id} className="pl-2 pointer flex items-center gap-x-[10px] mb-2  border-b-[2px] mt-[-8px] bg-[#ddd] py-2 fixed w-full ">
@@ -76,10 +98,28 @@ const Messages = ({ current }) => {
                     </div>
 
                     <div>
-                        <div className="chat chat-end">
-                            <div className="chat-bubble">You underestimate my power!</div>
+                        <div className="chat chat-start">
+                            <div className="chat-bubble">Hello</div>
                         </div>
-                            <div className="mx-2 flex items-center fixed w-[76%] bottom-0 mb-4">
+                        <div className="chat chat-end">
+                            <div className="chat-bubble">HI</div>
+                        </div>
+                        <div className="chat chat-start">
+                            <div className="chat-bubble">How are you?</div>
+                        </div>
+                        <div className="chat chat-end">
+                            <div className="chat-bubble">GRGygteyteyty</div>
+                        </div>
+                        <div className="chat chat-end">
+                            <div className="chat-bubble">thytiutiui</div>
+                        </div>
+                        <div className="chat chat-end">
+                            <div className="chat-bubble">yutyuityuiyui</div>
+                        </div>
+                        <div className="chat chat-end">
+                            <div className="chat-bubble">HyjyjtyujtyjutjtkjI</div>
+                        </div>
+                        <div className="mx-2 flex items-center fixed w-[76%] bottom-0 mb-4">
                             <form className="mx-2 flex items-center fixed w-[76%] bottom-0 mb-4"
                                 onSubmit={handleSubmit(sendMsg)}>
                                 <input
@@ -92,12 +132,12 @@ const Messages = ({ current }) => {
                                     type="submit" >
                                     <AiOutlineSend className="text-2xl cursor-pointer" />
                                 </button>
-                                </form>
-                            </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             }
-                       
+
         </div>
     );
 };

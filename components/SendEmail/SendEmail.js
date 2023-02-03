@@ -5,7 +5,7 @@ const SendEmail = () => {
     const form = e.target;
     const email = form.email.value;
     const comment = { email };
-    fetch(`https://hello-talk-webserver.vercel.app/notifyblog`, {
+    fetch(`http://localhost:5000/notifyblog`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(comment),

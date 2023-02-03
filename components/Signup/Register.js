@@ -79,13 +79,13 @@ const Register = () => {
             }
         } catch (err) {
             setLoading(false)
-             Swal.fire({
-                    icon: 'error',
-                    text: err?.response.data.message,
-                    title: 'OOOPS',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+            Swal.fire({
+                icon: 'error',
+                text: err?.response.data.message,
+                title: 'OOOPS',
+                showConfirmButton: false,
+                timer: 1500
+            })
             console.error(err?.response.data.message);
         }
     }
@@ -105,7 +105,7 @@ const Register = () => {
             gems: 0
         }
         console.log(gData)
-        fetch(`https://hello-talk-webserver.vercel.app/user`, {
+        fetch(`http://localhost:5000/user`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

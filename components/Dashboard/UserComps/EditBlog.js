@@ -31,7 +31,7 @@ const EditBlog = () => {
   } = blogDetails;
 
   // useEffect(() => {
-  //   fetch(`https://hello-talk-webserver.vercel.app/blogs/${blogid}`)
+  //   fetch(`http://localhost:5000/blogs/${blogid}`)
   //     .then((res) => res.json())
   //     .then((data) => setBlogDetails(data));
   // }, [blogid]);
@@ -42,7 +42,7 @@ const EditBlog = () => {
     // if (accessToken) {
     setLoading(true);
     axios
-      .get(`https://hello-talk-webserver.vercel.app/blogs/${blogid}`)
+      .get(`http://localhost:5000/blogs/${blogid}`)
       .then((res) => {
         setBlogDetails(res.data);
       })
@@ -109,7 +109,7 @@ const EditBlog = () => {
     };
     // console.log('edit blog body', editBlogBody);
 
-    fetch(`https://hello-talk-webserver.vercel.app/upblog?id=${_id}`, {
+    fetch(`http://localhost:5000/upblog?id=${_id}`, {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,
@@ -124,11 +124,11 @@ const EditBlog = () => {
 
     // axios({
     //   method: 'POST',
-    //   url: `https://hello-talk-webserver.vercel.app/upblog?id=${_id}`,
+    //   url: `http://localhost:5000/upblog?id=${_id}`,
     //   data: editBlogBody,
     // });
     // useEffect(() => {
-    //   fetch(`https://hello-talk-webserver.vercel.app/upblog/${_id}`, {
+    //   fetch(`http://localhost:5000/upblog/${_id}`, {
     //     method: 'POST',
     //     headers: { 'content-Type': 'application/json' },
     //     // authorization: `bearer ${localStorage.getItem("s-token")}`,

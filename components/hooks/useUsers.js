@@ -8,7 +8,7 @@ const useUsers = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://hello-talk-webserver.vercel.app/allusers`)
+      .get(`http://localhost:5000/allusers`)
       .then((res) => {
         setUsers(res.data);
       })
