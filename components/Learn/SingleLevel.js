@@ -21,7 +21,7 @@ const SingleLevel = () => {
     const [score, setScore] = useState(null);
     const [gems, setGems] = useState();
     const [singleUser, loading] = useSingleUser()
-    const [localEmail, setLocalEmail] = useState()
+    const [token, setToken] = useState()
     console.log('Gem: ', gems);
     const mygem = {
         mGem: gems
@@ -42,8 +42,8 @@ const SingleLevel = () => {
             .catch((e) => { console.log(e) })
     }
     useEffect(() => {
-        setLocalEmail(localStorage.getItem('email'))
-        if (!localEmail) {
+        setToken(localStorage.getItem('token'))
+        if (!token) {
             window.location.href = "/signin";
         }
     }, [])
@@ -131,7 +131,7 @@ const SingleLevel = () => {
             </Head>
             <div className='px-16 pt-8'>
                 {/* <Link href="/learn" className=''>Go Back</Link> */}
-                {!localEmail ? <>
+                {!token ? <>
                     <h2 className="text-xl text-green-500 font-bold text-center mb-2">Sign In To Level Up</h2></>
                     : <>
                         <div className='px-8 pb-8 shadow-xl'>
