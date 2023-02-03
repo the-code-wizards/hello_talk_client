@@ -42,7 +42,7 @@ const Single = ({ user, singlePost }) => {
             pid: _id
         }
         // console.log(postComment)
-        fetch("http://localhost:5000/community/postcomment", {
+        fetch("https://hello-talk-webserver.vercel.app/community/postcomment", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -66,7 +66,7 @@ const Single = ({ user, singlePost }) => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/community/comment/${_id}`)
+        fetch(`https://hello-talk-webserver.vercel.app/community/comment/${_id}`)
             .then(res => res.json())
             .then(data => setComments(data))
 
@@ -74,7 +74,7 @@ const Single = ({ user, singlePost }) => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/community/like?email=${user?.email}&id=${_id}`)
+        fetch(`https://hello-talk-webserver.vercel.app/community/like?email=${user?.email}&id=${_id}`)
             .then(res => res.json())
             .then(res => {
                 if (res.length >= 1) {
@@ -91,7 +91,7 @@ const Single = ({ user, singlePost }) => {
             postTime: Date(),
             pid: _id
         }
-        fetch("http://localhost:5000/community/postlike", {
+        fetch("https://hello-talk-webserver.vercel.app/community/postlike", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -107,7 +107,7 @@ const Single = ({ user, singlePost }) => {
     }
 
     const handleUnlike = () => {
-        fetch(`http://localhost:5000/community/like/${_id}`, {
+        fetch(`https://hello-talk-webserver.vercel.app/community/like/${_id}`, {
             method: "DELETE",
         })
             .then(res => res.json())

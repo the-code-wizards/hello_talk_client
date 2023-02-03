@@ -63,7 +63,7 @@ const Register = () => {
                 },
             };
             const body = JSON.stringify(userbio);
-            const res = await axios.post("http://localhost:5000/registration", body, config);
+            const res = await axios.post("https://hello-talk-webserver.vercel.app/registration", body, config);
             if (res?.status === 200) {
                 setLoading(false)
                 setToken(res?.data?.token)
@@ -79,13 +79,13 @@ const Register = () => {
             }
         } catch (err) {
             setLoading(false)
-             Swal.fire({
-                    icon: 'error',
-                    text: err?.response.data.message,
-                    title: 'OOOPS',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+            Swal.fire({
+                icon: 'error',
+                text: err?.response.data.message,
+                title: 'OOOPS',
+                showConfirmButton: false,
+                timer: 1500
+            })
             console.error(err?.response.data.message);
         }
     }

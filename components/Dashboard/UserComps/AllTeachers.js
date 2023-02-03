@@ -32,7 +32,7 @@ const AllTeachers = () => {
         method: 'DELETE',
       })
         .then((res) => res.json())
-        .then((data) => {});
+        .then((data) => { });
     } catch (error) {
       console.error(error);
     } finally {
