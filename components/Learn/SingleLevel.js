@@ -41,12 +41,12 @@ const SingleLevel = () => {
             })
             .catch((e) => { console.log(e) })
     }
-    useEffect(() => {
-        setToken(localStorage.getItem('token'))
-        if (!token) {
-            window.location.href = "/signin";
-        }
-    }, [])
+    // useEffect(() => {
+    //     setToken(localStorage.getItem('token'))
+    //     if (!token) {
+    //         window.location.href = "/signin";
+    //     }
+    // }, [])
 
 
 
