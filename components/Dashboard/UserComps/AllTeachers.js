@@ -32,7 +32,7 @@ const AllTeachers = () => {
         method: 'DELETE',
       })
         .then((res) => res.json())
-        .then((data) => {});
+        .then((data) => { });
     } catch (error) {
       console.error(error);
     } finally {
@@ -63,7 +63,7 @@ const AllTeachers = () => {
                 <tr className="bg-[#1d4d87]  text-white">
                   <th className="text-start border-r-2 border-white">Name</th>
                   <th className="text-start border-r-2 border-white">Qualification</th>
-                  <th className="text-start border-r-2 border-white">Details</th>
+                  {/* <th className="text-start border-r-2 border-white">Details</th> */}
                   <th>Action</th>
                 </tr>
               </thead>
@@ -77,14 +77,14 @@ const AllTeachers = () => {
                       <td className="text-start border-r-2 border-b-2 border-white">
                         {teacher?.qualification}
                       </td>
-                      <td className="text-start border-r-2 border-b-2 border-white">
+                      {/* <td className="text-start border-r-2 border-b-2 border-white">
                         {teacher?.details}
-                      </td>
+                      </td> */}
 
                       <td className="border-b-2 border-white">
                         <div className="items-center">
                           <Link href={`/editteacher/${teacher?._id}`}>
-                            <label className="btn bg-[#20d720] text-[#fff] border-none btn-sm my-2">
+                            <label className="btn bg-[#20d720] text-[#fff] border-none btn-sm mx-1 my-2">
                               <FaEdit />
                             </label>
                           </Link>
