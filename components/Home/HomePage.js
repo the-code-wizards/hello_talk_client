@@ -11,6 +11,7 @@ import Blog from "../Blog/Blog";
 import BlogForHome from "../Blog/BlogForHome";
 import { Helmet } from "react-helmet";
 import SendEmail from "../SendEmail/SendEmail";
+import TextToSpeech from "../TextToSpeech/TextToSpeech";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Link from "next/link";
@@ -56,8 +57,10 @@ const HomePage = () => {
         </div>
       </div>
       {/* ---------------Top Banner end ---------------------------- */}
-
       {/* ---------------Middle contents ---------------------------- */}
+      <div>
+        <TextToSpeech></TextToSpeech>
+      </div>
       <div className="lg:md:px-0 px-4">
         <div
           data-aos="fade-right"
