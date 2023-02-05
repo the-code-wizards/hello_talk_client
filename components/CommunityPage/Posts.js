@@ -1,0 +1,63 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import swal from 'sweetalert';
+import auth from '../../firebase.init';
+import Pagination from './Pagination';
+import Single from './Single';
+import loader from "../../resources/lottieJson/loader.json";
+import Lottie from "lottie-react";
+
+const Posts = () => {
+    const [user, error] = useAuthState(auth);
+    const [posts, setPosts] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [currentPage, SetCurrentPage] = useState(1);
+    const [postsPerPage, SetPostPerPage] = useState(4);
+    const [totalPosts, setTotalPost] = useState(0)
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            setLoading(true)
+            const res = await axios.get("https://hello-talk-webserver.vercel.app/community/communityposts")
+            const data = res.data
+            setPosts(data)
+            setTotalPost(data.length)
+            setLoading(false);
+        }
+        fetchPosts()
+    }, []);
+
+    // console.log(posts)
+
+    // Get Current Posts 
+
+    const indexOfLastPost = currentPage * postsPerPage
+    const indexOfFirstPost = indexOfLastPost - postsPerPage
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+
+    if (loading) {
+        return <div className="w-[300px] h-[300px] mx-auto">
+            <Lottie animationData={loader} loop={true} />
+        </div>
+    }
+
+    return (
+        <div>
+            {
+                currentPosts.map(post => <>
+                    <Single
+                        user={user}
+                        singlePost={post}
+                    ></Single>
+                </>)
+            }
+            <div className='flex justify-center mt-10'>
+                <Pagination postsPerPage={postsPerPage} SetCurrentPage={SetCurrentPage} totalPosts={totalPosts} currentPage={currentPage}></Pagination>
+            </div>
+        </div >
+    );
+};
+
+export default Posts;

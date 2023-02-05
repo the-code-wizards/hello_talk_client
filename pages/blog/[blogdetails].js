@@ -48,7 +48,7 @@ const Blogdetails = () => {
               {title}
             </h2>
             <p className="text-[16px]">{details}</p>
-            <div class="flex items-center mt-4">
+            <div className="flex items-center mt-4">
               <div className="flex items-center">
                 <div className="avatar mr-5">
                   <div className="lg:md:w-12 w-8 h-8 rounded-full">

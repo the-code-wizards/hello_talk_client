@@ -58,10 +58,10 @@ const Admins = () => {
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
                 <tr className="bg-[#1d4d87] text-white">
-                  <th className="text-start">User Name</th>
-                  <th>Email</th>
-                  <th>Mobile Number</th>
-                  <th>Country</th>
+                  <th className="text-start border-r-2 border-white">User Name</th>
+                  <th className="text-start border-r-2 border-white">Email</th>
+                  <th className="text-start border-r-2 border-white">Mobile Number</th>
+                  <th className="text-start border-r-2 border-white">Country</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -70,10 +70,10 @@ const Admins = () => {
                   <tbody className="text-center" key={user?._id}>
                     {user?.role === 'admin' ? (
                       <tr className='bg-[#d7d5ff] text-[#1d4d87]'>
-                        <td className="text-start">{user?.name}</td>
-                        <td>{user?.email}</td>
-                        <td>{user?.number}</td>
-                        <td>{user?.country}</td>
+                        <td className="text-start border-r-2 border-b-2 border-white">{user?.name}</td>
+                        <td className="text-start border-r-2 border-b-2 border-white">{user?.email}</td>
+                        <td className="text-start border-r-2 border-b-2 border-white">{user?.number}</td>
+                        <td className="text-start border-r-2 border-b-2 border-white">{user?.country}</td>
                         <td>
                           <label
                             className="btn bg-[#eb3131] text-[#fff] border-none btn-sm"

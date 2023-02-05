@@ -62,9 +62,9 @@ const AllBlogs = () => {
             <table className="table-normal" style={{ width: '100%' }}>
               <thead className="text-center">
                 <tr className="bg-[#1d4d87] text-white">
-                  <th className="text-start">Blog Title</th>
-                  <th>Author</th>
-                  <th>Status</th>
+                  <th className="text-start border-r-2 border-white">Blog Title</th>
+                  <th className="text-start border-r-2 border-white">Author</th>
+                  <th className="text-center border-r-2 border-white">Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -72,9 +72,13 @@ const AllBlogs = () => {
                 return (
                   <tbody className="text-center" key={blog?._id}>
                     <tr className="bg-[#d7d5ff] text-[#1d4d87]">
-                      <td className="text-start">{blog?.title}</td>
-                      <td>{blog?.author_name}</td>
-                      <td>
+                      <td className="text-start border-r-2 border-b-2 border-white">
+                        {blog?.title}
+                      </td>
+                      <td className="text-start border-r-2 border-b-2 border-white">
+                        {blog?.author_name}
+                      </td>
+                      <td className="text-center border-r-2 border-b-2 border-white">
                         {/* <div className="badge badge-secondary">secondary</div>
                         <div className="badge badge-accent">{blog?.package}</div> */}
                         <div className="">
@@ -89,15 +93,15 @@ const AllBlogs = () => {
                           )}
                         </div>
                       </td>
-                      <td>
+                      <td className="text-center border-r-2 border-b-2 border-white">
                         <div>
                           <Link href={`/editblog/${blog?._id}`}>
-                            <label className="btn bg-[#20d720] text-[#fff] border-none mx-1">
+                            <label className="btn bg-[#20d720] text-[#fff] border-none btn-sm mx-1 my-2">
                               <FaEdit />
                             </label>
                           </Link>
                           <label
-                            className="btn bg-[#eb3131] text-[#fff] border-none"
+                            className="btn bg-[#eb3131] text-[#fff] border-none btn-sm"
                             onClick={() => handleDelete(blog?._id)}
                           >
                             <FaTrash />
