@@ -26,7 +26,6 @@ const Sidebar = () => {
                     <li><Link href="/blogs" ><FaBloggerB className="text-xl text-red-400 mr-[5px]" />Blog</Link></li>
                     <li><Link href="/courses"><BsStack className="text-xl text-red-400 mr-[5px]" />Course</Link></li>
                     <li><Link href="/community"><BsPeople className="text-xl text-red-400 mr-[5px]" />Community</Link></li>
-                    {/* <li><button type="button" onClick={() => router.push('/community')}><IoPeopleOutline className="text-xl text-red-400 mr-[5px]" />Community</button></li> */}
                 </ul>
 
             </div>
