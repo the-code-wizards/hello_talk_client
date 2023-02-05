@@ -70,7 +70,7 @@ const OurTeam = () => {
               <img
                 alt=""
                 className="self-center flex-shrink-0 w-28 h-28 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
-                src="https://scontent.fcgp7-1.fna.fbcdn.net/v/t39.30808-6/325243246_527124959483029_2131526035102927906_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vC8MrHs-Rh0AX91zhwX&_nc_ht=scontent.fcgp7-1.fna&oh=00_AfAH7ZyILpj7C_q20JFqPbQH5k7pyFf2LFRPzQaRrWKHHA&oe=63D2A42C"
+                src="https://media.discordapp.net/attachments/1063400454056312872/1071491763044372661/Foysal.jpg?width=569&height=572"
               />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leading-snug">Mosharaf</p>
@@ -149,7 +149,7 @@ const OurTeam = () => {
               <img
                 alt=""
                 className="self-center flex-shrink-0 w-28 h-28 -mt-12 bg-center bg-cover rounded-full bg-gray-500 object-cover"
-                src="https://i.ibb.co/RP0bBSk/IMG-20221208-200202-351-1.jpg"
+                src="https://media.discordapp.net/attachments/1060905971519586324/1068179136721465474/IMG_20221208_200202_351_1.jpg?width=515&height=609"
               />
               <div className="flex-1 my-4">
                 <p className="text-xl font-semibold leading-snug">Md. Asadullah Al Galib</p>
