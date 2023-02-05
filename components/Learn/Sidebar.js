@@ -24,7 +24,7 @@ const Sidebar = () => {
                     {/* <li><Link href="/flashcards" className="" type="button" ><GiNotebook className="text-xl text-red-400 mr-[5px]" />Flashcards</Link></li> */}
                     <li><Link href="/shop" ><AiOutlineShoppingCart className="text-xl text-red-400 mr-[5px]" />Shop</Link></li>
                     <li><Link href="/blogs" ><FaBloggerB className="text-xl text-red-400 mr-[5px]" />Blog</Link></li>
-                    <li><Link href="/course"><BsStack className="text-xl text-red-400 mr-[5px]" />Course</Link></li>
+                    <li><Link href="/courses"><BsStack className="text-xl text-red-400 mr-[5px]" />Course</Link></li>
                     <li><Link href="/community"><BsPeople className="text-xl text-red-400 mr-[5px]" />Community</Link></li>
                     {/* <li><button type="button" onClick={() => router.push('/community')}><IoPeopleOutline className="text-xl text-red-400 mr-[5px]" />Community</button></li> */}
                 </ul>

@@ -13,6 +13,7 @@ import { Helmet } from "react-helmet";
 import SendEmail from "../SendEmail/SendEmail";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import Link from "next/link";
 
 const HomePage = () => {
   const [user] = useAuthState(auth)
@@ -231,12 +232,12 @@ const HomePage = () => {
                 listening, and speaking skills. Check out our latest research!
                 Learn about us. Thank you!
               </p>
-              <a
-                href=""
+              <Link
+                href="/courses"
                 className="pt-4 text-[#1cb0f6] lg:md:text-start text-center"
               >
                 LEARN MORE ABOUT OUR RESEARCH
-              </a>
+              </Link>
             </div>
           </div>
           <div className="divider"></div>
