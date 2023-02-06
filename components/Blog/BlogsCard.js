@@ -33,25 +33,26 @@ const BlogsCard = ({ blog }) => {
           })}
         </>
           <h2 className="font-bold lg:md:text-2xl text-xl text-[#58cc02]">
-            {title}
+            {title.slice(0, 15)}...
           </h2>
           <p className="text-[15px]">{details.slice(0, 60)}...</p>
         </div>
         <div className="flex items-end justify-end">
           {my_package === "free" && (
             <Link href={`/blog/${_id}`}>
-              <button className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002]">
+              <button className="cursor-pointer bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002]">
                 Read
               </button>
             </Link>
           )}
           {my_package === "premium" && (
-            <button className=" bg-[#58cc02] flex items-center border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002]">
-              <span className="mr-2 flex items-center">
-                <FaRegGem className="mr-1"></FaRegGem>
-                {gems}
-              </span>{" "}
-              <label htmlFor="my-blog-6">Unlock</label>
+            <button className="cursor-pointer bg-[#58cc02] flex items-center border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002] flex items-center">             
+              <label htmlFor="my-blog-6">
+                <span className="mr-2 flex items-center ">
+                  <span className="mr-2 flex items-center "><FaRegGem className="mr-1"></FaRegGem>
+                    {gems}</span>
+                    Unlock               
+              </span></label>
             </button>
           )}
         </div>
