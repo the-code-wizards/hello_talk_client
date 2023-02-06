@@ -213,7 +213,7 @@ More info: https://stripe.com/docs/stripe-js/reference#element-options
   padding: 0;
 }
 
-.textAreaStyle {
+/* .textAreaStyle {
   width: 500px;
   border-radius: 12px;
   height: 163px;
@@ -229,4 +229,4 @@ More info: https://stripe.com/docs/stripe-js/reference#element-options
   font-weight: bold;
   border-width: 4px;
   margin-left: -334px;
-}
+} */
