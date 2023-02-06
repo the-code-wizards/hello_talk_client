@@ -1,16 +1,16 @@
-import React from "react";
-import Feedback from "../Feedback/Feedback";
-import Package from "../packages/Package";
-import Footer from "../Shared/Footer/Footer";
-import Navbar from "../Shared/Navbar/Navbar";
-import Lottie from "lottie-react";
-import learning from "../../resources/lottieJson/online-learning.json";
-import laptop from "../../resources/lottieJson/laptop.json";
-import banner from "../../resources/lottieJson/laptop.json";
-import Blog from "../Blog/Blog";
-import BlogForHome from "../Blog/BlogForHome";
-import { Helmet } from "react-helmet";
-import SendEmail from "../SendEmail/SendEmail";
+import React from 'react';
+import Feedback from '../Feedback/Feedback';
+import Package from '../packages/Package';
+import Footer from '../Shared/Footer/Footer';
+import Navbar from '../Shared/Navbar/Navbar';
+import Lottie from 'lottie-react';
+import learning from '../../resources/lottieJson/online-learning.json';
+import laptop from '../../resources/lottieJson/laptop.json';
+import banner from '../../resources/lottieJson/laptop.json';
+import Blog from '../Blog/Blog';
+import BlogForHome from '../Blog/BlogForHome';
+import { Helmet } from 'react-helmet';
+import SendEmail from '../SendEmail/SendEmail';
 
 const HomePage = () => {
   return (
@@ -56,20 +56,16 @@ const HomePage = () => {
         >
           <div className="grid grid-cols-1  lg:grid-cols-5 ">
             <div className="col-span-1 place-self-center">
-              <img
-                src="Logo.png"
-                className="max-h-[160px] mx-w-[160px] "
-                alt=""
-              />
+              <img src="Logo.png" className="max-h-[160px] mx-w-[160px] " alt="" />
             </div>
             <div className="col-span-4 place-self-center">
               <h1 className="font-featherBold lg:md:text-start text-center lg:md:text-4xl text-2xl mb-2 text-[#3C3C3C]">
                 The world’s Top way to learn a language
               </h1>
               <p className="lg:md:text-start text-center">
-                Learning with HelloTalk is fun, and research shows that it
-                works! With quick, bite-sized lessons, you’ll earn points and
-                unlock new levels while gaining real-world communication skills.
+                Learning with HelloTalk is fun, and research shows that it works! With quick,
+                bite-sized lessons, you’ll earn points and unlock new levels while gaining
+                real-world communication skills.
               </p>
             </div>
           </div>
@@ -98,9 +94,8 @@ const HomePage = () => {
                     Effective and efficient
                   </h1>
                   <p>
-                    Our courses effectively and efficiently teach reading,
-                    listening, and speaking skills. Check out our latest
-                    research!
+                    Our courses effectively and efficiently teach reading, listening, and speaking
+                    skills. Check out our latest research!
                   </p>
                 </div>
               </div>
@@ -109,13 +104,10 @@ const HomePage = () => {
                   <img src="greenMark.svg" alt="" />
                 </div>
                 <div className="col-span-7 mt-2">
-                  <h1 className="text-xl font-featherBold text-[#3C3C3C]">
-                    Personalized learning
-                  </h1>
+                  <h1 className="text-xl font-featherBold text-[#3C3C3C]">Personalized learning</h1>
                   <p>
-                    Our courses effectively and efficiently teach reading,
-                    listening, and speaking skills. Check out our latest
-                    research!
+                    Our courses effectively and efficiently teach reading, listening, and speaking
+                    skills. Check out our latest research!
                   </p>
                 </div>
               </div>
@@ -129,13 +121,10 @@ const HomePage = () => {
                   <img src="crown.svg" alt="" />
                 </div>
                 <div className="col-span-7 mt-2 ml-2">
-                  <h1 className="text-xl font-featherBold text-[#3C3C3C]">
-                    Stay motivated
-                  </h1>
+                  <h1 className="text-xl font-featherBold text-[#3C3C3C]">Stay motivated</h1>
                   <p>
-                    We make it easy to form a habit of language learning, with
-                    game-like features, fun challenges, and reminders from our
-                    friendly mascot, Duo the owl.
+                    We make it easy to form a habit of language learning, with game-like features,
+                    fun challenges, and reminders from our friendly mascot, Duo the owl.
                   </p>
                 </div>
               </div>
@@ -144,13 +133,10 @@ const HomePage = () => {
                   <img src="smily.svg" alt="" />
                 </div>
                 <div className="col-span-7 mt-2 ml-2">
-                  <h1 className="text-xl font-featherBold text-[#3C3C3C]">
-                    Have fun with it!
-                  </h1>
+                  <h1 className="text-xl font-featherBold text-[#3C3C3C]">Have fun with it!</h1>
                   <p>
-                    Effective learning doesn’t have to be boring! Build your
-                    skills each day with engaging exercises and playful
-                    characters.
+                    Effective learning doesn’t have to be boring! Build your skills each day with
+                    engaging exercises and playful characters.
                   </p>
                 </div>
               </div>
@@ -166,19 +152,14 @@ const HomePage = () => {
           className="max-w-[1240px] mx-auto"
         >
           <div className="grid grid-cols-1  lg:grid-cols-5 my-10">
-            <img
-              src="Logo2.png"
-              className="max-h-[160px] max-w-[160px] place-self-center"
-              alt=""
-            />
+            <img src="Logo2.png" className="max-h-[160px] max-w-[160px] place-self-center" alt="" />
             <div className="col-span-4 place-self-center">
               <h1 className="font-featherBold lg:md:text-start text-center lg:md:text-4xl mb-2 text-[#3C3C3C] text-2xl">
                 Boost your learning with Super HelloTalk
               </h1>
               <p className="lg:md:text-start text-center">
-                Learning a language on HelloTalk is completely free, but you can
-                remove ads and support free education with Super. First 2 weeks
-                on us!
+                Learning a language on HelloTalk is completely free, but you can remove ads and
+                support free education with Super. First 2 weeks on us!
               </p>
               {/* <a href="" className='pt-4 text-[#1cb0f6] lg:md:text-start text-center'>LEARN MORE ABOUT SUPER HelloTalk</a> */}
             </div>
@@ -186,11 +167,7 @@ const HomePage = () => {
           <div className="divider"></div>
         </div>
 
-        <div
-          data-aos="fade-up"
-          data-aos-easing="linear"
-          data-aos-duration="1000"
-        >
+        <div data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000">
           <h1 className="lg:md:text-3xl text-2xl text-center font-featherBold mb-8 text-[#3C3C3C]">
             Packages that you`&apos;`ll love
           </h1>
@@ -217,14 +194,10 @@ const HomePage = () => {
                 Effective and efficient courses
               </h1>
               <p className="lg:md:text-start text-center">
-                Our courses effectively and efficiently teach reading,
-                listening, and speaking skills. Check out our latest research!
-                Learn about us. Thank you!
+                Our courses effectively and efficiently teach reading, listening, and speaking
+                skills. Check out our latest research! Learn about us. Thank you!
               </p>
-              <a
-                href=""
-                className="pt-4 text-[#1cb0f6] lg:md:text-start text-center"
-              >
+              <a href="" className="pt-4 text-[#1cb0f6] lg:md:text-start text-center">
                 LEARN MORE ABOUT OUR RESEARCH
               </a>
             </div>
@@ -270,10 +243,7 @@ const HomePage = () => {
       {/* -------------------------Footer end--------------*/}
 
       <Helmet>
-        <script
-          src="//code.tidio.co/jpb1zs7dudyjfplraox9y0swxennxjjh.js"
-          async
-        ></script>
+        <script src="//code.tidio.co/jpb1zs7dudyjfplraox9y0swxennxjjh.js" async></script>
       </Helmet>
     </div>
   );
