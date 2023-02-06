@@ -11,7 +11,7 @@ const TopAuthor = () => {
     const [slicedData, setslicedData] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/topAuthors")
+        fetch("https://hello-talk-webserver.vercel.app/community/topAuthors")
             .then(res => res.json())
             .then(data => {
                 if (data.length >= 1) {
@@ -50,7 +50,7 @@ const TopAuthor = () => {
             // console.log(item)
             const { email, name } = item
             // console.log(email)
-            fetch(`https://hello-talk-webserver.vercel.app/commentcount?email=${email}`)
+            fetch(`https://hello-talk-webserver.vercel.app/community/commentcount?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     const userData = {
@@ -81,7 +81,7 @@ const TopAuthor = () => {
     };
 
     const topAuthorList = (sortedUser) => {
-        fetch('http://localhost:5000/topAuthors', {
+        fetch('https://hello-talk-webserver.vercel.app/community/topAuthors', {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json'
@@ -141,26 +141,25 @@ const TopAuthor = () => {
                 {/* <button className='btn btn-sm' onClick={reloadFetch}>Reload</button> */}
 
                 <div className="px-8 pb-4">
-                    <div>
-                        {
-                            slicedData.map((slice, i) => <>
-                                <div className='grid grid-cols-12 bg-[#F8EDE3] p-2 rounded-lg mt-2'>
-                                    <h1 className='col-span-2 place-self-center'>#{i + 1}</h1>
-                                    <div className='flex col-span-10 items-center'>
-                                        <div className="avatar">
-                                            <div className="w-8 rounded-full">
-                                                <img src="https://placeimg.com/192/192/people" />
-                                            </div>
+                    {
+                        topAuthors.slice(3, topAuthors.length).map((slice, i) => <>
+                            <div className='grid grid-cols-12 bg-[#F8EDE3] p-2 rounded-lg mt-2'
+                                key={i}>
+                                <h1 className='col-span-2 place-self-center'>#{i + 4}</h1>
+                                <div className='flex col-span-10 items-center'>
+                                    <div className="avatar">
+                                        <div className="w-8 rounded-full">
+                                            <img src="https://placeimg.com/192/192/people" />
                                         </div>
-                                        <h1 className='ml-2'>
-                                            {slice.name}
-                                        </h1>
                                     </div>
+                                    <h1 className='ml-2'>
+                                        {slice.name}
+                                    </h1>
                                 </div>
-                            </>)
-                        }
+                            </div>
+                        </>)
+                    }
 
-                    </div>
                 </div>
             </div>
         </div>

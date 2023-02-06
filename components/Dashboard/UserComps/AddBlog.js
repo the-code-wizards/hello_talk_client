@@ -48,7 +48,7 @@ const AddBlog = () => {
       package: getPack,
       gems: my_package,
     };
-    fetch('https://hello-talk-webserver.vercel.app/blog', {
+    fetch('http://localhost:5000/blog', {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,
@@ -178,7 +178,7 @@ const AddBlog = () => {
               <button
                 className="mt-[25px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[30%] w-[100%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] flex justify-center mx-auto"
                 type="submit"
-                // onClick={onAddBlog}
+              // onClick={onAddBlog}
               >
                 Add Blog
               </button>

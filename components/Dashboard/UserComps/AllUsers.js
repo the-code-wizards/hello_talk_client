@@ -88,6 +88,7 @@ const AllUsers = () => {
               </thead>
               {filteredUsers.map((user) => {
                 return (
+
                   <tbody className="text-center" key={user?._id}>
                     <tr className="bg-[#d7d5ff] text-[#1d4d87]">
                       <td className="text-start border-r-2 border-b-2 border-white">
@@ -111,14 +112,14 @@ const AllUsers = () => {
                             <>
                               {user?.role === 'admin' ? (
                                 <button
-                                  className="btn bg-[#20d720] text-[#fff] border-none btn-sm"
+                                  className="bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002] btn border-none btn-sm"
                                   disabled
                                 >
                                   Admin
                                 </button>
                               ) : (
                                 <button
-                                  className="btn bg-[#20d720] text-[#fff] border-none btn-sm"
+                                  className="bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002] border-none btn-sm"
                                   onClick={() => handleAdmin(user?.email)}
                                 >
                                   Admin

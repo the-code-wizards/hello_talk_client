@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSingleUser from '../hooks/useSingleUser';
 
 const SingleCard = ({ course }) => {
@@ -21,7 +21,7 @@ const SingleCard = ({ course }) => {
   console.log(singleUser)
 
   const productData = enrolled?.map((single) => single?.productId);
-  
+
   return (
     <div className="card card-compact bg-white shadow-2xl ">
       <div className="p-3  mx-auto">

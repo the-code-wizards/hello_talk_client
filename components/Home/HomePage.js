@@ -1,18 +1,26 @@
-import React from 'react';
-import Feedback from '../Feedback/Feedback';
-import Package from '../packages/Package';
-import Footer from '../Shared/Footer/Footer';
-import Navbar from '../Shared/Navbar/Navbar';
-import Lottie from 'lottie-react';
-import learning from '../../resources/lottieJson/online-learning.json';
-import laptop from '../../resources/lottieJson/laptop.json';
-import banner from '../../resources/lottieJson/laptop.json';
-import Blog from '../Blog/Blog';
-import BlogForHome from '../Blog/BlogForHome';
-import { Helmet } from 'react-helmet';
-import SendEmail from '../SendEmail/SendEmail';
+import React from "react";
+import Feedback from "../Feedback/Feedback";
+import Package from "../packages/Package";
+import Footer from "../Shared/Footer/Footer";
+import Navbar from "../Shared/Navbar/Navbar";
+import Lottie from "lottie-react";
+import learning from "../../resources/lottieJson/online-learning.json";
+import laptop from "../../resources/lottieJson/laptop.json";
+import banner from "../../resources/lottieJson/laptop.json";
+import Blog from "../Blog/Blog";
+import BlogForHome from "../Blog/BlogForHome";
+import { Helmet } from "react-helmet";
+import SendEmail from "../SendEmail/SendEmail";
 
 const HomePage = () => {
+  const [user] = useAuthState(auth)
+  const getStarted = () => {
+    if(!user){
+      window.location.href = "/signin"
+    }else{
+      window.location.href = "/learn"
+    }
+  }
   return (
     <div>
       {/* ---------------Header---------------------------- */}
@@ -37,7 +45,7 @@ const HomePage = () => {
               The free, fun, and effective way to learn language!
             </h1>
             <div className="flex flex-col justify-center items-center mt-8">
-              <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]">
+              <button onClick={() => getStarted()} className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]">
                 Get Started
               </button>
             </div>
@@ -45,8 +53,10 @@ const HomePage = () => {
         </div>
       </div>
       {/* ---------------Top Banner end ---------------------------- */}
-
       {/* ---------------Middle contents ---------------------------- */}
+      <div>
+        <TextToSpeech></TextToSpeech>
+      </div>
       <div className="lg:md:px-0 px-4">
         <div
           data-aos="fade-right"
@@ -197,9 +207,12 @@ const HomePage = () => {
                 Our courses effectively and efficiently teach reading, listening, and speaking
                 skills. Check out our latest research! Learn about us. Thank you!
               </p>
-              <a href="" className="pt-4 text-[#1cb0f6] lg:md:text-start text-center">
+              <a
+                href=""
+                className="pt-4 text-[#1cb0f6] lg:md:text-start text-center"
+              >
                 LEARN MORE ABOUT OUR RESEARCH
-              </a>
+              </Link>
             </div>
           </div>
           <div className="divider"></div>

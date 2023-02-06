@@ -5,7 +5,8 @@ import swal from 'sweetalert';
 import auth from '../../firebase.init';
 import Pagination from './Pagination';
 import Single from './Single';
-
+import loader from "../../resources/lottieJson/loader.json";
+import Lottie from "lottie-react";
 
 const Posts = () => {
     const [user, error] = useAuthState(auth);
@@ -18,7 +19,7 @@ const Posts = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true)
-            const res = await axios.get("https://hello-talk-webserver.vercel.app/communityposts")
+            const res = await axios.get("https://hello-talk-webserver.vercel.app/community/communityposts")
             const data = res.data
             setPosts(data)
             setTotalPost(data.length)
@@ -37,7 +38,9 @@ const Posts = () => {
 
 
     if (loading) {
-        return <p>Loading</p>
+        return <div className="w-[300px] h-[300px] mx-auto">
+            <Lottie animationData={loader} loop={true} />
+        </div>
     }
 
     return (
