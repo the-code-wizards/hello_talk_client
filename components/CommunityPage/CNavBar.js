@@ -94,7 +94,7 @@ const CNavBar = () => {
                                             user?.photoURL ?
                                                 <img src={user?.photoURL} alt="Profile Picture" />
                                                 :
-                                                <img src="https://i.ibb.co/8zkT4zS/istockphoto-1300845620-612x612.jpg" alt="Profile Picture" />
+                                                <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
                                         }
                                     </div>
                                 </label>

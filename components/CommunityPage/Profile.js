@@ -16,13 +16,13 @@ const Profile = () => {
                     <div className=" w-80 shadow-xl mb-5 ">
                         <div className='bg-[#92deff] rounded-t-lg p-5'>
                             <div className='grid grid-cols-1 place-items-center'>
-                                <div className="avatar">
-                                    <div className="w-24 rounded-full">
+                                <div className="avatar ">
+                                    <div className="w-24 rounded-full bg-white">
                                         {
                                             user?.photoURL ?
                                                 <img src={user?.photoURL} alt="Profile Picture" />
                                                 :
-                                                <img src="https://i.ibb.co/8zkT4zS/istockphoto-1300845620-612x612.jpg" alt="Profile Picture" />
+                                                <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
                                         }
                                     </div>
                                 </div>
