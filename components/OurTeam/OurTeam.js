@@ -28,15 +28,15 @@ const OurTeam = () => {
                 <p>Full-Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-5 text-xl border-t-2">
-                <a href=" https://www.facebook.com/al.shaimon">
+                <a href=" https://www.facebook.com/al.shaimon" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaFacebook></FaFacebook>
                 </a>
-                <a href="https://github.com/al-shaimon">
+                <a href="https://github.com/al-shaimon" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaGithub></FaGithub>{' '}
                 </a>
-                <a href="https://www.linkedin.com/in/al-shaimon/">
+                <a href="https://www.linkedin.com/in/al-shaimon/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaLinkedin></FaLinkedin>{' '}
                 </a>
@@ -53,15 +53,15 @@ const OurTeam = () => {
                 <p>Full-Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-5 text-xl border-t-2">
-                <a href="https://www.facebook.com/chowdhury.kasib/">
+                <a href="https://www.facebook.com/chowdhury.kasib/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaFacebook></FaFacebook>
                 </a>
-                <a href="https://github.com/chykasib">
+                <a href="https://github.com/chykasib" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaGithub></FaGithub>{' '}
                 </a>
-                <a href="https://www.linkedin.com/in/chy-kasib-b4b2b5244/">
+                <a href="https://www.linkedin.com/in/chy-kasib-b4b2b5244/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaLinkedin></FaLinkedin>{' '}
                 </a>
@@ -78,15 +78,15 @@ const OurTeam = () => {
                 <p>Full-Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-5 text-xl border-t-2">
-                <a href="https://www.facebook.com/foysal1993dev/">
+                <a href="https://www.facebook.com/foysal1993dev/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaFacebook></FaFacebook>
                 </a>
-                <a href="https://github.com/Mosharaf12">
+                <a href="https://github.com/Mosharaf12" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaGithub></FaGithub>{' '}
                 </a>
-                <a href="https://www.linkedin.com/in/mosharaf-hossain-065407183/">
+                <a href="https://www.linkedin.com/in/mosharaf-hossain-065407183/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaLinkedin></FaLinkedin>{' '}
                 </a>
@@ -103,15 +103,15 @@ const OurTeam = () => {
                 <p>Full-Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-5 text-xl border-t-2">
-                <a href="https://www.facebook.com/afnanferdousi2006/">
+                <a href="https://www.facebook.com/afnanferdousi2006/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaFacebook></FaFacebook>
                 </a>
-                <a href="https://www.linkedin.com/in/afnanferdousi550/">
+                <a href="https://www.linkedin.com/in/afnanferdousi550/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaGithub></FaGithub>{' '}
                 </a>
-                <a href="https://www.linkedin.com/in/afnanferdousi550/">
+                <a href="https://www.linkedin.com/in/afnanferdousi550/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaLinkedin></FaLinkedin>{' '}
                 </a>
@@ -128,15 +128,15 @@ const OurTeam = () => {
                 <p>Full-Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-5 text-xl border-t-2">
-                <a href="https://www.facebook.com/spsujoy07">
+                <a href="https://www.facebook.com/spsujoy07" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaFacebook></FaFacebook>
                 </a>
-                <a href="https://github.com/spsujoy007">
+                <a href="https://github.com/spsujoy007" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaGithub></FaGithub>
                 </a>
-                <a href="https://www.linkedin.com/in/spsujoy">
+                <a href="https://www.linkedin.com/in/spsujoy" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaLinkedin></FaLinkedin>{' '}
                 </a>
@@ -153,15 +153,15 @@ const OurTeam = () => {
                 <p>Full-Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-5 text-xl border-t-2">
-                <a href="https://www.facebook.com/Galib.8/">
+                <a href="https://www.facebook.com/Galib.8/" target="_blank" rel="noreferrer noopener">
                   {''}
                   <FaFacebook></FaFacebook>
                 </a>
-                <a href="https://github.com/Galib6">
+                <a href="https://github.com/Galib6" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaGithub></FaGithub>{' '}
                 </a>
-                <a href="https://www.linkedin.com/in/algalib2/">
+                <a href="https://www.linkedin.com/in/algalib2/" target="_blank" rel="noreferrer noopener">
                   {' '}
                   <FaLinkedin></FaLinkedin>{' '}
                 </a>
