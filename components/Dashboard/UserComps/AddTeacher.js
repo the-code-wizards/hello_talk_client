@@ -13,11 +13,12 @@ const AddTeacher = () => {
   const [blogStatus, setBlogStatus] = useState('');
   console.log(blogStatus);
   const onAddTeacher = async (data) => {
-    const { _id, name, qualification, image, details } = data;
+    const { _id, name, email, qualification, image, details } = data;
 
     const teacherDetail = {
       _id,
       name,
+      email,
       qualification,
       details,
       date: currentDate,
@@ -65,6 +66,17 @@ const AddTeacher = () => {
                       required: {
                         value: true,
                         message: 'Qualification is required',
+                      },
+                    })}
+                  />
+                  <input
+                    type="email"
+                    placeholder="Teacher's Email"
+                    className="input w-full max-w-md style={{color: red}} bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
+                    {...register('email', {
+                      required: {
+                        value: true,
+                        message: 'Teacher Email is required',
                       },
                     })}
                   />
