@@ -51,11 +51,13 @@ const Feedback = () => {
                     <div className="w-24 rounded-full my-3 bg-green-400 ">
                       {data?.photoURL ? (
                         <img src={data?.photoURL} />
-                      ) : (
-                        <span className="flex uppercase justify-center items-center mt-[2rem] text-[#fff] text-3xl">
-                          {/* {data?.name.slice(0, 2)} */}
-                        </span>
-                      )}
+                        ) : (
+                          <span className="flex uppercase justify-center items-center mt-[2rem] text-[#fff] text-3xl">
+                            {/* {data?.name.slice(0, 2)} */}
+                            {/* Uporer ta original  code  api problem er jonno slice bad dichi*/}
+                            {data?.name}
+                          </span>
+                        )}
                     </div>
                   </div>
                   <div className="card-body items-center text-center">

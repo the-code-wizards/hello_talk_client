@@ -59,6 +59,7 @@ const HomePage = () => {
         </div>
       </div>
       {/* ---------------Top Banner end ---------------------------- */}
+
       {/* ---------------Middle contents ---------------------------- */}
       <div className="lg:md:px-0 px-4">
         <div
