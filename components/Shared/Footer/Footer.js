@@ -5,13 +5,13 @@ import auth from '../../../firebase.init';
 
 const Footer = () => {
   const [user] = useAuthState(auth);
-  const getStarted = () => {
-    if (!user) {
-      window.location.href = '/signin';
-    } else {
-      window.location.href = '/learn';
-    }
-  };
+//   const getStarted = () => {
+//     if (!user) {
+//       window.location.href = '/signin';
+//     } else {
+//       window.location.href = '/learn';
+//     }
+//   };
   return (
     <div style={{ backgroundImage: `url("back.svg")` }}>
       <div className="max-w-[1240px] mx-auto">
@@ -20,7 +20,7 @@ const Footer = () => {
             Learn a language with HelloTalk.
           </h1>
           <button
-            onClick={() => getStarted()}
+            // onClick={() => getStarted()}
             className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[60%] lg:md:mx-0 mx-auto lg:md:w-[15%] hover:bg-[#171d13] ml-5"
           >
             Get Started
