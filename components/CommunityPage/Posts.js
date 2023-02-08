@@ -7,28 +7,26 @@ import Pagination from './Pagination';
 import Single from './Single';
 import loader from "../../resources/lottieJson/loader.json";
 import Lottie from "lottie-react";
+import { useQuery } from 'react-query';
 
 const Posts = () => {
     const [user, error] = useAuthState(auth);
-    const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(false)
     const [currentPage, SetCurrentPage] = useState(1);
     const [postsPerPage, SetPostPerPage] = useState(4);
     const [totalPosts, setTotalPost] = useState(0)
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-            setLoading(true)
-            const res = await axios.get("https://hello-talk-webserver.vercel.app/community/communityposts")
-            const data = res.data
-            setPosts(data)
-            setTotalPost(data.length)
-            setLoading(false);
-        }
-        fetchPosts()
-    }, []);
 
-    // console.log(posts)
+    const { data: posts = [], refetch, isLoading } = useQuery({
+        queryKey: ["posts"],
+        queryFn: async () => {
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/community/communityposts`);
+            const data = await res.json();
+            // console.log(data)
+            setTotalPost(data.length)
+            return data;
+        }
+    })
+
 
     // Get Current Posts 
 
@@ -37,7 +35,7 @@ const Posts = () => {
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
 
-    if (loading) {
+    if (isLoading) {
         return <div className="w-[300px] h-[300px] mx-auto">
             <Lottie animationData={loader} loop={true} />
         </div>
@@ -46,12 +44,13 @@ const Posts = () => {
     return (
         <div>
             {
-                currentPosts.map(post => <>
+                currentPosts.map(post =>
                     <Single
                         user={user}
                         singlePost={post}
+                        key={post._id}
                     ></Single>
-                </>)
+                )
             }
             <div className='flex justify-center mt-10'>
                 <Pagination postsPerPage={postsPerPage} SetCurrentPage={SetCurrentPage} totalPosts={totalPosts} currentPage={currentPage}></Pagination>
