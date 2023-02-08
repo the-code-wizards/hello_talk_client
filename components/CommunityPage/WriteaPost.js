@@ -52,7 +52,7 @@ const WriteaPost = () => {
 
     return (
         <div>
-            <div className='flex items-center mt-8 bg-white p-5 justify-center rounded-lg'>
+            <div className='mt-8 bg-white p-5 rounded-lg flex '>
                 <div className='grid grid-cols-1 place-items-center'>
                     <div className="avatar">
                         <div className="w-8 rounded-full">
@@ -60,63 +60,60 @@ const WriteaPost = () => {
                                 user?.photoURL ?
                                     <img src={user?.photoURL} alt="Profile Picture" />
                                     :
-                                    <img src="https://i.ibb.co/8zkT4zS/istockphoto-1300845620-612x612.jpg" alt="Profile Picture" />
+                                    <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
                             }
                         </div>
                     </div>
                 </div>
-                <div>
-                    <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2 h-[36px] w-[600px]  bg-[#F0F2F5] px-2' onClick={() => setShowModal(true)} />
-                </div>
+                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2 h-[36px] w-full bg-[#F0F2F5] px-2' readOnly onClick={() => setShowModal(true)} placeholder="Whats on you Mind?" />
+            </div>
+            {showModal ? (
+                <>
+                    <div
+                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                    >
+                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                            {/*content*/}
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                {/*header*/}
+                                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                    <h3 className="text-xl font-semibold text-center">
+                                        Write your Question
+                                    </h3>
+                                    <button className=" btn btn-ghost rounded-full" onClick={() => setShowModal(false)}>X</button>
 
-                {showModal ? (
-                    <>
-                        <div
-                            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-                        >
-                            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                {/*content*/}
-                                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                    {/*header*/}
-                                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                        <h3 className="text-xl font-semibold text-center">
-                                            Write your Question
-                                        </h3>
-                                        <button className=" btn btn-ghost rounded-full" onClick={() => setShowModal(false)}>X</button>
+                                </div>
+                                {/*body*/}
+                                <form onSubmit={handlePost}>
+                                    <div className="relative p-6 flex-auto ">
+                                        <label className="label">
+                                            <span className="label-text">Question Title:</span>
+                                        </label>
+                                        <input type="text" name="title" placeholder="Type here" className="input input-bordered w-full" required />
+                                        <label className="label">
+                                            <span className="label-text"> Questions on details:</span>
+                                        </label>
+                                        <textarea name='textarea' className="textarea w-[600px] input-bordered " placeholder="Your question" required></textarea>
 
                                     </div>
-                                    {/*body*/}
-                                    <form onSubmit={handlePost}>
-                                        <div className="relative p-6 flex-auto ">
-                                            <label className="label">
-                                                <span className="label-text">Question Title:</span>
-                                            </label>
-                                            <input type="text" name="title" placeholder="Type here" className="input input-bordered w-full" required />
-                                            <label className="label">
-                                                <span className="label-text"> Questions on details:</span>
-                                            </label>
-                                            <textarea name='textarea' className="textarea w-[600px] input-bordered " placeholder="Your question" required></textarea>
-
-                                        </div>
-                                        {/*footer*/}
-                                        <div className="flex items-center justify-end  border-t border-solid border-slate-200 rounded-b">
-                                            <button
-                                                className="btn btn-md btn-ghost mr-2"
-                                                type="submit"
+                                    {/*footer*/}
+                                    <div className="flex items-center justify-end  border-t border-solid border-slate-200 rounded-b">
+                                        <button
+                                            className="btn btn-md btn-ghost mr-2"
+                                            type="submit"
 
 
-                                            >
-                                                Post
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
+                                        >
+                                            Post
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                    </>
-                ) : null}
-            </div>
+                    </div>
+                    {/* <div className="opacity-25 fixed inset-0 z-40 bg-black"></div> */}
+                </>
+            ) : null}
         </div>
     );
 };
