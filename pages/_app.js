@@ -27,8 +27,7 @@ function App({ Component, pageProps }) {
     });
   }, []);
   const queryClient = new QueryClient()
-  return
-  <QueryClientProvider client={queryClient}>
+  return <QueryClientProvider client={queryClient}>
     <Component {...pageProps} />
   </QueryClientProvider>
   // <Provider store={store}>
