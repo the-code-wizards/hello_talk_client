@@ -1,6 +1,6 @@
 import React from "react";
 import { FaPlayCircle, FaStopCircle } from "react-icons/fa";
-import { useSpeechSynthesis } from "react-speech-kit";
+// import { useSpeechSynthesis } from "react-speech-kit";
 const TermTextToSpeech = () => {
   const text =
     "Privacy Policy\n" +
@@ -251,14 +251,14 @@ const TermTextToSpeech = () => {
     "For all support inquiries, please go to https://support.duolingo.com.\n" +
     "\n" +
     "Last revised on October 24th, 2022";
-  const { speaking, speak, stop } = useSpeechSynthesis();
+  // const { speaking, speak, stop } = useSpeechSynthesis();
   return (
     <div>
-      {speaking ? (
+      {/* {speaking ? (
         <FaStopCircle onClick={stop} />
       ) : (
         <FaPlayCircle onClick={() => speak({ text })} />
-      )}
+      )} */}
     </div>
   );
 };
