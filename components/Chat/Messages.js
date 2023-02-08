@@ -49,7 +49,7 @@ const Messages = ({ current }) => {
         console.log(msgData)
     }
 
-    const getMessages = useCallback(async () => {
+    const getMessages = async () => {
         await axios.get(`http://localhost:5000/get-messages/${current?._id}/${singleUser?._id}`)
             .then((res) => {
                 console.log(res)
@@ -61,15 +61,15 @@ const Messages = ({ current }) => {
             .finally(() => {
                 // setLoading(false);
             });
-    })
+    }
     console.log(current._id)
     useEffect(() => {
         if (current?._id) {
-            // getMessages()
+            getMessages()
         }
         // setLoading(true);
 
-    }, [current?._id, getMessages]);
+    }, [current?._id]);
     // console.log(user)
     return (
         <div className="py-[15px] md:pt-[5rem] pt-[5rem]">
