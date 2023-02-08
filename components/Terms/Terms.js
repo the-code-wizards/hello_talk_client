@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TermTextToSpeech from "./TermTextToSpeech";
 
 const Terms = () => {
   return (
