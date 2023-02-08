@@ -53,7 +53,7 @@ const Single = ({ user, singlePost }) => {
                 if (res.acknowledged === true) {
                     swal(
                         'Your comment is posted!',
-                        'Possible reponse is near !',
+                        'Possible response is near !',
                         'success'
                     )
                     form.reset()
@@ -168,7 +168,7 @@ const Single = ({ user, singlePost }) => {
                                     {/*header*/}
                                     <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t ">
                                         <h3 className="text-xl font-bold text-center">
-                                            Galib's Post
+                                            Galib&apos;s Post
                                         </h3>
                                         <label className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setShowModal(false)}>✕</label>
 
