@@ -49,19 +49,19 @@ const Messages = ({ current }) => {
         console.log(msgData)
     }
 
-    // const getMessages = useCallback(async () => {
-    //     await axios.get(`http://localhost:5000/get-messages/${current?._id}/${singleUser?._id}`)
-    //         .then((res) => {
-    //             console.log(res)
-    //             setMessages(res.data);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    //         .finally(() => {
-    //             // setLoading(false);
-    //         });
-    // })
+    const getMessages = useCallback(async () => {
+        await axios.get(`http://localhost:5000/get-messages/${current?._id}/${singleUser?._id}`)
+            .then((res) => {
+                console.log(res)
+                setMessages(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                // setLoading(false);
+            });
+    })
     console.log(current._id)
     useEffect(() => {
         if (current?._id) {
