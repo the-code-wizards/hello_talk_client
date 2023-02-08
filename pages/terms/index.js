@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import TermTextToSpeech from "../../components/Terms/TermTextToSpeech";
+// import TermTextToSpeech from "../../components/Terms/TermTextToSpeech";
 const index = () => {
   return (
     <section className="mx-36">
@@ -8,7 +8,7 @@ const index = () => {
         Terms and Conditions of Service
       </h2>
       <div>
-        <TermTextToSpeech></TermTextToSpeech>
+        {/* <TermTextToSpeech></TermTextToSpeech> */}
       </div>
       <section className="text-justify">
         <div className="my-5">
