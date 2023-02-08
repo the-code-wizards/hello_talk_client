@@ -101,7 +101,7 @@ const MyProfile = () => {
               const photobody = {
                 photoURL: photourl
               }
-              fetch(`https://hello-talk-webserver.vercel.app/upimage?email=${email}`, {
+               fetch(`https://hello-talk-webserver.vercel.app/upimage?email=${email}`, {
                 method: "POST",
                 headers: {
                   "content-type": "application/json"
