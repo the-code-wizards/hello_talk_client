@@ -5,34 +5,25 @@ import swal from 'sweetalert';
 import SingleComment from './SingleComment';
 import { useRouter } from 'next/router';
 import { IoMdSend } from 'react-icons/io';
+import { useQuery } from 'react-query';
 
 const Single = ({ user, singlePost }) => {
-    const [commentView, setCommentView] = useState("hidden")
     const [showModal, setShowModal] = useState(false);
     const [comments, setComments] = useState([])
     const [likeButton, SetLikeButton] = useState(false)
     const router = useRouter()
 
 
-    const commentRender = () => {
-        if (commentView === "") {
-            setCommentView("hidden")
-        }
-        else {
-            setCommentView("")
-        }
-    }
     const { photoUrl, email, name, post, postTime, title, _id } = singlePost
 
     const handleComment = (event) => {
-        setShowModal(false)
         event.preventDefault();
         const form = event.target
-        const text = form.textarea.value;
-        console.log(text)
+        const comment = form.comment.value;
+        console.log(comment)
         const postComment = {
             name: user.displayName,
-            comment: text,
+            comment: comment,
             email: user.email,
             postTime: Date(),
             photoUrl: user.photoURL,
@@ -49,18 +40,15 @@ const Single = ({ user, singlePost }) => {
             .then(res => res.json())
             .then(res => {
                 console.log(res)
-                // navigate("/dashboard/myproducts")
                 if (res.acknowledged === true) {
-                    swal(
-                        'Your comment is posted!',
-                        'Possible reponse is near !',
-                        'success'
-                    )
                     form.reset()
+                    setComments([...comments, postComment])
+
                 }
             })
 
     }
+
 
     useEffect(() => {
         fetch(`https://hello-talk-webserver.vercel.app/community/comment/${_id}`)
@@ -69,6 +57,7 @@ const Single = ({ user, singlePost }) => {
 
 
     }, [])
+
 
     useEffect(() => {
         fetch(`https://hello-talk-webserver.vercel.app/community/like?email=${user?.email}&id=${_id}`)
@@ -81,6 +70,7 @@ const Single = ({ user, singlePost }) => {
             })
 
     }, [user?.email, _id])
+
 
     const handleLike = () => {
         const postLike = {
@@ -116,9 +106,7 @@ const Single = ({ user, singlePost }) => {
             })
 
     }
-    const navigateLogin = () => {
-        window.location.href = "/signin";
-    }
+
 
 
     return (
@@ -166,7 +154,7 @@ const Single = ({ user, singlePost }) => {
                                 {/*content*/}
                                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                     {/*header*/}
-                                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t ">
+                                    <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t ">
                                         <h3 className="text-xl font-bold text-center">
                                             Galib's Post
                                         </h3>
@@ -174,10 +162,10 @@ const Single = ({ user, singlePost }) => {
 
                                     </div>
                                     {/*body*/}
-                                    <div className={`px-8 h-[70vh] md:w-[700px]  sm:w-full overflow-y-auto`}>
+                                    <div className={`px-4 h-[70vh] md:w-[700px]  sm:w-full overflow-y-auto`}>
 
                                         {/*__________ Post Details__________  */}
-                                        <div className=' flex'>
+                                        <div className=' flex mt-2'>
                                             <div className="avatar mr-3">
                                                 <div className="w-8 h-8 rounded-full">
                                                     <img src={photoUrl} alt="" />
@@ -214,7 +202,7 @@ const Single = ({ user, singlePost }) => {
                                         {
                                             comments.length ?
                                                 <>
-                                                    <h2 className='text-md'>Replies </h2>
+                                                    <h2 className='text-md mt-3 ml-2'>Replies </h2>
                                                     <div className="divider my-[-2px] "></div>
 
                                                     <div className='mb-3'>
@@ -223,6 +211,9 @@ const Single = ({ user, singlePost }) => {
                                                                 <SingleComment
                                                                     key={comment._id}
                                                                     postComment={comment}
+                                                                    user={user}
+                                                                    comments={comments}
+                                                                    setComments={setComments}
                                                                 >
                                                                 </SingleComment>
                                                             )
@@ -254,8 +245,11 @@ const Single = ({ user, singlePost }) => {
                                                     </div>
                                                 </div>
 
-                                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-10' />
-                                                <button className='col-span-1 px-2 btn-ghost rounded-lg'><IoMdSend className='h-7 w-7' /></button>
+                                                <form action="" onSubmit={handleComment} className="col-span-11 flex">
+                                                    <input type="text" name="comment" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] ' />
+                                                    <button type='submit' className=' btn-ghost rounded-lg'><IoMdSend className='h-7 w-7' /></button>
+                                                </form>
+
                                             </div>
                                             :
                                             <>
