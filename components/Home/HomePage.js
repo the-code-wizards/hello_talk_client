@@ -11,20 +11,19 @@ import Blog from "../Blog/Blog";
 import BlogForHome from "../Blog/BlogForHome";
 import { Helmet } from "react-helmet";
 import SendEmail from "../SendEmail/SendEmail";
-import TextToSpeech from "../TextToSpeech/TextToSpeech";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Link from "next/link";
 
 const HomePage = () => {
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
   const getStarted = () => {
-    if(!user){
-      window.location.href = "/signin"
-    }else{
-      window.location.href = "/learn"
+    if (!user) {
+      window.location.href = "/signin";
+    } else {
+      window.location.href = "/learn";
     }
-  }
+  };
   return (
     <div>
       {/* ---------------Header---------------------------- */}
@@ -49,7 +48,10 @@ const HomePage = () => {
               The free, fun, and effective way to learn language!
             </h1>
             <div className="flex flex-col justify-center items-center mt-8">
-              <button onClick={() => getStarted()} className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]">
+              <button
+                onClick={() => getStarted()}
+                className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]"
+              >
                 Get Started
               </button>
             </div>
@@ -57,10 +59,8 @@ const HomePage = () => {
         </div>
       </div>
       {/* ---------------Top Banner end ---------------------------- */}
+
       {/* ---------------Middle contents ---------------------------- */}
-      <div>
-        <TextToSpeech></TextToSpeech>
-      </div>
       <div className="lg:md:px-0 px-4">
         <div
           data-aos="fade-right"

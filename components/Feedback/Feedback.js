@@ -14,7 +14,8 @@ const Feedback = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://hello-talk-webserver.vercel.app/reviews`)
+    axios
+      .get(`https://hello-talk-webserver.vercel.app/reviews`)
       .then((res) => {
         setReviews(res.data);
       })
@@ -25,7 +26,7 @@ const Feedback = () => {
         setLoading(false);
       });
   }, []);
-  console.log(reviews)
+  console.log(reviews);
   return (
     <div className="lg:md:sm:px-15 px-8">
       <Swiper
@@ -52,7 +53,9 @@ const Feedback = () => {
                         <img src={data?.photoURL} />
                         ) : (
                           <span className="flex uppercase justify-center items-center mt-[2rem] text-[#fff] text-3xl">
-                            {data?.name.slice(0, 2)}
+                            {/* {data?.name.slice(0, 2)} */}
+                            {/* Uporer ta original  code  api problem er jonno slice bad dichi*/}
+                            {data?.name}
                           </span>
                         )}
                     </div>
