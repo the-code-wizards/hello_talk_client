@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import TermTextToSpeech from "../../components/Terms/TermTextToSpeech";
 const index = () => {
   return (
     <section className="mx-36">
       <h2 className="text-center text-5xl font-bold my-20">Privacy Policy</h2>
+      <div>
+        <TermTextToSpeech></TermTextToSpeech>
+      </div>
       <section className="text-justify">
         <div className="my-5">
           <h3 className="text-2xl mb-6">
