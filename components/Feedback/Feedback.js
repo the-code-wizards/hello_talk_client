@@ -52,7 +52,9 @@ const Feedback = () => {
                         <img src={data?.photoURL} />
                         ) : (
                           <span className="flex uppercase justify-center items-center mt-[2rem] text-[#fff] text-3xl">
-                            {data?.name.slice(0, 2)}
+                            {/* {data?.name.slice(0, 2)} */}
+                            {/* Uporer ta original  code  api problem er jonno slice bad dichi*/}
+                            {data?.name}
                           </span>
                         )}
                     </div>
