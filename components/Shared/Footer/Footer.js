@@ -10,7 +10,7 @@ const Footer = () => {
             Learn a language with HelloTalk.
           </h1>
           <button className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[60%] lg:md:mx-0 mx-auto lg:md:w-[15%] hover:bg-[#171d13] ml-5">
-            <Link href="signin">Get Started</Link>
+            <Link href="/learn">Get Started</Link>
           </button>
         </div>
         <footer className="footer p-10 text-neutral-content ">
