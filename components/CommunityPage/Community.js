@@ -14,13 +14,18 @@ const Community = () => {
     const [searchIndex, setSearchIndex] = useState("")
     // const [first, setFirst] = useState('');
     const [searchLoading, setSearchLoading] = useState(false)
+    const [spninerLoading, setSpinnerLoading] = useState(false)
 
 
     const searchInputData = (event) => {
         event.preventDefault();
         const searchData = event.target.searchData.value;
         console.log(searchData)
-        setSearchIndex(searchData);
+        setSpinnerLoading(true)
+        setTimeout(() => {
+            setSearchIndex(searchData);
+            setSpinnerLoading(false)
+        }, 1000);
         setSearchLoading(true)
 
     }
@@ -71,6 +76,7 @@ const Community = () => {
                                         searchLoading={searchLoading}
                                         setSearchIndex={setSearchIndex}
                                         setSearchLoading={setSearchLoading}
+                                        spninerLoading={spninerLoading}
                                     ></Posts>
                                 </div>
 

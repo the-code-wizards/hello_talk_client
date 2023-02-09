@@ -124,7 +124,7 @@ const Single = ({ user, singlePost }) => {
                     </div>
                 </div>
                 <div className='p-3'>
-                    <p className='text-[16px]'>How to find a stylus pen which is compactable with myHp Pavillion ×360 14m-dw1xxx laptop?I searched everywhere i am not able</p>
+                    <p className='text-[16px]'>{post}</p>
                 </div>
                 <div className="divider my-[-2px] "></div>
                 <div className='flex justify-between'>
