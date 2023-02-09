@@ -6,17 +6,14 @@ import { FaTimes } from "react-icons/fa";
 import useSingleUser from "../hooks/useSingleUser";
 import loader from "../../resources/lottieJson/loader.json";
 import Lottie from "lottie-react";
-import Image from "next/image";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
   const [loading, setLoading] = useState(true);
   const [singleUser] = useSingleUser();
-  const [selectedImg, setSelectedImg] = useState(undefined)
-  const [userImg, setUserImg] = useState('')
-  // const [profileImg, setProfileImg] = useState('')
-  const { name, age: myage, photoURL, education, district, country, number, email, realAge } =
+  const { name, age, education, district, country, number, email, realAge } =
     singleUser;
+  console.log(singleUser);
   // if(loading){
   //   return <div className="w-[300px] h-[300px] mx-auto">
   //     <Lottie animationData={loader} loop={true} />
@@ -32,26 +29,26 @@ const MyProfile = () => {
     const country = form.country.value;
     const number = form.number.value;
     const email = form.email.value;
-    let realAge;
+    let age;
     if (numAge < 18 && numAge > 0) {
-      realAge = "young";
+      age = "young";
     } else if (numAge >= 18) {
-      realAge = "adult";
+      age = "adult";
     }
-    // console.log(
-    //   name,
-    //   age,
-    //   realAge,
-    //   education,
-    //   district,
-    //   country,
-    //   number,
-    //   email
-    // );
+    console.log(
+      name,
+      age,
+      realAge,
+      education,
+      district,
+      country,
+      number,
+      email
+    );
     const userProfile = {
       name,
-      age: numAge,
-      realAge,
+      age,
+      realAge: numAge,
       education,
       district,
       country,
@@ -70,52 +67,10 @@ const MyProfile = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         location.reload(true);
       });
   };
-
-  // change the photo preview 
-  const handlePreviewPhoto = (e) => {
-      const imgfile = e.target.files[0]
-      const url = URL.createObjectURL(imgfile)
-      setSelectedImg(url)
-      setUserImg(imgfile)
-    }
-
-  //update Profile picture
-  const handleUpdateProfileImg = (e) => {
-    e.preventDefault();
-    const imgbbsecret = 'd8cf4210ca9e59597c20c2db0651d6a7'
-            const formData = new FormData();
-            formData.append('image', userImg);
-            const url = `https://api.imgbb.com/1/upload?key=${imgbbsecret}`;
-            fetch( url, {
-                method: 'POST',
-                body: formData
-          })
-          .then(res => res.json())
-          .then(pictureData => {
-            console.log(pictureData)
-            if(pictureData.success){
-              const photourl = pictureData.data.url;
-              const photobody = {
-                photoURL: photourl
-              }
-               fetch(`https://hello-talk-webserver.vercel.app/upimage?email=${email}`, {
-                method: "POST",
-                headers: {
-                  "content-type": "application/json"
-                },
-                body: JSON.stringify(photobody)
-              })
-              .then(res => res.json())
-              .then((data) => {
-                alert('profile picture updated')
-              })
-            }
-
-          })
-  }
 
   return (
     <div className="py-24 px-20">
@@ -134,46 +89,17 @@ const MyProfile = () => {
             </div>
           </div>
           <div className="absolute mt-[-45px] ml-10">
-            {/* The button to open modal */}{/*Tap to add a profile picture*/}
-        <label htmlFor="uploadPhotoModal" className="cursor-pointer">
-            <div className="avatar tooltip md:tooltip-top tooltip-right" data-tip="Tap to change photo">
-              <div className="w-24 rounded-full ring ring-white hover:shadow-xl">
+            <div className="avatar">
+              <div className="w-24 rounded-full ring ring-white">
                 <img
                   src={
-                    photoURL
-                      ? photoURL
+                    user?.photoURL
+                      ? user?.photoURL
                       : "https://www.pngitem.com/pimgs/m/581-5813504_avatar-dummy-png-transparent-png.png"
                   }
                 />
               </div>
             </div>
-</label>
-
-{/* Put this part before </body> tag */}
-<input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
-<div className="modal">
-  <div className="modal-box relative">
-    <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 className="text-lg font-bold text-center">Chose a file to upload photo</h3>
-    <p className='text-center text-gray-400'>and click on upload button</p>
-    <div className="flex justify-center items-center">
-    {selectedImg && <>
-    <div className="w-[200px] h-[200px] rounded-full mt-5">
-          <img src={selectedImg} alt=""  className="rounded-full w-[200px] h-[200px]"/>
-    </div>
-    </>}
-    </div>
-    
-    <div className={selectedImg && "mt-5"}>
-    <form onSubmit={handleUpdateProfileImg}>
-        <input accept="image/jpeg, image/png" onChange={handlePreviewPhoto} type="file" className="file-input"/>
-        {/* <h2>{profileImg}</h2> */}
-        {selectedImg && <button className="bg-[#58cc02] btn border-0" type="submit">Upload</button>}
-    </form>
-    </div>
-
-  </div>
-</div>
           </div>
         </div>
 
@@ -195,7 +121,7 @@ const MyProfile = () => {
           </div>
 
           <div className="flex flex-col gap-y-2">
-            <h3>{myage}</h3>
+            <h3>{realAge}</h3>
             <h3>{education}</h3>
             <h3>{district}</h3>
             <h3>{country}</h3>
@@ -243,7 +169,7 @@ const MyProfile = () => {
                     <input
                       type="text"
                       name="age"
-                      defaultValue={myage}
+                      defaultValue={realAge}
                       placeholder="Age"
                       className="input input-bordered w-full mt-1"
                     />
