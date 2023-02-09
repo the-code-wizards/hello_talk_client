@@ -9,11 +9,11 @@ import loader from "../../resources/lottieJson/loader.json";
 import Lottie from "lottie-react";
 import { useQuery } from 'react-query';
 
-const Posts = () => {
+const Posts = ({ searchIndex, searchLoading, setSearchIndex, setSearchLoading }) => {
     const [user, error] = useAuthState(auth);
     const [currentPage, SetCurrentPage] = useState(1);
     const [postsPerPage, SetPostPerPage] = useState(4);
-    const [totalPosts, setTotalPost] = useState(0)
+    const [allPosts, setAllPosts] = useState([])
 
 
     const { data: posts = [], refetch, isLoading } = useQuery({
@@ -21,18 +21,28 @@ const Posts = () => {
         queryFn: async () => {
             const res = await fetch(`https://hello-talk-webserver.vercel.app/community/communityposts`);
             const data = await res.json();
-            // console.log(data)
-            setTotalPost(data.length)
+            setAllPosts(data)
             return data;
         }
     })
+
+    const searchsCancel = () => {
+        setSearchIndex("")
+        refetch()
+        setSearchLoading(false)
+    }
 
 
     // Get Current Posts 
 
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
-    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+    const filtered = allPosts.filter((data) =>
+        data.title.toLowerCase().includes(searchIndex)
+    );
+    const currentPosts = filtered.slice(indexOfFirstPost, indexOfLastPost);
+
+
 
 
     if (isLoading) {
@@ -44,6 +54,16 @@ const Posts = () => {
     return (
         <div>
             {
+                searchLoading ?
+                    <div className='flex items-center justify-center px-2 pt-5'>
+                        <p className=''>{filtered.length} results found</p>
+                        <button className='mx-4 btn btn-outline btn-xs' onClick={searchsCancel}>X</button>
+                    </div>
+                    :
+                    <>
+                    </>
+            }
+            {
                 currentPosts.map(post =>
                     <Single
                         user={user}
@@ -53,7 +73,7 @@ const Posts = () => {
                 )
             }
             <div className='flex justify-center mt-10'>
-                <Pagination postsPerPage={postsPerPage} SetCurrentPage={SetCurrentPage} totalPosts={totalPosts} currentPage={currentPage}></Pagination>
+                <Pagination postsPerPage={postsPerPage} SetCurrentPage={SetCurrentPage} filtered={filtered} currentPage={currentPage}></Pagination>
             </div>
         </div >
     );
