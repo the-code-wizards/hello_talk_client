@@ -17,7 +17,7 @@ const index = () => {
         <title>HelloTalk - Learning Panel</title>
       </Head>
       <Navbar />
-      <div className="pt-[6rem] grid lg:md:grid-cols-[250px_minmax(650px,_1fr)_300px]">
+      <div className="pt-[6rem] grid lg:md:grid-cols-[18%_minmax(60%,_1fr)_23%]">
         <div className="lg:md:block hidden">
           <Sidebar />
         </div>
