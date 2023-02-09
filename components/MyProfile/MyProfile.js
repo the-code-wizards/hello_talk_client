@@ -136,7 +136,7 @@ const MyProfile = () => {
           <div className="absolute mt-[-45px] ml-10">
             {/* The button to open modal */}{/*Tap to add a profile picture*/}
         <label htmlFor="uploadPhotoModal" className="cursor-pointer">
-            <div className="avatar tooltip md:tooltip-top tooltip-right" data-tip="Tap to change photo">
+            <div className="avatar  tooltip md:tooltip-top tooltip-right" data-tip="Tap to change photo">
               <div className="w-24 rounded-full ring ring-white hover:shadow-xl">
                 <img
                   src={
@@ -147,7 +147,7 @@ const MyProfile = () => {
                 />
               </div>
             </div>
-</label>
+        </label>
 
 {/* Put this part before </body> tag */}
 <input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
