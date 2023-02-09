@@ -111,7 +111,7 @@ const Single = ({ user, singlePost }) => {
 
     return (
         <div>
-            <div className=' bg-white p-3 rounded-2xl mt-8 border border-inherit'>
+            <div className=' bg-white p-3 rounded-2xl mt-5 border border-inherit'>
                 <div className=' flex'>
                     <div className="avatar mr-3">
                         <div className="w-8 h-8 rounded-full">
@@ -124,7 +124,7 @@ const Single = ({ user, singlePost }) => {
                     </div>
                 </div>
                 <div className='p-3'>
-                    <p className='text-[16px]'>How to find a stylus pen which is compactable with myHp Pavillion ×360 14m-dw1xxx laptop?I searched everywhere i am not able</p>
+                    <p className='text-[16px]'>{post}</p>
                 </div>
                 <div className="divider my-[-2px] "></div>
                 <div className='flex justify-between'>
@@ -156,7 +156,7 @@ const Single = ({ user, singlePost }) => {
                                     {/*header*/}
                                     <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t ">
                                         <h3 className="text-xl font-bold text-center">
-                                            Galib&apos;s Post
+                                            Galib's Post
                                         </h3>
                                         <label className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setShowModal(false)}>✕</label>
 

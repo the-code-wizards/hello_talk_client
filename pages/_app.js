@@ -31,7 +31,7 @@ function App({ Component, pageProps }) {
     <Component {...pageProps} />
   </QueryClientProvider>
   // <Provider store={store}>
-
+   
   // </Provider>
 }
 
