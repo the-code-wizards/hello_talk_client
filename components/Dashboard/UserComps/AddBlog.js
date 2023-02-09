@@ -2,6 +2,17 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddBlog = () => {
+  // const {
+  //   _id,
+  //   title,
+  //   details,
+  //   date,
+  //   author_name,
+  //   author_img,
+  //   image,
+  //   tag,
+  //   package: my_package,
+  // } = blogDetails;
 
   const currentDate = new Date();
   // const date = currentdate.toLocaleDateString('en-US', {
@@ -48,7 +59,7 @@ const AddBlog = () => {
       package: getPack,
       gems: my_package,
     };
-    fetch('https://hello-talk-webserver.vercel.app/blog', {
+    fetch('http://localhost:5000/blog', {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,
