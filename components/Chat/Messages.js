@@ -50,7 +50,7 @@ const Messages = ({ current }) => {
     }
 
     const getMessages = async () => {
-        await axios.get(`http://localhost:5000/get-messages/${current?._id}/${singleUser?._id}`)
+        await axios.get(`https://hello-talk-webserver.vercel.app/${current?._id}/${singleUser?._id}`)
             .then((res) => {
                 console.log(res)
                 setMessages(res.data);
