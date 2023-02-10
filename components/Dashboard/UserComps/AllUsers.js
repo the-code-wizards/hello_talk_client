@@ -88,6 +88,7 @@ const AllUsers = () => {
               </thead>
               {filteredUsers.map((user) => {
                 return (
+
                   <tbody className="text-center" key={user?._id}>
                     <tr className="bg-[#d7d5ff] text-[#1d4d87]">
                       <td className="text-start border-r-2 border-b-2 border-white">

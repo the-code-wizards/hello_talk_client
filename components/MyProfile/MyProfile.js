@@ -76,45 +76,45 @@ const MyProfile = () => {
 
   // change the photo preview 
   const handlePreviewPhoto = (e) => {
-      const imgfile = e.target.files[0]
-      const url = URL.createObjectURL(imgfile)
-      setSelectedImg(url)
-      setUserImg(imgfile)
-    }
+    const imgfile = e.target.files[0]
+    const url = URL.createObjectURL(imgfile)
+    setSelectedImg(url)
+    setUserImg(imgfile)
+  }
 
   //update Profile picture
   const handleUpdateProfileImg = (e) => {
     e.preventDefault();
     const imgbbsecret = 'd8cf4210ca9e59597c20c2db0651d6a7'
-            const formData = new FormData();
-            formData.append('image', userImg);
-            const url = `https://api.imgbb.com/1/upload?key=${imgbbsecret}`;
-            fetch( url, {
-                method: 'POST',
-                body: formData
+    const formData = new FormData();
+    formData.append('image', userImg);
+    const url = `https://api.imgbb.com/1/upload?key=${imgbbsecret}`;
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(pictureData => {
+        console.log(pictureData)
+        if (pictureData.success) {
+          const photourl = pictureData.data.url;
+          const photobody = {
+            photoURL: photourl
+          }
+          fetch(`https://hello-talk-webserver.vercel.app/upimage?email=${email}`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json"
+            },
+            body: JSON.stringify(photobody)
           })
-          .then(res => res.json())
-          .then(pictureData => {
-            console.log(pictureData)
-            if(pictureData.success){
-              const photourl = pictureData.data.url;
-              const photobody = {
-                photoURL: photourl
-              }
-               fetch(`https://hello-talk-webserver.vercel.app/upimage?email=${email}`, {
-                method: "POST",
-                headers: {
-                  "content-type": "application/json"
-                },
-                body: JSON.stringify(photobody)
-              })
-              .then(res => res.json())
-              .then((data) => {
-                alert('profile picture updated')
-              })
-            }
+            .then(res => res.json())
+            .then((data) => {
+              alert('profile picture updated')
+            })
+        }
 
-          })
+      })
   }
 
   return (
@@ -135,45 +135,45 @@ const MyProfile = () => {
           </div>
           <div className="absolute mt-[-45px] ml-10">
             {/* The button to open modal */}{/*Tap to add a profile picture*/}
-        <label htmlFor="uploadPhotoModal" className="cursor-pointer">
-            <div className="avatar  tooltip md:tooltip-top tooltip-right" data-tip="Tap to change photo">
-              <div className="w-24 rounded-full ring ring-white hover:shadow-xl">
-                <img
-                  src={
-                    photoURL
-                      ? photoURL
-                      : "https://www.pngitem.com/pimgs/m/581-5813504_avatar-dummy-png-transparent-png.png"
-                  }
-                />
+            <label htmlFor="uploadPhotoModal" className="cursor-pointer">
+              <div className="avatar  tooltip md:tooltip-top tooltip-right" data-tip="Tap to change photo">
+                <div className="w-24 rounded-full ring ring-white hover:shadow-xl">
+                  <img
+                    src={
+                      photoURL
+                        ? photoURL
+                        : "https://www.pngitem.com/pimgs/m/581-5813504_avatar-dummy-png-transparent-png.png"
+                    }
+                  />
+                </div>
+              </div>
+            </label>
+
+            {/* Put this part before </body> tag */}
+            <input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
+            <div className="modal">
+              <div className="modal-box relative">
+                <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <h3 className="text-lg font-bold text-center">Chose a file to upload photo</h3>
+                <p className='text-center text-gray-400'>and click on upload button</p>
+                <div className="flex justify-center items-center">
+                  {selectedImg && <>
+                    <div className="w-[200px] h-[200px] rounded-full mt-5">
+                      <img src={selectedImg} alt="" className="rounded-full w-[200px] h-[200px]" />
+                    </div>
+                  </>}
+                </div>
+
+                <div className={selectedImg && "mt-5"}>
+                  <form onSubmit={handleUpdateProfileImg}>
+                    <input accept="image/jpeg, image/png" onChange={handlePreviewPhoto} type="file" className="file-input" />
+                    {/* <h2>{profileImg}</h2> */}
+                    {selectedImg && <button className="bg-[#58cc02] btn border-0" type="submit">Upload</button>}
+                  </form>
+                </div>
+
               </div>
             </div>
-        </label>
-
-{/* Put this part before </body> tag */}
-<input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
-<div className="modal">
-  <div className="modal-box relative">
-    <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 className="text-lg font-bold text-center">Chose a file to upload photo</h3>
-    <p className='text-center text-gray-400'>and click on upload button</p>
-    <div className="flex justify-center items-center">
-    {selectedImg && <>
-    <div className="w-[200px] h-[200px] rounded-full mt-5">
-          <img src={selectedImg} alt=""  className="rounded-full w-[200px] h-[200px]"/>
-    </div>
-    </>}
-    </div>
-    
-    <div className={selectedImg && "mt-5"}>
-    <form onSubmit={handleUpdateProfileImg}>
-        <input accept="image/jpeg, image/png" onChange={handlePreviewPhoto} type="file" className="file-input"/>
-        {/* <h2>{profileImg}</h2> */}
-        {selectedImg && <button className="bg-[#58cc02] btn border-0" type="submit">Upload</button>}
-    </form>
-    </div>
-
-  </div>
-</div>
           </div>
         </div>
 

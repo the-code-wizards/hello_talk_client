@@ -4,13 +4,14 @@ import { SiGooglemeet } from "react-icons/si";
 const HelpSupport = () => {
   // <a href="https://meet.google.com/xsr-exra-rxj?pli=1 mt-5" target='_blank' rel="noopener noreferrer"> <button className='btn border-0 bg-green-400'>Join Meet</button> </a>
   // bg-gradient-to-r from-[#9dffc1] to-[#9ac8ff]
+  //color: red
   return (
     <div className="mt-10">
       <div className="min-h-[300px] lg:md:w-[80%] mx-auto font-featherBold rounded-xl bg-[#d7e9ff] p-3 md:p-10 border-4 border-[#2D609F] shadow-xl">
         <div className="">
           <div className="">
-            <h2 className="text-2xl text-[#408be7] font-semibold">
-              Do you need any help and support?
+            <h2 className="text-2xl text-[#408be7] font-semibold gap-3 flex items-center">
+            Do you need any help and support? <img style={{width: "30px"}} src="https://i.ibb.co/ZMpvpK1/Logo-removebg-preview.png" alt="logo" />
             </h2>
             <p>All teachers are here for your help.</p>
             <p className="mt-3 text-sm text-base-content text-justify">
