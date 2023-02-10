@@ -36,6 +36,8 @@ const Community = () => {
     return (
         <div >
             <CNavBar></CNavBar>
+
+
             <div className='grid grid-cols-5'>
                 <div className='col-span-1 pt-18 bg-[#F0F2F5] h-screen sticky top-0'>
                     <SidebarCommunityPage></SidebarCommunityPage>
