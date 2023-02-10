@@ -274,6 +274,8 @@ const MyProfile = () => {
         </div>
       </div>
     </div>
+    </div>
+    </div>
   );
 };
 

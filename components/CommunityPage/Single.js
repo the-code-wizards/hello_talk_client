@@ -156,7 +156,7 @@ const Single = ({ user, singlePost }) => {
                                     {/*header*/}
                                     <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t ">
                                         <h3 className="text-xl font-bold text-center">
-                                            Galib's Post
+                                            Galibs Post
                                         </h3>
                                         <label className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setShowModal(false)}>✕</label>
 
