@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Pagination = ({ postsPerPage, SetCurrentPage, totalPosts, currentPage }) => {
+const Pagination = ({ postsPerPage, SetCurrentPage, filtered, currentPage }) => {
 
     // console.log(totalPosts, postsPerPage)
     const pageNumbers = []
 
-    for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(filtered.length / postsPerPage); i++) {
         pageNumbers.push(i)
     }
 
@@ -24,12 +24,13 @@ const Pagination = ({ postsPerPage, SetCurrentPage, totalPosts, currentPage }) =
                             </li>
                     }
                     {
-                        pageNumbers.map(pageNumber =>
-                            <>
-                                <li>
-                                    <a onClick={() => SetCurrentPage(pageNumber)} className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{pageNumber}</a>
-                                </li>
-                            </>
+                        pageNumbers.map((pageNumber, i) =>
+                            <li
+                                key={i}
+                            >
+                                <a onClick={() => SetCurrentPage(pageNumber)} className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{pageNumber}</a>
+                            </li>
+
                         )
                     }
                     {

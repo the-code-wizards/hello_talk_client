@@ -3,12 +3,16 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import Lottie from "lottie-react";
+import loader from "../../resources/lottieJson/loader.json"
 
 const LeaveReview = () => {
     const [user] = useAuthState(auth);
     const [loading, setLoading] = useState(true);
     const [profile, setProfile] = useState({});
-    const { name, email } = profile;
+    // const { name, email } = profile;
+    const name = user?.displayName;
+    const email = user?.email;
 
     useEffect(() => {
         setLoading(true);
@@ -31,12 +35,12 @@ const LeaveReview = () => {
     const reviewHandler = (e) => {
         e.preventDefault();
         const form = e.target;
-        const comments = form.comments.value;
-        const comment = { name, email, comments };
+        const comment = form.comment.value;
+        const commentData = { name, email, comment };
         fetch(`https://hello-talk-webserver.vercel.app/postreview`, {
             method: "POST",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify(comment),
+            body: JSON.stringify(commentData),
         })
             .then((res) => res.json())
             .then((data) => {
@@ -47,7 +51,9 @@ const LeaveReview = () => {
             });
     };
     if (loading) {
-        return <h2>loading</h2>;
+        return <div className="w-[300px] h-[300px] mx-auto">
+            <Lottie animationData={loader} loop={true} />
+        </div>;
     }
     return (
         <div className="lg:md:mt-0 mt-[30rem] lg:md:pr-[15px] lg:md:pl-0 pl-[20px] lg:md:mb-0 mb-[6rem]">
@@ -64,7 +70,7 @@ const LeaveReview = () => {
                             <input
                                 type="text"
                                 placeholder="Type here"
-                                name="comments"
+                                name="comment"
                                 className="input w-full lg:md:max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                             />
                         </div>

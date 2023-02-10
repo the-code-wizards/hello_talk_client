@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
@@ -7,10 +7,31 @@ import Lottie from 'lottie-react';
 import gems from '../../../resources/lottieJson/gem.json';
 import Cookies from 'js-cookie';
 import useSingleUser from '../../hooks/useSingleUser';
+import axios from 'axios';
 
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(auth);
-  const [singleUser] = useSingleUser();
+  const [user, error] = useAuthState(auth);
+  const [singleUser, setSingleUser] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  console.log(user)
+  useEffect(() => {
+    if (!user) return;
+
+    setLoading(true);
+    axios
+      .get(`https://hello-talk-webserver.vercel.app/profile?email=${user.email}`)
+      .then(res => {
+        console.log(res)
+        setSingleUser(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err);
+        setLoading(false);
+      });
+  }, [user]);
+
   const logout = () => {
     signOut(auth);
     Cookies.set('loggedin', 'false');
@@ -184,6 +205,9 @@ const Navbar = () => {
                         <>
                           <li>
                             <Link href="/dashboard">Dashboard</Link>
+                          </li>
+                          <li>
+                            <Link href="/helpsupport">Help & Support</Link>
                           </li>
                           <li>
                             {' '}

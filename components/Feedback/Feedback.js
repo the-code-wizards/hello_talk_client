@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -7,58 +7,25 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
+import axios from "axios";
 
 const Feedback = () => {
-  const fakeRevData = [
-    {
-      id: 1,
-      name: "Afnan Ferdousi",
-      img: "/",
-      review:
-        "Loved the experince so far. They provide authentic and helpful contents to improve our language skill",
-      stars: 4,
-    },
-    {
-      id: 2,
-      name: "Abdullah Al Shaimpn",
-      img: "/",
-      review:
-        "Loved the experince so far. They provide authentic and helpful contents to improve our language skill",
-      stars: 5,
-    },
-    {
-      id: 3,
-      name: "MD Asadulla Al Galib",
-      img: "/",
-      review:
-        "Just so so. The website lags a lot, there is a lot of ads that doesn't let me concentrate on the lessons",
-      stars: 2,
-    },
-    {
-      id: 4,
-      name: "Sujoy Paul",
-      img: "/",
-      review:
-        "They have amazing customer service. I surely will tell all the people I know to use their website!",
-      stars: 4,
-    },
-    {
-      id: 5,
-      name: "Kasib Mohammad Chowdhury",
-      img: "/",
-      review:
-        "They have amazing customer service. I surely will tell all the people I know to use their website!",
-      stars: 4,
-    },
-    {
-      id: 6,
-      name: "Mosharaf Hossain",
-      img: "/",
-      review:
-        "Just so so. The website lags a lot, there is a lot of ads that doesn't let me concentrate on the lessons",
-      stars: 1,
-    },
-  ];
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`https://hello-talk-webserver.vercel.app/reviews`)
+      .then((res) => {
+        setReviews(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+  console.log(reviews)
   return (
     <div className="lg:md:sm:px-15 px-8">
       <Swiper
@@ -74,19 +41,25 @@ const Feedback = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {fakeRevData?.map((data) => {
+        {reviews?.map((data) => {
           return (
-            <div key={data?.id}>
+            <div key={data?._id}>
               <SwiperSlide>
-                <div className="card shadow-2xl my-10 py-4 border-inherit ">
+                <div className="card shadow-2xl my-10 py-4 border-inherit w-full lg:md:mx-[5%]">
                   <div className="avatar flex justify-center">
-                    <div className="w-24 rounded-full my-3 ring ring-[#61E002] ring-offset-base-100 ring-offset-2">
-                      <img src="https://placeimg.com/192/192/people" />
+                    <div className="w-24 rounded-full my-3 bg-green-400 ">
+                      {data?.photoURL ? (
+                        <img src={data?.photoURL} />
+                      ) : (
+                        <span className="flex uppercase justify-center items-center mt-[2rem] text-[#fff] text-3xl">
+                          {data?.name?.slice(0, 2)}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="card-body items-center text-center">
                     <h2 className="card-title text-[#333]">{data?.name}</h2>
-                    <p className="italic">{`"${data?.review}"`}</p>
+                    <p className="italic">{`"${data?.comment}"`}</p>
                   </div>
                 </div>
               </SwiperSlide>
