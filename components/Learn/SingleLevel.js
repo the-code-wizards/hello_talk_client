@@ -83,7 +83,8 @@ const SingleLevel = () => {
     }
   };
   const prevLevel = () => {
-    window.location.href = `/level/${parseInt(lv?.level) - 1}`
+    router.push(`/level/${parseInt(lv?.level) - 1}`);
+    // window.location.href = `/level/${parseInt(lv?.level) - 1}`
   };
   const nextLevel = () => {
     if (singleUser?.completed_lv?.includes(lv?.level)) {
@@ -93,15 +94,14 @@ const SingleLevel = () => {
         const percentage = score / lv?.question?.length;
         if (percentage > 0.5) {
           setGems(3);
-          window.location.href = `/level/${parseInt(lv?.level) + 1}`
+          router.push(`/level/${parseInt(lv?.level) + 1}`);
         } else {
           setGems(2);
-          window.location.href = `/level/${parseInt(lv?.level) + 1}`
+          router.push(`/level/${parseInt(lv?.level) + 1}`);
         }
-        // router.push(`/level/${parseInt(lv?.level) + 1}`);
       } else {
         setGems(1);
-         window.location.href = `/level/${parseInt(lv?.level) + 1}`
+        router.push(`/level/${parseInt(lv?.level) + 1}`);
       }
 
       fetch(`https://hello-talk-webserver.vercel.app/savelevel?email=${user?.email}`, {
