@@ -1,10 +1,6 @@
 import React from "react";
 import Link from "next/link";
-<<<<<<< HEAD
-import TermTextToSpeech from "../../components/Terms/TermTextToSpeech";
 import Navbar from "../../components/Shared/Navbar/Navbar";
-=======
->>>>>>> 198130890b3a223305e608b8623154a268da6946
 const index = () => {
   return (
     <section className="mx-36">
