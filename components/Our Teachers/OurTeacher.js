@@ -6,7 +6,7 @@ const OurTeacher = ({ teacher }) => {
   const { _id, name, image, qualification } = teacher;
   return (
     // <Card>
-    <div className="flex md:flex-row flex-col items-center gap-2 rounded-xl shadow-md hover:shadow-2xl p-10">
+    <div className="flex md:flex-row flex-col items-center gap-2 rounded-xl shadow-xl hover:shadow-2xl p-10">
       <div className="avatar">
         <div className="w-24  rounded-full">
           <img src={image} />
@@ -27,8 +27,8 @@ const OurTeacher = ({ teacher }) => {
           <p className="text-[15px]">{qualification}</p>
         </div>
         <div className="flex justify-end items-center py-2 mx-3">
+          <Link className="flex items-center" href={`/ourteacher/${_id}`}>
           <p className="px-3">Details</p>
-          <Link href={`/ourteacher/${_id}`}>
             <FaArrowRight></FaArrowRight>
           </Link>
         </div>
