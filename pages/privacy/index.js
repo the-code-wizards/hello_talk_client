@@ -1,8 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import Navbar from "../../components/Shared/Navbar/Navbar";
+import Footer from "../../components/Shared/Footer/Footer";
+import Privacy from "../../components/Privacy/Privacy";
 const index = () => {
   return (
-    <section className="mx-36">
+    <div>
+      {/* <section className="mx-36">
       <h2 className="text-center text-5xl font-bold my-20">Privacy Policy</h2>
       <section className="text-justify">
         <div className="my-5">
@@ -1053,7 +1057,11 @@ const index = () => {
       <h3 className="text-2xl text-black my-20">
         Last revised on October 24th, 2022
       </h3>
-    </section>
+    </section> */}
+    <Navbar/>
+      <Privacy></Privacy>
+    <Footer/>
+    </div>
   );
 };
 
