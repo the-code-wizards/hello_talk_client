@@ -1,12 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Navbar from "../Shared/Navbar/Navbar";
-import TermTextToSpeech from "./TermTextToSpeech";
+import Link from 'next/link';
+import React from 'react';
 
 const Terms = () => {
-  return (
-    <section className="mx-36">
-      <h2 className="text-center text-5xl font-bold my-20">
+    return (
+        <div>
+            <section className="px-36">
+      <h2 className="text-center text-5xl font-bold py-20">
         Terms and Conditions of Service
       </h2>
       <section className="text-justify">
@@ -884,7 +883,8 @@ const Terms = () => {
         Last revised on August 29th, 2022
       </h3>
     </section>
-  );
+        </div>
+    );
 };
 
 export default Terms;
