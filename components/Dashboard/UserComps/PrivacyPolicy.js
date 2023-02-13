@@ -2,98 +2,116 @@ import React, { useEffect, useRef, useState } from 'react';
 import JoditEditor from 'jodit-react';
 
 const PrivacyPolicy = () => {
-  const editor = useRef(null);
-  const [privacyContent, setPrivacyContent] = useState('');
-  const [termsContent, setTermsContent] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    control,
+    reset,
+  } = useForm()
+  const [addPrivacyPolicyState, setAddPrivacyPolicyState] = useState(false)
+  const cookies = new Cookies()
+  const token = cookies.get('token')
 
-  const handleSubmitPrivacy = () => {
-    const privacyBody = {
-      content: privacyContent,
-    };
-    const confirm = window.confirm('Are you sure want to add privacy?');
-    if (confirm) {
-      fetch(`https://hello-talk-webserver.vercel.app/addprivacy`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(privacyBody),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.acknowledged) {
-            alert('content added of privacy & policy');
-          }
-        });
-    }
-  };
+  const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
-  const handleSubmitTerms = () => {
-    const termsBody = {
-      content: termsContent,
-    };
-    const confirm = window.confirm('Are you sure want to add terms?');
-    if (confirm) {
-      fetch(`https://hello-talk-webserver.vercel.app/addterms`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(termsBody),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.acknowledged) {
-            alert('content added of terms & condition');
-          }
-        });
+  const onEditorStateChange = (editorState) => setEditorState(editorState)
+
+  useEffect(() => {
+    const loadPrivacyPolicy = async () => {
+      const res = await axios.get(`${baseURL}/api/v1/public/commoninfo/PrivacyPolicy`)
+      //console.log(res)
+      if (res?.data?.status === 200) {
+        setEditorState(
+          EditorState.createWithContent(
+            ContentState.createFromBlockArray(convertFromHTML(`${res?.data?.data?.PrivacyPolicy}`)),
+          ),
+        )
+      }
     }
-  };
+    loadPrivacyPolicy()
+  }, [])
+
+  const onSubmit = async (data) => {
+    try {
+      const content = draftToHtml(convertToRaw(editorState.getCurrentContent()))
+      const bodyFormData = new FormData()
+      bodyFormData.append('UpdatedText', content)
+
+      setAddPrivacyPolicyState(true)
+      const res = await axiosJWT.post(
+        `${baseURL}/api/v1/admin/commoninfo/update-privacy-policy`,
+        bodyFormData,
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        },
+      )
+      if (res?.data?.status === 200) {
+        setAddPrivacyPolicyState(false)
+        //swal('Success!', 'Privacy Policy added')
+      } else {
+        setAddPrivacyPolicyState(false)
+
+      }
+    } catch (error) {
+      //console.log(error)
+    }
+  }
 
   return (
-    <div className="py-24 w-[90%] mx-auto">
-      <div className="bg-[#1A4982] py-3 rounded-xl">
-        <h2 className="py-3 capitalize text-lg text-white text-center">Add Privacy and Policy</h2>
-        <div className="">
-          <JoditEditor
-            ref={editor}
-            value={privacyContent}
-            onChange={(newContent) => setPrivacyContent(newContent)}
-          ></JoditEditor>
-        </div>
-        <div className="flex justify-end mt-2 mr-2">
-          <button
-            onClick={handleSubmitPrivacy}
-            className="text-[#1A4982] hover:bg-[#dcecff] uppercase px-6 py-2 rounded-md bg-white"
-          >
-            Submit
-          </button>
-        </div>
-      </div>
+    <>
+      <LoadingOverlay
+        active={addPrivacyPolicyState}
+        styles={{
+          overlay: (base) => ({
+            ...base,
+            background: '#ebedef9f',
+            height: '100%',
+          }),
+        }}
+        spinner={
+          <ThreeDots
+            height="80"
+            width="80"
+            radius="9"
+            color={primary_orange}
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{ justifyContent: 'center', margin: '5rem 0' }}
+            wrapperClassName=""
+            visible={true}
+          />
+        }
+      >
+        <div className="flex flex-column mt-5">
+          <div>
+            <div className="card border-0 shadow-sm">
+              <div className="card-body">
+                <h5 className="card-title ">Privacy Policy</h5>
+              </div>
+              <div className="card-body">
+                <CForm onSubmit={handleSubmit(onSubmit)}>
+                  <Editor
+                    editorState={editorState}
+                    editorClassName="editor_container"
+                    placeholder="Privacy Policy"
+                    onEditorStateChange={onEditorStateChange}
+                    handlePastedText={() => false}
+                  />
 
-      <div className="divide-x-2"></div>
-
-      <div className="mt-12 bg-[#1A4982] py-3 rounded-xl">
-        <h2 className="py-3 capitalize text-lg text-white text-center">Add terms and condition</h2>
-        <div className="">
-          <JoditEditor
-            ref={editor}
-            value={termsContent}
-            onChange={(newContent) => setTermsContent(newContent)}
-          ></JoditEditor>
+                  <button className="btn btn-primary text-white my-3 px-4" type="submit">
+                    Add
+                  </button>
+                </CForm>
+              </div>
+            </div>
+          </div>
         </div>
+      </LoadingOverlay>
+    </>
+  )
+}
 
-        <div className="flex justify-end mt-2 mr-2">
-          <button
-            onClick={handleSubmitTerms}
-            className="text-[#1A4982] hover:bg-[#dcecff] uppercase px-6 py-2 rounded-md bg-white"
-          >
-            Submit
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default PrivacyPolicy;
+export default PrivacyPolicy
