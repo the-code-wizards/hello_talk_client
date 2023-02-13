@@ -42,6 +42,7 @@ const Community = () => {
                 <div className='col-span-1 pt-18 bg-[#F0F2F5] h-screen sticky top-0'>
                     <SidebarCommunityPage></SidebarCommunityPage>
                 </div>
+
                 <div className='col-span-4'>
                     {/* >>>>>>>>>>> Top Banner <<<<<<<<<<<<<<<<<<< */}
 

@@ -32,7 +32,7 @@ const ContactForm = () => {
                         <textarea id="message" name='message' rows="3" className="w-full p-3 rounded bg-gray-100" spellcheck="false"></textarea>
                     </div>
                     <div className='flex justify-center'>
-                        <button type="submit" className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-full  hover:bg-[#61E002]">Send Message</button>
+                        <button type="submit" className="mt-[14px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-full  hover:bg-[#61E002]">Send Message</button>
                     </div>
                 </form>
             </div>
