@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TermTextToSpeech from "./TermTextToSpeech";
 
 const Terms = () => {
   return (
-    <section className="mx-36">
+    <section className={$`{terms-and-conditions-container}`}>
       <h2 className="text-center text-5xl font-bold my-20">
         Terms and Conditions of Service
       </h2>
