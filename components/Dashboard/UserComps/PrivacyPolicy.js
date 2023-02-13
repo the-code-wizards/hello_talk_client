@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import JoditEditor from 'jodit-react';
+// import JoditEditor from 'jodit-react';
 
 const PrivacyPolicy = () => {
 
@@ -53,7 +53,7 @@ const PrivacyPolicy = () => {
 
     return (
         <div className='py-24 w-[88%] mx-auto'>
-            <div className='bg-[#1A4982] p-3 rounded-xl'>
+            {/* <div className='bg-[#1A4982] p-3 rounded-xl'>
             <h2 className='py-3 capitalize text-lg text-white text-center'>Add Privacy and Policy</h2>
             <div className=''>
                 <JoditEditor
@@ -83,7 +83,7 @@ const PrivacyPolicy = () => {
                 <button onClick={handleSubmitTerms} className='text-[#1A4982] hover:bg-[#dcecff] uppercase px-6 py-2 rounded-md bg-white'>Submit</button>
             </div>
 
-            </div>
+            </div> */}
         </div>
     );
 };
