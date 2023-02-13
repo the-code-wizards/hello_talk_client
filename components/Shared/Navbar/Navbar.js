@@ -20,7 +20,7 @@ const Navbar = () => {
 
     setLoading(true);
     axios
-      .get(`https://hello-talk-webserver.vercel.app/profile?email=${user.email}`)
+      .get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
       .then(res => {
         console.log(res)
         setSingleUser(res.data);
@@ -30,7 +30,7 @@ const Navbar = () => {
         setError(err);
         setLoading(false);
       });
-  }, [user]);
+  }, [user?.email]);
 
   const logout = () => {
     signOut(auth);
@@ -181,7 +181,7 @@ const Navbar = () => {
                 <li>
                   <div className="w-[95px] flex gap-0">
                     <Lottie animationData={gems} loop={true} />
-                      <p className="text-[17px] font-bold">{singleUser && singleUser?.gems}</p>
+                    <p className="text-[17px] font-bold">{singleUser && singleUser?.gems}</p>
                   </div>
                 </li>
                 <li>
@@ -201,25 +201,57 @@ const Navbar = () => {
                       tabIndex={0}
                       className="menu menu-compact dropdown-content mt-[250%] p-2 shadow bg-green-200 rounded-box w-52 font-bold text-[#333]"
                     >
-                      {user && (
-                        <>
-                          <li>
-                            <Link href="/dashboard">Dashboard</Link>
-                          </li>
-                          <li>
-                            <Link href="/helpsupport">Help & Support</Link>
-                          </li>
+                      {
+                        user && singleUser?.role === 'admin' ?
+                          <>
+                            <li>
+                              <Link href="/dashboard">Dashboard</Link>
+                            </li>
+                            <li>
+                              {' '}
+                              <button
+                                className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
+                                onClick={logout}
+                              >
+                                Log Out
+                              </button>
+                            </li>
+
+                          </>
+
+                          :
+                          <>
+                            <li>
+                              <Link href="/userdashboard">User Dashboard</Link>
+                            </li>
+                            <li>
+                              {' '}
+                              <button
+                                className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
+                                onClick={logout}
+                              >
+                                Log Out
+                              </button>
+                            </li>
+                          </>
+
+                      }
+
+                      {
+                        !user ?
                           <li>
                             {' '}
-                            <button
-                              className="mx-auto mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
-                              onClick={logout}
+                            <Link
+                              className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
+                              href="/signin"
                             >
-                              Log Out
-                            </button>
+                              Log In
+                            </Link>
                           </li>
-                        </>
-                      )}
+                          :
+                          <>
+                          </>
+                      }
                     </ul>
                   </div>
                 </li>
@@ -233,3 +265,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
