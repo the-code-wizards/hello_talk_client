@@ -42,7 +42,7 @@ const Navbar = () => {
   return (
     <nav className="relative z-10">
       <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] py-0">
-        <div className="navbar-start ">
+        <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
               <svg
