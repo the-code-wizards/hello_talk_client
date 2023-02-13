@@ -3,6 +3,7 @@ import Footer from "../../components/Shared/Footer/Footer";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import Terms from "../../components/Terms/Terms";
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 const index = () => {
   return (
@@ -889,6 +890,11 @@ const index = () => {
     //   </h3>
     // </section>
 >>>>>>> 0cb281bc0d8a7363e3953b720bdd8910626b50e0
+=======
+
+const index = () => {
+  return (
+>>>>>>> eda89c13f3f9bab6c22818a04a481a9580908dea
     <>
     <Navbar></Navbar>
       <Terms></Terms>

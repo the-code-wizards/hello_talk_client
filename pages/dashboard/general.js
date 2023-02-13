@@ -23,6 +23,9 @@ const index = () => {
   );
 };
 
+<<<<<<< HEAD
 export default index;
 
+=======
+>>>>>>> eda89c13f3f9bab6c22818a04a481a9580908dea
 export default index;

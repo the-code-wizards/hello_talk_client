@@ -1,9 +1,25 @@
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import TermTextToSpeech from "./TermTextToSpeech";
 
 const Terms = () => {
+=======
+import React, { useEffect, useState } from 'react';
+
+const Terms = () => {
+  const [terms, setTerms] = useState([]);
+  // const happen = terms.map(term => term.content)
+  useEffect(() => {
+    fetch(`https://hello-talk-webserver.vercel.app/terms`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTerms(data);
+      });
+  }, []);
+
+>>>>>>> eda89c13f3f9bab6c22818a04a481a9580908dea
   return (
     <section className="mx-36">
       <h2 className="text-center text-5xl font-bold my-20">

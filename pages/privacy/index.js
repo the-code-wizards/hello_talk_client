@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eda89c13f3f9bab6c22818a04a481a9580908dea
 import React from 'react';
 import Link from 'next/link';
 import Navbar from '../../components/Shared/Navbar/Navbar';
@@ -10,6 +13,7 @@ const index = () => {
       <Navbar />
       <Privacy></Privacy>
       <Footer />
+<<<<<<< HEAD
 =======
 import React from "react";
 import Link from "next/link";
@@ -1075,6 +1079,8 @@ const index = () => {
       <Privacy></Privacy>
     <Footer/>
 >>>>>>> 0cb281bc0d8a7363e3953b720bdd8910626b50e0
+=======
+>>>>>>> eda89c13f3f9bab6c22818a04a481a9580908dea
     </div>
   );
 };
