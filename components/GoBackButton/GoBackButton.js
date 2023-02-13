@@ -20,7 +20,7 @@ const GoBackButton = () => {
       >
         <FaArrowLeft></FaArrowLeft>
 
-        <h3 className="px-3">Go To Home</h3>
+        <h3 className="px-3">Go To Back</h3>
       </div>
     </button>
   );

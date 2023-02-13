@@ -9,6 +9,8 @@ const nextConfig = {
   images: {
     domains: ['i.ibb.co'],
   },
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
+

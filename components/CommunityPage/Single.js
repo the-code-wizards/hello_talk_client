@@ -1,41 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { AiTwotoneLike } from 'react-icons/ai';
 import { BiCommentDetail } from 'react-icons/bi';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import swal from 'sweetalert';
-import auth from '../../firebase.init';
 import SingleComment from './SingleComment';
-import { comment } from 'postcss';
-import { useNavigation } from 'react-router-dom';
 import { useRouter } from 'next/router';
+import { IoMdSend } from 'react-icons/io';
+import { useQuery } from 'react-query';
 
 const Single = ({ user, singlePost }) => {
-    const [commentView, setCommentView] = useState("hidden")
     const [showModal, setShowModal] = useState(false);
     const [comments, setComments] = useState([])
     const [likeButton, SetLikeButton] = useState(false)
     const router = useRouter()
 
 
-    const commentRender = () => {
-        if (commentView === "") {
-            setCommentView("hidden")
-        }
-        else {
-            setCommentView("")
-        }
-    }
     const { photoUrl, email, name, post, postTime, title, _id } = singlePost
 
     const handleComment = (event) => {
-        setShowModal(false)
         event.preventDefault();
         const form = event.target
-        const text = form.textarea.value;
-        console.log(text)
+        const comment = form.comment.value;
+        console.log(comment)
         const postComment = {
             name: user.displayName,
-            comment: text,
+            comment: comment,
             email: user.email,
             postTime: Date(),
             photoUrl: user.photoURL,
@@ -52,18 +40,15 @@ const Single = ({ user, singlePost }) => {
             .then(res => res.json())
             .then(res => {
                 console.log(res)
-                // navigate("/dashboard/myproducts")
                 if (res.acknowledged === true) {
-                    swal(
-                        'Your comment is posted!',
-                        'Possible reponse is near !',
-                        'success'
-                    )
                     form.reset()
+                    setComments([...comments, postComment])
+
                 }
             })
 
     }
+
 
     useEffect(() => {
         fetch(`https://hello-talk-webserver.vercel.app/community/comment/${_id}`)
@@ -72,6 +57,7 @@ const Single = ({ user, singlePost }) => {
 
 
     }, [])
+
 
     useEffect(() => {
         fetch(`https://hello-talk-webserver.vercel.app/community/like?email=${user?.email}&id=${_id}`)
@@ -84,6 +70,7 @@ const Single = ({ user, singlePost }) => {
             })
 
     }, [user?.email, _id])
+
 
     const handleLike = () => {
         const postLike = {
@@ -119,14 +106,12 @@ const Single = ({ user, singlePost }) => {
             })
 
     }
-    const navigateLogin = () => {
-        window.location.href = "/signin";
-    }
+
 
 
     return (
         <div>
-            <div className=' bg-white p-3 rounded-2xl mt-8 border border-inherit'>
+            <div className=' bg-white p-3 rounded-2xl mt-5 border border-inherit'>
                 <div className=' flex'>
                     <div className="avatar mr-3">
                         <div className="w-8 h-8 rounded-full">
@@ -139,7 +124,7 @@ const Single = ({ user, singlePost }) => {
                     </div>
                 </div>
                 <div className='p-3'>
-                    <p className='text-[16px]'>How to find a stylus pen which is compactable with myHp Pavillion ×360 14m-dw1xxx laptop?I searched everywhere i am not able</p>
+                    <p className='text-[16px]'>{post}</p>
                 </div>
                 <div className="divider my-[-2px] "></div>
                 <div className='flex justify-between'>
@@ -152,7 +137,7 @@ const Single = ({ user, singlePost }) => {
                                 <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
                         }
                         <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
-                            <button onClick={commentRender} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
+                            <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
                         </div>
                     </div>
                     <div>
@@ -160,99 +145,124 @@ const Single = ({ user, singlePost }) => {
                     </div>
                 </div>
 
+                {showModal ? (
+                    <>
+                        <div
+                            className="justify-center items-center flex overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none "
+                        >
+                            <div className="relative lg:w-[700px] sm:[350px] ">
+                                {/*content*/}
+                                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                    {/*header*/}
+                                    <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t ">
+                                        <h3 className="text-xl font-bold text-center">
+                                            Galibs Post
+                                        </h3>
+                                        <label className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setShowModal(false)}>✕</label>
 
-
-                <div className={`px-8 pt-3 ${commentView}`}>
-                    <h2 className='text-md my-2 '>Add a Comment</h2>
-                    {
-                        user ?
-                            <div className='grid grid-cols-12 ml-[-10px] my-2'>
-                                <div className='grid grid-cols-1 place-items-center col-span-1'>
-                                    <div className="avatar">
-                                        <div className="w-8 rounded-full">
-                                            {
-                                                user?.photoURL ?
-                                                    <img src={user?.photoURL} alt="Profile Picture" />
-                                                    :
-                                                    <img src="https://i.ibb.co/8zkT4zS/istockphoto-1300845620-612x612.jpg" alt="Profile Picture" />
-                                            }
-                                        </div>
                                     </div>
-                                </div>
+                                    {/*body*/}
+                                    <div className={`px-4 h-[70vh] md:w-[700px]  sm:w-full overflow-y-auto`}>
 
-                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11' onClick={() => setShowModal(true)} />
-                            </div>
-                            :
-                            <>
-                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11 mb-2' onClick={() => router.push("/signin/")} />
-                            </>
-                    }
-                    {
-                        comments.length ?
-                            <>
-                                <h2 className='text-md'>Replies </h2>
-                                <div className="divider my-[-2px] "></div>
+                                        {/*__________ Post Details__________  */}
+                                        <div className=' flex mt-2'>
+                                            <div className="avatar mr-3">
+                                                <div className="w-8 h-8 rounded-full">
+                                                    <img src={photoUrl} alt="" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h1 className='text-[16px]'>{title}</h1>
+                                                <p className='text-[12px]' >By: {name} | {postTime}</p>
+                                            </div>
+                                        </div>
+                                        <div className='p-3'>
+                                            <p className='text-[16px]'>How to find a stylus pen which is compactable with myHp Pavillion ×360 14m-dw1xxx laptop?I searched everywhere i am not able</p>
+                                        </div>
+                                        <div className="divider my-[-2px] "></div>
+                                        <div className='flex justify-between'>
+                                            <div className='flex justify-center'>
 
-                                <div className='mb-3'>
+                                                {
+                                                    likeButton ?
+                                                        <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span></button>
+                                                        :
+                                                        <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
+                                                }
+                                                <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
+                                                    <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p className='text-[12px]'>Last Activity: {name} | {postTime}</p>
+                                            </div>
+                                        </div>
+
+                                        {/*__________ Comment__________  */}
+                                        {
+                                            comments.length ?
+                                                <>
+                                                    <h2 className='text-md mt-3 ml-2'>Replies </h2>
+                                                    <div className="divider my-[-2px] "></div>
+
+                                                    <div className='mb-3'>
+                                                        {
+                                                            comments.map(comment =>
+                                                                <SingleComment
+                                                                    key={comment._id}
+                                                                    postComment={comment}
+                                                                    user={user}
+                                                                    comments={comments}
+                                                                    setComments={setComments}
+                                                                >
+                                                                </SingleComment>
+                                                            )
+                                                        }
+
+                                                    </div>
+                                                </>
+                                                :
+                                                <>
+                                                </>
+                                        }
+
+
+
+                                    </div>
                                     {
-                                        comments.map(comment =>
-                                            <SingleComment
-                                                key={comment._id}
-                                                postComment={comment}
-                                            >
-                                            </SingleComment>
-                                        )
+                                        user ?
+                                            <div className='grid grid-cols-12 ml-[-10px] my-2 px-6'>
+                                                <div className='grid grid-cols-1 place-items-center col-span-1'>
+                                                    <div className="avatar">
+                                                        <div className="w-8 rounded-full">
+                                                            {
+                                                                user?.photoURL ?
+                                                                    <img src={user?.photoURL} alt="Profile Picture" />
+                                                                    :
+                                                                    <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <form action="" onSubmit={handleComment} className="col-span-11 flex">
+                                                    <input type="text" name="comment" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] ' />
+                                                    <button type='submit' className=' btn-ghost rounded-lg'><IoMdSend className='h-7 w-7' /></button>
+                                                </form>
+
+                                            </div>
+                                            :
+                                            <>
+                                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11 mb-2 px-6' onClick={() => router.push("/signin/")} />
+                                            </>
                                     }
 
                                 </div>
-                            </>
-                            :
-                            <>
-                            </>
-                    }
-
-                    {showModal ? (
-                        <>
-                            <div
-                                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-                            >
-                                <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                    {/*content*/}
-                                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                        {/*header*/}
-                                        <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                            <h3 className="text-xl font-semibold text-center">
-                                                Write your Comment
-                                            </h3>
-                                            <button className=" btn btn-ghost rounded-full" onClick={() => setShowModal(false)}>X</button>
-
-                                        </div>
-                                        {/*body*/}
-                                        <form onSubmit={handleComment}>
-                                            <div className="relative p-6 flex-auto ">
-                                                <textarea name='textarea' className="textarea w-[600px] input-bordered " placeholder="Your Comment"></textarea>
-
-                                            </div>
-                                            {/*footer*/}
-                                            <div className="flex items-center justify-end  border-t border-solid border-slate-200 rounded-b">
-                                                <button
-                                                    className="btn btn-md btn-ghost mr-2"
-                                                    type="submit"
-
-
-                                                >
-                                                    Post
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
-                            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                        </>
-                    ) : null}
-
-                </div>
+                        </div>
+                        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                    </>
+                ) : null}
             </div>
         </div>
     );

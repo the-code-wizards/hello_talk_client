@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+<<<<<<< HEAD
 import GoBackButton from "../../components/GoBackButton/GoBackButton";
 // import TermTextToSpeech from "../../components/Terms/TermTextToSpeech";
 const index = () => {
@@ -28,6 +29,114 @@ const index = () => {
           <div className="my-5">
             <h3 className="text-2xl mb-6">
               1. <strong className="font-semibold">General</strong>
+=======
+import Navbar from "../../components/Shared/Navbar/Navbar";
+import Footer from "../../components/Shared/Footer/Footer";
+import Privacy from "../../components/Privacy/Privacy";
+const index = () => {
+  return (
+    <div>
+      {/* <section className="mx-36">
+      <h2 className="text-center text-5xl font-bold my-20">Privacy Policy</h2>
+      <section className="text-justify">
+        <div className="my-5">
+          <h3 className="text-2xl mb-6">
+            1. <strong className="font-semibold">General</strong>
+          </h3>
+          <h3 className="text-2xl text-gray-500 my-5 pl-5">
+            At Duolingo, we care about your personal data, so we have prepared
+            this Privacy Policy to explain how we collect, use and share it.
+          </h3>
+          <p className="text-2xl text-gray-500 my-5 pl-5">
+            This Privacy Policy (“<b>Privacy Policy</b>”) details the personal
+            data Duolingo, Inc. (“<b>Duolingo”, “we”, “us” or “our</b>”)
+            receives about you, how we process it and your rights and
+            obligations in relation to your personal data. Duolingo, Inc., a
+            company registered at 5900 Penn Ave, Second Floor, Pittsburgh, PA
+            15206, United States of America is the data controller for the
+            purposes of the General Data Protection Regulation (“<b>GDPR</b>”)
+            and any relevant local legislation (“<b>Data Protection Laws</b>”).
+          </p>
+          <p className="text-2xl text-gray-500 my-5 pl-5">
+            By using or accessing the Service, you agree to the terms of this
+            Privacy Policy. Capitalized terms not defined here have the meanings
+            set forth in the terms and conditions (the{" "}
+            <b>“Terms and Conditions”</b>), located at{" "}
+            <Link href="#">
+              {" "}
+              <u>www.duolingo.com/terms</u>
+            </Link>
+            . We may update our Privacy Policy to reflect changes to our
+            information practices. If we do this and the changes are material,
+            we will post a notice that we have made changes to this Privacy
+            Policy on the Website for at least 7 days before the changes are
+            made, and we will indicate the date these terms were last revised at
+            the bottom of the Privacy Policy. Any revisions to this Privacy
+            Policy will become effective at the end of that 7 day period.
+          </p>
+          <p className="text-2xl text-gray-500 my-5 pl-5">
+            If you are an employee, worker or contractor of Duolingo, the
+            information about how we handle your personal information is
+            available in the Duolingo internal knowledge base. With respect to
+            employees based in Europe, we are committed to cooperating with
+            European data protection authorities (DPAs) and comply with the
+            advice given by such authorities with regard to human resources data
+            transferred from Europe in the context of the employment
+            relationship.
+          </p>
+        </div>
+        <div className="my-5">
+          <h3 className="text-2xl mb-6">
+            2.{" "}
+            <strong className="font-semibold">
+              Registration; Submission of Content
+            </strong>
+          </h3>
+          <div className="text-2xl text-gray-500 pl-5">
+            <p className="py-5">
+              This Privacy Policy explains how we collect, use and share your
+              personal data.
+            </p>
+            <small>
+              <i>
+                <u>Information you provide</u>
+              </i>
+            </small>
+            <p className="py-5">
+              Through the registration process, you will provide us with your
+              name, e-mail address (or parent’s e-mail address), and age or date
+              of birth. You will also provide us with your payment transaction
+              information if you choose to pay for Duolingo services.
+            </p>
+            <small>
+              <i>
+                <u>Activity Data</u>
+              </i>
+            </small>
+            <p className="py-5">
+              When you use the Service, you will submit information and content
+              to your profile. We will also generate data about your use of our
+              Services including your engagement in educational activities on
+              the Service, or your sending of messages and otherwise
+              transmitting information to other users (“<b>Activity Data</b>”).
+              We also collect technical data about how you interact with our
+              Services; for more information, see{" "}
+              <Link href="#">
+                {" "}
+                <u>Cookies</u>
+              </Link>
+              .
+            </p>
+            <p className="py-5">
+              When you use Duolingo in our app or on our website, we use a
+              service named FullStory to log your activity. This provides us
+              with a set of data and a session replay of your activity on
+              Duolingo in the form of a video. FullSory captures and analyzes
+              your usage data to help us make your Duolingo experience better.
+            </p>
+            <h3 className="py-5">
+              We only collect the data we need which means we don’t record:
+>>>>>>> 0cb281bc0d8a7363e3953b720bdd8910626b50e0
             </h3>
             <h3 className="text-2xl text-gray-500 my-5 pl-5">
               At Duolingo, we care about your personal data, so we have prepared
@@ -1090,12 +1199,103 @@ const index = () => {
               .
             </p>
           </div>
+<<<<<<< HEAD
         </section>
         <h3 className="text-2xl text-black my-20">
           Last revised on October 24th, 2022
         </h3>
       </div>
     </section>
+=======
+        </div>
+        <div className="my-5">
+          <h3 className="text-2xl mb-6">
+            11. <strong className="font-semibold">Links</strong>
+          </h3>
+          <p className="text-2xl text-gray-500 my-5 pl-5">
+            The Service may contain links to other websites. We are not
+            responsible for the privacy practices of other websites. We
+            encourage users to be aware when they leave the Service to read the
+            privacy statements of other websites that collect personally
+            identifiable information. This Privacy Policy applies only to
+            information collected by Duolingo via the Service.
+          </p>
+        </div>
+        <div className="my-5">
+          <h3 className="text-2xl mb-6">
+            12. <strong className="font-semibold">Information security</strong>
+          </h3>
+          <p className="text-2xl text-gray-500 my-5 pl-5">
+            Duolingo has implemented administrative and technical safeguards it
+            believes are appropriate to protect the confidentiality, integrity
+            and availability of your personal data, Testing ID, User Photo,
+            access credentials, and Duolingo English Test results. However,
+            given sufficient resources, a determined attacker could defeat those
+            safeguards and may, as a result, gain access to the data we seek to
+            protect.
+          </p>
+        </div>
+        <div className="my-5">
+          <h3 className="text-2xl mb-6">
+            13. <strong className="font-semibold">Do Not Track</strong>
+          </h3>
+          <p className="text-2xl text-gray-500 my-5 pl-5">
+            The Service is not designed to respond to “do not track” signals
+            sent by some browsers.
+          </p>
+        </div>
+        <div className="my-5">
+          <h3 className="text-2xl mb-6">
+            14. <strong className="font-semibold">Contact Us</strong>
+          </h3>
+          <div className="text-2xl text-gray-500 my-5 pl-5">
+            <h3>Duolingo’s headquarters are located within the USA at:</h3>
+            <h3>Duolingo, Inc.</h3>
+            <h3>5900 Penn Ave, Second Floor</h3>
+            <h3>Pittsburgh, PA 15206</h3>
+            <h3>United States of America</h3>
+            <h3>Phone: +1-412-567-6602</h3>
+          </div>
+          <div className="text-2xl text-gray-500 my-5 pl-5">
+            <h3>
+              Duolingo, Inc. is a registered Data Controller with the UK
+              Information Commissioners Office (ICO), number ZA294891, at the
+              address:
+            </h3>
+            <h3>Duolingo, Inc.</h3>
+            <h3>85 Great Portland Street</h3>
+            <h3>London</h3>
+            <h3>W1W 7LT</h3>
+            <h3>United Kingdom</h3>
+          </div>
+          <p className="text-2xl text-gray-500 my-5 pl-5">
+            For all data privacy inquiries and any questions or concerns you
+            have about this Privacy Policy, please contact our Data Protection
+            Officer at{" "}
+            <Link href="#">
+              {" "}
+              <u>privacy@duolingo.com</u>
+            </Link>
+          </p>
+          <p className="text-2xl text-gray-500 my-5 pl-5">
+            For all support inquiries, please go to
+            <Link href="#">
+              {" "}
+              <u>https://support.duolingo.com</u>
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+      <h3 className="text-2xl text-black my-20">
+        Last revised on October 24th, 2022
+      </h3>
+    </section> */}
+    <Navbar/>
+      <Privacy></Privacy>
+    <Footer/>
+    </div>
+>>>>>>> 0cb281bc0d8a7363e3953b720bdd8910626b50e0
   );
 };
 
