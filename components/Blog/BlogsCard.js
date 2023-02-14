@@ -25,6 +25,7 @@ const BlogsCard = ({ blog, singleUser }) => {
     const newGem ={
     gems: singleUser?.gems - gems
   }; 
+  console.log(newGem)
     fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${singleUser?.email}`, {
       method: 'POST',
       headers: {

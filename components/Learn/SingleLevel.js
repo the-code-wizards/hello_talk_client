@@ -83,8 +83,8 @@ const SingleLevel = () => {
     }
   };
   const prevLevel = () => {
-    router.push(`/level/${parseInt(lv?.level) - 1}`);
-    // window.location.href = `/level/${parseInt(lv?.level) - 1}`
+    // router.push(`/level/${parseInt(lv?.level) - 1}`);
+    window.location.href = `/level/${parseInt(lv?.level) - 1}`
   };
   const nextLevel = () => {
     if (singleUser?.completed_lv?.includes(lv?.level)) {
@@ -92,16 +92,20 @@ const SingleLevel = () => {
     } else {
       if (score !== null) {
         const percentage = score / lv?.question?.length;
-        if (percentage > 0.2 ) {
+        console.log(percentage)
+        if (percentage > 0.5 ) {
           setGems(3);
-          router.push(`/level/${parseInt(lv?.level) + 1}`);
-        } else {
+          window.location.href = `/level/${parseInt(lv?.level) + 1}`
+          // router.push(`/level/${parseInt(lv?.level) + 1}`);
+        } else if (percentage > 0 && percentage <= 0.5) {
           setGems(2);
-          router.push(`/level/${parseInt(lv?.level) + 1}`);
+           window.location.href = `/level/${parseInt(lv?.level) + 1}`
+          // router.push(`/level/${parseInt(lv?.level) + 1}`);
         }
       } else {
         setGems(1);
-        router.push(`/level/${parseInt(lv?.level) + 1}`);
+         window.location.href = `/level/${parseInt(lv?.level) + 1}`
+        // router.push(`/level/${parseInt(lv?.level) + 1}`);
       }
 
       fetch(`https://hello-talk-webserver.vercel.app/savelevel?email=${user?.email}`, {
