@@ -1,7 +1,11 @@
 import Link from "next/link";
 import React, { Fragment } from "react";
 import { FaRegGem } from "react-icons/fa";
-const BlogsCard = ({ blog }) => {
+import useSingleUser from "../hooks/useSingleUser";
+
+const BlogsCard = ({ blog, singleUser }) => {
+
+  console.log(singleUser)
   const {
     _id,
     title,
@@ -14,7 +18,32 @@ const BlogsCard = ({ blog }) => {
     gems,
     package: my_package,
   } = blog;
+  // const { gems } = singleUser;
   // console.log(tag);
+
+  const buyBlog = () => {
+    const newGem ={
+    gems: singleUser?.gems - gems
+  }; 
+    fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${singleUser?.email}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(newGem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          window.location.href = `/blog/${_id}`
+        }
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   return (
     <div className="flex md:flex-row flex-col items-center gap-2 rounded-xl shadow-md hover:shadow-2xl">
       <div className="flex items-end justify-start">
@@ -66,7 +95,7 @@ const BlogsCard = ({ blog }) => {
             <h3 className="font-bold text-[#61B800] text-2xl">{title}</h3>
             <p className="py-4">{details}</p>
             <div className="modal-action">
-              <button className="bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002]">
+              <button onClick={() => buyBlog()} className="bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002]">
                 Buy Now
               </button>
               <label

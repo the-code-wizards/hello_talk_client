@@ -92,7 +92,7 @@ const SingleLevel = () => {
     } else {
       if (score !== null) {
         const percentage = score / lv?.question?.length;
-        if (percentage > 0.5) {
+        if (percentage > 0.2 ) {
           setGems(3);
           router.push(`/level/${parseInt(lv?.level) + 1}`);
         } else {
