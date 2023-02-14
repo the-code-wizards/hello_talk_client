@@ -10,7 +10,7 @@ const Message = () => {
     const [user, error] = useAuthState(auth);
     const [current, setCurrent] = useState('')
     if(!user){
-        window.location.href = '/signin'
+        window.location.href = '/signin';
     }
     return (
         <div>
