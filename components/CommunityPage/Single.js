@@ -6,6 +6,7 @@ import SingleComment from './SingleComment';
 import { useRouter } from 'next/router';
 import { IoMdSend } from 'react-icons/io';
 import { useQuery } from 'react-query';
+import { FaUserPlus } from 'react-icons/fa';
 
 const Single = ({ user, singlePost }) => {
     const [showModal, setShowModal] = useState(false);
@@ -66,7 +67,7 @@ const Single = ({ user, singlePost }) => {
                 if (res.length >= 1) {
                     SetLikeButton(true)
                 }
-                // console.log(res)
+                console.log(res)
             })
 
     }, [user?.email, _id])
@@ -87,8 +88,10 @@ const Single = ({ user, singlePost }) => {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
-                SetLikeButton(true)
+                if (res.insertedId) {
+                    console.log(res)
+                    SetLikeButton(true)
+                }
             })
 
     }
@@ -107,19 +110,80 @@ const Single = ({ user, singlePost }) => {
 
     }
 
+    const handleAddFriend = () => {
+        const friendData = {
+            senderEmail: user.email,
+            senderImg: user.photoURL,
+            senderName: user.name,
+            reciverEmail: email,
+            reciverImg: photoUrl,
+            reciverName: name,
+            status: "pending"
+        }
+        fetch("https://hello-talk-webserver.vercel.app/connect", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(friendData)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.insertedId) {
+                    console.log(res)
+                }
+            })
+
+    }
+
+
 
 
     return (
         <div>
             <div className=' bg-white p-3 rounded-2xl mt-5 border border-inherit'>
                 <div className=' flex'>
-                    <div className="avatar mr-3">
-                        <div className="w-8 h-8 rounded-full">
-                            <img src={photoUrl} alt="" />
+                    <div className="dropdown dropdown-top dropdown-hover">
+                        <label tabIndex={0} className="mr-2">
+                            <div className="avatar p-1  hover:bg-green-300 rounded-full">
+                                <div className="w-8 h-8 rounded-full ">
+                                    {
+                                        photoUrl ?
+                                            <img src={photoUrl} alt="" />
+                                            :
+                                            <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                    }
+                                </div>
+                            </div>
+                        </label>
+                        <div tabIndex={0} className="dropdown-content menu p-2 shadow  rounded-box w-52 bg-[#14678F]">
+                            <div className='flex justify-center items-center'>
+                                <div className="avatar p-1  rounded-full">
+                                    <div className="w-7 h-7 rounded-full ">
+                                        {
+                                            photoUrl ?
+                                                <img src={photoUrl} alt="" />
+                                                :
+                                                <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                        }
+                                    </div>
+                                </div>
+                                <div className='text-white'>
+                                    <h1 className='text-[17px]'>
+                                        {name}
+                                    </h1>
+                                    <h2 className='text-[10px] mt-[-4px]'>
+                                        User science 2 Month Ago
+                                    </h2>
+                                </div>
+                            </div>
+                            <button className='btn btn-ghost btn-sm flex items-center text-white' onClick={handleAddFriend}><FaUserPlus className='mr-1' />Add Friend</button>
                         </div>
                     </div>
+
+
                     <div>
-                        <h1 className='text-[16px]'>{title}</h1>
+                        <h1 className='text-[16px]' onClick={() => setShowModal(true)}>{title}</h1>
                         <p className='text-[12px]' >By: {name} | {postTime}</p>
                     </div>
                 </div>
@@ -168,7 +232,12 @@ const Single = ({ user, singlePost }) => {
                                         <div className=' flex mt-2'>
                                             <div className="avatar mr-3">
                                                 <div className="w-8 h-8 rounded-full">
-                                                    <img src={photoUrl} alt="" />
+                                                    {
+                                                        user?.photoURL ?
+                                                            <img src={photoUrl} alt="" />
+                                                            :
+                                                            <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                                    }
                                                 </div>
                                             </div>
                                             <div>
