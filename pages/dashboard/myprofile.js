@@ -4,8 +4,14 @@ import MyCourses from '../../components/MyProfile/MyCourses';
 import MyProfile from '../../components/MyProfile/MyProfile';
 import Footer from '../../components/Shared/Footer/Footer';
 import Navbar from '../../components/Shared/Navbar/Navbar';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
-const myprofile = () => {
+const Myprofile = () => {
+  const [user, error] = useAuthState(auth);
+  if (!user) {
+    window.location.href = '/signin';
+  }
     return (
       <div>
         <Navbar></Navbar>
@@ -19,4 +25,4 @@ const myprofile = () => {
     );
 };
 
-export default myprofile;
+export default Myprofile;
