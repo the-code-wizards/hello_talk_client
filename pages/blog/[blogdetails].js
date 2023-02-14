@@ -32,7 +32,7 @@ const Blogdetails = () => {
       .then((data) => {
         setBlogDetails(data)
         setLoading(false);
-      });
+      });  
   }, [blogid]);
   if (loading) {
     return <div className="w-[300px] h-[300px] mx-auto">

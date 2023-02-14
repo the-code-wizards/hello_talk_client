@@ -170,7 +170,7 @@ const HomePage = () => {
           <div className="divider"></div>
         </div>
 
-        <div
+        {/* <div
           data-aos="fade-down"
           data-aos-easing="linear"
           data-aos-duration="1500"
@@ -191,11 +191,11 @@ const HomePage = () => {
                 remove ads and support free education with Super. First 2 weeks
                 on us!
               </p>
-              {/* <a href="" className='pt-4 text-[#1cb0f6] lg:md:text-start text-center'>LEARN MORE ABOUT SUPER HelloTalk</a> */}
+            
             </div>
           </div>
           <div className="divider"></div>
-        </div>
+        </div> */}
 
         <div
           data-aos="fade-up"
@@ -259,8 +259,8 @@ const HomePage = () => {
         {/* ---------------Middle contents ---------------------------- */}
 
         <div data-aos="fade-up">
-          <SendEmail></SendEmail>
-          <div className="divider max-w-[1240px] mx-auto"></div>
+          {/* <SendEmail></SendEmail> */}
+          <div className="divider md:max-w-[1240px] mx-auto"></div>
         </div>
 
         {/*  -------------------------Footer------------------*/}
@@ -269,7 +269,7 @@ const HomePage = () => {
           data-aos="fade-left"
           data-aos-easing="linear"
           data-aos-duration="1500"
-          className="my-20 max-w-[1240px] mx-auto lg:md:sm:block"
+          className="my-20 md:max-w-[1240px] mx-auto lg:md:sm:block"
         >
           <h1 className="font-featherBold text-3xl text-center text-[#3C3C3C] my-5 mx-auto">
             What Our Amazing User Says

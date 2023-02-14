@@ -8,6 +8,7 @@ import CNavBar from './CNavBar';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Posts from './Posts';
+import FriendReqest from './FriendReqest';
 
 const Community = () => {
     const [user, error] = useAuthState(auth);
@@ -85,6 +86,7 @@ const Community = () => {
 
                                 {/* >>>>>>>> Leader chart <<<<<<<<<<<<<<<<  */}
                                 <div className='col-span-3 mt-8 pr-2'>
+                                    <FriendReqest></FriendReqest>
                                     {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
                                     <Profile></Profile>
                                     {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}
