@@ -54,11 +54,11 @@ const Messages = ({ current }) => {
         }
         try {
             const response = await axios.post('https://hello-talk-webserver.vercel.app/send-message', msgData
-                // , {
-                // headers: {
-                //     'Authorization': `Bearer ${token}`
-                // }
-                // }
+                , {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+                }
             );
             if (response?.status === 200) {
                 console.log(response)
@@ -71,14 +71,6 @@ const Messages = ({ current }) => {
         console.log(msgData)
     }
 
-
-    // console.log("id=>", current._id)
-    // useEffect(() => {
-    //     if (current?._id) {
-    //         refetch();
-    //     }
-    // }, [current?._id, refetch]);
-    // console.log(user)
     console.log(messages)
     return (
         <div className="py-[15px] md:pt-[5rem] pt-[5rem]">
