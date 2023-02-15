@@ -8,7 +8,7 @@ export default function middleware(req) {
     let out = req.cookies.get("loggedout");
     // let token = localStorage.getItem('accessToken');
     let url = req.url
-    console.log(url)
+    // console.log(url)
 
     if (verify === false && url.includes('/dashboard') || !verify && url.includes('/level') || !verify && url.includes('/payment')) {
         window.location.href = "http://localhost:3000/signin";
