@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
-import Navbar from '../Shared/Navbar/Navbar';
-import Footer from '../Shared/Footer/Footer';
+import Navbar from "../Shared/Navbar/Navbar";
+import Footer from "../Shared/Footer/Footer";
 
 const OurTeam = () => {
   return (
@@ -152,7 +152,9 @@ const OurTeam = () => {
                 src="https://media.discordapp.net/attachments/1060905971519586324/1068179136721465474/IMG_20221208_200202_351_1.jpg?width=515&height=609"
               />
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leading-snug">Md. Asadullah Al Galib</p>
+                <p className="text-xl font-semibold leading-snug">
+                  Md. Asadullah Al Galib
+                </p>
                 <p>Full-Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-5 text-xl border-t-2">
