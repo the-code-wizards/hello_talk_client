@@ -8,10 +8,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const Myprofile = () => {
-  const [user, error] = useAuthState(auth);
-  if (!user) {
-    window.location.href = '/signin';
-  }
     return (
       <div>
         <Navbar></Navbar>

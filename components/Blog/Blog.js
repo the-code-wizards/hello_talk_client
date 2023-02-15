@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import useSingleUser from "../hooks/useSingleUser";
 import BlogsCard from "./BlogsCard";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [singleUser] = useSingleUser()
 
   const handleSearch = (event) => {
     if (event?.target?.value !== " ") {
@@ -49,7 +51,7 @@ const Blog = () => {
       <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {blogs.map((blog) => (
-            <BlogsCard key={blog._id} blog={blog}></BlogsCard>
+            <BlogsCard key={blog._id} blog={blog} singleUser={singleUser}></BlogsCard>
           ))}
         </div>
       </div>
