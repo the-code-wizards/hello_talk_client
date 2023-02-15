@@ -3,9 +3,12 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { BsChevronDown } from 'react-icons/bs';
+import useSingleUser from '../hooks/useSingleUser';
 
 const DashSidebar = () => {
   const [user] = useAuthState(auth);
+  const [singleUser] = useSingleUser({});
+  console.log(singleUser);
   return (
     <div className="drawer md:drawer-mobile md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 h-screen">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -19,13 +22,16 @@ const DashSidebar = () => {
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
         <ul className="h-full menu p-4 w-64 bg-[#194881] gap-y-2 text-[#fff]">
           {/* <!-- Sidebar content here --> */}
-          {user && (
+          {singleUser?.role === 'admin' ? (
             <>
               <li>
                 <Link href="/dashboard">Dashboard</Link>
               </li>
               <li>
                 <Link href="/dashboard/myprofile">My Profile</Link>
+              </li>
+              <li>
+                <Link href="/dashboard/general/">General</Link>
               </li>
               {/*--------------- Blogs ----------------*/}
               <div className="collapse">
@@ -90,6 +96,27 @@ const DashSidebar = () => {
               <li>
                 <Link href="/dashboard/coursesbought">Courses Bought</Link>
               </li>
+            </>
+          ) : (
+            <>
+              {singleUser?.role === 'teacher' ? (
+                <li></li>
+              ) : (
+                <>
+                  {/* <li>
+                    <Link href="/dashboard/userdashboard">Dashboard</Link>
+                  </li> */}
+                  <li>
+                    <Link href="/dashboard/myprofile">My Profile</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/mycourses">My Courses</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/premiumblog">Premium Blog</Link>
+                  </li>
+                </>
+              )}
             </>
           )}
         </ul>

@@ -5,8 +5,15 @@ import React, { useState, useEffect } from 'react';
 import useSingleUser from '../../../components/hooks/useSingleUser';
 import Navbar from '../../../components/Shared/Navbar/Navbar';
 import ReactPlayer from 'react-player/youtube'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+
 
 const EnrolledCourse = () => {
+    const [user, error] = useAuthState(auth);
+    if (!user) {
+        window.location.href = '/signin';
+    }
     const [singleUser] = useSingleUser()
     const [courseDetails, setCourseDetails] = useState({});
     const { title, picture, module_links, details, offer_price, price, date } = courseDetails;
