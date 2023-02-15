@@ -61,7 +61,7 @@ const SingleComment = ({ postComment, user, comments, setComments }) => {
 
     const handleDeleteComment = () => {
         if (window.confirm("Do you want to delete")) {
-            fetch(`http://localhost:5000/community/deleteComment/${_id}`, {
+            fetch(`https://hello-talk-webserver.vercel.app/community/deleteComment/${_id}`, {
                 method: "DELETE",
             })
                 .then(res => res.json())
