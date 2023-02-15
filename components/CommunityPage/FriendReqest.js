@@ -1,48 +1,58 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import useSingleUser from '../hooks/useSingleUser';
+import SingleRequest from './SingleRequest';
 
 const FriendReqest = () => {
     const [singleUser] = useSingleUser({});
     const [reqStatus, setReqStatus] = useState([])
-    // console.log(singleUser)
+    const [loader, setLoader] = useState(true)
 
-    useEffect(() => {
-        fetch(`https://hello-talk-webserver.vercel.app/requested?email=${singleUser.email}`)
-            .then(res => res.json())
-            .then(data => {
+
+
+    const { data: reqStatu = [], refetch, isLoading } = useQuery({
+        queryKey: ["reqStatu", singleUser?.email],
+        queryFn: async () => {
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/requested?email=${singleUser.email}`);
+            const data = await res.json();
+            if (data.length) {
                 setReqStatus(data)
                 // console.log(data)
-            })
+                setLoader(false)
+            }
+            else {
+                setReqStatus([])
+                setLoader(false)
+            }
+            return data;
+        }
+    })
 
-    }, [singleUser?.email])
 
+
+    if (loader) {
+        return (
+            <div class="flex items-center justify-center space-x-2">
+                <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        )
+
+    }
 
     return (
-        <div className='bg-[#92DEFF] w-80 mb-5'>
+        <div className='ml-5 mt-16'>
+            <h1 className='text-center pt-2 text-[24px] font-bold'>Friend Requests</h1>
+            <div className="divider mt-[-4px]"></div>
             {
                 reqStatus.map((reqSta, i) =>
-                    <div
+                    <SingleRequest
                         key={i}
+                        reqSta={reqSta}
+                        refetch={refetch()}
                     >
-                        <div className='flex justify-center items-center'>
-                            <div className="avatar p-1  rounded-full">
-                                <div className="w-10 h-10 rounded-full ">
-                                    {
-                                        reqSta ?
-                                            <img src={reqSta.senderImg} alt="" />
-                                            :
-                                            <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
-                                    }
-                                </div>
-                            </div>
-                            <div className=''>
-                                <h1 className='text-[20px]'>
-                                    {reqSta.senderName}
-                                </h1>
-                            </div>
-                        </div>
-                        <button className='btn btn-ghost btn-sm flex items-center text-white'>Accept</button>
-                    </div>
+                    </SingleRequest>
 
                 )
             }

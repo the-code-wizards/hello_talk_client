@@ -86,7 +86,6 @@ const Community = () => {
 
                                 {/* >>>>>>>> Leader chart <<<<<<<<<<<<<<<<  */}
                                 <div className='col-span-3 mt-8 pr-2'>
-                                    <FriendReqest></FriendReqest>
                                     {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
                                     <Profile></Profile>
                                     {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}

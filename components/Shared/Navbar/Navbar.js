@@ -14,7 +14,7 @@ const Navbar = () => {
   const [singleUser, setSingleUser] = useState({});
   const [loading, setLoading] = useState(true);
 
-  console.log(user);
+  console.log(user)
   useEffect(() => {
     if (!user) return;
 
@@ -26,7 +26,7 @@ const Navbar = () => {
         setSingleUser(res.data);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(err => {
         setError(err);
         setLoading(false);
       });
@@ -38,11 +38,11 @@ const Navbar = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('email');
   };
-  console.log(singleUser);
+  console.log(singleUser)
   return (
     <nav className="relative z-10">
       <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] py-0">
-        <div className="navbar-start">
+        <div className="navbar-start ">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
               <svg
@@ -105,7 +105,7 @@ const Navbar = () => {
               <li>
                 <Link href="/contact">Contact Us</Link>
               </li>
-              {user && singleUser?.role === 'admin' ? (
+              {user ? (
                 <>
                   <li>
                     <Link href="/dashboard">Dashboard</Link>
@@ -121,23 +121,6 @@ const Navbar = () => {
                   </li>
                 </>
               ) : (
-                <>
-                  <li>
-                    <Link href="/userdashboard">Dashboard</Link>
-                  </li>
-                  <li>
-                    {' '}
-                    <button
-                      className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
-                      onClick={logout}
-                    >
-                      Log Out
-                    </button>
-                  </li>
-                </>
-              )}
-
-              {!user ? (
                 <li>
                   {' '}
                   <Link
@@ -147,8 +130,6 @@ const Navbar = () => {
                     Log In
                   </Link>
                 </li>
-              ) : (
-                <></>
               )}
             </ul>
           </div>
@@ -284,6 +265,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
 
 

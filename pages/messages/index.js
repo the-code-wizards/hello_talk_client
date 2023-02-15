@@ -3,9 +3,15 @@ import React, { useState } from 'react';
 import ChatSidebar from '../../components/Chat/ChatSidebar';
 import Messages from '../../components/Chat/Messages';
 import Navbar from '../../components/Shared/Navbar/Navbar';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Message = () => {
-    const [current, setCurrent]  = useState('')
+    const [user, error] = useAuthState(auth);
+    const [current, setCurrent] = useState('')
+    if(!user){
+        window.location.href = '/signin';
+    }
     return (
         <div>
             <Head>

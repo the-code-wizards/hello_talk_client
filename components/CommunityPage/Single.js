@@ -13,11 +13,29 @@ const Single = ({ user, singlePost }) => {
     const [showModal, setShowModal] = useState(false);
     const [comments, setComments] = useState([])
     const [likeButton, SetLikeButton] = useState(false)
+    const [reqButtonS, setReqButtonS] = useState(false)
     const router = useRouter()
     const [singleUser] = useSingleUser({});
 
 
     const { photoUrl, email, name, post, postTime, title, _id } = singlePost
+
+
+    const { data: reqStatus = [], refetch, isLoading } = useQuery({
+        queryKey: ["reqStatus", singleUser?.email],
+        queryFn: async () => {
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/srequested?email=${singleUser.email}`);
+            const data = await res.json();
+            if (data.length) {
+                // console.log(data)
+                setReqButtonS(true)
+            }
+            return data;
+        }
+    })
+
+
+
 
     const handleComment = (event) => {
         event.preventDefault();
@@ -132,7 +150,8 @@ const Single = ({ user, singlePost }) => {
             .then(res => res.json())
             .then(res => {
                 if (res.insertedId) {
-                    // console.log(res)
+                    console.log(res)
+                    refetch()
                 }
             })
 
@@ -179,7 +198,12 @@ const Single = ({ user, singlePost }) => {
                                     </h2>
                                 </div>
                             </div>
-                            <button className='btn btn-ghost btn-sm flex items-center text-white' onClick={handleAddFriend}><FaUserPlus className='mr-1' />Add Friend</button>
+                            {
+                                !reqButtonS ?
+                                    < button className='btn btn-ghost btn-sm flex items-center text-white' onClick={handleAddFriend}><FaUserPlus className='mr-1' />Add Friend</button>
+                                    :
+                                    < button className='btn btn-ghost btn-sm flex items-center text-white' ><FaUserPlus className='mr-1' />Requested</button>
+                            }
                         </div>
                     </div>
 
@@ -335,7 +359,7 @@ const Single = ({ user, singlePost }) => {
                     </>
                 ) : null}
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -6,9 +6,15 @@ import { useForm } from "react-hook-form";
 import Navbar from '../../components/Shared/Navbar/Navbar';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 const Payment = () => {
+    const [user, error] = useAuthState(auth);
+    if (!user) {
+        window.location.href = '/signin';
+    }
     const [courseDetails, setCourseDetails] = useState({});
     const { title, picture, details, offer_price, price, date, _id } = courseDetails;
     const [loading, setLoading] = useState(true)
