@@ -8,25 +8,27 @@ import gems from '../../../resources/lottieJson/gem.json';
 import Cookies from 'js-cookie';
 import useSingleUser from '../../hooks/useSingleUser';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
   const [user, error] = useAuthState(auth);
   const [singleUser, setSingleUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
-  console.log(user)
+  console.log(user);
   useEffect(() => {
     if (!user) return;
 
     setLoading(true);
     axios
-      .get(`https://hello-talk-webserver.vercel.app/profile?email=${user.email}`)
+      .get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
       .then((res) => {
         console.log(res);
         setSingleUser(res.data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err);
         setLoading(false);
       });
@@ -37,8 +39,9 @@ const Navbar = () => {
     Cookies.set('loggedin', 'false');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('email');
+    router.push('/');
   };
-  console.log(singleUser)
+  console.log(singleUser);
   return (
     <nav className="relative z-10">
       <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] py-0">
@@ -201,57 +204,51 @@ const Navbar = () => {
                       tabIndex={0}
                       className="menu menu-compact dropdown-content mt-[250%] p-2 shadow bg-green-200 rounded-box w-52 font-bold text-[#333]"
                     >
-                      {
-                        user && singleUser?.role === 'admin' ?
-                          <>
-                            <li>
-                              <Link href="/dashboard">Dashboard</Link>
-                            </li>
-                            <li>
-                              {' '}
-                              <button
-                                className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
-                                onClick={logout}
-                              >
-                                Log Out
-                              </button>
-                            </li>
-
-                          </>
-
-                          :
-                          <>
-                            <li>
-                              <Link href="/userdashboard">User Dashboard</Link>
-                            </li>
-                            <li>
-                              {' '}
-                              <button
-                                className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
-                                onClick={logout}
-                              >
-                                Log Out
-                              </button>
-                            </li>
-                          </>
-
-                      }
-
-                      {
-                        !user ?
+                      {user && singleUser?.role === 'admin' ? (
+                        <>
+                          <li>
+                            <Link href="/dashboard">Dashboard</Link>
+                          </li>
                           <li>
                             {' '}
-                            <Link
-                              className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
-                              href="/signin"
+                            <button
+                              className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
+                              onClick={logout}
                             >
-                              Log In
-                            </Link>
+                              Log Out
+                            </button>
                           </li>
-                          :
-                          <>
-                          </>
-                      }
+                        </>
+                      ) : (
+                        <>
+                          <li>
+                            <Link href="/dashboard/myprofile">My Profile</Link>
+                          </li>
+                          <li>
+                            {' '}
+                            <button
+                              className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
+                              onClick={logout}
+                            >
+                              Log Out
+                            </button>
+                          </li>
+                        </>
+                      )}
+
+                      {!user ? (
+                        <li>
+                          {' '}
+                          <Link
+                            className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
+                            href="/signin"
+                          >
+                            Log In
+                          </Link>
+                        </li>
+                      ) : (
+                        <></>
+                      )}
                     </ul>
                   </div>
                 </li>
@@ -265,5 +262,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

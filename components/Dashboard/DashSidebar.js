@@ -103,9 +103,9 @@ const DashSidebar = () => {
                 <li></li>
               ) : (
                 <>
-                  <li>
+                  {/* <li>
                     <Link href="/dashboard/userdashboard">Dashboard</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link href="/dashboard/myprofile">My Profile</Link>
                   </li>

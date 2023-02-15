@@ -50,6 +50,7 @@ const WriteaPost = () => {
 
     }
 
+
     return (
         <div>
             <div className='mt-8 bg-white p-5 rounded-lg flex '>
