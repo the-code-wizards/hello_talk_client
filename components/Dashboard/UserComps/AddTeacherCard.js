@@ -32,10 +32,22 @@ const AddTeacherCard = ({applied, refetch}) => {
         })
       }
 
+      const handleDeleteApp = () => {
+        fetch(`https://hello-talk-webserver.vercel.app/deleteApply?email=${email}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount > 0){
+                alert('Application deleted')
+            }
+        })
+      }
+
     return (
         <div >
-          <div className='flex gap-3'>
-          <div className='w-[300px]'>
+          <div className='flex gap-2'>
+          <div className='w-[220px]'>
             <img className='h-[120px] w-[120px] rounded-xl' src={applied?.image} alt={applied?.name} />
           </div>
           <div>
@@ -50,7 +62,7 @@ const AddTeacherCard = ({applied, refetch}) => {
         {/* action button for admit  */}
         <div className='flex gap-2 justify-end'>
               <button onClick={handleAcceptTeacher} className='btn btn-sm bg-[#2C5F9E] border-b-4 border-[#2a5488]'>Accept</button>
-              <button className='btn btn-sm bg-[#f53a3a] border-b-4 border-[#b61825]'>Deny</button>
+              <button onClick={handleDeleteApp} className='btn btn-sm bg-[#f53a3a] border-b-4 border-[#b61825]'>Deny</button>
           </div>
         </div>
     );

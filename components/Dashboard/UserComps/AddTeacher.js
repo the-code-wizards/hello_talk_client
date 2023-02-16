@@ -26,13 +26,7 @@ const AddTeacher = () => {
       </Head>
       <h2 className='capitalize text-xl font-featherBold mt-5 mb-3 text-[#1d4d87]'>All application for teacher</h2>
 
-      {
-        isTeacher ? 
-        <div className=" p-4 shadow-xl mt-3 items-end rounded-xl border-2 border-[#1d4d87]">
-        <h3 className='font-featherBold capitalize text-xl text-center text-[#1d4d87]'>You are selected. Now you are achive a teacher role in HelloTalk</h3>
-      </div>
-      :
-      <>
+      
         {
         appliedData.length > 0 ?
         <div className=" p-4 shadow-xl mt-3 items-end rounded-xl border-2 border-[#1d4d87]">
@@ -48,8 +42,6 @@ const AddTeacher = () => {
       <div className=" p-4 shadow-xl mt-3 items-end rounded-xl border-2 border-[#1d4d87]">
         <h3 className='font-featherBold capitalize text-xl text-center text-[#1d4d87]'>No Application for this role of teacher</h3>
       </div>
-      }
-        </>
       }
         
     </div>

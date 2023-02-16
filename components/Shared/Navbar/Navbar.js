@@ -222,7 +222,10 @@ const Navbar = () => {
                           :
                           <>
                             <li>
-                              <Link href="/userdashboard">User Dashboard</Link>
+                              <Link href="/dashboard/myprofile">My Profile</Link>
+                            </li>
+                            <li>
+                              <Link href="/helpsupport">Live Session</Link>
                             </li>
                             <li>
                               {' '}

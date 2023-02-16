@@ -1,11 +1,15 @@
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import useSingleUser from './useSingleUser';
 
-const PrivateRoute = () => {
+const PrivateRoute = ({children}) => {
     const [user, error] = useAuthState(auth);
-    if (!user) {
-        window.location.href = '/signin';
+    const [singleUser] = useSingleUser();
+
+    if (!singleUser.email || user.email) {
+        return window.location.href = '/signin';
     }
+    return {children}
 };
 
 export default PrivateRoute;
