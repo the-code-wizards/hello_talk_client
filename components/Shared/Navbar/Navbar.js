@@ -188,16 +188,16 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <Link href="/" className="flex text-2xl w-[50px] items-center">
+          <Link href="/" className="flex text-2xl items-center">
             {/* <img src="Logo2.png" alt="/" /> */}
             <Image
               // Absolute URL
               src='https://i.ibb.co/dKTz2fv/Logo2.png'
               alt='User profile picture'
-              width={300}
-              height={300}
+              width={50}
+              height={50}
             />
-            <p className="ml-2 normal-case text-xl lg:text-2xl text-white font-featherBold">
+            <p className="ml-2 w-full normal-case text-xl lg:text-2xl text-white font-featherBold">
            {headerText}
             </p>
           </Link>

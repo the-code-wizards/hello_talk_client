@@ -42,13 +42,19 @@ const DashSidebar = () => {
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
         <ul className="h-full menu p-4 w-64 bg-[#194881] gap-y-2 text-[#fff]">
           {/* <!-- Sidebar content here --> */}
-          {user && (
+          {user ? (
             <>
               <li>
                 <Link href="/dashboard">Dashboard</Link>
               </li>
               <li>
                 <Link href="/dashboard/myprofile">My Profile</Link>
+              </li>
+              <li>
+                <Link href="/dashboard/general/">General</Link>
+              </li>
+              <li>
+                <Link href="/dashboard/makelive/">Make Live</Link>
               </li>
               {/*--------------- Blogs ----------------*/}
               <div className="collapse">
@@ -113,6 +119,34 @@ const DashSidebar = () => {
               <li>
                 <Link href="/dashboard/coursesbought">Courses Bought</Link>
               </li>
+            </>
+          ) : (
+            <>
+              {singleUser?.role === 'teacher' ? (
+                <>
+                <li>
+                    <Link href="/dashboard/myprofile">My Profile</Link>
+                </li>
+                <li>
+                    <Link href="/dashboard/makelive/">Make Live</Link>
+                </li>
+                <li>
+                    <Link href="/dashboard/premiumblog">Premium Blog</Link>
+                </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link href="/dashboard/myprofile">My Profile</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/mycourses">My Courses</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/premiumblog">Premium Blog</Link>
+                  </li>
+                </>
+              )}
             </>
           )}
         </ul>
