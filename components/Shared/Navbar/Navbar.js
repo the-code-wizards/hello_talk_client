@@ -24,6 +24,9 @@ const Navbar = () => {
 
   console.log(router)
   useEffect(() => {
+    if (router.pathname.includes('/') || router.pathname.includes('/community')){
+      setBackgroundColor('rgba(0, 0, 0, 0)')
+    }
     if (router.pathname.includes('/community')) {
       setHeaderText("HelloTalk Cmnty")
     } else {
@@ -44,7 +47,6 @@ const Navbar = () => {
         setLoading(false);
       })
       .catch((err) => {
-        setError(err);
         setLoading(false);
       });
   }, [user?.email]);
@@ -63,13 +65,19 @@ const Navbar = () => {
   
   useEffect(() => {
     const changeColor = () => {
-      if (window.scrollY >= 200) {
-        setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#36e375)');
-        setBackgroundColor('rgba(0, 0, 0, 0)');
-        setTextColor('#ffffff');
+      if (router.pathname === '/' || router.pathname === '/community') {
+        if (window.scrollY >= 200) {
+          setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#58CC02)');
+          setBackgroundColor('rgba(0, 0, 0, 0)');
+          setTextColor('#ffffff');
+        } else {
+          setColor('#235490');
+          setBackgroundColor('rgba(255, 255, 255, .01)');
+          setTextColor('#fff');
+        }
       } else {
-        setColor('#235490');
-        setBackgroundColor('rgba(255, 255, 255, .01)');
+        setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#58CC02)');
+        setBackgroundColor('rgba(255, 255, 255, 1)');
         setTextColor('#fff');
       }
     };
@@ -77,7 +85,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', changeColor);
     };
-  }, []);
+  }, [router.pathname]);
   
   return (
     <nav className="relative z-10">
