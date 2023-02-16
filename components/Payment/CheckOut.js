@@ -5,7 +5,7 @@ import auth from '../../firebase.init';
 import swal from 'sweetalert';
 import useSingleUser from '../hooks/useSingleUser';
 
-const CheckOut = ({ id, ammount }) => {
+const CheckOut = ({ id, ammount, courseDetails }) => {
     const [user, error] = useAuthState(auth);
     const [singleUser] = useSingleUser()
     const [cardError, setCarderror] = useState("")
@@ -17,9 +17,10 @@ const CheckOut = ({ id, ammount }) => {
     const elements = useElements();
 
 
+
     const order = {
-        price: ammount / 101,
-        email: user.email,
+        price: ammount,
+        email: user?.email,
         name: user.displayName,
         _id: id
     }
@@ -135,10 +136,23 @@ const CheckOut = ({ id, ammount }) => {
         console.log("paymentIntent", paymentIntent)
         setProcessing(false)
     }
+    const { title, picture, details, offer_price, date } = courseDetails;
 
     return (
-        <div className='p-16 border border-inherit bg-white rounded-lg'>
+        <div className='p-16 border border-inherit bg-[#E8E9EB] rounded-lg '>
+
             <form onSubmit={handleSubmit} className="mt-[-40px]">
+                <div className=' p-5'>
+                    <div>
+                        <h1 className='text-4xl'>$ {ammount / 100}</h1>
+                    </div>
+                    <p className='text-[13px]'>Due {Date().slice(4, 15)}</p>
+
+                    <p className='mt-5 font-thin'>To: {user.displayName}</p>
+                    <p className='my-1'>From: HelloTalk Inc.</p>
+                    <p className='my-1 font-bold'>Please Check Carefully Before Payment</p>
+                </div>
+                <div className="divider"></div>
                 <h2 className='text-2xl text-center'>Pay with Stripe</h2>
                 <div className="divider"></div>
                 {/* <label className="label mb-3 ">
@@ -151,17 +165,18 @@ const CheckOut = ({ id, ammount }) => {
                     <span className="label-text">Your Phone Number:</span>
                 </label>
                 <div className="form-control h-[2rem] ">
-                    <input name="phone" type="text" placeholder="Your Phone Number" className="input input-bordered input-info " required />
+                    <input name="phone" type="text" placeholder="Your Phone Number" className="input input-bordered  " required />
                 </div>
                 <label className="label mt-3">
                     <span className="label-text">Your Address :</span>
                 </label>
                 <div className="form-control h-[2rem] ">
-                    <input name="address" type="text" placeholder="Your Address" className="input input-bordered input-info " required />
+                    <input name="address" type="text" placeholder="Your Address" className="input input-bordered  " required />
                 </div>
                 <label className="label mt-3">
                     <span className="label-text">Your Card Info:</span>
                 </label>
+
                 <CardElement
                     options={{
                         style: {
@@ -181,7 +196,7 @@ const CheckOut = ({ id, ammount }) => {
                 <button className='btn btn-sm btn-error mt-6 w-full text-white' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
-            </form>
+            </form >
             <p className='text-red-500'>{cardError}</p>
             {
                 success &&
@@ -190,7 +205,7 @@ const CheckOut = ({ id, ammount }) => {
                     <p>Your transectionId: <span className='font-bold'> {transectionId}</span></p>
                 </div>
             }
-        </div>
+        </div >
     )
 }
 
