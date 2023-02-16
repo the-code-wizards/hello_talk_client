@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import useSingleUser from '../../hooks/useSingleUser';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [user, error] = useAuthState(auth);
@@ -137,7 +138,14 @@ const Navbar = () => {
             </ul>
           </div>
           <Link href="/" className="flex text-2xl w-[50px] items-center">
-            <img src="Logo2.png" alt="/" />
+            {/* <img src="Logo2.png" alt="/" /> */}
+            <Image
+              // Absolute URL
+              src='https://i.ibb.co/dKTz2fv/Logo2.png'
+              alt='User profile picture'
+              width={300}
+              height={300}
+            />
             <p className="ml-2 normal-case text-xl lg:text-2xl text-white font-featherBold">
               HelloTalk
             </p>

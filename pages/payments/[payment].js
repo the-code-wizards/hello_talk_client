@@ -22,6 +22,8 @@ const Payment = () => {
     const id = router.query.payment;
     console.log(id)
     const ammount = parseFloat(offer_price) + parseFloat(offer_price * 0.15)
+    const ammountInDollar = Math.round(ammount / 100)
+    // console.log(ammountInDollar)
 
     useEffect(() => {
         if (id) {
@@ -78,6 +80,7 @@ const Payment = () => {
                             <CheckOut
                                 ammount={ammount}
                                 id={_id}
+                                courseDetails={courseDetails}
                             ></CheckOut>
                         </Elements>
                     </div>
