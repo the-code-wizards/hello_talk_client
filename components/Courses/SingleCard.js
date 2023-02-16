@@ -29,7 +29,7 @@ const SingleCard = ({ course }) => {
       </div>
       <div className="card-body pb-2">
         <h2 className="card-title lg:md:text-2xl text-xl text-[#333] font-semibold ">{title}</h2>
-        <p className='text-[18px]'>{details.slice(0, 85)}...</p>
+        <p className='text-[18px]'>{details?.slice(0, 85)}...</p>
       </div>
       <div className="card-actions justify-between flex p-3 items-center pb-5">
         <div>

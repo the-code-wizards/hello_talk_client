@@ -42,13 +42,14 @@ const WriteaPost = () => {
                 // navigate("/dashboard/myproducts")
                 // reset()
                 swal(
-                    'Your questions is posted!',
+                    'Your question is Posted. You got 2 jems',
                     'Possible reponse is near !',
                     'success'
                 )
             })
 
     }
+
 
     return (
         <div>
@@ -65,7 +66,7 @@ const WriteaPost = () => {
                         </div>
                     </div>
                 </div>
-                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2 h-[36px] w-full bg-[#F0F2F5] px-2' readOnly onClick={() => setShowModal(true)} placeholder="Whats on you Mind?" />
+                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2  w-full bg-[#F0F2F5] px-2' readOnly onClick={() => setShowModal(true)} placeholder="Whats on you Mind?" />
             </div>
             {showModal ? (
                 <>
