@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
+import MyCourses from '../../components/MyProfile/MyCourses';
 import MyProfile from '../../components/MyProfile/MyProfile';
+import Footer from '../../components/Shared/Footer/Footer';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// import auth from '../../firebase.init';
-// import { useNavigate } from 'react-router-dom';
 import PrivateRoute from '../../components/hooks/privateRoute';
 import Head from 'next/head';
 
@@ -35,4 +34,4 @@ const Myprofile = () => {
   );
 };
 
-export default Myprofile;
+export default myprofile;

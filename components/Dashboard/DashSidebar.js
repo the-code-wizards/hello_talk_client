@@ -56,6 +56,9 @@ const DashSidebar = () => {
               <li>
                 <Link href="/dashboard/general/">General</Link>
               </li>
+              <li>
+                <Link href="/dashboard/makelive/">Make Live</Link>
+              </li>
               {/*--------------- Blogs ----------------*/}
               <div className="collapse">
                 <input type="checkbox" className="peer" />
@@ -123,12 +126,19 @@ const DashSidebar = () => {
           ) : (
             <>
               {singleUser?.role === 'teacher' ? (
-                <li></li>
+                <>
+                <li>
+                    <Link href="/dashboard/myprofile">My Profile</Link>
+                </li>
+                <li>
+                    <Link href="/dashboard/makelive/">Make Live</Link>
+                </li>
+                <li>
+                    <Link href="/dashboard/premiumblog">Premium Blog</Link>
+                </li>
+                </>
               ) : (
                 <>
-                  {/* <li>
-                    <Link href="/dashboard/userdashboard">Dashboard</Link>
-                  </li> */}
                   <li>
                     <Link href="/dashboard/myprofile">My Profile</Link>
                   </li>

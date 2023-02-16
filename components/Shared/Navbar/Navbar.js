@@ -25,7 +25,7 @@ const Navbar = () => {
   console.log(router);
   useEffect(() => {
     if (router.pathname.includes('/') || router.pathname.includes('/community')) {
-      setBackgroundColor('rgba(0, 0, 0, 0)');
+      setBackgroundColor('rgba(0, 0, 0, 0)')
     }
     if (router.pathname.includes('/community')) {
       setHeaderText('HelloTalk Cmnty');
@@ -288,10 +288,10 @@ const Navbar = () => {
                             <Link href="/dashboard/myprofile">My Profile</Link>
                           </li>
                           <li>
-                                <Link href="/messages">Messages</Link>
+                            <Link href="/messages">Messages</Link>
                           </li>
                           <li>
-                                <Link href="/friendrequest">Friend Requests</Link>
+                            <Link href="/friendrequest">Friend Requests</Link>
                           </li>
                           <li>
                             {' '}
