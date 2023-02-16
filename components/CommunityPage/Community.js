@@ -39,12 +39,12 @@ const Community = () => {
         <div >
             {/* <CNavBar></CNavBar> */}
             <Navbar/>
-            <div className='grid grid-cols-5'>
-                <div className='col-span-1 pt-18 bg-[#F0F2F5] h-screen sticky top-0'>
+            <div className=''>
+                {/* <div className='col-span-1 pt-18 bg-[#F0F2F5] h-screen sticky top-0'>
                     <SidebarCommunityPage></SidebarCommunityPage>
-                </div>
+                </div> */}
 
-                <div className='col-span-4'>
+                <div className=''>
                     {/* >>>>>>>>>>> Top Banner <<<<<<<<<<<<<<<<<<< */}
 
                     <div style={{ backgroundImage: `url("https://i.ibb.co/BNn6NVD/communitypage-hero-header-desktop.jpg")` }} className="pt-32">
@@ -67,10 +67,9 @@ const Community = () => {
 
                     {/* >>>>>>>>>>>>>>>>>>> Discussion <<<<<<<<<<<<<<<<< */}
 
-                    <div className='bg-[#F0F2F5] p-2'>
-                        <div className=' mx-auto '>
-                            <div className='grid grid-cols-9 p-2 gap-6 '>
-                                <div className='col-span-6 '>
+                    <div className='bg-[#F0F2F5] '>
+                            <div className=' grid lg:md:grid-cols-[70%_minmax(30%,_1fr)] px-12 gap-8'>
+                                <div className=''>
                                     {
                                         user &&
                                         <WriteaPost></WriteaPost>
@@ -85,14 +84,13 @@ const Community = () => {
                                 </div>
 
                                 {/* >>>>>>>> Leader chart <<<<<<<<<<<<<<<<  */}
-                                <div className='col-span-3 mt-8 pr-2'>
+                                <div className='mt-8'>
                                     {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
-                                    <Profile></Profile>
+                                    {/* <Profile></Profile> */}
                                     {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}
                                     <TopAuthor></TopAuthor>
                                 </div>
                             </div>
-                        </div>
                     </div>
 
                 </div>

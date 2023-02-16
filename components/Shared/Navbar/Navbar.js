@@ -67,7 +67,7 @@ const Navbar = () => {
     const changeColor = () => {
       if (router.pathname === '/' || router.pathname === '/community') {
         if (window.scrollY >= 200) {
-          setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#58CC02)');
+          setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#a855f7)');
           setBackgroundColor('rgba(0, 0, 0, 0)');
           setTextColor('#ffffff');
         } else {
@@ -76,7 +76,7 @@ const Navbar = () => {
           setTextColor('#fff');
         }
       } else {
-        setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#58CC02)');
+        setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#a855f7)');
         setBackgroundColor('rgba(255, 255, 255, 1)');
         setTextColor('#fff');
       }
@@ -282,6 +282,12 @@ const Navbar = () => {
                         <>
                           <li>
                             <Link href="/dashboard/myprofile">My Profile</Link>
+                          </li>
+                          <li>
+                                <Link href="/messages">Messages</Link>
+                          </li>
+                          <li>
+                                <Link href="/friendrequest">Friend Requests</Link>
                           </li>
                           <li>
                             {' '}
