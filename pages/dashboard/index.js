@@ -2,9 +2,8 @@ import Head from 'next/head';
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import Dashboard from '../../components/Dashboard/UserComps/Dashboard';
-import PrivateRoute from '../../components/hooks/privateRoute';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-
+import PrivateRoute from '../../components/hooks/privateRoute';
 const index = () => {
   return (
     <div>

@@ -19,9 +19,9 @@ const index = () => {
             <AddCourse />
           </div>
         </div>
-      </PrivateRoute>
-    </div>
-  );
+        </PrivateRoute>
+        </div>
+    );
 };
 
 export default index;

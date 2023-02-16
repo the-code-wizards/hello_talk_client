@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import useSingleUser from "../hooks/useSingleUser";
 import BlogsCard from "./BlogsCard";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
-  const [singleUser] = useSingleUser()
 
   const handleSearch = (event) => {
     if (event?.target?.value !== " ") {
@@ -43,7 +41,7 @@ const Blog = () => {
             <path
               fillRule="evenodd"
               d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
         </button>
@@ -51,7 +49,7 @@ const Blog = () => {
       <div className="md:max-w-[1240px] mx-auto md:p-20 p-3">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {blogs.map((blog) => (
-            <BlogsCard key={blog._id} blog={blog} singleUser={singleUser}></BlogsCard>
+            <BlogsCard key={blog._id} blog={blog}></BlogsCard>
           ))}
         </div>
       </div>

@@ -2,10 +2,8 @@ import Head from 'next/head';
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AddBlog from '../../components/Dashboard/UserComps/AddBlog';
-import PrivateRoute from '../../components/hooks/privateRoute';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-// import { useAuthState } from 'react-firebase-hooks/auth';
-// import auth from '../../firebase.init';
+import PrivateRoute from '../../components/hooks/privateRoute'
 
 const AdBlog = () => {
   // const [user, error] = useAuthState(auth);
@@ -24,10 +22,10 @@ const AdBlog = () => {
             <DashSidebar />
             <AddBlog />
           </div>
+      </div>
+      </PrivateRoute >
         </div>
-      </PrivateRoute>
-    </div>
-  );
+    );
 };
 
-export default AdBlog;
+export default index;
