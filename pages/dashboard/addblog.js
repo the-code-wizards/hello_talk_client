@@ -28,4 +28,4 @@ const AdBlog = () => {
     );
 };
 
-export default index;
+export default AdBlog;
