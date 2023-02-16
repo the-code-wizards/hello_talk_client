@@ -14,6 +14,7 @@ import SendEmail from "../SendEmail/SendEmail";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Link from "next/link";
+import Packages2 from "../packages/Packages2";
 
 const HomePage = () => {
   const [user] = useAuthState(auth);
@@ -204,12 +205,13 @@ const HomePage = () => {
           data-aos="fade-up"
           data-aos-easing="linear"
           data-aos-duration="1000"
+          className="max-w-[1240px] mx-auto "
         >
           <h1 className="lg:md:text-3xl text-2xl text-center font-featherBold mb-8 text-[#3C3C3C]">
             Packages that you`&apos;`ll love
           </h1>
-          <Package />
-          <div className="divider"></div>
+          <Packages2 />
+          <div className="divider max-w-[1240px] mx-auto "></div>
         </div>
 
         <div

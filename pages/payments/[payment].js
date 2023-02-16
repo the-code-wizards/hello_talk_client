@@ -17,6 +17,8 @@ const Payment = () => {
     const id = router.query.payment;
     console.log(id)
     const ammount = parseFloat(offer_price) + parseFloat(offer_price * 0.15)
+    const ammountInDollar = Math.round(ammount / 100)
+    // console.log(ammountInDollar)
 
     useEffect(() => {
         if (id) {
@@ -53,7 +55,7 @@ const Payment = () => {
                             <h1 className='col-span-2'>৳ {offer_price}</h1>
                         </div>
                         <div className='grid grid-cols-10 mt-2'>
-                            <h1 className='col-span-6'>Taxt(15%)</h1>
+                            <h1 className='col-span-6'>Tax{" "}(15%)</h1>
                             <div className='col-span-2'></div>
                             <h1 className='col-span-2'>৳ {offer_price * 0.15}</h1>
 
@@ -73,6 +75,7 @@ const Payment = () => {
                             <CheckOut
                                 ammount={ammount}
                                 id={_id}
+                                courseDetails={courseDetails}
                             ></CheckOut>
                         </Elements>
                     </div>

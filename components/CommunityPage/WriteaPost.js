@@ -42,7 +42,7 @@ const WriteaPost = () => {
                 // navigate("/dashboard/myproducts")
                 // reset()
                 swal(
-                    'Your questions is posted!',
+                    'Your question is Posted. You got 2 jems',
                     'Possible reponse is near !',
                     'success'
                 )

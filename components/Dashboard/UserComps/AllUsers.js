@@ -58,8 +58,8 @@ const AllUsers = () => {
   };
 
   return (
-    <div className="md:pt-[5rem] pt-[4.5rem]">
-      <div className="card-body" style={{ width: '100%' }}>
+    <div className="md:pt-[5rem] pt-[4.5rem] -z-10">
+      <div className="card-body">
         <h2 className="card-title text-[#1d4d87]">All Users</h2>
 
         <input
@@ -74,8 +74,8 @@ const AllUsers = () => {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <div className="overflow-x-auto my-2 shadow-2xl rounded">
-            <table className="table-normal" style={{ width: '100%' }}>
+          <div className="overflow-x-auto my-2 shadow-2xl rounded md:w-full">
+            <table className="table-compact md:w-full">
               <thead className="text-center">
                 <tr className="bg-[#1d4d87] text-white">
                   <th className="text-start border-r-2 border-white">User Name</th>
