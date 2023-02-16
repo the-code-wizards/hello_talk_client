@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import AddTeacherCard from './AddTeacherCard'
 
 const AddTeacher = () => {
   const currentDate = new Date();
@@ -59,6 +60,8 @@ const AddTeacher = () => {
       </div>
       }
         
+    </div>
+    </div>
     </div>
   );
 };

@@ -92,7 +92,7 @@ const Packages2 = () => {
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
                             </button>
-                            <p className="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+                            <p className="text-xs text-gray-500 mt-3">Literally you probably haven&apos;t heard of them jean shorts.</p>
                         </div>
                     </div>
 
