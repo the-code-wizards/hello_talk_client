@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../../components/Shared/Footer/Footer";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 const Teacherdetails = () => {
