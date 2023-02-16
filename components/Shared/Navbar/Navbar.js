@@ -20,17 +20,17 @@ const Navbar = () => {
   const [color, setColor] = useState('rgba(255, 255, 255, 1)');
   const [backgroundColor, setBackgroundColor] = useState('rgba(0, 0, 0, 0)');
   const [textColor, setTextColor] = useState('white');
-  const [headerText, setHeaderText] = useState("HelloTalk")
+  const [headerText, setHeaderText] = useState('HelloTalk');
 
-  console.log(router)
+  console.log(router);
   useEffect(() => {
-    if (router.pathname.includes('/') || router.pathname.includes('/community')){
-      setBackgroundColor('rgba(0, 0, 0, 0)')
+    if (router.pathname.includes('/') || router.pathname.includes('/community')) {
+      setBackgroundColor('rgba(0, 0, 0, 0)');
     }
     if (router.pathname.includes('/community')) {
-      setHeaderText("HelloTalk Cmnty")
+      setHeaderText('HelloTalk Cmnty');
     } else {
-      setHeaderText("HelloTalk")
+      setHeaderText('HelloTalk');
     }
   }, []);
 
@@ -60,9 +60,9 @@ const Navbar = () => {
   };
 
   const handleNav = () => {
-        setNav(!nav);
+    setNav(!nav);
   };
-  
+
   useEffect(() => {
     const changeColor = () => {
       if (router.pathname === '/' || router.pathname === '/community') {
@@ -86,13 +86,20 @@ const Navbar = () => {
       window.removeEventListener('scroll', changeColor);
     };
   }, [router.pathname]);
-  
+
   return (
     <nav className="relative z-10">
-      <div style={{ background: color, backgroundColor: backgroundColor }} className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300">
+      <div
+        style={{ background: color, backgroundColor: backgroundColor }}
+        className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300"
+      >
         <div className="navbar-start ">
           <div className="dropdown">
-            <label style={{ color: `${textColor}` }} tabIndex={0} className="btn btn-ghost lg:hidden ">
+            <label
+              style={{ color: `${textColor}` }}
+              tabIndex={0}
+              className="btn btn-ghost lg:hidden "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -109,7 +116,7 @@ const Navbar = () => {
               </svg>
             </label>
             {/* DashSidebar mobile device toggler */}
-            <label htmlFor="dashboard-drawer" style={{ color: `${textColor}` }} className="btn btn-ghost lg:hidden ">
+            {/* <label htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -124,7 +131,7 @@ const Navbar = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </label>
+            </label> */}
             <ul
               tabIndex={0}
               className="font-featherBold menu menu-compact dropdown-content mt-3 p-2 shadow bg-green-200 rounded-box w-52 "
@@ -182,14 +189,20 @@ const Navbar = () => {
             </ul>
           </div>
           <Link href="/" className="flex text-2xl items-center">
-            <img src="Logo2.png" className="w-[60px]"  />
-            <p style={{ color: `${textColor}` }} className="ml-2 normal-case text-xl lg:text-2xl  font-featherBold">
+            <img src="Logo2.png" className="w-[60px]" />
+            <p
+              style={{ color: `${textColor}` }}
+              className="ml-2 normal-case text-xl lg:text-2xl  font-featherBold"
+            >
               {headerText}
             </p>
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex w-[100%]">
-          <ul style={{ color: `${textColor}` }} className="font-featherBold menu menu-horizontal px-1  text-[16px]">
+          <ul
+            style={{ color: `${textColor}` }}
+            className="font-featherBold menu menu-horizontal px-1  text-[16px]"
+          >
             <li>
               <Link href="/blogs">Blog</Link>
             </li>
@@ -213,7 +226,8 @@ const Navbar = () => {
             </li>
             {!user && (
               <li>
-                <Link style={{ color: `${textColor}` }}
+                <Link
+                  style={{ color: `${textColor}` }}
                   className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl  font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
                   href="/signin"
                 >
