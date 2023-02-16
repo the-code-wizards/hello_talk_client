@@ -12,7 +12,7 @@ const MakeLive = () => {
     const {data: mylive = [], refetch, isLoading} = useQuery({
         queryKey: ['mylive'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/mylive?email=${email}`);
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/mylive?email=${email}`);
             const data = await res.json()
             return data
         }
@@ -32,7 +32,7 @@ const MakeLive = () => {
             teacher_email: email,
             teacher_photoURL: photoURL,
         }
-        fetch(`http://localhost:5000/makelive`, {
+        fetch(`https://hello-talk-webserver.vercel.app/makelive`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -54,7 +54,7 @@ const MakeLive = () => {
 
     //for remove live session
     const handleDeletelive = (id) => {
-        fetch(`http://localhost:5000/deletelive?email=${mylive?.teacher_email}`, {
+        fetch(`https://hello-talk-webserver.vercel.app/deletelive?email=${mylive?.teacher_email}`, {
             method: "DELETE"
         })
         .then(res => res.json())

@@ -8,7 +8,7 @@ const HelpSupport = () => {
   const {data: liveSession = [], refetch, isLoading } = useQuery({
     queryKey: ['liveSession'],
     queryFn: async () => {
-        const res = await fetch(`http://localhost:5000/getlives`);
+        const res = await fetch(`https://hello-talk-webserver.vercel.app/getlives`);
         const data = await res.json();
         return data
     }
@@ -35,7 +35,7 @@ if(isLoading){
       </div>
       :
       <div className="font-featherBold rounded-xl bg-[#d7e9ff] p-3 md:p-4 border-4 border-[#2D609F] shadow-xl">
-          <h2 className="text-xl text-[#2D609F] ">There are no live session</h2>
+          <h2 className="text-xl text-[#2D609F] ">There are no live sessions currently in progress</h2>
       </div> 
       }
     </div>
