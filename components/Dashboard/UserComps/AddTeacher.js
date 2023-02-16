@@ -37,7 +37,7 @@ const AddTeacher = () => {
   };
 
   return (
-    <div className=" pt-[4.5rem] w-full">
+    <div className=" pt-[4.5rem] w-full -z-10">
       <div className="">
         <div className="card-body">
           <h2 className="card-title text-[#1d4d87]">Add Teacher</h2>
