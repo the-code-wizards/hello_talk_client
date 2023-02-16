@@ -96,7 +96,7 @@ const TopAuthor = () => {
 
     return (
         <div>
-            <div className="card w-80 bg-[#fff] shadow-xl">
+            <div className="card bg-[#fff] shadow-xl">
                 <div className='card shadow-xl p-2 m-4 border-[2px] border-green-400'>
                     <h1 className='text-[24px] mt-2 text-center bg-white rounded-lg'>Top Helpful Authors</h1>
                     <div className='grid grid-cols-10 '>

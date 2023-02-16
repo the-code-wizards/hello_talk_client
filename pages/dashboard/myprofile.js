@@ -6,6 +6,7 @@ import Navbar from '../../components/Shared/Navbar/Navbar';
 // import auth from '../../firebase.init';
 // import { useNavigate } from 'react-router-dom';
 import PrivateRoute from '../../components/hooks/privateRoute';
+import Head from 'next/head';
 
 const Myprofile = () => {
   // const [user, error] = useAuthState(auth);
@@ -19,10 +20,15 @@ const Myprofile = () => {
   return (
     <div>
       <PrivateRoute>
-        <Navbar></Navbar>
-        <div className="grid  lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
-          <DashSidebar />
-          <MyProfile />
+        <div>
+          <Head>
+            <title>HelloTalk - My Profile</title>
+          </Head>
+          <Navbar></Navbar>
+          <div className="grid  lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
+            <DashSidebar />
+            <MyProfile />
+          </div>
         </div>
       </PrivateRoute>
     </div>

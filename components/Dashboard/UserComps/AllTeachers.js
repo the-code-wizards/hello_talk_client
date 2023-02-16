@@ -41,7 +41,7 @@ const AllTeachers = () => {
   };
 
   return (
-    <div className="md:pt-[5rem] pt-[4.5rem]">
+    <div className="md:pt-[5rem] pt-[4.5rem] -z-10">
       <div className="card-body" style={{ width: '100%' }}>
         <h2 className="card-title text-[#1d4d87]">All Teachers</h2>
 
