@@ -9,12 +9,30 @@ import Cookies from 'js-cookie';
 import useSingleUser from '../../hooks/useSingleUser';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Logo from '../../../public/Logo2.png';
 
 const Navbar = () => {
   const [user, error] = useAuthState(auth);
   const [singleUser, setSingleUser] = useState({});
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [nav, setNav] = useState(false);
+  const [color, setColor] = useState('rgba(255, 255, 255, 1)');
+  const [backgroundColor, setBackgroundColor] = useState('rgba(0, 0, 0, 0)');
+  const [textColor, setTextColor] = useState('white');
+  const [headerText, setHeaderText] = useState("HelloTalk")
+
+  console.log(router)
+  useEffect(() => {
+    if (router.pathname.includes('/') || router.pathname.includes('/community')){
+      setBackgroundColor('rgba(0, 0, 0, 0)')
+    }
+    if (router.pathname.includes('/community')) {
+      setHeaderText("HelloTalk Cmnty")
+    } else {
+      setHeaderText("HelloTalk")
+    }
+  }, []);
 
   console.log(user);
   useEffect(() => {
@@ -29,7 +47,6 @@ const Navbar = () => {
         setLoading(false);
       })
       .catch((err) => {
-        setError(err);
         setLoading(false);
       });
   }, [user?.email]);
@@ -41,13 +58,41 @@ const Navbar = () => {
     localStorage.removeItem('email');
     router.push('/');
   };
-  console.log(singleUser);
+
+  const handleNav = () => {
+        setNav(!nav);
+  };
+  
+  useEffect(() => {
+    const changeColor = () => {
+      if (router.pathname === '/' || router.pathname === '/community') {
+        if (window.scrollY >= 200) {
+          setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#58CC02)');
+          setBackgroundColor('rgba(0, 0, 0, 0)');
+          setTextColor('#ffffff');
+        } else {
+          setColor('#235490');
+          setBackgroundColor('rgba(255, 255, 255, .01)');
+          setTextColor('#fff');
+        }
+      } else {
+        setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#58CC02)');
+        setBackgroundColor('rgba(255, 255, 255, 1)');
+        setTextColor('#fff');
+      }
+    };
+    window.addEventListener('scroll', changeColor);
+    return () => {
+      window.removeEventListener('scroll', changeColor);
+    };
+  }, [router.pathname]);
+  
   return (
     <nav className="relative z-10">
-      <div className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed bg-gradient-from-l bg-gradient-to-l from-[#194881] to-[rgb(53,106,172)] py-0">
+      <div style={{ background: color, backgroundColor: backgroundColor }} className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300">
         <div className="navbar-start ">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
+            <label style={{ color: `${textColor}` }} tabIndex={0} className="btn btn-ghost lg:hidden ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -64,7 +109,7 @@ const Navbar = () => {
               </svg>
             </label>
             {/* DashSidebar mobile device toggler */}
-            <label htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden text-white">
+            <label htmlFor="dashboard-drawer" style={{ color: `${textColor}` }} className="btn btn-ghost lg:hidden ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -136,15 +181,15 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <Link href="/" className="flex text-2xl w-[50px] items-center">
-            <img src="Logo2.png" alt="/" />
-            <p className="ml-2 normal-case text-xl lg:text-2xl text-white font-featherBold">
-              HelloTalk
+          <Link href="/" className="flex text-2xl items-center">
+            <img src="Logo2.png" className="w-[60px]"  />
+            <p style={{ color: `${textColor}` }} className="ml-2 normal-case text-xl lg:text-2xl  font-featherBold">
+              {headerText}
             </p>
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex w-[100%]">
-          <ul className="font-featherBold menu menu-horizontal px-1 text-white text-[16px]">
+          <ul style={{ color: `${textColor}` }} className="font-featherBold menu menu-horizontal px-1  text-[16px]">
             <li>
               <Link href="/blogs">Blog</Link>
             </li>
@@ -168,8 +213,8 @@ const Navbar = () => {
             </li>
             {!user && (
               <li>
-                <Link
-                  className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
+                <Link style={{ color: `${textColor}` }}
+                  className=" bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl  font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
                   href="/signin"
                 >
                   Log In
