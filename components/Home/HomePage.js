@@ -16,14 +16,14 @@ import auth from "../../firebase.init";
 import Link from "next/link";
 
 const HomePage = () => {
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
   const getStarted = () => {
     if (!user) {
-      window.location.href = "/signin"
+      window.location.href = "/signin";
     } else {
-      window.location.href = "/learn"
+      window.location.href = "/learn";
     }
-  }
+  };
   return (
     <div>
       {/* ---------------Header---------------------------- */}
@@ -48,7 +48,10 @@ const HomePage = () => {
               The free, fun, and effective way to learn language!
             </h1>
             <div className="flex flex-col justify-center items-center mt-8">
-              <button onClick={() => getStarted()} className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]">
+              <button
+                onClick={() => getStarted()}
+                className="mt-[15px] bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] pb-[10px] rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] w-[80%] lg:w-[60%] hover:bg-[#61E002] pt-[.75rem]"
+              >
                 Get Started
               </button>
             </div>
@@ -170,7 +173,7 @@ const HomePage = () => {
           <div className="divider"></div>
         </div>
 
-        {/* <div
+        <div
           data-aos="fade-down"
           data-aos-easing="linear"
           data-aos-duration="1500"
@@ -191,11 +194,11 @@ const HomePage = () => {
                 remove ads and support free education with Super. First 2 weeks
                 on us!
               </p>
-            
+              {/* <a href="" className='pt-4 text-[#1cb0f6] lg:md:text-start text-center'>LEARN MORE ABOUT SUPER HelloTalk</a> */}
             </div>
           </div>
           <div className="divider"></div>
-        </div> */}
+        </div>
 
         <div
           data-aos="fade-up"
@@ -259,8 +262,8 @@ const HomePage = () => {
         {/* ---------------Middle contents ---------------------------- */}
 
         <div data-aos="fade-up">
-          {/* <SendEmail></SendEmail> */}
-          <div className="divider md:max-w-[1240px] mx-auto"></div>
+          <SendEmail></SendEmail>
+          <div className="divider max-w-[1240px] mx-auto"></div>
         </div>
 
         {/*  -------------------------Footer------------------*/}
@@ -269,7 +272,7 @@ const HomePage = () => {
           data-aos="fade-left"
           data-aos-easing="linear"
           data-aos-duration="1500"
-          className="my-20 md:max-w-[1240px] mx-auto lg:md:sm:block"
+          className="my-20 max-w-[1240px] mx-auto lg:md:sm:block"
         >
           <h1 className="font-featherBold text-3xl text-center text-[#3C3C3C] my-5 mx-auto">
             What Our Amazing User Says
@@ -280,12 +283,12 @@ const HomePage = () => {
       <Footer></Footer>
       {/* -------------------------Footer end--------------*/}
 
-      {/* <Helmet>
+      <Helmet>
         <script
           src="//code.tidio.co/jpb1zs7dudyjfplraox9y0swxennxjjh.js"
           async
         ></script>
-      </Helmet> */}
+      </Helmet>
     </div>
   );
 };

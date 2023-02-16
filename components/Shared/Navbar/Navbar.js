@@ -24,7 +24,7 @@ const Navbar = () => {
 
   console.log(router)
   useEffect(() => {
-    if (router.pathname.includes('/') || router.pathname.includes('/community')){
+    if (router.pathname.includes('/') || router.pathname.includes('/community')) {
       setBackgroundColor('rgba(0, 0, 0, 0)')
     }
     if (router.pathname.includes('/community')) {
@@ -60,9 +60,9 @@ const Navbar = () => {
   };
 
   const handleNav = () => {
-        setNav(!nav);
+    setNav(!nav);
   };
-  
+
   useEffect(() => {
     const changeColor = () => {
       if (router.pathname === '/' || router.pathname === '/community') {
@@ -86,7 +86,7 @@ const Navbar = () => {
       window.removeEventListener('scroll', changeColor);
     };
   }, [router.pathname]);
-  
+
   return (
     <nav className="relative z-10">
       <div style={{ background: color, backgroundColor: backgroundColor }} className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300">
@@ -182,7 +182,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link href="/" className="flex text-2xl items-center">
-            <img src="Logo2.png" className="w-[60px]"  />
+            <img src="Logo2.png" className="w-[60px]" />
             <p style={{ color: `${textColor}` }} className="ml-2 normal-case text-xl lg:text-2xl  font-featherBold">
               {headerText}
             </p>
@@ -270,10 +270,10 @@ const Navbar = () => {
                             <Link href="/dashboard/myprofile">My Profile</Link>
                           </li>
                           <li>
-                                <Link href="/messages">Messages</Link>
+                            <Link href="/messages">Messages</Link>
                           </li>
                           <li>
-                                <Link href="/friendrequest">Friend Requests</Link>
+                            <Link href="/friendrequest">Friend Requests</Link>
                           </li>
                           <li>
                             {' '}

@@ -10,8 +10,7 @@ import Cookies from 'js-cookie';
 const CNavBar = () => {
     const [user, loading, error] = useAuthState(auth);
     const [nav, setNav] = useState(false);
-    const [color, setColor] = useState('rgba(255, 255, 255, 1)');
-    const [backgroundColor, setBackgroundColor] = useState('rgba(0, 0, 0, 0)');
+    const [color, setColor] = useState('#235490');
     const [textColor, setTextColor] = useState('white');
 
     const logout = () => {
@@ -27,26 +26,21 @@ const CNavBar = () => {
     useEffect(() => {
         const changeColor = () => {
             if (window.scrollY >= 200) {
-                setColor('linear-gradient(to right, blue, green)');
-                setBackgroundColor('rgba(0, 0, 0, 0)');
-                setTextColor('#ffffff');
+                setColor('#ffffff');
+                setTextColor('#235490');
             } else {
                 setColor('#235490');
-                setBackgroundColor('rgba(255, 255, 255, 1)');
-                setTextColor('#235490');
+                setTextColor('#ffffff');
             }
         };
         window.addEventListener('scroll', changeColor);
-        return () => {
-            window.removeEventListener('scroll', changeColor);
-        };
     }, []);
 
 
 
     return (
         <div
-            style={{ background: color, backgroundColor: backgroundColor }}
+            style={{ backgroundColor: `${color}` }}
             className='fixed left-0 top-0 w-full z-10 ease-in duration-300'
         >
             <div className='max-w-[1240px] m-auto flex justify-between items-center py-4 px-4 text-white '>

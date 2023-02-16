@@ -67,7 +67,7 @@ if(loading){
                         </span>
                       </div>
                     </Link></>
-                  : singleUser?.completed_lv?.includes(level?.level) || singleUser?.completed_lv?.includes(level?.level - "1")?
+                : singleUser?.completed_lv?.includes(level?.level) ?
                   <>
                     <Link href={`/level/${level.level}`} className="">
                       <div className="flex flex-col justify-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 items-center">

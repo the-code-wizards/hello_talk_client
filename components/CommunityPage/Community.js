@@ -38,7 +38,7 @@ const Community = () => {
     return (
         <div >
             {/* <CNavBar></CNavBar> */}
-            <Navbar/>
+            <Navbar />
             <div className=''>
                 {/* <div className='col-span-1 pt-18 bg-[#F0F2F5] h-screen sticky top-0'>
                     <SidebarCommunityPage></SidebarCommunityPage>
@@ -68,29 +68,29 @@ const Community = () => {
                     {/* >>>>>>>>>>>>>>>>>>> Discussion <<<<<<<<<<<<<<<<< */}
 
                     <div className='bg-[#F0F2F5] '>
-                            <div className=' grid lg:md:grid-cols-[70%_minmax(30%,_1fr)] px-12 gap-8'>
-                                <div className=''>
-                                    {
-                                        user &&
-                                        <WriteaPost></WriteaPost>
-                                    }
-                                    <Posts
-                                        searchIndex={searchIndex}
-                                        searchLoading={searchLoading}
-                                        setSearchIndex={setSearchIndex}
-                                        setSearchLoading={setSearchLoading}
-                                        spninerLoading={spninerLoading}
-                                    ></Posts>
-                                </div>
-
-                                {/* >>>>>>>> Leader chart <<<<<<<<<<<<<<<<  */}
-                                <div className='mt-8'>
-                                    {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
-                                    {/* <Profile></Profile> */}
-                                    {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}
-                                    <TopAuthor></TopAuthor>
-                                </div>
+                        <div className=' grid lg:md:grid-cols-[70%_minmax(30%,_1fr)] px-12 gap-8'>
+                            <div className=''>
+                                {
+                                    user &&
+                                    <WriteaPost></WriteaPost>
+                                }
+                                <Posts
+                                    searchIndex={searchIndex}
+                                    searchLoading={searchLoading}
+                                    setSearchIndex={setSearchIndex}
+                                    setSearchLoading={setSearchLoading}
+                                    spninerLoading={spninerLoading}
+                                ></Posts>
                             </div>
+
+                            {/* >>>>>>>> Leader chart <<<<<<<<<<<<<<<<  */}
+                            <div className='mt-8'>
+                                {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
+                                {/* <Profile></Profile> */}
+                                {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}
+                                <TopAuthor></TopAuthor>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
