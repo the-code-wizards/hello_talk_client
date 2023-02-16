@@ -17,14 +17,18 @@ const OurTeachers = () => {
       <Head>
         <title>HelloTalk - Our Teachers</title>
       </Head>
-      <section className="md:max-w-[1240px] mx-auto md:p-20 py-16">
-        <h1 className="my-10 md:mx-32 mx-3 sm:mx-32 text-[#61B800] text-center text-4xl font-bold">
-          Our Teachers
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 px-3">
-          {teachers.map((teacher) => (
-            <OurTeacher key={teacher.id} teacher={teacher}></OurTeacher>
-          ))}
+      <section className="h-screen relative mx-auto md:p-20 py-16">
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transform scale-150"></div>
+        <div className="absolute inset-0 mask-image-radial-gradient from-gray-900 to-transparent"></div> */}
+        <div>
+          <h1 className="my-10 md:mx-32 mx-3 sm:mx-32 text-[#61B800] text-center text-4xl font-bold">
+            Our Teachers
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 px-3">
+            {teachers.map((teacher) => (
+              <OurTeacher key={teacher.id} teacher={teacher}></OurTeacher>
+            ))}
+          </div>
         </div>
       </section>
       <Footer />

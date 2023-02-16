@@ -29,7 +29,7 @@ const Messages = ({ current }) => {
     const { data: messagesData = [], refetch, isLoading } = useQuery({
         queryKey: ["messagesData", current?._id, singleUser?._id],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/get-messages/${current?._id}/${singleUser?._id}`);
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/get-messages/${current?._id}/${singleUser?._id}`);
             const data = await res.json();
             console.log(data)
             if(isLoading){
