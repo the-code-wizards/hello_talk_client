@@ -18,7 +18,7 @@ const CheckOut = ({ id, ammount }) => {
 
 
     const order = {
-        price: ammount,
+        price: ammount / 101,
         email: user.email,
         name: user.displayName,
         _id: id
@@ -137,28 +137,29 @@ const CheckOut = ({ id, ammount }) => {
     }
 
     return (
-        <div className='p-16 border border-inherit bg-[#BFDBFE] rounded-lg'>
+        <div className='p-16 border border-inherit bg-white rounded-lg'>
             <form onSubmit={handleSubmit} className="mt-[-40px]">
-                <h2 className='text-2xl text-center'>Pay with card</h2>
-                {/* <label className="label ">
+                <h2 className='text-2xl text-center'>Pay with Stripe</h2>
+                <div className="divider"></div>
+                {/* <label className="label mb-3 ">
                     <span className="label-text">Your Email:</span>
                 </label>
                 <div className="form-control h-[3rem]">
                     <input name="email" type="text" placeholder="Your Email" className="input input-bordered input-info h-[3rem]" required />
                 </div> */}
-                <label className="label ">
+                <label className="label mt-3">
                     <span className="label-text">Your Phone Number:</span>
                 </label>
-                <div className="form-control h-[3rem] ">
+                <div className="form-control h-[2rem] ">
                     <input name="phone" type="text" placeholder="Your Phone Number" className="input input-bordered input-info " required />
                 </div>
-                <label className="label ">
+                <label className="label mt-3">
                     <span className="label-text">Your Address :</span>
                 </label>
-                <div className="form-control h-[3rem] ">
+                <div className="form-control h-[2rem] ">
                     <input name="address" type="text" placeholder="Your Address" className="input input-bordered input-info " required />
                 </div>
-                <label className="label ">
+                <label className="label mt-3">
                     <span className="label-text">Your Card Info:</span>
                 </label>
                 <CardElement
@@ -177,7 +178,7 @@ const CheckOut = ({ id, ammount }) => {
                         },
                     }}
                 />
-                <button className='btn btn-sm btn-error mt-6 w-[450px] text-white' type="submit" disabled={!stripe || !clientSecret || processing}>
+                <button className='btn btn-sm btn-error mt-6 w-full text-white' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
