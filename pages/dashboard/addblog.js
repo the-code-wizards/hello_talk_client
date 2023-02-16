@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AddBlog from '../../components/Dashboard/UserComps/AddBlog';
@@ -14,10 +15,15 @@ const AdBlog = () => {
   return (
     <div>
       <PrivateRoute>
-        <Navbar />
-        <div className="grid  lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
-          <DashSidebar />
-          <AddBlog />
+        <div>
+        <Head>
+            <title>HelloTalk - Add Blog</title>
+          </Head>
+          <Navbar />
+          <div className="grid  lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
+            <DashSidebar />
+            <AddBlog />
+          </div>
         </div>
       </PrivateRoute>
     </div>
