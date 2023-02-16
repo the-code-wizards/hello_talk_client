@@ -150,13 +150,13 @@ const CheckOut = ({ id, ammount }) => {
                     <span className="label-text">Your Phone Number:</span>
                 </label>
                 <div className="form-control h-[3rem] ">
-                    <input name="phone" type="text" placeholder="Your Phone Number" className="input input-bordered input-info h-[3rem]" required />
+                    <input name="phone" type="text" placeholder="Your Phone Number" className="input input-bordered input-info " required />
                 </div>
                 <label className="label ">
                     <span className="label-text">Your Address :</span>
                 </label>
                 <div className="form-control h-[3rem] ">
-                    <input name="address" type="text" placeholder="Your Address" className="input input-bordered input-info h-[3rem]" required />
+                    <input name="address" type="text" placeholder="Your Address" className="input input-bordered input-info " required />
                 </div>
                 <label className="label ">
                     <span className="label-text">Your Card Info:</span>

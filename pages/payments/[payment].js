@@ -2,7 +2,6 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
 import CheckOut from '../../components/Payment/CheckOut';
-import { useForm } from "react-hook-form";
 import Navbar from '../../components/Shared/Navbar/Navbar';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -48,7 +47,7 @@ const Payment = () => {
             </Head>
             <div >
                 <Navbar></Navbar>
-                <div className='grid grid-cols-12 pt-24'>
+                <div className='grid grid-cols-12 pt-16'>
                     <div className='pl-10 pr-10 pb-20 pt-6 place-self-center col-span-5'>
                         <h1 className=' mb-8'>Pay for: {title}</h1>
                         <p className='text-4xl my-4'> <span className='text-xl'>Price: </span>৳ {offer_price}</p>
@@ -74,7 +73,7 @@ const Payment = () => {
                         <div className="divider divider-horizontal"></div>
                     </div>
                     <div className="divider divider-horizontal"></div>
-                    <div className='max-w-[600px] place-self-center col-span-5 '>
+                    <div className='max-w-[600px] mt-8 col-span-5 '>
                         <Elements stripe={stripePromise}>
                             <CheckOut
                                 ammount={ammount}

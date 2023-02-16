@@ -18,9 +18,9 @@ import Link from "next/link";
 const HomePage = () => {
   const [user] = useAuthState(auth)
   const getStarted = () => {
-    if(!user){
+    if (!user) {
       window.location.href = "/signin"
-    }else{
+    } else {
       window.location.href = "/learn"
     }
   }
@@ -280,12 +280,12 @@ const HomePage = () => {
       <Footer></Footer>
       {/* -------------------------Footer end--------------*/}
 
-      <Helmet>
+      {/* <Helmet>
         <script
           src="//code.tidio.co/jpb1zs7dudyjfplraox9y0swxennxjjh.js"
           async
         ></script>
-      </Helmet>
+      </Helmet> */}
     </div>
   );
 };

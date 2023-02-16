@@ -8,6 +8,7 @@ import CNavBar from './CNavBar';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Posts from './Posts';
+import FriendReqest from './FriendReqest';
 
 const Community = () => {
     const [user, error] = useAuthState(auth);
