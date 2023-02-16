@@ -7,6 +7,7 @@ import useSingleUser from "../hooks/useSingleUser";
 import loader from "../../resources/lottieJson/loader.json";
 import Lottie from "lottie-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
@@ -118,11 +119,11 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="py-24 px-20">
+    <div className="py-24">
       {/* bg and profile image */}
-      <div className="md:max-w-[650px] mx-auto">
+      <div className="md:max-w-[80%] mx-auto">
         <div>
-          <div className="relative">
+          <div className="">
             <div className="md:h-[150px] overflow-y-hidden">
               <figure>
                 <img
@@ -133,7 +134,7 @@ const MyProfile = () => {
               </figure>
             </div>
           </div>
-          <div className="absolute mt-[-45px] ml-10">
+          <div className=" mt-[-45px] ml-10">
             {/* The button to open modal */}{/*Tap to add a profile picture*/}
             <label htmlFor="uploadPhotoModal" className="cursor-pointer">
               <div className="avatar  tooltip md:tooltip-top tooltip-right" data-tip="Tap to change photo">
@@ -152,8 +153,8 @@ const MyProfile = () => {
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
             <div className="modal">
-              <div className="modal-box relative">
-                <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+              <div className="modal-box ">
+                <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle  right-2 top-2">✕</label>
                 <h3 className="text-lg font-bold text-center">Chose a file to upload photo</h3>
                 <p className='text-center text-gray-400'>and click on upload button</p>
                 <div className="flex justify-center items-center">
@@ -223,7 +224,7 @@ const MyProfile = () => {
               <div className="modal-box">
                 <label
                   htmlFor="edit-profile-modal"
-                  className="btn btn-sm bg-[#00E019] border-none  absolute right-2 top-2"
+                  className="btn btn-sm bg-[#00E019] border-none  right-2 top-2"
                 >
                   <FaTimes></FaTimes>
                 </label>
@@ -315,7 +316,21 @@ const MyProfile = () => {
             </div>
           </div>
         </div>
+
+
       </div>
+        {/* Disclaimer of apply for teacher  */}
+        <div className="md:px-10 px-3 mt-20">
+        <div className="alert shadow-lg">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    <span>Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
+  </div>
+  <div className="flex-none">
+    <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c]">Apply now</button></Link>
+  </div>
+</div>
+        </div>
     </div>
   );
 };
