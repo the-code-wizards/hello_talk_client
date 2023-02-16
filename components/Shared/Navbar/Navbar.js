@@ -208,6 +208,9 @@ const Navbar = () => {
                               <Link href="/dashboard">Dashboard</Link>
                             </li>
                             <li>
+                              <Link href="/helpsupport">Live Session</Link>
+                            </li>
+                            <li>
                               {' '}
                               <button
                                 className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
