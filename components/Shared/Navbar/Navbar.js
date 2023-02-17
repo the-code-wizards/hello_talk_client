@@ -286,7 +286,7 @@ const Navbar = () => {
                       ) : (
                         <>
                           <li>
-                            <Link href="/dashboard/myprofile">My Profile</Link>
+                             <Link href="/dashboard">Dashboard</Link>
                           </li>
                           <li>
                             <Link href="/messages">Messages</Link>

@@ -113,7 +113,7 @@ const MyProfile = () => {
             <span>Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
           </div>
           <div className="">
-            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c]">Apply now</button></Link>
+            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c] text-[#fff]">Apply now</button></Link>
           </div>
         </div>
       </div>
@@ -152,7 +152,7 @@ const MyProfile = () => {
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
             <div className="modal">
-              <div className="modal-box ">
+              <div className="modal-box bg-[#fff]">
                 <div className="flex justify-end">
                   <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle  right-2 top-2">✕</label>
                 </div>
@@ -222,7 +222,7 @@ const MyProfile = () => {
               className="modal-toggle"
             />
             <div className="modal">
-              <div className="modal-box">
+              <div className="modal-box bg-[#565756]">
                 <label
                   htmlFor="edit-profile-modal"
                   className="btn btn-sm bg-[#00E019] border-none  right-2 top-2"
