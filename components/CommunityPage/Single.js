@@ -5,37 +5,58 @@ import swal from 'sweetalert';
 import SingleComment from './SingleComment';
 import { useRouter } from 'next/router';
 import { IoMdSend } from 'react-icons/io';
+import { useQuery } from 'react-query';
+import { FaUserPlus } from 'react-icons/fa';
+import useSingleUser from '../hooks/useSingleUser';
 
 const Single = ({ user, singlePost }) => {
-    const [commentView, setCommentView] = useState("hidden")
     const [showModal, setShowModal] = useState(false);
     const [comments, setComments] = useState([])
     const [likeButton, SetLikeButton] = useState(false)
+    const [reqButtonS, setReqButtonS] = useState(false)
     const router = useRouter()
+    const [singleUser] = useSingleUser({});
 
 
-    const commentRender = () => {
-        if (commentView === "") {
-            setCommentView("hidden")
-        }
-        else {
-            setCommentView("")
-        }
-    }
     const { photoUrl, email, name, post, postTime, title, _id } = singlePost
 
+
+    const { data: reqStatus = [], refetch, isLoading } = useQuery({
+        queryKey: ["reqStatus", singleUser?.email],
+        queryFn: async () => {
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/srequested?email=${singleUser.email}`);
+            const data = await res.json();
+            if (data.length) {
+                // console.log(data)
+                setReqButtonS(true)
+            }
+            return data;
+        }
+    })
+
+
+    const { data: getlikes = [] } = useQuery({
+        queryKey: ["getlikes", _id],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/community/totallikes?id=${_id}`)
+            const data = await res.json();
+            return data
+        }
+    })
+
+
+
     const handleComment = (event) => {
-        setShowModal(false)
         event.preventDefault();
         const form = event.target
-        const text = form.textarea.value;
-        console.log(text)
+        const comment = form.comment.value;
+        console.log(comment)
         const postComment = {
             name: user.displayName,
-            comment: text,
+            comment: comment,
             email: user.email,
             postTime: Date(),
-            photoUrl: user.photoURL,
+            photoUrl: user.photoUrl,
             pid: _id
         }
         // console.log(postComment)
@@ -49,18 +70,15 @@ const Single = ({ user, singlePost }) => {
             .then(res => res.json())
             .then(res => {
                 console.log(res)
-                // navigate("/dashboard/myproducts")
                 if (res.acknowledged === true) {
-                    swal(
-                        'Your comment is posted!',
-                        'Possible response is near !',
-                        'success'
-                    )
                     form.reset()
+                    setComments([...comments, postComment])
+
                 }
             })
 
     }
+
 
     useEffect(() => {
         fetch(`https://hello-talk-webserver.vercel.app/community/comment/${_id}`)
@@ -69,6 +87,7 @@ const Single = ({ user, singlePost }) => {
 
 
     }, [])
+
 
     useEffect(() => {
         fetch(`https://hello-talk-webserver.vercel.app/community/like?email=${user?.email}&id=${_id}`)
@@ -82,7 +101,9 @@ const Single = ({ user, singlePost }) => {
 
     }, [user?.email, _id])
 
+
     const handleLike = () => {
+        console.log('cliked')
         const postLike = {
             email: user.email,
             postTime: Date(),
@@ -97,8 +118,10 @@ const Single = ({ user, singlePost }) => {
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
-                SetLikeButton(true)
+                if (res.insertedId) {
+                    console.log(res)
+                    SetLikeButton(true)
+                }
             })
 
     }
@@ -116,27 +139,93 @@ const Single = ({ user, singlePost }) => {
             })
 
     }
-    const navigateLogin = () => {
-        window.location.href = "/signin";
+
+    const handleAddFriend = () => {
+        const friendData = {
+            senderEmail: singleUser.email,
+            senderImg: singleUser.photoUrl,
+            senderName: singleUser.name,
+            reciverEmail: email,
+            reciverImg: photoUrl,
+            reciverName: name,
+            status: "pending"
+        }
+        fetch("https://hello-talk-webserver.vercel.app/connect", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(friendData)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.insertedId) {
+                    console.log(res)
+                    refetch()
+                }
+            })
+
     }
+
+
 
 
     return (
         <div>
-            <div className=' bg-white p-3 rounded-2xl mt-8 border border-inherit'>
+            <div className=' bg-white p-3 rounded-2xl mt-5 border border-inherit'>
                 <div className=' flex'>
-                    <div className="avatar mr-3">
-                        <div className="w-8 h-8 rounded-full">
-                            <img src={photoUrl} alt="" />
+                    <div className="dropdown dropdown-top dropdown-hover">
+                        <label tabIndex={0} className="mr-2">
+                            <div className="avatar p-1  hover:bg-green-300 rounded-full">
+                                <div className="w-10 rounded-full bg-green-400 ring-2 ring-gray-50">
+                                    {photoUrl ? (
+                                        <img src={photoUrl} />
+                                    ) : (
+                                        <span className="flex justify-center items-center mt-[15px] text-[1.2rem]">
+                                            {name.slice(0, 2)}
+                                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        </label>
+                        <div tabIndex={0} className="dropdown-content menu p-2 shadow  rounded-box w-52 bg-[#14678F]">
+                            <div className='flex justify-center items-center'>
+                                <div className="avatar p-1  rounded-full">
+                                    <div className="w-7 h-7 rounded-full ">
+                                        {
+                                            photoUrl ?
+                                                <img src={photoUrl} alt="" />
+                                                :
+                                                <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                        }
+                                    </div>
+                                </div>
+                                <div className='text-white'>
+                                    <h1 className='text-[17px]'>
+                                        {name}
+                                    </h1>
+                                    <h2 className='text-[10px] mt-[-4px]'>
+                                        User science 2 Month Ago
+                                    </h2>
+                                </div>
+                            </div>
+                            {
+                                !reqButtonS ?
+                                    < button className='btn btn-ghost btn-sm flex items-center text-white' onClick={handleAddFriend}><FaUserPlus className='mr-1' />Add Friend</button>
+                                    :
+                                    < button className='btn btn-ghost btn-sm flex items-center text-white' ><FaUserPlus className='mr-1' />Requested</button>
+                            }
                         </div>
                     </div>
+
+
                     <div>
-                        <h1 className='text-[16px]'>{title}</h1>
+                        <h1 className='text-[16px]' onClick={() => setShowModal(true)}>{title}</h1>
                         <p className='text-[12px]' >By: {name} | {postTime}</p>
                     </div>
                 </div>
                 <div className='p-3'>
-                    <p className='text-[16px]'>How to find a stylus pen which is compactable with myHp Pavillion ×360 14m-dw1xxx laptop?I searched everywhere i am not able</p>
+                    <p className='text-[16px]'>{post}</p>
                 </div>
                 <div className="divider my-[-2px] "></div>
                 <div className='flex justify-between'>
@@ -144,9 +233,9 @@ const Single = ({ user, singlePost }) => {
 
                         {
                             likeButton ?
-                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span></button>
+                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span><span className='pl-2'>{getlikes?.length}</span></button>
                                 :
-                                <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
+                                <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span><span className='pl-2'>{getlikes?.length}</span></button>
                         }
                         <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
                             <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
@@ -166,21 +255,26 @@ const Single = ({ user, singlePost }) => {
                                 {/*content*/}
                                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                     {/*header*/}
-                                    <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t ">
+                                    <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t ">
                                         <h3 className="text-xl font-bold text-center">
-                                            Galib&apos;s Post
+                                            Galibs Post
                                         </h3>
                                         <label className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setShowModal(false)}>✕</label>
 
                                     </div>
                                     {/*body*/}
-                                    <div className={`px-8 h-[70vh] md:w-[700px]  sm:w-full overflow-y-auto`}>
+                                    <div className={`px-4 h-[70vh] md:w-[700px]  sm:w-full overflow-y-auto`}>
 
                                         {/*__________ Post Details__________  */}
-                                        <div className=' flex'>
+                                        <div className=' flex mt-2'>
                                             <div className="avatar mr-3">
                                                 <div className="w-8 h-8 rounded-full">
-                                                    <img src={photoUrl} alt="" />
+                                                    {
+                                                        user?.photoUrl ?
+                                                            <img src={photoUrl} alt="" />
+                                                            :
+                                                            <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                                    }
                                                 </div>
                                             </div>
                                             <div>
@@ -197,9 +291,9 @@ const Single = ({ user, singlePost }) => {
 
                                                 {
                                                     likeButton ?
-                                                        <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span></button>
+                                                        <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked <span className='pl-2'>{getlikes?.length}</span></span></button>
                                                         :
-                                                        <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
+                                                        <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span><span className='pl-2'>{getlikes?.length}</span></button>
                                                 }
                                                 <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
                                                     <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
@@ -214,7 +308,7 @@ const Single = ({ user, singlePost }) => {
                                         {
                                             comments.length ?
                                                 <>
-                                                    <h2 className='text-md'>Replies </h2>
+                                                    <h2 className='text-md mt-3 ml-2'>Replies </h2>
                                                     <div className="divider my-[-2px] "></div>
 
                                                     <div className='mb-3'>
@@ -223,6 +317,9 @@ const Single = ({ user, singlePost }) => {
                                                                 <SingleComment
                                                                     key={comment._id}
                                                                     postComment={comment}
+                                                                    user={user}
+                                                                    comments={comments}
+                                                                    setComments={setComments}
                                                                 >
                                                                 </SingleComment>
                                                             )
@@ -245,8 +342,8 @@ const Single = ({ user, singlePost }) => {
                                                     <div className="avatar">
                                                         <div className="w-8 rounded-full">
                                                             {
-                                                                user?.photoURL ?
-                                                                    <img src={user?.photoURL} alt="Profile Picture" />
+                                                                user?.photoUrl ?
+                                                                    <img src={user?.photoUrl} alt="Profile Picture" />
                                                                     :
                                                                     <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
                                                             }
@@ -254,8 +351,11 @@ const Single = ({ user, singlePost }) => {
                                                     </div>
                                                 </div>
 
-                                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-10' />
-                                                <button className='col-span-1 px-2 btn-ghost rounded-lg'><IoMdSend className='h-7 w-7' /></button>
+                                                <form action="" onSubmit={handleComment} className="col-span-11 flex">
+                                                    <input type="text" name="comment" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] ' />
+                                                    <button type='submit' className=' btn-ghost rounded-lg'><IoMdSend className='h-7 w-7' /></button>
+                                                </form>
+
                                             </div>
                                             :
                                             <>
@@ -270,7 +370,7 @@ const Single = ({ user, singlePost }) => {
                     </>
                 ) : null}
             </div>
-        </div>
+        </div >
     );
 };
 
