@@ -5,6 +5,7 @@ import AddOffer from '../../components/Dashboard/UserComps/AddOffer';
 import Navbar from '../../components/Shared/Navbar/Navbar';
 // import PrivateRoute from '../../components/hooks/privateRoute';
 
+
 const index = () => {
   return (
     <div>
