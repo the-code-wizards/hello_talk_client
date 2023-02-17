@@ -3,12 +3,12 @@ import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AllCourses from '../../components/Dashboard/UserComps/AllCourses';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-import PrivateRoute from '../../components/hooks/privateRoute';
+// import PrivateRoute from '../../components/hooks/privateRoute';
 
 const allcourses = () => {
   return (
     <div>
-      <PrivateRoute>
+      {/* <PrivateRoute> */}
         <div>
           <Head>
             <title>HelloTalk - All Courses</title>
@@ -19,7 +19,7 @@ const allcourses = () => {
             <AllCourses />
           </div>
         </div>
-      </PrivateRoute>
+      {/* </PrivateRoute> */}
     </div>
   );
 };

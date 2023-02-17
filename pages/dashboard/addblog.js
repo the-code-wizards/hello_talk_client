@@ -3,7 +3,7 @@ import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AddBlog from '../../components/Dashboard/UserComps/AddBlog';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-import PrivateRoute from '../../components/hooks/privateRoute'
+// import PrivateRoute from '../../components/hooks/privateRoute'
 
 const AdBlog = () => {
   // const [user, error] = useAuthState(auth);
@@ -12,7 +12,7 @@ const AdBlog = () => {
   // }
   return (
     <div>
-      <PrivateRoute>
+      {/* <PrivateRoute> */}
         <div>
         <Head>
             <title>HelloTalk - Add Blog</title>
@@ -23,7 +23,7 @@ const AdBlog = () => {
             <AddBlog />
           </div>
       </div>
-      </PrivateRoute >
+      {/* </PrivateRoute > */}
         </div>
     );
 };
