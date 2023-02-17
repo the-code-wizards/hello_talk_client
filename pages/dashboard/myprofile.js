@@ -34,4 +34,4 @@ const Myprofile = () => {
   );
 };
 
-export default myprofile;
+export default Myprofile;
