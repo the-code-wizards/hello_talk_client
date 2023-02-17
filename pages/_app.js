@@ -1,9 +1,3 @@
-// import '../styles/globals.css'
-
-// export default function App({ Component, pageProps }) {
-//   return <Component {...pageProps} />
-// }
-
 import { useEffect } from 'react';
 import AOS from 'aos';
 import {
@@ -27,13 +21,9 @@ function App({ Component, pageProps }) {
     });
   }, []);
   const queryClient = new QueryClient()
-  return
-  <QueryClientProvider client={queryClient}>
+  return <QueryClientProvider client={queryClient}>
     <Component {...pageProps} />
   </QueryClientProvider>
-  // <Provider store={store}>
-
-  // </Provider>
 }
 
 export default App;
