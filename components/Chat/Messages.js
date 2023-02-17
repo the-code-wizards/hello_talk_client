@@ -5,26 +5,47 @@ import useSingleUser from '../hooks/useSingleUser';
 import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { useQuery } from 'react-query';
+import useUsers from '../hooks/useUsers';
+import Lottie from "lottie-react";
+import loader from "../../resources/lottieJson/loader.json"
 
 const Messages = ({ current }) => {
     const [singleUser] = useSingleUser()
     const [messages, setMessages] = useState();
     const [token, setToken] = useState()
-    const [user, error] = useAuthState(auth);
-    // console.log(current);
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm();
+
 
     useEffect(() => {
         setToken(localStorage.getItem('token'))
     }, [])
-
-
+    const { data: messagesData = [], refetch, isLoading } = useQuery({
+        queryKey: ["messagesData", current?._id, singleUser?._id],
+        queryFn: async () => {
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/get-messages/${current?._id}/${singleUser?._id}`);
+            const data = await res.json();
+            console.log(data)
+            if (isLoading) {
+                return <div className="w-[300px] h-[300px] mx-auto">
+                    <Lottie animationData={loader} loop={true} />
+                </div>;
+            }
+            if (data.length > 0) {
+                setMessages(data)
+            }
+            return data;
+        }
+    })
+    console.log(messagesData)
     const sendMsg = async (data) => {
+        const form = data.target;
         const msgData = {
             sender: singleUser?.name,
             senderId: singleUser?._id,
@@ -33,15 +54,16 @@ const Messages = ({ current }) => {
         }
         try {
             const response = await axios.post('https://hello-talk-webserver.vercel.app/send-message', msgData
-                // , {
-                // headers: {
-                //     'Authorization': `Bearer ${token}`
-                // }
-                // }
+                , {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
             );
             if (response?.status === 200) {
                 console.log(response)
-                getMessages()
+                refetch()
+                reset()
             }
         } catch (err) {
             console.error(err);
@@ -49,28 +71,7 @@ const Messages = ({ current }) => {
         console.log(msgData)
     }
 
-    const getMessages = useCallback(async () => {
-        await axios.get(`http://localhost:5000/get-messages/${current?._id}/${singleUser?._id}`)
-            .then((res) => {
-                console.log(res)
-                setMessages(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-            .finally(() => {
-                // setLoading(false);
-            });
-    })
-    console.log(current._id)
-    useEffect(() => {
-        if (current?._id) {
-            getMessages()
-        }
-        // setLoading(true);
-
-    }, [current?._id, getMessages]);
-    // console.log(user)
+    console.log(messages)
     return (
         <div className="py-[15px] md:pt-[5rem] pt-[5rem]">
             {!current ?
@@ -79,7 +80,7 @@ const Messages = ({ current }) => {
                 </>
                 :
                 <div>
-                    <div key={current?._id} className="pl-2 pointer flex items-center gap-x-[10px] mb-2  border-b-[2px] mt-[-8px] bg-[#ddd] py-2 fixed w-full " style={{zIndex: 1}}>
+                    <div key={current?._id} className="pl-2 pointer flex items-center gap-x-[10px] mb-2  border-b-[2px] mt-[-8px] bg-[#ddd] py-2 fixed w-full " style={{ zIndex: 1 }}>
                         <div className="avatar ">
                             <div className="w-10 rounded-full">
                                 <img alt="/" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
@@ -100,13 +101,13 @@ const Messages = ({ current }) => {
                     </div>
 
                     <div>
-                        {messages && messages.length > 0 ? messages.map(msg => (
+                        {messagesData && messagesData.length > 0 ? messagesData.map(msg => (
                             msg?.senderId === singleUser?._id ?
-                                <div key={msg?.senderId} className="chat chat-end">
+                                <div key={msg?._id} className="chat chat-end">
                                     <div className="text-blue-400 chat-bubble">{msg?.msg}</div>
                                 </div>
                                 :
-                                <div key={msg?.recId} className="chat chat-start">
+                                <div key={msg?._id} className="chat chat-start">
                                     <div className="chat-bubble">{msg?.msg}</div>
                                 </div>
                         )) : <></>}
