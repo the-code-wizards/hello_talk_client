@@ -54,8 +54,10 @@ const ChatSidebar = ({ setCurrent }) => {
                             return (
                                 <div onClick={() => setCurrent(user)} key={user?._id} className="flex items-center gap-x-[10px] mb-2 hover:bg-[#6595cf] active:bg-[#6595cf] focus:bg-[#6595cf] rounded-lg p-[5px] cursor-pointer">
                                     <div className="avatar ">
-                                        <div className="w-10 rounded-full">
-                                            <img alt="/" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
+                                        <div className=" w-10 rounded-full bg-green-400 ring-2 ring-gray-50">
+                                            <span className="flex justify-center text-2xl mt-[5px] capitalize font-bold text-[#fff] ">
+                            {user?.name.slice(0,2)}
+                          </span>
                                         </div>
                                     </div>
                                     <h2 className="capitalize text-semibold text-md text-[#fff]">{user?.name}</h2>

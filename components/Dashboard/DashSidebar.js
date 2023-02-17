@@ -44,7 +44,7 @@ const DashSidebar = () => {
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
         <ul className="h-full menu p-4 w-64 bg-[#194881] gap-y-2 text-[#fff]">
           {/* <!-- Sidebar content here --> */}
-          {user ? (
+          {singleUser?.role === 'admin' ? (
             <>
               <li>
                 <Link href="/dashboard">Dashboard</Link>
@@ -126,24 +126,64 @@ const DashSidebar = () => {
             <>
               {singleUser?.role === 'teacher' ? (
                 <>
+                    <li>
+                      <Link href="/dashboard">Dashboard</Link>
+                    </li>
                 <li>
                     <Link href="/dashboard/myprofile">My Profile</Link>
                 </li>
                 <li>
                     <Link href="/dashboard/makelive/">Make Live</Link>
                 </li>
+                    <div className="collapse">
+                      <input type="checkbox" className="peer" />
+                      <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
+                        Blogs
+                        <div className="ml-2">
+                          <BsChevronDown />
+                        </div>
+                      </div>
+                      <div className="collapse-content bg-[#194881] text-primary-content peer-checked:bg-[#194881] peer-checked:text-secondary-content">
+                        <li>
+                          <Link href="/dashboard/addblog">Add Blog</Link>
+                        </li>
+                        <li>
+                          <Link href="/dashboard/allblogs">All Blogs</Link>
+                        </li>
+                      </div>
+                    </div>
                 <li>
                     <Link href="/dashboard/premiumblog">Premium Blog</Link>
                 </li>
                 </>
               ) : (
-                <>
+                    <>
+                      <li>
+                        <Link href="/dashboard">Dashboard</Link>
+                      </li>
                   <li>
                     <Link href="/dashboard/myprofile">My Profile</Link>
                   </li>
                   <li>
                     <Link href="/dashboard/mycourses">My Courses</Link>
                   </li>
+                      <div className="collapse">
+                        <input type="checkbox" className="peer" />
+                        <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
+                          Blogs
+                          <div className="ml-2">
+                            <BsChevronDown />
+                          </div>
+                        </div>
+                        <div className="collapse-content bg-[#194881] text-primary-content peer-checked:bg-[#194881] peer-checked:text-secondary-content">
+                          <li>
+                            <Link href="/dashboard/addblog">Add Blog</Link>
+                          </li>
+                          <li>
+                            <Link href="/dashboard/allblogs">All Blogs</Link>
+                          </li>
+                        </div>
+                      </div>
                   <li>
                     <Link href="/dashboard/premiumblog">Premium Blog</Link>
                   </li>

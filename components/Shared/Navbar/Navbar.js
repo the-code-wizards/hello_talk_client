@@ -17,22 +17,23 @@ const Navbar = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [nav, setNav] = useState(false);
-  const [color, setColor] = useState('rgba(255, 255, 255, 1)');
-  const [backgroundColor, setBackgroundColor] = useState('rgba(0, 0, 0, 0)');
+  const [color, setColor] = useState('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#a855f7)');
+  const [backgroundColor, setBackgroundColor] = useState('rgba(255, 255, 255, 1)');
   const [textColor, setTextColor] = useState('white');
   const [headerText, setHeaderText] = useState('HelloTalk');
 
   console.log(router);
-  useEffect(() => {
-    if (router.pathname.includes('/') || router.pathname.includes('/community')) {
-      setBackgroundColor('rgba(0, 0, 0, 0)')
-    }
-    if (router.pathname.includes('/community')) {
-      setHeaderText('HelloTalk Cmnty');
-    } else {
-      setHeaderText('HelloTalk');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (router.pathname.includes('/') || router.pathname.includes('/community')) {
+
+  //     setBackgroundColor('rgba(0, 0, 0, 0)')
+  //   }
+  //   if (router.pathname.includes('/community')) {
+  //     setHeaderText('HelloTalk Cmnty');
+  //   } else {
+  //     setHeaderText('HelloTalk');
+  //   }
+  // }, [router.pathname]);
 
   console.log(user);
   useEffect(() => {
@@ -66,7 +67,7 @@ const Navbar = () => {
   useEffect(() => {
     const changeColor = () => {
       if (router.pathname === '/' || router.pathname === '/community') {
-        if (window.scrollY >= 200) {
+        if (window.scrollY >= 150) {
           setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#a855f7)');
           setBackgroundColor('rgba(0, 0, 0, 0)');
           setTextColor('#ffffff');
@@ -285,7 +286,7 @@ const Navbar = () => {
                       ) : (
                         <>
                           <li>
-                            <Link href="/dashboard/myprofile">My Profile</Link>
+                             <Link href="/dashboard">Dashboard</Link>
                           </li>
                           <li>
                             <Link href="/messages">Messages</Link>
