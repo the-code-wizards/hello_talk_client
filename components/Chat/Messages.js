@@ -76,7 +76,7 @@ const Messages = ({ current }) => {
         <div className="py-[15px] md:pt-[5rem] pt-[5rem]">
             {!current ?
                 <>
-                    <h2 className="text-center text-bold text-xl">NO CONTACT CHOSEN</h2>
+                    <h2 className="text-center text-bold text-xl mt-4">NO CONTACT CHOSEN</h2>
                 </>
                 :
                 <div>
@@ -103,11 +103,11 @@ const Messages = ({ current }) => {
                     <div>
                         {messagesData && messagesData.length > 0 ? messagesData.map(msg => (
                             msg?.senderId === singleUser?._id ?
-                                <div key={msg?._id} className="chat chat-end">
+                                <div key={msg?._id} className="chat chat-end mr-2">
                                     <div className="text-blue-400 chat-bubble">{msg?.msg}</div>
                                 </div>
                                 :
-                                <div key={msg?._id} className="chat chat-start">
+                                <div key={msg?._id} className="chat chat-start ml-2">
                                     <div className="chat-bubble">{msg?.msg}</div>
                                 </div>
                         )) : <></>}
