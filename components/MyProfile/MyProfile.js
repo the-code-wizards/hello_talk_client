@@ -119,28 +119,16 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="py-24 font-featherBold">
-        {/* Disclaimer of apply for teacher  */}
-        <div className="md:px-10 px-3 pb-5">
-        <div className="alert shadow-lg py-1 bg-[#f8f7f7]">
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-    <span >Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
-  </div>
-  <div className="flex-none">
-    <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c]">Apply now</button></Link>
-  </div>
-</div>
-        </div>
+    <div className="py-24 px-20 -z-10">
       {/* bg and profile image */}
       <div className="md:max-w-[80%] mx-auto">
         <div>
           <div className="">
-            <div className="md:h-[160px] overflow-y-hidden">
+            <div className="md:h-[150px] overflow-y-hidden">
               <figure>
                 <img
                   className=" w-full rounded-t-lg"
-                  src="https://i.ibb.co/KV650FL/mark-dawe-online-learning-computer-technology-ai-feat.jpg"
+                  src="https://i.ibb.co/vHFLnJ3/istockphoto-1208275881-612x612.jpg"
                   alt="bg image"
                 />
               </figure>
@@ -191,7 +179,7 @@ const MyProfile = () => {
         </div>
 
         {/* other name and details are here  */}
-        <div className="md:mt-0 mt-10">
+        <div className="md:mt-3 mt-20">
           <h3 className="text-2xl md:ml-40 ml-5 flex gap-3 font-bold text-[#58cc02]">
             <span>{name}</span>
           </h3>
@@ -330,6 +318,18 @@ const MyProfile = () => {
         </div>
 
 
+      </div>
+      {/* Disclaimer of apply for teacher  */}
+      <div className="md:px-10 px-3 mt-20">
+        <div className="alert shadow-lg">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
+          </div>
+          <div className="flex-none">
+            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c]">Apply now</button></Link>
+          </div>
+        </div>
       </div>
     </div>
   );
