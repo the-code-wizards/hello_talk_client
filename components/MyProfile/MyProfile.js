@@ -18,11 +18,6 @@ const MyProfile = () => {
   // const [profileImg, setProfileImg] = useState('')
   const { name, age: myage, photoURL, education, district, country, number, email, realAge } =
     singleUser;
-  // if(loading){
-  //   return <div className="w-[300px] h-[300px] mx-auto">
-  //     <Lottie animationData={loader} loop={true} />
-  //   </div>
-  // }
   const handleEditProfile = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -39,16 +34,6 @@ const MyProfile = () => {
     } else if (numAge >= 18) {
       realAge = "adult";
     }
-    // console.log(
-    //   name,
-    //   age,
-    //   realAge,
-    //   education,
-    //   district,
-    //   country,
-    //   number,
-    //   email
-    // );
     const userProfile = {
       name,
       age: numAge,
@@ -119,15 +104,28 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="py-24 px-20 -z-10">
+    <div className="py-24 font-featherBold">
+      {/* Disclaimer of apply for teacher  */}
+      <div className="md:px-5 px-3 mb-5 ">
+        <div className="alert shadow-lg py-1 bg-[#e9f3ff]">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
+          </div>
+          <div className="">
+            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c]">Apply now</button></Link>
+          </div>
+        </div>
+      </div>
       {/* bg and profile image */}
-      <div className="md:max-w-[80%] mx-auto">
+      <div className="md:max-w-[95%]  mx-auto  px-20">
+
         <div>
           <div className="">
-            <div className="md:h-[150px] overflow-y-hidden">
+            <div className="md:h-[150px] overflow-y-hidden ">
               <figure>
                 <img
-                  className=" w-full rounded-t-lg"
+                  className=" w-full rounded-t-lg "
                   src="https://i.ibb.co/vHFLnJ3/istockphoto-1208275881-612x612.jpg"
                   alt="bg image"
                 />
@@ -136,10 +134,11 @@ const MyProfile = () => {
           </div>
           <div className=" mt-[-45px] ml-10">
             {/* The button to open modal */}{/*Tap to add a profile picture*/}
-            <label htmlFor="uploadPhotoModal" className="cursor-pointer">
+            <label htmlFor="uploadPhotoModal" className="cursor-pointer ">
               <div className="avatar  tooltip md:tooltip-top tooltip-right" data-tip="Tap to change photo">
                 <div className="w-24 rounded-full ring ring-white hover:shadow-xl">
                   <img
+                    className=""
                     src={
                       photoURL
                         ? photoURL
@@ -154,7 +153,9 @@ const MyProfile = () => {
             <input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
             <div className="modal">
               <div className="modal-box ">
-                <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle  right-2 top-2">✕</label>
+                <div className="flex justify-end">
+                  <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle  right-2 top-2">✕</label>
+                </div>
                 <h3 className="text-lg font-bold text-center">Chose a file to upload photo</h3>
                 <p className='text-center text-gray-400'>and click on upload button</p>
                 <div className="flex justify-center items-center">
@@ -318,18 +319,6 @@ const MyProfile = () => {
         </div>
 
 
-      </div>
-      {/* Disclaimer of apply for teacher  */}
-      <div className="md:px-10 px-3 mt-20">
-        <div className="alert shadow-lg">
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span>Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
-          </div>
-          <div className="flex-none">
-            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c]">Apply now</button></Link>
-          </div>
-        </div>
       </div>
     </div>
   );
