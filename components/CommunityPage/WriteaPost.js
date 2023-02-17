@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import swal from 'sweetalert';
 import auth from '../../firebase.init';
+import useSingleUser from '../hooks/useSingleUser';
 
 const WriteaPost = () => {
     const [showModal, setShowModal] = useState(false);
     const [user, error] = useAuthState(auth);
     const currentdate = new Date();
+    const [singleUser] = useSingleUser({});
+
 
     const date = currentdate.toLocaleDateString("en-US", {
         hour: "2-digit",
@@ -56,17 +59,18 @@ const WriteaPost = () => {
             <div className='mt-8 bg-white p-5 rounded-lg flex '>
                 <div className='grid grid-cols-1 place-items-center'>
                     <div className="avatar">
-                        <div className="w-8 rounded-full">
-                            {
-                                user?.photoURL ?
-                                    <img src={user?.photoURL} alt="Profile Picture" />
-                                    :
-                                    <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
-                            }
+                        <div className="w-10 rounded-full bg-[#d6e8ff] ring-2 ring-gray-50">
+                            {singleUser?.photoURL ? (
+                                <img src={singleUser?.photoURL} />
+                            ) : (
+                                <span className="flex justify-center mt-[15px] text-[1.2rem]">
+                                    {singleUser?.name?.slice(0, 2)}
+                                </span>
+                            )}
                         </div>
                     </div>
                 </div>
-                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2  w-full bg-[#F0F2F5] px-2' readOnly onClick={() => setShowModal(true)} placeholder="Whats on you Mind?" />
+                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2  w-full bg-[#F0F2F5] px-2' readOnly onClick={() => setShowModal(true)} placeholder="Post your question..." />
             </div>
             {showModal ? (
                 <>

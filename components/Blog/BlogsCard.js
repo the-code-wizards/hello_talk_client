@@ -1,10 +1,14 @@
 import Link from "next/link";
 import React, { Fragment } from "react";
 import { FaRegGem } from "react-icons/fa";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import useSingleUser from "../hooks/useSingleUser";
 import swal from 'sweetalert';
-const BlogsCard = ({ blog, singleUser }) => {
 
-  console.log(singleUser)
+const BlogsCard = ({ blog }) => {
+  const [user] = useAuthState(auth);
+  const [singleUser] = useSingleUser()
   const {
     _id,
     title,
@@ -17,45 +21,38 @@ const BlogsCard = ({ blog, singleUser }) => {
     gems,
     package: my_package,
   } = blog;
-  // const { gems } = singleUser;
   // console.log(tag);
-  console.log(blog?.gems)
+  console.log(singleUser?.gems)
+  console.log(gems)
   const buyBlog = () => {
-    if (singleUser?.gems < 3) {
+    if (singleUser?.gems < gems) {
       Swal.fire({
         icon: 'error',
-        text: "You dont have enough gems",
+        text: "You are broke",
         title: 'OOOPS',
         showConfirmButton: false,
         timer: 1500
       })
-    } else {
-      const newGem = {
-        mGem: singleUser?.gems - 3
-      };
-      console.log(singleUser?.gems)
-      console.log(gems)
-      console.log(newGem)
-      fetch(`http://localhost:5000/updategem?email=${singleUser?.email}`, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(newGem),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.result.acknowledged === true) {
-            window.location.href = `/blog/${_id}`
-          }
-          console.log(data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
     }
+  else{
+      const updatedeGem = {
+        gems: singleUser?.gems - gems
+    }
+      fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`, {
+        method: "POST",
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedeGem)
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          
+        })
+        .catch((e) => { console.log(e) })
   }
-
+  }
   return (
     <div className="flex md:flex-row flex-col items-center gap-2 rounded-xl shadow-md hover:shadow-2xl">
       <div className="flex items-end justify-start">
@@ -69,10 +66,10 @@ const BlogsCard = ({ blog, singleUser }) => {
         <div className="">
           {/* <span className="badge">Badge</span> */}
           <>
-            {tag?.map((ta) => {
-              <Fragment>#{ta}</Fragment>;
-            })}
-          </>
+          {tag?.map((ta) => {
+            <Fragment>#{ta}</Fragment>;
+          })}
+        </>
           <h2 className="font-bold lg:md:text-2xl text-xl text-[#58cc02]">
             {title.slice(0, 15)}...
           </h2>
@@ -87,34 +84,30 @@ const BlogsCard = ({ blog, singleUser }) => {
             </Link>
           )}
           {my_package === "premium" && (
-            <button className="cursor-pointer bg-[#58cc02] flex items-center border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002] flex items-center">
+            <button className="cursor-pointer bg-[#58cc02] flex items-center border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002] flex items-center">             
               <label htmlFor="my-blog-6">
                 <span className="mr-2 flex items-center ">
                   <span className="mr-2 flex items-center "><FaRegGem className="mr-1"></FaRegGem>
                     {gems}</span>
-                  Unlock
-                </span></label>
+                    Unlock               
+              </span></label>
             </button>
           )}
         </div>
         <input type="checkbox" id="my-blog-6" className="modal-toggle" />
-        <div className="modal modal-bottom sm:modal-middle ">
-          <div className="modal-box p-6 bg-[#c7ebc4]">
-            {/* <span className="mr-2 flex items-center text-black">
-              <FaRegGem className="mr-1"></FaRegGem>
-            </span>
-            <p> {gems}</p> */}
-            <h3 className="font-bold text-[#61B800] text-2xl">{title}</h3>
-            <p className="py-4 text-lg">Are you sure you wanna use your gem to unlock this?</p>
-            <div className="modal-action ">
+        <div className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box p-6">
+            <h3 className="font-bold text-[#61B800] text-2xl text-center">{title}</h3>
+            <p className="py-4">Are you sure you want to unlock with {gems}?</p>
+            <div className="modal-action">
               <button onClick={() => buyBlog()} className="bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002]">
-                Buy Now
+              Yes
               </button>
               <label
                 htmlFor="my-blog-6"
-                className="bg-red-400 border-[#cf4343] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#cf4343]"
+                className="bg-black border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]"
               >
-                Cancel
+               No
               </label>
             </div>
           </div>

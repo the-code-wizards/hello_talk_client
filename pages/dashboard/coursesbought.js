@@ -2,13 +2,13 @@ import Head from 'next/head';
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import CoursesBought from '../../components/Dashboard/UserComps/CoursesBought';
-import PrivateRoute from '../../components/hooks/privateRoute';
 import Navbar from '../../components/Shared/Navbar/Navbar';
+// import PrivateRoute from '../../components/hooks/privateRoute';
 
 const coursebought = () => {
   return (
     <div>
-      <PrivateRoute>
+      {/* <PrivateRoute> */}
         <div>
           <Head>
             <title>HelloTalk - Courses Bought</title>
@@ -19,7 +19,7 @@ const coursebought = () => {
             <CoursesBought />
           </div>
         </div>
-      </PrivateRoute>
+      {/* </PrivateRoute> */}
     </div>
   );
 };

@@ -2,13 +2,13 @@ import Head from 'next/head';
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AllBlogs from '../../components/Dashboard/UserComps/AllBlogs';
-import PrivateRoute from '../../components/hooks/privateRoute';
 import Navbar from '../../components/Shared/Navbar/Navbar';
+// import PrivateRoute from '../../components/hooks/privateRoute';
 
 const allblogs = () => {
   return (
     <div>
-      <PrivateRoute>
+      {/* <PrivateRoute> */}
         <div>
           <Head>
             <title>HelloTalk - All Blogs</title>
@@ -19,7 +19,7 @@ const allblogs = () => {
             <AllBlogs />
           </div>
         </div>
-      </PrivateRoute>
+      {/* </PrivateRoute> */}
     </div>
   );
 };

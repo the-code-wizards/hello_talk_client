@@ -1,36 +1,23 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
-import { FaTimes } from 'react-icons/fa';
-import useSingleUser from '../hooks/useSingleUser';
-import loader from '../../resources/lottieJson/loader.json';
-import Lottie from 'lottie-react';
-import Image from 'next/image';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { FaTimes } from "react-icons/fa";
+import useSingleUser from "../hooks/useSingleUser";
+import loader from "../../resources/lottieJson/loader.json";
+import Lottie from "lottie-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
   const [loading, setLoading] = useState(true);
   const [singleUser] = useSingleUser();
-  const [selectedImg, setSelectedImg] = useState(undefined);
-  const [userImg, setUserImg] = useState('');
+  const [selectedImg, setSelectedImg] = useState(undefined)
+  const [userImg, setUserImg] = useState('')
   // const [profileImg, setProfileImg] = useState('')
-  const {
-    name,
-    age: myage,
-    photoURL,
-    education,
-    district,
-    country,
-    number,
-    email,
-    realAge,
-  } = singleUser;
-  // if(loading){
-  //   return <div className="w-[300px] h-[300px] mx-auto">
-  //     <Lottie animationData={loader} loop={true} />
-  //   </div>
-  // }
+  const { name, age: myage, photoURL, education, district, country, number, email, realAge } =
+    singleUser;
   const handleEditProfile = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -43,20 +30,10 @@ const MyProfile = () => {
     const email = form.email.value;
     let realAge;
     if (numAge < 18 && numAge > 0) {
-      realAge = 'young';
+      realAge = "young";
     } else if (numAge >= 18) {
-      realAge = 'adult';
+      realAge = "adult";
     }
-    // console.log(
-    //   name,
-    //   age,
-    //   realAge,
-    //   education,
-    //   district,
-    //   country,
-    //   number,
-    //   email
-    // );
     const userProfile = {
       name,
       age: numAge,
@@ -67,91 +44,105 @@ const MyProfile = () => {
       number,
       email,
     };
-    fetch(`https://hello-talk-webserver.vercel.app/upuser?email=${user?.email}`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(userProfile),
-    })
+    fetch(
+      `https://hello-talk-webserver.vercel.app/upuser?email=${user?.email}`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userProfile),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         location.reload(true);
       });
   };
 
-  // change the photo preview
+  // change the photo preview 
   const handlePreviewPhoto = (e) => {
-    const imgfile = e.target.files[0];
-    const url = URL.createObjectURL(imgfile);
-    setSelectedImg(url);
-    setUserImg(imgfile);
-  };
+    const imgfile = e.target.files[0]
+    const url = URL.createObjectURL(imgfile)
+    setSelectedImg(url)
+    setUserImg(imgfile)
+  }
 
   //update Profile picture
   const handleUpdateProfileImg = (e) => {
     e.preventDefault();
-    const imgbbsecret = 'd8cf4210ca9e59597c20c2db0651d6a7';
+    const imgbbsecret = 'd8cf4210ca9e59597c20c2db0651d6a7'
     const formData = new FormData();
     formData.append('image', userImg);
     const url = `https://api.imgbb.com/1/upload?key=${imgbbsecret}`;
     fetch(url, {
       method: 'POST',
-      body: formData,
+      body: formData
     })
-      .then((res) => res.json())
-      .then((pictureData) => {
-        console.log(pictureData);
+      .then(res => res.json())
+      .then(pictureData => {
+        console.log(pictureData)
         if (pictureData.success) {
           const photourl = pictureData.data.url;
           const photobody = {
-            photoURL: photourl,
-          };
+            photoURL: photourl
+          }
           fetch(`https://hello-talk-webserver.vercel.app/upimage?email=${email}`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'content-type': 'application/json',
+              "content-type": "application/json"
             },
-            body: JSON.stringify(photobody),
+            body: JSON.stringify(photobody)
           })
-            .then((res) => res.json())
+            .then(res => res.json())
             .then((data) => {
-              alert('profile picture updated');
-            });
+              alert('profile picture updated')
+            })
         }
-      });
-  };
+
+      })
+  }
 
   return (
-    <div className="py-24 px-20 -z-10">
+    <div className="py-24 font-featherBold">
+      {/* Disclaimer of apply for teacher  */}
+      <div className="md:px-5 px-3 mb-5 ">
+        <div className="alert shadow-lg py-1 bg-[#e9f3ff]">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
+          </div>
+          <div className="">
+            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c] text-[#fff]">Apply now</button></Link>
+          </div>
+        </div>
+      </div>
       {/* bg and profile image */}
-      <div className="md:max-w-[650px] mx-auto">
+      <div className="md:max-w-[95%]  mx-auto  px-20">
+
         <div>
-          <div className="relative">
-            <div className="md:h-[150px] overflow-y-hidden">
+          <div className="">
+            <div className="md:h-[150px] overflow-y-hidden ">
               <figure>
                 <img
-                  className=" w-full rounded-t-lg"
+                  className=" w-full rounded-t-lg "
                   src="https://i.ibb.co/vHFLnJ3/istockphoto-1208275881-612x612.jpg"
                   alt="bg image"
                 />
               </figure>
             </div>
           </div>
-          <div className="absolute mt-[-45px] ml-10">
-            {/* The button to open modal */}
-            {/*Tap to add a profile picture*/}
-            <label htmlFor="uploadPhotoModal" className="cursor-pointer">
-              <div
-                className="avatar  tooltip md:tooltip-top tooltip-right"
-                data-tip="Tap to change photo"
-              >
+          <div className=" mt-[-45px] ml-10">
+            {/* The button to open modal */}{/*Tap to add a profile picture*/}
+            <label htmlFor="uploadPhotoModal" className="cursor-pointer ">
+              <div className="avatar  tooltip md:tooltip-top tooltip-right" data-tip="Tap to change photo">
                 <div className="w-24 rounded-full ring ring-white hover:shadow-xl">
                   <img
+                    className=""
                     src={
                       photoURL
                         ? photoURL
-                        : 'https://www.pngitem.com/pimgs/m/581-5813504_avatar-dummy-png-transparent-png.png'
+                        : "https://www.pngitem.com/pimgs/m/581-5813504_avatar-dummy-png-transparent-png.png"
                     }
                   />
                 </div>
@@ -161,45 +152,28 @@ const MyProfile = () => {
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
             <div className="modal">
-              <div className="modal-box relative">
-                <label
-                  htmlFor="uploadPhotoModal"
-                  className="btn btn-sm btn-circle absolute right-2 top-2"
-                >
-                  ✕
-                </label>
+              <div className="modal-box bg-[#fff]">
+                <div className="flex justify-end">
+                  <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle  right-2 top-2">✕</label>
+                </div>
                 <h3 className="text-lg font-bold text-center">Chose a file to upload photo</h3>
-                <p className="text-center text-gray-400">and click on upload button</p>
+                <p className='text-center text-gray-400'>and click on upload button</p>
                 <div className="flex justify-center items-center">
-                  {selectedImg && (
-                    <>
-                      <div className="w-[200px] h-[200px] rounded-full mt-5">
-                        <img
-                          src={selectedImg}
-                          alt=""
-                          className="rounded-full w-[200px] h-[200px]"
-                        />
-                      </div>
-                    </>
-                  )}
+                  {selectedImg && <>
+                    <div className="w-[200px] h-[200px] rounded-full mt-5">
+                      <img src={selectedImg} alt="" className="rounded-full w-[200px] h-[200px]" />
+                    </div>
+                  </>}
                 </div>
 
-                <div className={selectedImg && 'mt-5'}>
+                <div className={selectedImg && "mt-5"}>
                   <form onSubmit={handleUpdateProfileImg}>
-                    <input
-                      accept="image/jpeg, image/png"
-                      onChange={handlePreviewPhoto}
-                      type="file"
-                      className="file-input"
-                    />
+                    <input accept="image/jpeg, image/png" onChange={handlePreviewPhoto} type="file" className="file-input" />
                     {/* <h2>{profileImg}</h2> */}
-                    {selectedImg && (
-                      <button className="bg-[#58cc02] btn border-0" type="submit">
-                        Upload
-                      </button>
-                    )}
+                    {selectedImg && <button className="bg-[#58cc02] btn border-0" type="submit">Upload</button>}
                   </form>
                 </div>
+
               </div>
             </div>
           </div>
@@ -242,12 +216,16 @@ const MyProfile = () => {
             </label>
 
             {/* Put this part before </body> tag */}
-            <input type="checkbox" id="edit-profile-modal" className="modal-toggle" />
+            <input
+              type="checkbox"
+              id="edit-profile-modal"
+              className="modal-toggle"
+            />
             <div className="modal">
-              <div className="modal-box">
+              <div className="modal-box bg-[#565756]">
                 <label
                   htmlFor="edit-profile-modal"
-                  className="btn btn-sm bg-[#00E019] border-none  absolute right-2 top-2"
+                  className="btn btn-sm bg-[#00E019] border-none  right-2 top-2"
                 >
                   <FaTimes></FaTimes>
                 </label>
@@ -326,7 +304,10 @@ const MyProfile = () => {
 
                   <div className="modal-action">
                     <label htmlFor="edit-profile-modal">
-                      <button type="submit" className="btn bg-[#00E019] border-none">
+                      <button
+                        type="submit"
+                        className="btn bg-[#00E019] border-none"
+                      >
                         Submit
                       </button>
                     </label>
@@ -336,6 +317,8 @@ const MyProfile = () => {
             </div>
           </div>
         </div>
+
+
       </div>
     </div>
   );

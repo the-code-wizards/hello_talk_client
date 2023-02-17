@@ -25,7 +25,7 @@ const Navbar = () => {
   console.log(router);
   useEffect(() => {
     if (router.pathname.includes('/') || router.pathname.includes('/community')) {
-      setBackgroundColor('rgba(0, 0, 0, 0)');
+      setBackgroundColor('rgba(0, 0, 0, 0)')
     }
     if (router.pathname.includes('/community')) {
       setHeaderText('HelloTalk Cmnty');
@@ -188,10 +188,17 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <Link href="/" className="flex text-2xl w-[50px] items-center">
-            <img src="Logo2.png" alt="/" />
-            <p className="ml-2 normal-case text-xl lg:text-2xl text-white font-featherBold">
-              HelloTalk
+          <Link href="/" className="flex text-2xl items-center">
+            {/* <img src="Logo2.png" alt="/" /> */}
+            <Image
+              // Absolute URL
+              src='https://i.ibb.co/dKTz2fv/Logo2.png'
+              alt='User profile picture'
+              width={50}
+              height={50}
+            />
+            <p className="ml-2 w-full normal-case text-xl lg:text-2xl text-white font-featherBold">
+              {headerText}
             </p>
           </Link>
         </div>
@@ -266,6 +273,9 @@ const Navbar = () => {
                             <Link href="/dashboard">Dashboard</Link>
                           </li>
                           <li>
+                            <Link href="/helpsupport">Live Session</Link>
+                          </li>
+                          <li>
                             {' '}
                             <button
                               className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
@@ -282,6 +292,9 @@ const Navbar = () => {
                           </li>
                           <li>
                             <Link href="/messages">Messages</Link>
+                          </li>
+                          <li>
+                            <Link href="/helpsupport">Live Session</Link>
                           </li>
                           <li>
                             <Link href="/friendrequest">Friend Requests</Link>

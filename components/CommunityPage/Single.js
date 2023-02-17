@@ -35,6 +35,15 @@ const Single = ({ user, singlePost }) => {
     })
 
 
+    const { data: getlikes = [] } = useQuery({
+        queryKey: ["getlikes", _id],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/community/totallikes?id=${_id}`)
+            const data = await res.json();
+            return data
+        }
+    })
+
 
 
     const handleComment = (event) => {
@@ -47,7 +56,7 @@ const Single = ({ user, singlePost }) => {
             comment: comment,
             email: user.email,
             postTime: Date(),
-            photoUrl: user.photoURL,
+            photoUrl: user.photoUrl,
             pid: _id
         }
         // console.log(postComment)
@@ -94,6 +103,7 @@ const Single = ({ user, singlePost }) => {
 
 
     const handleLike = () => {
+        console.log('cliked')
         const postLike = {
             email: user.email,
             postTime: Date(),
@@ -133,7 +143,7 @@ const Single = ({ user, singlePost }) => {
     const handleAddFriend = () => {
         const friendData = {
             senderEmail: singleUser.email,
-            senderImg: singleUser.photoURL,
+            senderImg: singleUser.photoUrl,
             senderName: singleUser.name,
             reciverEmail: email,
             reciverImg: photoUrl,
@@ -167,13 +177,14 @@ const Single = ({ user, singlePost }) => {
                     <div className="dropdown dropdown-top dropdown-hover">
                         <label tabIndex={0} className="mr-2">
                             <div className="avatar p-1  hover:bg-green-300 rounded-full">
-                                <div className="w-8 h-8 rounded-full ">
-                                    {
-                                        photoUrl ?
-                                            <img src={photoUrl} alt="" />
-                                            :
-                                            <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
-                                    }
+                                <div className="w-10 rounded-full bg-green-400 ring-2 ring-gray-50">
+                                    {photoUrl ? (
+                                        <img src={photoUrl} />
+                                    ) : (
+                                        <span className="flex justify-center items-center mt-[15px] text-[1.2rem]">
+                                            {name.slice(0, 2)}
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                         </label>
@@ -222,9 +233,9 @@ const Single = ({ user, singlePost }) => {
 
                         {
                             likeButton ?
-                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span></button>
+                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span><span className='pl-2'>{getlikes?.length}</span></button>
                                 :
-                                <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
+                                <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span><span className='pl-2'>{getlikes?.length}</span></button>
                         }
                         <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
                             <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
@@ -259,7 +270,7 @@ const Single = ({ user, singlePost }) => {
                                             <div className="avatar mr-3">
                                                 <div className="w-8 h-8 rounded-full">
                                                     {
-                                                        user?.photoURL ?
+                                                        user?.photoUrl ?
                                                             <img src={photoUrl} alt="" />
                                                             :
                                                             <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
@@ -280,9 +291,9 @@ const Single = ({ user, singlePost }) => {
 
                                                 {
                                                     likeButton ?
-                                                        <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span></button>
+                                                        <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked <span className='pl-2'>{getlikes?.length}</span></span></button>
                                                         :
-                                                        <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span></button>
+                                                        <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span><span className='pl-2'>{getlikes?.length}</span></button>
                                                 }
                                                 <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
                                                     <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
@@ -331,8 +342,8 @@ const Single = ({ user, singlePost }) => {
                                                     <div className="avatar">
                                                         <div className="w-8 rounded-full">
                                                             {
-                                                                user?.photoURL ?
-                                                                    <img src={user?.photoURL} alt="Profile Picture" />
+                                                                user?.photoUrl ?
+                                                                    <img src={user?.photoUrl} alt="Profile Picture" />
                                                                     :
                                                                     <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
                                                             }

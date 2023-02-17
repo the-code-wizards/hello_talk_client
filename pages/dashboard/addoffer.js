@@ -2,13 +2,14 @@ import Head from 'next/head';
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AddOffer from '../../components/Dashboard/UserComps/AddOffer';
-import PrivateRoute from '../../components/hooks/privateRoute';
 import Navbar from '../../components/Shared/Navbar/Navbar';
+// import PrivateRoute from '../../components/hooks/privateRoute';
+
 
 const index = () => {
   return (
     <div>
-      <PrivateRoute>
+      {/* <PrivateRoute> */}
         <div>
         <Head>
             <title>HelloTalk - Add Offers</title>
@@ -19,7 +20,7 @@ const index = () => {
           <AddOffer />
         </div>
         </div>
-      </PrivateRoute>
+      {/* </PrivateRoute> */}
     </div>
   );
 };

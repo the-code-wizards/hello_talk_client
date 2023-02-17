@@ -6,8 +6,8 @@ import useSingleUser from '../../../components/hooks/useSingleUser';
 import Navbar from '../../../components/Shared/Navbar/Navbar';
 import ReactPlayer from 'react-player/youtube'
 
-
 const EnrolledCourse = () => {
+    const [singleUser] = useSingleUser()
     const [courseDetails, setCourseDetails] = useState({});
     const { title, picture, module_links, details, offer_price, price, date } = courseDetails;
     const [loading, setLoading] = useState(true)
