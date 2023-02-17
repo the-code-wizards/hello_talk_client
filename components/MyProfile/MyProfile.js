@@ -15,7 +15,6 @@ const MyProfile = () => {
   const [singleUser] = useSingleUser();
   const [selectedImg, setSelectedImg] = useState(undefined)
   const [userImg, setUserImg] = useState('')
-  // const [profileImg, setProfileImg] = useState('')
   const { name, age: myage, photoURL, education, district, country, number, email, realAge } =
     singleUser;
   const handleEditProfile = (event) => {
