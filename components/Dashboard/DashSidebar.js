@@ -3,9 +3,11 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { BsChevronDown } from 'react-icons/bs';
+import useSingleUser from '../hooks/useSingleUser';
 
 const DashSidebar = () => {
   const [user] = useAuthState(auth);
+  const [singleUser] = useSingleUser();
   return (
     <div className="drawer md:drawer-mobile md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 h-screen">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
