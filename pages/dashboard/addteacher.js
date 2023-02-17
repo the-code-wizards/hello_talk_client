@@ -3,12 +3,12 @@ import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AddTeacher from '../../components/Dashboard/UserComps/AddTeacher';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-import PrivateRoute from '../../components/hooks/privateRoute';
+// import PrivateRoute from '../../components/hooks/privateRoute';
 
 const index = () => {
   return (
     <div>
-      <PrivateRoute>
+      {/* <PrivateRoute> */}
         <div>
           <Head>
             <title>HelloTalk - Add Teacher</title>
@@ -19,7 +19,7 @@ const index = () => {
             <AddTeacher />
           </div>
         </div>
-      </PrivateRoute>
+      {/* </PrivateRoute> */}
     </div>
   );
 };

@@ -3,12 +3,12 @@ import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AllTeachers from '../../components/Dashboard/UserComps/AllTeachers';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-import PrivateRoute from '../../components/hooks/privateRoute';
+// import PrivateRoute from '../../components/hooks/privateRoute';
 
 const allteachers = () => {
   return (
     <div>
-      <PrivateRoute>
+      {/* <PrivateRoute> */}
         <div>
           <Head>
             <title>HelloTalk - All Teachers</title>
@@ -19,7 +19,7 @@ const allteachers = () => {
             <AllTeachers />
           </div>
         </div>
-      </PrivateRoute>
+      {/* </PrivateRoute> */}
     </div>
   );
 };

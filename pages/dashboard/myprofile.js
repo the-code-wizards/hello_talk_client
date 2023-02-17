@@ -4,7 +4,7 @@ import MyCourses from '../../components/MyProfile/MyCourses';
 import MyProfile from '../../components/MyProfile/MyProfile';
 import Footer from '../../components/Shared/Footer/Footer';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-import PrivateRoute from '../../components/hooks/privateRoute';
+// import PrivateRoute from '../../components/hooks/privateRoute';
 import Head from 'next/head';
 
 const Myprofile = () => {
@@ -18,7 +18,7 @@ const Myprofile = () => {
   // }, []);
   return (
     <div>
-      <PrivateRoute>
+      {/* <PrivateRoute> */}
         <div>
           <Head>
             <title>HelloTalk - My Profile</title>
@@ -29,7 +29,7 @@ const Myprofile = () => {
             <MyProfile />
           </div>
         </div>
-      </PrivateRoute>
+      {/* </PrivateRoute> */}
     </div>
   );
 };
