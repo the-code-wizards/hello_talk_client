@@ -92,7 +92,7 @@ const Navbar = () => {
     <nav className="relative z-10">
       <div
         style={{ background: color, backgroundColor: backgroundColor }}
-        className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300"
+        className="lg:md:px-10 px-0 shadow-2xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300"
       >
         <div className="navbar-start ">
           <div className="dropdown">
@@ -274,6 +274,9 @@ const Navbar = () => {
                             <Link href="/dashboard">Dashboard</Link>
                           </li>
                           <li>
+                            <Link href="/helpsupport">Help & Support</Link>
+                          </li>
+                          <li>
                             {' '}
                             <button
                               className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
@@ -288,6 +291,9 @@ const Navbar = () => {
                           <li>
                              <Link href="/dashboard">Dashboard</Link>
                           </li>
+                              <li>
+                                <Link href="/helpsupport">Help & Support</Link>
+                              </li>
                           <li>
                             <Link href="/messages">Messages</Link>
                           </li>

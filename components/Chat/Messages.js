@@ -80,7 +80,7 @@ const Messages = ({ current }) => {
                 </>
                 :
                 <div>
-                    <div key={current?._id} className="pl-2 pointer flex items-center gap-x-[10px] mb-2  border-b-[2px] mt-[-8px] bg-[#ddd] py-2 fixed w-full " style={{ zIndex: 1 }}>
+                    <div key={current?._id} className="pl-2 pointer flex items-center gap-x-[10px] mb-2  border-b-[2px] mt-[-8px] bg-[#ddd] py-2 fixed w-full shadow-md " style={{ zIndex: 1 }}>
                         <div className="avatar ">
                             <div className="w-10 rounded-full">
                                 <img alt="/" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" />

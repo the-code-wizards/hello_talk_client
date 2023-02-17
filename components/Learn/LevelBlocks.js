@@ -48,7 +48,9 @@ if(loading){
       
     <div className="grid lg:md:grid-cols-6 grid-cols-3 gap-x-[10px] lg:md:mt-4 mt-2 m-4 lg:md:gap-x-[12px] h-[10px] lg:md:ml-4">
       {
-        levels?.map((level) => { 
+        levels?.map((level,index) => { 
+          const isPreviousLevelCompleted = index === 0 || singleUser?.completed_lv?.includes(levels[index - 1]?.level);
+
           // console.log(level)
           return (
             <>
@@ -67,7 +69,7 @@ if(loading){
                         </span>
                       </div>
                     </Link></>
-                : singleUser?.completed_lv?.includes(level?.level) ?
+                  : singleUser?.completed_lv?.includes(level?.level) || isPreviousLevelCompleted ?
                   <>
                     <Link href={`/level/${level.level}`} className="">
                       <div className="flex flex-col justify-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 items-center">
