@@ -166,16 +166,15 @@ const Navbar = () => {
                   <li>
                     <Link href="/dashboard">Dashboard</Link>
                   </li>
+                  <li>
+                    <Link href="/helpsupport">Help & Support</Link>
                   </li>
-                              <li>
-                                <Link href="/helpsupport">Help & Support</Link>
-                              </li>
-                          <li>
-                            <Link href="/messages">Messages</Link>
-                          </li>
-                          <li>
-                            <Link href="/friendrequest">Friend Requests</Link>
-                          </li>
+                  <li>
+                    <Link href="/messages">Messages</Link>
+                  </li>
+                  <li>
+                    <Link href="/friendrequest">Friend Requests</Link>
+                  </li>
                   <li>
                     {' '}
                     <button
@@ -280,19 +279,18 @@ const Navbar = () => {
                     >
                       {user && singleUser?.role === 'admin' ? (
                         <>
-                          <li>
-                            <Link href="/dashboard">Dashboard</Link>
-                          </li>
-                        </li>
-                              <li>
-                                <Link href="/helpsupport">Help & Support</Link>
-                              </li>
-                          <li>
-                            <Link href="/messages">Messages</Link>
-                          </li>
-                          <li>
-                            <Link href="/friendrequest">Friend Requests</Link>
-                          </li>
+                            <li>
+                              <Link href="/dashboard">Dashboard</Link>
+                            </li>
+                            <li>
+                              <Link href="/helpsupport">Help & Support</Link>
+                            </li>
+                            <li>
+                              <Link href="/messages">Messages</Link>
+                            </li>
+                            <li>
+                              <Link href="/friendrequest">Friend Requests</Link>
+                            </li>
                           <li>
                             {' '}
                             <button
@@ -308,9 +306,9 @@ const Navbar = () => {
                           <li>
                              <Link href="/dashboard">Dashboard</Link>
                           </li>
-                              <li>
-                                <Link href="/helpsupport">Help & Support</Link>
-                              </li>
+                          <li>
+                            <Link href="/helpsupport">Help & Support</Link>
+                         </li>
                           <li>
                             <Link href="/messages">Messages</Link>
                           </li>
