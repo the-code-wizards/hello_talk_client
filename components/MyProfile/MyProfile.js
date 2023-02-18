@@ -15,7 +15,6 @@ const MyProfile = () => {
   const [singleUser] = useSingleUser();
   const [selectedImg, setSelectedImg] = useState(undefined)
   const [userImg, setUserImg] = useState('')
-  // const [profileImg, setProfileImg] = useState('')
   const { name, age: myage, photoURL, education, district, country, number, email, realAge } =
     singleUser;
   const handleEditProfile = (event) => {
@@ -105,7 +104,7 @@ const MyProfile = () => {
 
   return (
     <div className="py-24 font-featherBold">
-      {/* Disclaimer of apply for teacher  */}
+        {/* Disclaimer of apply for teacher  */}
       <div className="md:px-5 px-3 mb-5 ">
         <div className="alert shadow-lg py-1 bg-[#e9f3ff]">
           <div>
@@ -113,13 +112,13 @@ const MyProfile = () => {
             <span>Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
           </div>
           <div className="">
-            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c] text-[#fff]">Apply now</button></Link>
+            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c]">Apply now</button></Link>
           </div>
         </div>
       </div>
       {/* bg and profile image */}
       <div className="md:max-w-[95%]  mx-auto  px-20">
-
+      
         <div>
           <div className="">
             <div className="md:h-[150px] overflow-y-hidden ">
@@ -152,9 +151,9 @@ const MyProfile = () => {
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="uploadPhotoModal" className="modal-toggle" />
             <div className="modal">
-              <div className="modal-box bg-[#fff]">
+              <div className="modal-box ">
                 <div className="flex justify-end">
-                  <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle  right-2 top-2">✕</label>
+                <label htmlFor="uploadPhotoModal" className="btn btn-sm btn-circle  right-2 top-2">✕</label>
                 </div>
                 <h3 className="text-lg font-bold text-center">Chose a file to upload photo</h3>
                 <p className='text-center text-gray-400'>and click on upload button</p>
@@ -222,7 +221,7 @@ const MyProfile = () => {
               className="modal-toggle"
             />
             <div className="modal">
-              <div className="modal-box bg-[#565756]">
+              <div className="modal-box">
                 <label
                   htmlFor="edit-profile-modal"
                   className="btn btn-sm bg-[#00E019] border-none  right-2 top-2"
