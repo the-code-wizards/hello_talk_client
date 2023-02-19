@@ -21,7 +21,7 @@ const CheckOut = ({ id, ammount, courseDetails }) => {
     const order = {
         price: ammount,
         email: user?.email,
-        name: user.displayName,
+        name: user?.displayName,
         _id: id
     }
 
@@ -89,8 +89,8 @@ const CheckOut = ({ id, ammount, courseDetails }) => {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: user.displayName,
-                        email: user.email
+                        name: user?.displayName,
+                        email: user?.email
                     },
                 },
             },
@@ -148,7 +148,7 @@ const CheckOut = ({ id, ammount, courseDetails }) => {
                     </div>
                     <p className='text-[13px]'>Due {Date().slice(4, 15)}</p>
 
-                    <p className='mt-5 font-thin'>To: {user.displayName}</p>
+                    <p className='mt-5 font-thin'>To: {user?.displayName}</p>
                     <p className='my-1'>From: HelloTalk Inc.</p>
                     <p className='my-1 font-bold'>Please Check Carefully Before Payment</p>
                 </div>
