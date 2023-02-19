@@ -5,9 +5,8 @@ import swal from 'sweetalert';
 import auth from '../../firebase.init';
 import Pagination from './Pagination';
 import Single from './Single';
-import loader from "../../resources/lottieJson/loader.json";
-import Lottie from "lottie-react";
 import { useQuery } from 'react-query';
+import Loader from '../Shared/Loader';
 
 const Posts = () => {
     const [user, error] = useAuthState(auth);
@@ -36,9 +35,7 @@ const Posts = () => {
 
 
     if (isLoading) {
-        return <div className="w-[300px] h-[300px] mx-auto">
-            <Lottie animationData={loader} loop={true} />
-        </div>
+        return <Loader/>
     }
 
     return (
