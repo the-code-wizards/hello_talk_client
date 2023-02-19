@@ -17,22 +17,23 @@ const Navbar = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [nav, setNav] = useState(false);
-  const [color, setColor] = useState('rgba(255, 255, 255, 1)');
-  const [backgroundColor, setBackgroundColor] = useState('rgba(0, 0, 0, 0)');
+  const [color, setColor] = useState('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#a855f7)');
+  const [backgroundColor, setBackgroundColor] = useState('rgba(255, 255, 255, 1)');
   const [textColor, setTextColor] = useState('white');
   const [headerText, setHeaderText] = useState('HelloTalk');
 
   console.log(router);
-  useEffect(() => {
-    if (router.pathname.includes('/') || router.pathname.includes('/community')) {
-      setBackgroundColor('rgba(0, 0, 0, 0)')
-    }
-    if (router.pathname.includes('/community')) {
-      setHeaderText('HelloTalk Cmnty');
-    } else {
-      setHeaderText('HelloTalk');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (router.pathname.includes('/') || router.pathname.includes('/community')) {
+
+  //     setBackgroundColor('rgba(0, 0, 0, 0)')
+  //   }
+  //   if (router.pathname.includes('/community')) {
+  //     setHeaderText('HelloTalk Cmnty');
+  //   } else {
+  //     setHeaderText('HelloTalk');
+  //   }
+  // }, [router.pathname]);
 
   console.log(user);
   useEffect(() => {
@@ -66,7 +67,7 @@ const Navbar = () => {
   useEffect(() => {
     const changeColor = () => {
       if (router.pathname === '/' || router.pathname === '/community') {
-        if (window.scrollY >= 200) {
+        if (window.scrollY >= 150) {
           setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#a855f7)');
           setBackgroundColor('rgba(0, 0, 0, 0)');
           setTextColor('#ffffff');
@@ -91,7 +92,7 @@ const Navbar = () => {
     <nav className="relative z-10">
       <div
         style={{ background: color, backgroundColor: backgroundColor }}
-        className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300"
+        className="lg:md:px-10 px-0 shadow-2xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300"
       >
         <div className="navbar-start ">
           <div className="dropdown">
@@ -198,7 +199,7 @@ const Navbar = () => {
               height={50}
             />
             <p className="ml-2 w-full normal-case text-xl lg:text-2xl text-white font-featherBold">
-              {headerText}
+           {headerText}
             </p>
           </Link>
         </div>
@@ -273,7 +274,7 @@ const Navbar = () => {
                             <Link href="/dashboard">Dashboard</Link>
                           </li>
                           <li>
-                            <Link href="/helpsupport">Live Session</Link>
+                            <Link href="/helpsupport">Help & Support</Link>
                           </li>
                           <li>
                             {' '}
@@ -288,13 +289,13 @@ const Navbar = () => {
                       ) : (
                         <>
                           <li>
-                            <Link href="/dashboard/myprofile">My Profile</Link>
+                             <Link href="/dashboard">Dashboard</Link>
                           </li>
+                              <li>
+                                <Link href="/helpsupport">Help & Support</Link>
+                              </li>
                           <li>
                             <Link href="/messages">Messages</Link>
-                          </li>
-                          <li>
-                            <Link href="/helpsupport">Live Session</Link>
                           </li>
                           <li>
                             <Link href="/friendrequest">Friend Requests</Link>

@@ -2,6 +2,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
 import CheckOut from '../../components/Payment/CheckOut';
+import { useForm } from "react-hook-form";
+import Navbar from '../../components/Shared/Navbar/Navbar';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
@@ -15,6 +17,7 @@ const Payment = () => {
     const id = router.query.payment;
     console.log(id)
     const ammount = parseFloat(offer_price) + parseFloat(offer_price * 0.15)
+
 
     useEffect(() => {
         if (id) {
