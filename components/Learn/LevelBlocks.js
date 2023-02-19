@@ -7,8 +7,7 @@ import auth from '../../firebase.init';
 import useSingleUser from '../hooks/useSingleUser';
 import Cert from './Cert';
 import ReactToPrint from 'react-to-print';
-import Lottie from "lottie-react";
-import loader from "../../resources/lottieJson/loader.json"
+import Loader from '../Shared/Loader';
 
 // const CertPrinter = () => {
 //   let componentRef = useRef()
@@ -35,9 +34,7 @@ const LevelBlocks = () => {
   console.log(singleUser)
   // console.log(levels)
   if (loading || loading2) {
-    return <div className="w-[300px] h-[300px] mx-auto">
-      <Lottie animationData={loader} loop={true} />
-    </div>
+    return <Loader/>
   }
   const sortedLevels = [...levels].sort((a, b) => a.level - b.level);
   const nextLevel = sortedLevels.find(level => !singleUser.completed_lv.includes(level.level.toString()));

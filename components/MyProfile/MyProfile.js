@@ -4,9 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { FaTimes } from "react-icons/fa";
 import useSingleUser from "../hooks/useSingleUser";
-import loader from "../../resources/lottieJson/loader.json";
-import Lottie from "lottie-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const MyProfile = () => {

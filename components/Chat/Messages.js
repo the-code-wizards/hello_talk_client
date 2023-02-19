@@ -3,12 +3,8 @@ import { useForm } from 'react-hook-form';
 import { AiOutlineSend } from 'react-icons/ai';
 import useSingleUser from '../hooks/useSingleUser';
 import axios from 'axios';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 import { useQuery } from 'react-query';
-import useUsers from '../hooks/useUsers';
-import Lottie from "lottie-react";
-import loader from "../../resources/lottieJson/loader.json"
+import Loader from '../Shared/Loader';
 
 const Messages = ({ current }) => {
     const [singleUser] = useSingleUser()
@@ -33,9 +29,7 @@ const Messages = ({ current }) => {
             const data = await res.json();
             console.log(data)
             if (isLoading) {
-                return <div className="w-[300px] h-[300px] mx-auto">
-                    <Lottie animationData={loader} loop={true} />
-                </div>;
+                return <Loader/>
             }
             if (data.length > 0) {
                 setMessages(data)
