@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import useSingleUser from '../hooks/useSingleUser'
-import useUsers from '../hooks/useUsers';
+import useFriends from '../hooks/useFriends';
 import Messages from './Messages';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import axios from 'axios';
+import Loader from '../Shared/Loader';
 
 const ChatSidebar = ({ setCurrent }) => {
     // const [singleUser] = useSingleUser()
-    const [users] = useUsers()
+    const [friends, loading3] = useFriends()
     const [user, error] = useAuthState(auth);
     // const [current, setCurrent] = useState('');
     const [singleUser, setSingleUser] = useState({});
     const [loading, setLoading] = useState(true);
-
-
-
     useEffect(() => {
         setLoading(true);
         axios.get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
@@ -32,9 +30,9 @@ const ChatSidebar = ({ setCurrent }) => {
 
     // console.log(user)
     return (
-        <div className="drawer md:drawer-mobile  md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 h-screen">
+        <div className="drawer md:drawer-mobile  md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 ">
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-side bg-[#2D61A0] lg:md:pr-[30px] lg:md:pt-[20px]">
+            <div className="pt-4 bg-[#2D61A0] lg:md:pr-[30px] h-full ">
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                 <div className="flex items-center gap-x-[10px] ml-2">
                     <div className="avatar online">
@@ -50,20 +48,35 @@ const ChatSidebar = ({ setCurrent }) => {
                     className="input w-full max-w-sm bg-[#ddd] mt-3 h-9 ml-2" />
                 <div>
                     <div className="mt-4">
-                        {users?.map((user) => {
-                            return (
-                                <div onClick={() => setCurrent(user)} key={user?._id} className="flex items-center gap-x-[10px] mb-2 hover:bg-[#6595cf] active:bg-[#6595cf] focus:bg-[#6595cf] rounded-lg p-[5px] cursor-pointer">
-                                    <div className="avatar ">
-                                        <div className=" w-10 rounded-full bg-green-400 ring-2 ring-gray-50">
-                                            <span className="flex justify-center text-2xl mt-[5px] capitalize font-bold text-[#fff] ">
-                            {user?.name.slice(0,2)}
-                          </span>
-                                        </div>
-                                    </div>
-                                    <h2 className="capitalize text-semibold text-md text-[#fff]">{user?.name}</h2>
-                                </div>
-                            )
-                        })}
+                        {
+                            loading3 || loading ? <Loader /> 
+                                : 
+                                <>
+                                    {friends.length > 0 ?
+                                        <>
+                                            {friends?.map((user) => {
+                                                return (
+                                                    <div onClick={() => setCurrent(user)} key={user?._id} className="flex items-center gap-x-[10px] mb-2 hover:bg-[#6595cf] active:bg-[#6595cf] focus:bg-[#6595cf] rounded-lg p-[5px] cursor-pointer">
+                                                        <div className="avatar ">
+                                                            <div className=" w-10 rounded-full bg-green-400 ring-2 ring-gray-50">
+                                                                <span className="flex justify-center text-2xl mt-[5px] capitalize font-bold text-[#fff] ">
+                                                                    {user?.name.slice(0, 2)}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <h2 className="capitalize text-semibold text-md text-[#fff]">{user?.name}</h2>
+                                                    </div>
+                                                )
+                                            })}
+                                        </>
+                                        :
+                                        <>
+                                            <h2 className="text-center">No Friends Found</h2>
+                                        </>
+                                    }
+                                </>
+                        }
+                        
                     </div>
                 </div>
             </div>
