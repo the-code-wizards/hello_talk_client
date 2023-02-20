@@ -174,11 +174,12 @@ const Single = ({ singlePost }) => {
 
 
                     <div>
-                        <h1 className='text-[16px]' onClick={() => setShowModal(true)}>{title}</h1>
-                        <p className='text-[12px]' >By: {name} | {postTime}</p>
+                        <h1 className='text-[17px] font-semibold' onClick={() => setShowModal(true)}>{name}</h1>
+                        <p className='text-[12px]' >at :{postTime}</p>
                     </div>
                 </div>
-                <div className='p-3'>
+                <h1 className='p-3 font-semibold'>{title}</h1>
+                <div className='px-3 pb-3 pt-1'>
                     <p className='text-[16px]'>{post}</p>
                 </div>
                 <div className="divider my-[-2px] "></div>
