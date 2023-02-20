@@ -41,7 +41,7 @@ const AddCourse = () => {
       });
   };
   return (
-    <div className=" pt-[4.5rem] w-full -z-10">
+    <div className=" pt-[4.5rem] w-full  ">
       <div className="">
         <div className="card-body">
           <h2 className="card-title text-[#333]">Add Course</h2>
