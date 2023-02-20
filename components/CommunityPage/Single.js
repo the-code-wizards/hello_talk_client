@@ -25,11 +25,15 @@ const Single = ({ singlePost }) => {
     const { data: reqStatus = [], refetch, isLoading } = useQuery({
         queryKey: ["reqStatus", singleUser?.email],
         queryFn: async () => {
-            const res = await fetch(`https://hello-talk-webserver.vercel.app/srequested?email=${singleUser.email}`);
+            const res = await fetch(`http://localhost:5000/community/srequested?email=${user?.email}&remail=${email}`);
             const data = await res.json();
+            // console.log(data)
             if (data.length) {
                 // console.log(data)
                 setReqButtonS(true)
+            }
+            else {
+                setReqButtonS(false)
             }
             return data;
         }
@@ -52,7 +56,7 @@ const Single = ({ singlePost }) => {
             pid: _id
         }
         // console.log(postComment)
-        fetch("https://hello-talk-webserver.vercel.app/community/postcomment", {
+        fetch("http://localhost:5000/community/postcomment", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -101,13 +105,21 @@ const Single = ({ singlePost }) => {
             .then(res => res.json())
             .then(res => {
                 if (res.insertedId) {
-                    console.log(res)
+                    // console.log(res)
                     refetch()
                 }
             })
 
     }
 
+    const handleReqDeny = () => {
+        fetch(`http://localhost:5000/community/reqestdeny?email=${user?.email}&remail=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                refetch()
+            })
+    }
 
 
 
@@ -122,15 +134,13 @@ const Single = ({ singlePost }) => {
                                     {photoUrl ? (
                                         <img src={photoUrl} />
                                     ) : (
-                                        <span className="flex justify-center items-center mt-[15px] text-[1.2rem]">
-                                            {name.slice(0, 2)}
-                                        </span>
+                                        <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
                                     )}
                                 </div>
                             </div>
                         </label>
                         <div tabIndex={0} className="dropdown-content menu p-2 shadow  rounded-box w-52 bg-[#14678F]">
-                            <div className='flex justify-center items-center'>
+                            <div className='flex justify-start items-center'>
                                 <div className="avatar p-1  rounded-full">
                                     <div className="w-7 h-7 rounded-full ">
                                         {
@@ -150,12 +160,15 @@ const Single = ({ singlePost }) => {
                                     </h2>
                                 </div>
                             </div>
-                            {
-                                !reqButtonS ?
-                                    < button className='btn btn-ghost btn-sm flex items-center text-white' onClick={handleAddFriend}><FaUserPlus className='mr-1' />Add Friend</button>
-                                    :
-                                    < button className='btn btn-ghost btn-sm flex items-center text-white' ><FaUserPlus className='mr-1' />Requested</button>
-                            }
+                            <div>
+                                {
+                                    !reqButtonS ?
+                                        < button className='btn btn-ghost btn-sm flex items-center text-white' onClick={handleAddFriend}><FaUserPlus className='mr-1' />Add Friend</button>
+                                        :
+                                        < button onClick={handleReqDeny} className='btn btn-ghost btn-sm flex items-center text-white' ><FaUserPlus className='mr-1' />Requested</button>
+                                }
+                            </div>
+
                         </div>
                     </div>
 
