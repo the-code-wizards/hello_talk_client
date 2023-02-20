@@ -11,13 +11,16 @@ const TopAuthor = () => {
 
     const usersCommentCount = []
     const [sortedUser, setSortedUser] = useState([])
+    const [topAuthors, setTopAuthors] = useState([])
 
 
-    const { data: topAuthors = [], refetch, isLoading } = useQuery({
-        queryKey: ["topAuthors"],
+    const { data: topAuthorss = [], refetch, isLoading } = useQuery({
+        queryKey: ["topAuthorss"],
         queryFn: async () => {
             const res = await fetch(`https://hello-talk-webserver.vercel.app/community/topAuthors`);
             const data = await res.json();
+            const sortedUser = data.sort((r1, r2) => (r1.totalCommented < r2.totalCommented) ? 1 : (r1.totalCommented > r2.totalCommented) ? -1 : 0);
+            setTopAuthors(sortedUser)
             return data;
         }
     })

@@ -32,7 +32,7 @@ const WriteaPost = () => {
             photoUrl: user.photoURL
         }
 
-        fetch("https://hello-talk-webserver.vercel.app/community/addapost", {
+        fetch("http://localhost:5000/community/addapost", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -116,7 +116,7 @@ const WriteaPost = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="opacity-25 fixed inset-0 z-40 bg-black"></div> */}
+                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                 </>
             ) : null}
         </div>
