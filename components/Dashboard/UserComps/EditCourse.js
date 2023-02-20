@@ -49,7 +49,7 @@ const EditCourse = () => {
     // }
   }, [courseid]);
 
-  console.log(courseDetails);
+  // console.log(courseDetails);
 
   const {
     register,
@@ -70,7 +70,6 @@ const EditCourse = () => {
     const getModuleLinks = form.module_links.value;
     const module_links = getModuleLinks.split('\n');
 
-
     const editCourseBody = {
       title1: title,
       picture1: picture,
@@ -80,7 +79,7 @@ const EditCourse = () => {
       offer_price1: offer_price,
       module_links1: module_links,
     };
-    console.log('Edit course', editCourseBody);
+    // console.log('Edit course', editCourseBody);
     fetch(`https://hello-talk-webserver.vercel.app/upcourse?id=${_id}`, {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
@@ -90,13 +89,13 @@ const EditCourse = () => {
       .then((res) => res.json())
       .then((data) => {
         alert('Edit Course Successfull');
-        console.log(data);
+        // console.log(data);
       });
   };
 
   return (
     <div>
-      <div className=" pt-[4.5rem] w-full -z-10">
+      <div className=" pt-[4.5rem] w-full  ">
         <div className="">
           <div className="card-body">
             <h2 className="card-title text-[#333]">Edit Course</h2>
