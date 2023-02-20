@@ -60,7 +60,7 @@ const {data: isTeacher = [] } = useQuery({
       .then((res) => res.json())
       .then((data) => {
         alert('Applied for teacher is successful');
-        console.log(data);
+        // console.log(data);
         refetch()
       });
   };

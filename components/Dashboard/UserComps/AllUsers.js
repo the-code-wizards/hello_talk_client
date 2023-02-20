@@ -36,7 +36,7 @@ const AllUsers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setLoader(false);
         alert('Make admin successful');
         location.reload(true);

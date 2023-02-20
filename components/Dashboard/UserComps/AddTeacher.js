@@ -22,7 +22,6 @@ const AddTeacher = () => {
     formState: { errors },
   } = useForm();
   const [blogStatus, setBlogStatus] = useState('');
-  console.log(blogStatus);
   const onAddTeacher = async (data) => {
     const { _id, name, qualification, image, details } = data;
 
@@ -43,7 +42,6 @@ const AddTeacher = () => {
       .then((res) => res.json())
       .then((data) => {
         alert('Teacher Added');
-        console.log(data);
       });
   };
 

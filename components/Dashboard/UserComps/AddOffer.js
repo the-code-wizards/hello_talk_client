@@ -10,7 +10,6 @@ const AddOffer = () => {
   } = useForm();
   const [offerStatus, setOfferStatus] = useState('');
   const onAddOffer = async (data) => {
-    console.log(data);
   };
   return (
     <div className=" pt-[4.5rem] w-full -z-10">

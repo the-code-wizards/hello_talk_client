@@ -49,7 +49,7 @@ const EditCourse = () => {
     // }
   }, [courseid]);
 
-  console.log(courseDetails);
+  // console.log(courseDetails);
 
   const {
     register,
@@ -80,7 +80,7 @@ const EditCourse = () => {
       offer_price1: offer_price,
       module_links1: module_links,
     };
-    console.log('Edit course', editCourseBody);
+    // console.log('Edit course', editCourseBody);
     fetch(`https://hello-talk-webserver.vercel.app/upcourse?id=${_id}`, {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
@@ -90,7 +90,7 @@ const EditCourse = () => {
       .then((res) => res.json())
       .then((data) => {
         alert('Edit Course Successfull');
-        console.log(data);
+        // console.log(data);
       });
   };
 

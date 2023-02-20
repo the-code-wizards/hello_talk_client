@@ -77,7 +77,7 @@ const MyProfile = () => {
     })
       .then(res => res.json())
       .then(pictureData => {
-        console.log(pictureData)
+        // console.log(pictureData)
         if (pictureData.success) {
           const photourl = pictureData.data.url;
           const photobody = {
