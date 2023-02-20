@@ -8,10 +8,10 @@ const index = () => {
   return (
     <div>
       {/* <PrivateRoute> */}
-        <div>
+      <div>
         <Head>
-            <title>HelloTalk - Dashboard</title>
-          </Head>
+          <title>HelloTalk - Dashboard</title>
+        </Head>
         <Navbar />
         <div className="grid lg:md:grid-cols-[300px_minmax(800px,_1fr)]">
           <div className="">
@@ -19,7 +19,7 @@ const index = () => {
           </div>
           <Dashboard />
         </div>
-        </div>
+      </div>
       {/* </PrivateRoute> */}
     </div>
   );
