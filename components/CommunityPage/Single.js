@@ -27,7 +27,7 @@ const Single = ({ singlePost }) => {
     const { data: reqStatus = [], refetch, isLoading } = useQuery({
         queryKey: ["reqStatus", singleUser?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/community/srequested?email=${user?.email}&remail=${email}`);
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/community/srequested?email=${user?.email}&remail=${email}`);
             const data = await res.json();
             // console.log(data)
             if (data.length) {
@@ -58,7 +58,7 @@ const Single = ({ singlePost }) => {
             pid: _id
         }
         // console.log(postComment)
-        fetch("http://localhost:5000/community/postcomment", {
+        fetch("https://hello-talk-webserver.vercel.app/community/postcomment", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -115,7 +115,7 @@ const Single = ({ singlePost }) => {
     }
 
     const handleReqDeny = () => {
-        fetch(`http://localhost:5000/community/reqestdeny?email=${user?.email}&remail=${email}`)
+        fetch(`https://hello-talk-webserver.vercel.app/community/reqestdeny?email=${user?.email}&remail=${email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)

@@ -18,7 +18,7 @@ const Posts = () => {
     const { data: posts = [], refetch, isLoading } = useQuery({
         queryKey: ["posts"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/community/communityposts`);
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/community/communityposts`);
             const data = await res.json();
             // console.log(data)
             setTotalPost(data.length)

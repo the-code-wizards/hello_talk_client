@@ -32,7 +32,7 @@ const WriteaPost = () => {
             photoUrl: user.photoURL
         }
 
-        fetch("http://localhost:5000/community/addapost", {
+        fetch("https://hello-talk-webserver.vercel.app/community/addapost", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

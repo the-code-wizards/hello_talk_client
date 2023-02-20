@@ -8,7 +8,7 @@ const LikeButton = ({ id, email }) => {
     const { data: getlikes = [], refetch } = useQuery({
         queryKey: ["getlikes"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/community/totallikes?id=${id}`)
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/community/totallikes?id=${id}`)
             const data = await res.json();
             setLikeCount(data.length)
             return data
@@ -35,7 +35,7 @@ const LikeButton = ({ id, email }) => {
             postTime: Date(),
             pid: id
         }
-        fetch("http://localhost:5000/community/postlike", {
+        fetch("https://hello-talk-webserver.vercel.app/community/postlike", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -57,7 +57,7 @@ const LikeButton = ({ id, email }) => {
     }
 
     const handleUnlike = () => {
-        fetch(`http://localhost:5000/community/like/${id}`, {
+        fetch(`https://hello-talk-webserver.vercel.app/community/like/${id}`, {
             method: "DELETE",
         })
             .then(res => res.json())
