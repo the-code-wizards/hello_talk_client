@@ -22,7 +22,7 @@ const Navbar = () => {
   const [textColor, setTextColor] = useState('white');
   const [headerText, setHeaderText] = useState('HelloTalk');
 
-  console.log(router);
+  // console.log(router);
   // useEffect(() => {
   //   if (router.pathname.includes('/') || router.pathname.includes('/community')) {
 
@@ -35,7 +35,7 @@ const Navbar = () => {
   //   }
   // }, [router.pathname]);
 
-  console.log(user);
+  // console.log(user);
   useEffect(() => {
     if (!user) return;
 
@@ -43,7 +43,7 @@ const Navbar = () => {
     axios
       .get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setSingleUser(res.data);
         setLoading(false);
       })
@@ -208,7 +208,7 @@ const Navbar = () => {
               height={50}
             />
             <p className="ml-2 w-full normal-case text-xl lg:text-2xl text-white font-featherBold">
-           {headerText}
+              {headerText}
             </p>
           </Link>
         </div>
@@ -279,18 +279,18 @@ const Navbar = () => {
                     >
                       {user && singleUser?.role === 'admin' ? (
                         <>
-                            <li>
-                              <Link href="/dashboard">Dashboard</Link>
-                            </li>
-                            <li>
-                              <Link href="/helpsupport">Help & Support</Link>
-                            </li>
-                            <li>
-                              <Link href="/messages">Messages</Link>
-                            </li>
-                            <li>
-                              <Link href="/friendrequest">Friend Requests</Link>
-                            </li>
+                          <li>
+                            <Link href="/dashboard">Dashboard</Link>
+                          </li>
+                          <li>
+                            <Link href="/helpsupport">Help & Support</Link>
+                          </li>
+                          <li>
+                            <Link href="/messages">Messages</Link>
+                          </li>
+                          <li>
+                            <Link href="/friendrequest">Friend Requests</Link>
+                          </li>
                           <li>
                             {' '}
                             <button
@@ -304,11 +304,11 @@ const Navbar = () => {
                       ) : (
                         <>
                           <li>
-                             <Link href="/dashboard">Dashboard</Link>
+                            <Link href="/dashboard">Dashboard</Link>
                           </li>
                           <li>
                             <Link href="/helpsupport">Help & Support</Link>
-                         </li>
+                          </li>
                           <li>
                             <Link href="/messages">Messages</Link>
                           </li>

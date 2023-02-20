@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { AiTwotoneLike } from 'react-icons/ai';
 import { BiCommentDetail } from 'react-icons/bi';
-import swal from 'sweetalert';
 import SingleComment from './SingleComment';
 import { useRouter } from 'next/router';
 import { IoMdSend } from 'react-icons/io';
 import { useQuery } from 'react-query';
 import { FaUserPlus } from 'react-icons/fa';
 import useSingleUser from '../hooks/useSingleUser';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import LikeButton from './Components/LikeButton';
 
-const Single = ({ user, singlePost }) => {
+const Single = ({ singlePost }) => {
+    const [user, error] = useAuthState(auth);
     const [showModal, setShowModal] = useState(false);
     const [comments, setComments] = useState([])
-    const [likeButton, SetLikeButton] = useState(false)
     const [reqButtonS, setReqButtonS] = useState(false)
     const router = useRouter()
     const [singleUser] = useSingleUser({});
@@ -34,15 +35,6 @@ const Single = ({ user, singlePost }) => {
         }
     })
 
-
-    const { data: getlikes = [] } = useQuery({
-        queryKey: ["getlikes", _id],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/community/totallikes?id=${_id}`)
-            const data = await res.json();
-            return data
-        }
-    })
 
 
 
@@ -88,57 +80,6 @@ const Single = ({ user, singlePost }) => {
 
     }, [])
 
-
-    useEffect(() => {
-        fetch(`https://hello-talk-webserver.vercel.app/community/like?email=${user?.email}&id=${_id}`)
-            .then(res => res.json())
-            .then(res => {
-                if (res.length >= 1) {
-                    SetLikeButton(true)
-                }
-                // console.log(res)
-            })
-
-    }, [user?.email, _id])
-
-
-    const handleLike = () => {
-        console.log('cliked')
-        const postLike = {
-            email: user.email,
-            postTime: Date(),
-            pid: _id
-        }
-        fetch("https://hello-talk-webserver.vercel.app/community/postlike", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(postLike)
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.insertedId) {
-                    console.log(res)
-                    SetLikeButton(true)
-                }
-            })
-
-    }
-
-    const handleUnlike = () => {
-        fetch(`https://hello-talk-webserver.vercel.app/community/like/${_id}`, {
-            method: "DELETE",
-        })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res)
-                if (res.deletedCount >= 1) {
-                    SetLikeButton(false)
-                }
-            })
-
-    }
 
     const handleAddFriend = () => {
         const friendData = {
@@ -231,12 +172,11 @@ const Single = ({ user, singlePost }) => {
                 <div className='flex justify-between'>
                     <div className='flex justify-center'>
 
-                        {
-                            likeButton ?
-                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span><span className='pl-2'>{getlikes?.length}</span></button>
-                                :
-                                <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span><span className='pl-2'>{getlikes?.length}</span></button>
-                        }
+                        <LikeButton
+                            id={_id}
+                            email={user?.email}
+                        ></LikeButton>
+
                         <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
                             <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
                         </div>
@@ -257,7 +197,7 @@ const Single = ({ user, singlePost }) => {
                                     {/*header*/}
                                     <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t ">
                                         <h3 className="text-xl font-bold text-center">
-                                            Galibs Post
+                                            {name}&apos;s Post
                                         </h3>
                                         <label className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setShowModal(false)}>✕</label>
 
@@ -288,13 +228,10 @@ const Single = ({ user, singlePost }) => {
                                         <div className="divider my-[-2px] "></div>
                                         <div className='flex justify-between'>
                                             <div className='flex justify-center'>
-
-                                                {
-                                                    likeButton ?
-                                                        <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked <span className='pl-2'>{getlikes?.length}</span></span></button>
-                                                        :
-                                                        <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span><span className='pl-2'>{getlikes?.length}</span></button>
-                                                }
+                                                <LikeButton
+                                                    id={_id}
+                                                    email={user?.email}
+                                                ></LikeButton>
                                                 <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
                                                     <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
                                                 </div>
