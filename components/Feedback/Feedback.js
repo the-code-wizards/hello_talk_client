@@ -20,13 +20,13 @@ const Feedback = () => {
         setReviews(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <div className="lg:md:sm:px-15 px-8">
       <Swiper

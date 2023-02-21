@@ -1,15 +1,15 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { FaPlayCircle, FaStopCircle } from "react-icons/fa";
+import Navbar from "../../components/Shared/Navbar/Navbar";
 // import { useSpeechSynthesis } from "react-speech-kit";
 const Teacherdetails = () => {
   const [teacherDetails, setTeacherDetails] = useState({});
-  // const [text, setText] = useState(
-  //   "Hello! Welcome to my profile. My name is Scott Mendoza and I was born and raised in the United States. I am an experienced university professor and have taught thousands of students all over the world for over 10 years. I teach English for academic purposes, ESL, and academic writing. I have been teaching on Udemy for many years and my courses are some of the highest-ranked and most popular. I do my best to create online English courses that can truly help my students. I provide the best resources and I am always available by message. Please take a look at my courses and let me help you become fluent in English."
-  // );
+ 
   const router = useRouter();
   const teacherid = router.query.teacherdetails;
-  const { _id, details, name, image } = teacherDetails;
+  const { _id, details, name, image , title, qualification, email} = teacherDetails;
   useEffect(() => {
     fetch(`https://hello-talk-webserver.vercel.app/teacher/${teacherid}`)
       .then((res) => res.json())
@@ -22,7 +22,26 @@ const Teacherdetails = () => {
     "Hello! Welcome to my profile. My name is Scott Mendoza and I was born and raised in the United States. I am an experienced university professor and have taught thousands of students all over the world for over 10 years. I teach English for academic purposes, ESL, and academic writing. I have been teaching on Udemy for many years and my courses are some of the highest-ranked and most popular. I do my best to create online English courses that can truly help my students. I provide the best resources and I am always available by message. Please take a look at my courses and let me help you become fluent in English.";
   // const { speaking, speak, stop } = useSpeechSynthesis();
   return (
-    <div className="card hero pt-[4rem]">
+    <div>
+        <Head>
+        <title> {title} - HelloTalk</title>
+      </Head>
+      <Navbar></Navbar>
+<div className="pt-32">
+<div className="text-gray-800 md:max-w-[1240px] mx-auto shadow-md rounded-lg">
+	<div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row p-5">
+		<img src={image} alt="" className=" rounded-lg flex-shrink-0 h-[300px] w-[300px] border  md:justify-self-start bg-gray-500 border-gray-300" />
+		<div className="flex flex-col">
+			<h4 className="text-2xl  font-featherBold text-center md:text-left mb-2">{name}</h4>
+			<h4 className="text-md font-featherBold text-center md:text-left mb-4">{qualification}</h4>
+			<p className="text-gray-600">{details}</p>
+			<p className="text-gray-600 font-semibold mt-2">Email: {email?email:"no email found"}</p>
+		</div>
+	</div>
+	
+</div>
+</div>
+      {/* <div className="card hero pt-[4rem]">
       <div className="card bg-base-100 shadow-xl m-10">
         <div className="avatar justify-center mt-10">
           <div className="w-24 rounded-full">
@@ -34,34 +53,10 @@ const Teacherdetails = () => {
           <p>{details}</p>
         </div>
         <div className="p-6">
-          {/* <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        className="block w-full h-32 appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-      /> */}
-          {/* <div className="flex items-center mb-6"> */}
-          {/* <button
-            // onClick={() => speak({ text })}
-            
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Speak
-          </button> */}
-          {/* <div>
-            {speaking ? (
-              <FaStopCircle onClick={stop} />
-            ) : (
-              <FaPlayCircle onClick={() => speak({ text })} />
-            )}
-          </div> */}
-          {/* <button
-            onClick={stop}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
-          >
-            Stop
-          </button> */}
+         
         </div>
       </div>
+    </div> */}
     </div>
   );
 };

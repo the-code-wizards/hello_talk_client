@@ -22,7 +22,7 @@ const Blog = () => {
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
-  console.log(blogs);
+
   return (
     <>
       <div className="relative justify-center mt-10 lg:md:mx-64 mx-8 rounded-md shadow-sm text-center">

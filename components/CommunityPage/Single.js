@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { AiTwotoneLike } from 'react-icons/ai';
 import { BiCommentDetail } from 'react-icons/bi';
-import swal from 'sweetalert';
+import { CgProfile } from 'react-icons/cg';
 import SingleComment from './SingleComment';
 import { useRouter } from 'next/router';
 import { IoMdSend } from 'react-icons/io';
 import { useQuery } from 'react-query';
 import { FaUserPlus } from 'react-icons/fa';
 import useSingleUser from '../hooks/useSingleUser';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import LikeButton from './Components/LikeButton';
+import Link from 'next/link';
 
-const Single = ({ user, singlePost }) => {
+const Single = ({ singlePost }) => {
+    const [user, error] = useAuthState(auth);
     const [showModal, setShowModal] = useState(false);
     const [comments, setComments] = useState([])
-    const [likeButton, SetLikeButton] = useState(false)
     const [reqButtonS, setReqButtonS] = useState(false)
     const router = useRouter()
     const [singleUser] = useSingleUser({});
@@ -24,25 +27,20 @@ const Single = ({ user, singlePost }) => {
     const { data: reqStatus = [], refetch, isLoading } = useQuery({
         queryKey: ["reqStatus", singleUser?.email],
         queryFn: async () => {
-            const res = await fetch(`https://hello-talk-webserver.vercel.app/srequested?email=${singleUser.email}`);
+            const res = await fetch(`https://hello-talk-webserver.vercel.app/community/srequested?email=${user?.email}&remail=${email}`);
             const data = await res.json();
+            // console.log(data)
             if (data.length) {
                 // console.log(data)
                 setReqButtonS(true)
+            }
+            else {
+                setReqButtonS(false)
             }
             return data;
         }
     })
 
-
-    const { data: getlikes = [] } = useQuery({
-        queryKey: ["getlikes", _id],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/community/totallikes?id=${_id}`)
-            const data = await res.json();
-            return data
-        }
-    })
 
 
 
@@ -89,57 +87,6 @@ const Single = ({ user, singlePost }) => {
     }, [])
 
 
-    useEffect(() => {
-        fetch(`https://hello-talk-webserver.vercel.app/community/like?email=${user?.email}&id=${_id}`)
-            .then(res => res.json())
-            .then(res => {
-                if (res.length >= 1) {
-                    SetLikeButton(true)
-                }
-                // console.log(res)
-            })
-
-    }, [user?.email, _id])
-
-
-    const handleLike = () => {
-        console.log('cliked')
-        const postLike = {
-            email: user.email,
-            postTime: Date(),
-            pid: _id
-        }
-        fetch("https://hello-talk-webserver.vercel.app/community/postlike", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(postLike)
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.insertedId) {
-                    console.log(res)
-                    SetLikeButton(true)
-                }
-            })
-
-    }
-
-    const handleUnlike = () => {
-        fetch(`https://hello-talk-webserver.vercel.app/community/like/${_id}`, {
-            method: "DELETE",
-        })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res)
-                if (res.deletedCount >= 1) {
-                    SetLikeButton(false)
-                }
-            })
-
-    }
-
     const handleAddFriend = () => {
         const friendData = {
             senderEmail: singleUser.email,
@@ -160,83 +107,99 @@ const Single = ({ user, singlePost }) => {
             .then(res => res.json())
             .then(res => {
                 if (res.insertedId) {
-                    console.log(res)
+                    // console.log(res)
                     refetch()
                 }
             })
 
     }
 
+    const handleReqDeny = () => {
+        fetch(`https://hello-talk-webserver.vercel.app/community/reqestdeny?email=${user?.email}&remail=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                refetch()
+            })
+    }
 
 
 
     return (
         <div>
             <div className=' bg-white p-3 rounded-2xl mt-5 border border-inherit'>
-                <div className=' flex'>
-                    <div className="dropdown dropdown-top dropdown-hover">
-                        <label tabIndex={0} className="mr-2">
+                <div className="dropdown dropdown-top dropdown-hover">
+                    <label tabIndex={0} className="flex justify-center items-center">
+                        <div className="mr-2">
                             <div className="avatar p-1  hover:bg-green-300 rounded-full">
                                 <div className="w-10 rounded-full bg-green-400 ring-2 ring-gray-50">
                                     {photoUrl ? (
                                         <img src={photoUrl} />
                                     ) : (
-                                        <span className="flex justify-center items-center mt-[15px] text-[1.2rem]">
-                                            {name.slice(0, 2)}
-                                        </span>
+                                        <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
                                     )}
                                 </div>
                             </div>
-                        </label>
-                        <div tabIndex={0} className="dropdown-content menu p-2 shadow  rounded-box w-52 bg-[#14678F]">
-                            <div className='flex justify-center items-center'>
-                                <div className="avatar p-1  rounded-full">
-                                    <div className="w-7 h-7 rounded-full ">
+                        </div>
+                        <div>
+                            <h1 className='text-[17px] font-semibold' onClick={() => setShowModal(true)}>{name}</h1>
+                            <p className='text-[12px]' >at :{postTime}</p>
+                        </div>
+                    </label>
+                    <div tabIndex={0} className="dropdown-content menu p-2 shadow  rounded-box w-52 bg-[#14678F]">
+                        {
+                            singleUser.email !== email ?
+                                <div>
+                                    <div className='flex justify-start items-center'>
+                                        <div className="avatar p-1  rounded-full">
+                                            <div className="w-7 h-7 rounded-full ">
+                                                {
+                                                    photoUrl ?
+                                                        <img src={photoUrl} alt="" />
+                                                        :
+                                                        <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                                }
+                                            </div>
+                                        </div>
+                                        <div className='text-white'>
+                                            <h1 className='text-[17px]'>
+                                                {name}
+                                            </h1>
+                                            <h2 className='text-[10px] mt-[-4px]'>
+                                                User science 2 Month Ago
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <div>
                                         {
-                                            photoUrl ?
-                                                <img src={photoUrl} alt="" />
+                                            !reqButtonS ?
+                                                < button className='btn btn-ghost btn-sm flex items-center text-white' onClick={handleAddFriend}><FaUserPlus className='mr-1' />Add Friend</button>
                                                 :
-                                                <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                                < button onClick={handleReqDeny} className='btn btn-ghost btn-sm flex items-center text-white' ><FaUserPlus className='mr-1' />Requested</button>
                                         }
                                     </div>
                                 </div>
-                                <div className='text-white'>
-                                    <h1 className='text-[17px]'>
-                                        {name}
-                                    </h1>
-                                    <h2 className='text-[10px] mt-[-4px]'>
-                                        User science 2 Month Ago
-                                    </h2>
-                                </div>
-                            </div>
-                            {
-                                !reqButtonS ?
-                                    < button className='btn btn-ghost btn-sm flex items-center text-white' onClick={handleAddFriend}><FaUserPlus className='mr-1' />Add Friend</button>
-                                    :
-                                    < button className='btn btn-ghost btn-sm flex items-center text-white' ><FaUserPlus className='mr-1' />Requested</button>
-                            }
-                        </div>
-                    </div>
+                                :
+                                <Link href="/dashboard/myprofile">< button className='btn btn-ghost btn-sm flex items-center text-white' > <CgProfile className='h-5 mr-1' /> See My profile</button></Link>
 
+                        }
 
-                    <div>
-                        <h1 className='text-[16px]' onClick={() => setShowModal(true)}>{title}</h1>
-                        <p className='text-[12px]' >By: {name} | {postTime}</p>
                     </div>
                 </div>
-                <div className='p-3'>
+
+                <h1 className='p-3 font-semibold'>{title}</h1>
+                <div className='px-3 pb-3 pt-1'>
                     <p className='text-[16px]'>{post}</p>
                 </div>
                 <div className="divider my-[-2px] "></div>
                 <div className='flex justify-between'>
                     <div className='flex justify-center'>
 
-                        {
-                            likeButton ?
-                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span><span className='pl-2'>{getlikes?.length}</span></button>
-                                :
-                                <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span><span className='pl-2'>{getlikes?.length}</span></button>
-                        }
+                        <LikeButton
+                            id={_id}
+                            email={user?.email}
+                        ></LikeButton>
+
                         <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
                             <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
                         </div>
@@ -257,7 +220,7 @@ const Single = ({ user, singlePost }) => {
                                     {/*header*/}
                                     <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t ">
                                         <h3 className="text-xl font-bold text-center">
-                                            Galibs Post
+                                            {name}&apos;s Post
                                         </h3>
                                         <label className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setShowModal(false)}>✕</label>
 
@@ -288,13 +251,10 @@ const Single = ({ user, singlePost }) => {
                                         <div className="divider my-[-2px] "></div>
                                         <div className='flex justify-between'>
                                             <div className='flex justify-center'>
-
-                                                {
-                                                    likeButton ?
-                                                        <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked <span className='pl-2'>{getlikes?.length}</span></span></button>
-                                                        :
-                                                        <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span><span className='pl-2'>{getlikes?.length}</span></button>
-                                                }
+                                                <LikeButton
+                                                    id={_id}
+                                                    email={user?.email}
+                                                ></LikeButton>
                                                 <div className='flex ml-4 justify-center items-center hover:bg-[#F0F2F5] px-2'>
                                                     <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
                                                 </div>
@@ -359,7 +319,10 @@ const Single = ({ user, singlePost }) => {
                                             </div>
                                             :
                                             <>
-                                                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11 mb-2 px-6' onClick={() => router.push("/signin/")} />
+                                                <div className='flex'>
+                                                    <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11 mb-2 px-6' onClick={() => router.push("/signin/")} />
+                                                    <button type='submit' className=' btn-ghost rounded-lg'><IoMdSend className='h-7 w-7' /></button>
+                                                </div>
                                             </>
                                     }
 

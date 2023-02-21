@@ -15,73 +15,73 @@ import {
 const data = [
   {
     name: 'Jan',
-    uv: 4000,
+    users: 4000,
     pv: 2400,
     amt: 2400,
   },
   {
     name: 'Feb',
-    uv: 3000,
+    users: 3000,
     pv: 1398,
     amt: 2210,
   },
   {
     name: 'Mar',
-    uv: 2000,
+    users: 2000,
     pv: 9800,
     amt: 2290,
   },
   {
     name: 'Apr',
-    uv: 2780,
+    users: 2780,
     pv: 3908,
     amt: 2000,
   },
   {
     name: 'May',
-    uv: 1890,
+    users: 1890,
     pv: 4800,
     amt: 2181,
   },
   {
     name: 'June',
-    uv: 2390,
+    users: 2390,
     pv: 3800,
     amt: 2500,
   },
   {
     name: 'July',
-    uv: 3490,
+    users: 3490,
     pv: 4300,
     amt: 2100,
   },
   {
     name: 'Aug',
-    uv: 5460,
+    users: 5460,
     pv: 2390,
     amt: 3652,
   },
   {
     name: 'Sept',
-    uv: 2450,
+    users: 2450,
     pv: 3641,
     amt: 1045,
   },
   {
     name: 'Oct',
-    uv: 2014,
+    users: 2014,
     pv: 4300,
     amt: 2100,
   },
   {
     name: 'Nov',
-    uv: 3490,
+    users: 3490,
     pv: 4236,
     amt: 5123,
   },
   {
     name: 'Dec',
-    uv: 6428,
+    users: 6428,
     pv: 4369,
     amt: 3459,
   },
@@ -89,7 +89,7 @@ const data = [
 
 const Dashboard = () => {
   return (
-    <div className="md:pt-[6rem] pt-[4.5rem] px-2 -z-10">
+    <div className="md:pt-[6rem] pt-[4.5rem] px-2  ">
       <div className="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-3">
         {/* Card 1 */}
         <div className="card card-compact bg-[#321FDB] text-white shadow-xl">
@@ -134,7 +134,7 @@ const Dashboard = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Area type="monotone" dataKey="users" stroke="#8884d8" fill="#8884d8" />
         </AreaChart>
       </ResponsiveContainer>
 

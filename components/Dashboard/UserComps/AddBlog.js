@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddBlog = () => {
-
   const currentDate = new Date();
   // const date = currentdate.toLocaleDateString('en-US', {
   //   hour: '2-digit',
@@ -16,7 +15,7 @@ const AddBlog = () => {
     formState: { errors },
   } = useForm();
   const [blogStatus, setBlogStatus] = useState('');
-  console.log(blogStatus);
+
   const onAddBlog = async (data) => {
     const {
       _id,
@@ -48,7 +47,7 @@ const AddBlog = () => {
       package: getPack,
       gems: my_package,
     };
-    fetch('http://localhost:5000/blog', {
+    fetch('https://hello-talk-webserver.vercel.app/blog', {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
       // authorization: `bearer ${localStorage.getItem("s-token")}`,
@@ -57,12 +56,11 @@ const AddBlog = () => {
       .then((res) => res.json())
       .then((data) => {
         alert('Blog Added');
-        console.log(data);
       });
   };
 
   return (
-    <div className=" pt-[4.5rem] w-full -z-10">
+    <div className=" pt-[4.5rem] w-full  ">
       <div className="">
         <div className="card-body">
           <h2 className="card-title text-[#1d4d87]">Add Blog</h2>
@@ -178,7 +176,7 @@ const AddBlog = () => {
               <button
                 className="mt-[25px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[30%] w-[100%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] flex justify-center mx-auto"
                 type="submit"
-              // onClick={onAddBlog}
+                // onClick={onAddBlog}
               >
                 Add Blog
               </button>
