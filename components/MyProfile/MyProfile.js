@@ -8,7 +8,6 @@ import Link from "next/link";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
-  const [loading, setLoading] = useState(true);
   const [singleUser] = useSingleUser();
   const [selectedImg, setSelectedImg] = useState(undefined)
   const [userImg, setUserImg] = useState('')
