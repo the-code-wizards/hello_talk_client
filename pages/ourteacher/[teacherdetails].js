@@ -36,7 +36,7 @@ const Teacherdetails = () => {
           <Link href={`/ourteachers`}>
             <FaArrowLeft></FaArrowLeft>
           </Link>
-          <h3 className="px-3">Go To Our teachers</h3>
+          <h3 className="px-3">Go To Back</h3>
         </div>
         <div className="p-6">
           {/* <textarea
