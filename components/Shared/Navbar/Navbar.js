@@ -89,7 +89,7 @@ const Navbar = () => {
   }, [router.pathname]);
 
   return (
-    <nav className="relative z-10">
+    <nav className="relative z-40">
       <div
         style={{ background: color, backgroundColor: backgroundColor }}
         className="lg:md:px-10 px-0 shadow-2xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300"
