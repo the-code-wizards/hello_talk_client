@@ -170,7 +170,7 @@ const SingleLevel = () => {
                       <div key={opt?.opt} className="form-control">
                         <button
                           className="btn bg-[#fff] border-[2px] 
-                                            border-[rgb(13,201,75)] hover:border-[rgb(13,201,75)] hover:bg-[#d3f7de] mb-2"
+                                            border-[rgb(13,201,75)] hover:border-[rgb(13,201,75)] hover:bg-[#d3f7de] mb-2 text-[#AAADBA] "
                           onClick={() => handleAnswerOptionClick(opt?.opt)}
                         >
                           {opt?.opt}
