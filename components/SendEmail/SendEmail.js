@@ -24,10 +24,7 @@ const SendEmail = () => {
       <div className=" card lg:md:max-w-[800px] border-[2px] border-[#61B800] shadow-xl mx-auto text-[#3C3C3C] my-10">
         <div className="card-body ">
           <h2 className="text-center font-featherBold lg:md:text-3xl text-2xl">
-            Leave us your email
-          </h2>
-          <h2 className="text-center font-featherBold lg:md:text-2xl text-xl">
-            We will send the latest blog!
+            Join our community and Sign up now for getting upcoming blogs
           </h2>
           <form>
             <div className="flex justify-center my-4">

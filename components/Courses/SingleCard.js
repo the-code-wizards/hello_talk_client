@@ -25,11 +25,11 @@ const SingleCard = ({ course }) => {
   return (
     <div className="card card-compact bg-white shadow-2xl ">
       <div className="p-3  mx-auto">
-        <img className="rounded-xl h-44 hover:scale-110 ease-liner animation-200 hover:shadow-2xl" src={picture} alt="Shoes" />
+        <img className="rounded-xl h-44 hover:scale-105 animation-200" src={picture} alt="Shoes" />
       </div>
       <div className="card-body pb-2">
         <h2 className="card-title lg:md:text-2xl text-xl text-[#333] font-semibold ">{title}</h2>
-        <p className='text-[18px]'>{details.slice(0, 85)}...</p>
+        <p className='text-[18px]'>{details?.slice(0, 85)}...</p>
       </div>
       <div className="card-actions justify-between flex p-3 items-center pb-5">
         <div>

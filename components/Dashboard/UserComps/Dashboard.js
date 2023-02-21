@@ -14,81 +14,105 @@ import {
 
 const data = [
   {
-    name: 'Page A',
-    uv: 4000,
+    name: 'Jan',
+    users: 4000,
     pv: 2400,
     amt: 2400,
   },
   {
-    name: 'Page B',
-    uv: 3000,
+    name: 'Feb',
+    users: 3000,
     pv: 1398,
     amt: 2210,
   },
   {
-    name: 'Page C',
-    uv: 2000,
+    name: 'Mar',
+    users: 2000,
     pv: 9800,
     amt: 2290,
   },
   {
-    name: 'Page D',
-    uv: 2780,
+    name: 'Apr',
+    users: 2780,
     pv: 3908,
     amt: 2000,
   },
   {
-    name: 'Page E',
-    uv: 1890,
+    name: 'May',
+    users: 1890,
     pv: 4800,
     amt: 2181,
   },
   {
-    name: 'Page F',
-    uv: 2390,
+    name: 'June',
+    users: 2390,
     pv: 3800,
     amt: 2500,
   },
   {
-    name: 'Page G',
-    uv: 3490,
+    name: 'July',
+    users: 3490,
     pv: 4300,
     amt: 2100,
+  },
+  {
+    name: 'Aug',
+    users: 5460,
+    pv: 2390,
+    amt: 3652,
+  },
+  {
+    name: 'Sept',
+    users: 2450,
+    pv: 3641,
+    amt: 1045,
+  },
+  {
+    name: 'Oct',
+    users: 2014,
+    pv: 4300,
+    amt: 2100,
+  },
+  {
+    name: 'Nov',
+    users: 3490,
+    pv: 4236,
+    amt: 5123,
+  },
+  {
+    name: 'Dec',
+    users: 6428,
+    pv: 4369,
+    amt: 3459,
   },
 ];
 
 const Dashboard = () => {
   return (
-    <div className="md:pt-[6rem] pt-[4.5rem] px-2 -z-10">
+    <div className="md:pt-[6rem] pt-[4.5rem] px-2  ">
       <div className="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-3">
         {/* Card 1 */}
-        <div className="card card-compact w-80 bg-[#321FDB] text-white shadow-xl">
+        <div className="card card-compact bg-[#321FDB] text-white shadow-xl">
           <div className="p-5">
             <p>26K</p>
             <h2 className="card-title">Users</h2>
-            <LineChart width={50} height={50}>
-              <Line dataKey="pv" />
-            </LineChart>
           </div>
         </div>
         {/* card 2 */}
-        <div className="card card-compact w-80 bg-[#3399FF] text-white shadow-xl">
+        <div className="card card-compact bg-[#3399FF] text-white shadow-xl">
           <div className="p-5">
             <p>$6200</p>
             <h2 className="card-title">Income</h2>
-            <LineChart width={50} height={50}>
-              <Line dataKey="pv" />
-            </LineChart>
           </div>
         </div>
         {/* Card 3 */}
-        <div className="card card-compact w-80 bg-[#F9B115] text-white shadow-xl">
+        <div className="card card-compact  bg-[#F9B115] text-white shadow-xl">
           <div className="p-5">
             <p>2.49%</p>
             <h2 className="card-title">Conversion Rate</h2>
-            <LineChart width={50} height={50}>
+            {/* <LineChart width={50} height={50}>
               <Line dataKey="pv" />
-            </LineChart>
+            </LineChart> */}
           </div>
         </div>
       </div>
@@ -110,14 +134,14 @@ const Dashboard = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Area type="monotone" dataKey="users" stroke="#8884d8" fill="#8884d8" />
         </AreaChart>
       </ResponsiveContainer>
 
       {/* Social Media Links */}
-      <div className="grid md:gap-0 gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:my-3 my-5">
+      <div className="grid md:gap-2 gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:my-3 my-5">
         {/* Social FB */}
-        <div className="card card-compact w-80 text-white shadow-xl">
+        <div className="card card-compact text-white shadow-xl">
           <div className="bg-[#3B5998]">
             <div className="p-5">
               <label className="flex justify-center">
@@ -140,7 +164,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* Social Twitter */}
-        <div className="card card-compact w-80 text-white shadow-xl">
+        <div className="card card-compact text-white shadow-xl">
           <div className="bg-[#00ACED]">
             <div className="p-5">
               <label className="flex justify-center">
@@ -163,7 +187,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* Social Linkedin */}
-        <div className="card card-compact w-80 text-white shadow-xl">
+        <div className="card card-compact text-white shadow-xl">
           <div className="bg-[#4875B4]">
             <div className="p-5">
               <label className="flex justify-center">

@@ -11,13 +11,16 @@ const TopAuthor = () => {
 
     const usersCommentCount = []
     const [sortedUser, setSortedUser] = useState([])
+    const [topAuthors, setTopAuthors] = useState([])
 
 
-    const { data: topAuthors = [], refetch, isLoading } = useQuery({
-        queryKey: ["topAuthors"],
+    const { data: topAuthorss = [], refetch, isLoading } = useQuery({
+        queryKey: ["topAuthorss"],
         queryFn: async () => {
             const res = await fetch(`https://hello-talk-webserver.vercel.app/community/topAuthors`);
             const data = await res.json();
+            const sortedUser = data.sort((r1, r2) => (r1.totalCommented < r2.totalCommented) ? 1 : (r1.totalCommented > r2.totalCommented) ? -1 : 0);
+            setTopAuthors(sortedUser)
             return data;
         }
     })
@@ -96,7 +99,7 @@ const TopAuthor = () => {
 
     return (
         <div>
-            <div className="card w-80 bg-[#fff] shadow-xl">
+            <div className="card bg-[#fff] shadow-xl">
                 <div className='card shadow-xl p-2 m-4 border-[2px] border-green-400'>
                     <h1 className='text-[24px] mt-2 text-center bg-white rounded-lg'>Top Helpful Authors</h1>
                     <div className='grid grid-cols-10 '>

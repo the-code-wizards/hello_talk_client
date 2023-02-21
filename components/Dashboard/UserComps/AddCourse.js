@@ -17,7 +17,6 @@ const AddCourse = () => {
   const [courseStatus, setCourseStatus] = useState('');
   const onAddCourse = async (data) => {
     const { _id, picture, title, details, price, offer_price, date, module_links } = data;
-    // console.log(data);
 
     const links = module_links.split('\n');
 
@@ -39,11 +38,10 @@ const AddCourse = () => {
       .then((res) => res.json())
       .then((data) => {
         alert('Course Added');
-        console.log(data);
       });
   };
   return (
-    <div className=" pt-[4.5rem] w-full">
+    <div className=" pt-[4.5rem] w-full  ">
       <div className="">
         <div className="card-body">
           <h2 className="card-title text-[#333]">Add Course</h2>

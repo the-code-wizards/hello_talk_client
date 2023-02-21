@@ -31,7 +31,7 @@ const AllBlogs = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
         });
       // update the blogs state and re-render the component
       // ...
@@ -43,7 +43,7 @@ const AllBlogs = () => {
   };
 
   return (
-    <div className="md:pt-[5rem] pt-[4.5rem]">
+    <div className="md:pt-[5rem] pt-[4.5rem]  ">
       <div className="card-body" style={{ width: '100%' }}>
         <h2 className="card-title text-[#1d4d87]">All Blogs</h2>
         <input

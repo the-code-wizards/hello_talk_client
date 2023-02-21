@@ -38,7 +38,7 @@ const Admins = () => {
   };
 
   return (
-    <div className="md:pt-[5rem] pt-[4.5rem]">
+    <div className="md:pt-[5rem] pt-[4.5rem]  ">
       <div className="card-body" style={{ width: '100%' }}>
         <h2 className="card-title text-[#1d4d87]">All Admins</h2>
 
@@ -69,11 +69,19 @@ const Admins = () => {
                 return (
                   <tbody className="text-center" key={user?._id}>
                     {user?.role === 'admin' ? (
-                      <tr className='bg-[#d7d5ff] text-[#1d4d87]'>
-                        <td className="text-start border-r-2 border-b-2 border-white">{user?.name}</td>
-                        <td className="text-start border-r-2 border-b-2 border-white">{user?.email}</td>
-                        <td className="text-start border-r-2 border-b-2 border-white">{user?.number}</td>
-                        <td className="text-start border-r-2 border-b-2 border-white">{user?.country}</td>
+                      <tr className="bg-[#d7d5ff] text-[#1d4d87]">
+                        <td className="text-start border-r-2 border-b-2 border-white">
+                          {user?.name}
+                        </td>
+                        <td className="text-start border-r-2 border-b-2 border-white">
+                          {user?.email}
+                        </td>
+                        <td className="text-start border-r-2 border-b-2 border-white">
+                          {user?.number}
+                        </td>
+                        <td className="text-start border-r-2 border-b-2 border-white">
+                          {user?.country}
+                        </td>
                         <td>
                           <label
                             className="btn bg-[#eb3131] text-[#fff] border-none btn-sm"

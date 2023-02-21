@@ -32,7 +32,7 @@ const EditTeacher = () => {
     // }
   }, [courseid]);
 
-  console.log(teacherDetails);
+  // console.log(teacherDetails);
 
   const {
     register,
@@ -57,7 +57,7 @@ const EditTeacher = () => {
       date1: currentdate,
       qualification1: qualification,
     };
-    console.log('Edit teacher', editTeacherBody);
+    // console.log('Edit teacher', editTeacherBody);
     fetch(`https://hello-talk-webserver.vercel.app/updateteacher?id=${_id}`, {
       method: 'POST',
       headers: { 'content-Type': 'application/json' },
@@ -67,13 +67,13 @@ const EditTeacher = () => {
       .then((res) => res.json())
       .then((data) => {
         alert('Edit Teacher details Successfull');
-        console.log(data);
+        // console.log(data);
       });
   };
 
   return (
     <div>
-      <div className=" pt-[4.5rem] w-full">
+      <div className=" pt-[4.5rem] w-full  ">
         <div className="">
           <div className="card-body">
             <h2 className="card-title text-[#333]">Edit Teacher Details</h2>
