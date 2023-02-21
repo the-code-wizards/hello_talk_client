@@ -22,6 +22,8 @@ const SingleLevel = () => {
   const [gems, setGems] = useState();
   const [singleUser, loading] = useSingleUser();
   const [token, setToken] = useState();
+  const [goNext, setGoNext] = useState();
+  const [goPrev, setGoPrev] = useState();
   console.log('Gem: ', gems);
   const mygem = {
     mGem: gems,
@@ -83,11 +85,14 @@ const SingleLevel = () => {
     }
   };
   const prevLevel = () => {
-    router.push(`/level/${parseInt(lv?.level) - 1}`);
+    window.location.href = `/level/${parseInt(lv?.level) - 1}`;
+    // router.push(`/level/${parseInt(lv?.level) - 1}`);
   };
+  // useEffect(()=>{
   const nextLevel = () => {
     if (singleUser?.completed_lv?.includes(lv?.level)) {
       setGems(0);
+      window.location.href = `/level/${parseInt(lv?.level) + 1}`;
     } else {
       if (score !== null) {
         const percentage = score / lv?.question?.length;
@@ -96,10 +101,12 @@ const SingleLevel = () => {
         } else {
           setGems(2);
         }
-        router.push(`/level/${parseInt(lv?.level) + 1}`);
+        window.location.href = `/level/${parseInt(lv?.level) + 1}`;
+        // router.push(`/level/${parseInt(lv?.level) + 1}`);
       } else {
         setGems(1);
-        router.push(`/level/${parseInt(lv?.level) + 1}`);
+        // router.push(`/level/${parseInt(lv?.level) + 1}`);
+        window.location.href = `/level/${parseInt(lv?.level) + 1}`;
       }
 
       fetch(`https://hello-talk-webserver.vercel.app/savelevel?email=${user?.email}`, {
@@ -118,6 +125,7 @@ const SingleLevel = () => {
         });
     }
   };
+  // }, [])
   if (loading || loadingTwo) {
     return (
       <div className="w-[300px] h-[300px] mx-auto">
@@ -162,7 +170,7 @@ const SingleLevel = () => {
                       <div key={opt?.opt} className="form-control">
                         <button
                           className="btn bg-[#fff] border-[2px] 
-                                            border-[rgb(13,201,75)] hover:border-[rgb(13,201,75)] hover:bg-[#d3f7de] mb-2"
+                                            border-[rgb(13,201,75)] hover:border-[rgb(13,201,75)] hover:bg-[#d3f7de] mb-2 text-[#AAADBA] "
                           onClick={() => handleAnswerOptionClick(opt?.opt)}
                         >
                           {opt?.opt}
