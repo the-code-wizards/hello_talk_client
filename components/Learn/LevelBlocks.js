@@ -46,7 +46,7 @@ const LevelBlocks = () => {
           <Link href="/printcert"><button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[100%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]">Print Your Certificate</button></Link>
         </>}
 
-      <div className="grid lg:md:grid-cols-6 grid-cols-3 gap-x-[10px] lg:md:mt-4 mt-2 m-4 lg:md:gap-x-[12px] h-[10px] lg:md:ml-4">
+      <div className="grid lg:md:grid-cols-6 grid-cols-3 gap-x-[10px] lg:md:mt-4 m-4 lg:md:gap-x-[12px] h-[10px] lg:md:ml-4">
         {
           sortedLevels?.map((level) => {
             const isCompleted = singleUser?.completed_lv?.includes(level?.level);

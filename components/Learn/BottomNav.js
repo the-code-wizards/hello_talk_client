@@ -16,10 +16,10 @@ const BottomNav = () => {
                    <GiNotebook className="text-xl text-red-400" />
                     <span className="btm-nav-label">Learn</span>
                 </Link>
-                <Link href="/shop" className={` ${router.pathname == "/shop" ? "active bg-green-400 text-[#fff]" : ""}`}>
+                {/* <Link href="/shop" className={` ${router.pathname == "/shop" ? "active bg-green-400 text-[#fff]" : ""}`}>
                     <AiOutlineShoppingCart className="text-xl text-red-400" />
                     <span className="btm-nav-label">Shop</span>
-                </Link>
+                </Link> */}
                 <Link href="/blogs" className={` ${router.pathname == "/blogs" ? "active bg-green-400 text-[#fff]" : ""}`}>
                     <FaBloggerB className="text-xl text-red-400" />
                     <span className="btm-nav-label">Blog</span>

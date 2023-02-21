@@ -52,6 +52,15 @@ const Teacherdetails = () => {
           <h2 className="card-title">{name}</h2>
           <p>{details}</p>
         </div>
+<<<<<<< HEAD
+        <div className="flex items-center py-2 mx-10 lg:md:text-[18px] text-[16px]">
+          <Link href={`/ourteachers`}>
+            <FaArrowLeft></FaArrowLeft>
+          </Link>
+          <h3 className="px-3">Go To Back</h3>
+        </div>
+=======
+>>>>>>> 548e253fb920f4af281c357107166715ed0e6107
         <div className="p-6">
          
         </div>

@@ -44,9 +44,9 @@ const Signup = () => {
         minute: "2-digit",
     });
 
-    if (gLoading || loading || updating) {
-        return <progress className='progress w-full'></progress>
-    }
+    // if (gLoading || loading || updating) {
+    //     return <progress className='progress w-full'></progress>
+    // }
 
     if (error || gError || updateError) {
         setSignUpError(error?.message || gError?.message || updateError?.message);
@@ -95,6 +95,7 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 if (data.acknowledged) {
                     localStorage.setItem('email', email)
                     swal("Congratulations! Account created successfully", "success")
@@ -148,6 +149,7 @@ const Signup = () => {
     //      googleSubmit()
     // }       
     //     }, [gUser])
+    console.log(errors)
 
     return (
         <>
@@ -198,16 +200,21 @@ const Signup = () => {
                                                 message: 'Email is required'
                                             }
                                         })} />
+                                    {errors.email && <span className='text-red-500 text-start pr-3'><small>{errors.email.message}</small></span>}
                                     <input type="password"
                                         placeholder="Password"
                                         className="input lg:md:w-full max-w-sm lg:md:max-w-md bg-[#F7F7F7] border-[2px] border-[#e5e3e3] focus:border-[2px] focus:border-[#e5e3e3] mb-[10px]"
                                         {...register("password", {
+                                            pattern: {
+                                                value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*\(\)_\+~`\-={}[\]:;"'<>,\.\?\/]).{8,}$/,
+                                                message: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character and must be at least 8 characters"
+                                            },
                                             required: {
                                                 value: true,
-                                                message: 'Password is required'
+                                                message: 'Password is required'                                                
                                             }
                                         })} />
-
+                                    {errors.password && <span className='text-red-500 text-start pr-3'><small>{errors.password.message}</small></span>}
                                     <button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[40%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]" type="submit">CREATE ACCOUNT</button>
                                     {/* <div className="text-center font-bold text-lg my-[20px]">OR</div> */}
                                 </form>

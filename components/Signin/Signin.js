@@ -30,9 +30,9 @@ const Signin = () => {
     });
 
 
-    if (gLoading || loading) {
-        return <progress className='progress w-full'></progress>
-    }
+    // if (gLoading || loading) {
+    //     return <progress className='progress w-full'></progress>
+    // }
 if(error){
     console.log(error)
 }
@@ -87,6 +87,7 @@ console.log(user)
                                                 message: 'Password is required'
                                             }
                                         })} />
+                                        <p className="text-red-500 mt-2 text-[14px] text-center">{error ? error.message : ''}</p>
 
                                     <button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[40%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]" type="submit">LOG IN</button>
                                     {/* <div className="text-center font-bold text-lg my-[20px]">OR</div> */}
