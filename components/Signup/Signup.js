@@ -207,7 +207,7 @@ const Signup = () => {
                                         {...register("password", {
                                             pattern: {
                                                 value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*\(\)_\+~`\-={}[\]:;"'<>,\.\?\/]).{8,}$/,
-                                                message: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+                                                message: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character and must be at least 8 characters"
                                             },
                                             required: {
                                                 value: true,
