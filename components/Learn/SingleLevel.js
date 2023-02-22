@@ -169,7 +169,7 @@ const SingleLevel = () => {
                     {lv?.question[currentQuestion]?.options.map((opt) => (
                       <div key={opt?.opt} className="form-control">
                         <button
-                          className="lg:md:text-xl text-md btn bg-[#fff] border-[2px] 
+                          className="lg:md:text-[16px] text-[14px] btn bg-[#fff] border-[2px] 
                                             border-[rgb(13,201,75)] hover:border-[rgb(13,201,75)] hover:bg-[#d3f7de] mb-2 text-[#AAADBA] "
                           onClick={() => handleAnswerOptionClick(opt?.opt)}
                         >
