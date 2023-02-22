@@ -7,8 +7,8 @@ const index = () => {
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <Navbar></Navbar>
-      <section className="mx-36">
-        <h2 className="text-center text-5xl font-bold my-24">
+      <section className="mx-12">
+        <h2 className="text-center text-4xl font-bold my-24">
           Terms and Conditions of Service
         </h2>
         <section className="text-justify">
