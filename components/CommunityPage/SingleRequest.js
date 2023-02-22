@@ -36,13 +36,13 @@ const SingleRequest = ({ reqSta, refetch }) => {
                 refetch
             })
     }
-
+    console.log(reqSta)
     return (
         <div
 
         >
-            <div className="card w-52 border border-inherit">
-                <figure><img src={reqSta.senderImg} alt="Profile Picture" className='w-52 h-44 object-cover' /></figure>
+            <div className="card border border-inherit">
+                <figure><img src={reqSta.senderImg} alt="Profile Picture" className='h-44 object-cover' /></figure>
                 <div className="items-center text-center flex flex-col mt-2 mb-5">
                     <h2 className="card-title my-2">{reqSta.senderName}</h2>
                     <div className="flex">

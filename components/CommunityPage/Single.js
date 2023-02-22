@@ -94,7 +94,7 @@ const Single = ({ singlePost }) => {
         <div>
             <div className=' bg-white p-3 rounded-2xl mt-5 border border-inherit'>
                 <div className="dropdown dropdown-top dropdown-hover">
-                    <label tabIndex={0} className="flex justify-center items-center">
+                    <label tabIndex={0} className="flex justify-center items-center cursor-pointer hover:text-green-300">
                         <div className="mr-2">
                             <div className="avatar p-1  hover:bg-green-300 rounded-full">
                                 <div className="w-10 rounded-full bg-green-400 ring-2 ring-gray-50">
@@ -107,7 +107,7 @@ const Single = ({ singlePost }) => {
                             </div>
                         </div>
                         <div>
-                            <h1 className='text-[17px] font-semibold' onClick={() => setShowModal(true)}>{name}</h1>
+                            <h1 className='text-[17px] font-semibold ' onClick={() => setShowModal(true)}>{name}</h1>
                             <p className='text-[12px]' >at :{postTime}</p>
                         </div>
                     </label>

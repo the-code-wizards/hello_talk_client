@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
+import Loader from '../Shared/Loader';
 
 const TopAuthor = () => {
     const [user, error] = useAuthState(auth);
@@ -82,6 +83,7 @@ const TopAuthor = () => {
     }
 
     const topAuthorList = (sortedUser) => {
+        setLoading(true)
         fetch('https://hello-talk-webserver.vercel.app/community/topAuthors', {
             method: 'POST',
             headers: {
@@ -91,6 +93,7 @@ const TopAuthor = () => {
         })
             .then((res) => res.json())
             .then((data) => {
+                setLoading(false)
                 alert('Top Author Upadated');
                 console.log(data);
             });
@@ -149,18 +152,9 @@ const TopAuthor = () => {
                         </div>
                     </div>
                 </div>
-                {/* {
-                user?.email === "galib@gmail.com" ?
-                    <div className='flex justify-center'>
-                        <button className='btn btn-sm w-2/4' onClick={reloadFetch}>Reload </button>
-                    </div>
-                    :
-                    <>
-                    </>
-            } */}
-
+               
                 <div className="px-8 pb-4">
-                    {
+                    {isLoading ? <Loader/> :
                         topAuthors.slice(3, 10).map((slice, i) =>
                             <div className='grid grid-cols-12 bg-white p-2 rounded-lg mt-2 border border-[#005C85]'
                                 key={i}>
