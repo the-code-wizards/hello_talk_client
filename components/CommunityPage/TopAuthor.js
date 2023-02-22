@@ -167,7 +167,7 @@ const TopAuthor = () => {
                     </div>
                 </div>
                 {
-                    singleUser?.role === "admin" ?
+                    singleUser?.role === "admi" ?
                         <div className='flex justify-center'>
                             <button className='btn btn-sm w-2/4' onClick={reloadFetch}>Reload </button>
                         </div>

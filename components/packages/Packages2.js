@@ -1,6 +1,11 @@
+import Link from 'next/link';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Packages2 = () => {
+    const [user] = useAuthState(auth);
+
     return (
         <section className="text-gray-600 body-font overflow-hidden">
             <div className="container px-5  mx-auto">
@@ -36,7 +41,7 @@ const Packages2 = () => {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16"> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" /> </svg>
                                 </span>Read all premium blog articles for free
                             </p>
-                            <button className="flex items-center mt-auto text-white bg-[#61B800] border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Already Using
+                            <button className="flex items-center mt-auto text-white bg-[#61B800] border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded " disabled  >Already Using
                                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
@@ -87,11 +92,20 @@ const Packages2 = () => {
                                     </svg>
                                 </span>Read all premium blog articles for free
                             </p>
-                            <button className="flex items-center mt-auto text-white bg-[#61B800] border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Pay Now
-                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </button>
+                            {user ?
+                                <Link href="payments/63f60cc987cfb8eeac02b85c"> <button className="flex items-center mt-auto text-white bg-[#61B800] border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Pay Now
+                                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </button></Link>
+                                :
+                                <Link href="/signin"> <button className="flex items-center mt-auto text-white bg-[#61B800] border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Pay Now
+                                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </button></Link>
+
+                            }
                             <p className="text-xs text-gray-500 mt-3">Literally you probably haven&apos;t heard of them jean shorts.</p>
                         </div>
                     </div>
