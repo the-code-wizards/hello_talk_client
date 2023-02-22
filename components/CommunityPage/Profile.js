@@ -40,12 +40,12 @@ const Profile = () => {
                             <div className='flex flex-col justify-center items-center mt-1'>
                                 <p className='text-center badge badge-outline'>@{singleUser.name}9</p>
                                 <div className='mt-4 flex'>
-                                    <Link href="" className='mx-2 flex justify-center items-center  border rounded-lg px-2 py-1 text-white bg-[#046892] hover:bg-white hover:text-black hover:border-2 hover:border-inherit'>
+                                    <Link href="/messages" className='mx-2 flex justify-center items-center  border rounded-lg px-2 py-1 text-white bg-[#046892] hover:bg-white hover:text-black hover:border-2 hover:border-inherit'>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z" /> </svg>
                                         <span className='ml-1'>Messages</span>
                                     </Link>
                                     <div className="divider divider-horizontal mx-[-0.5rem]"></div>
-                                    <Link href="" className='mx-2 flex justify-center items-center border-2 border-inherit rounded-lg py-1 px-2 hover:bg-[#a4a7a8] hover:text-white'>
+                                    <Link href="/friendrequest" className='mx-2 flex justify-center items-center border-2 border-inherit rounded-lg py-1 px-2 hover:bg-[#a4a7a8] hover:text-white'>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-friends" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <circle cx="7" cy="5" r="2" /> <path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" /> <circle cx="17" cy="5" r="2" /> <path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" /> </svg>
                                         <span className='ml-1'>Friends</span>
                                         <div className="badge ml-1 badge-[#a4a7a8]">+9</div>

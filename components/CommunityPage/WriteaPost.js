@@ -45,8 +45,7 @@ const WriteaPost = () => {
                 // navigate("/dashboard/myproducts")
                 // reset()
                 swal(
-                    'Your question is Posted. You got 2 jems',
-                    'Possible reponse is near !',
+                    'Your question is Posted. You got 2 Gems',
                     'success'
                 )
             })
@@ -63,14 +62,14 @@ const WriteaPost = () => {
                             {singleUser?.photoURL ? (
                                 <img src={singleUser?.photoURL} />
                             ) : (
-                                <span className="flex justify-center mt-[15px] text-[1.2rem]">
+                                <span className="flex justify-center mt-[5px] text-[1.2rem]">
                                     {singleUser?.name?.slice(0, 2)}
                                 </span>
                             )}
                         </div>
                     </div>
                 </div>
-                <input type="text" name="" id="" className='input input-bordered  rounded-full border-[#005C85]  ml-2  w-full bg-[#F0F2F5] px-2' readOnly onClick={() => setShowModal(true)} placeholder="Post your question..." />
+                <input type="text" name="" id="" className='input input-bordered  rounded-full border-[#005C85]  ml-2  w-full bg-[#F0F2F5] px-2 cursor-pointer' readOnly onClick={() => setShowModal(true)} placeholder="Post your question..." />
             </div>
             {showModal ? (
                 <>
@@ -85,29 +84,27 @@ const WriteaPost = () => {
                                     <h3 className="text-xl font-semibold text-center">
                                         Write your Question
                                     </h3>
-                                    <button className=" btn btn-ghost rounded-full" onClick={() => setShowModal(false)}>X</button>
+                                    <button className=" bg-[#58cc02] border-[#61B800] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] hover:bg-[#61E002] " onClick={() => setShowModal(false)}>X</button>
 
                                 </div>
                                 {/*body*/}
                                 <form onSubmit={handlePost}>
-                                    <div className="relative p-6 flex-auto ">
+                                    <div className="relative px-6 flex-auto ">
                                         <label className="label">
-                                            <span className="label-text">Question Title:</span>
+                                            <span className="label-text text-[#333] font-semibold">Question Title:</span>
                                         </label>
-                                        <input type="text" name="title" placeholder="Type here" className="input input-bordered w-full" required />
+                                        <input type="text" name="title" placeholder="Type here" className="input input-bordered w-full bg-[#ddd] placeholder:text-[14px]" required />
                                         <label className="label">
-                                            <span className="label-text"> Questions on details:</span>
+                                            <span className="label-text text-[#333] font-semibold"> Question details:</span>
                                         </label>
-                                        <textarea name='textarea' className="textarea w-[600px] input-bordered " placeholder="Your question" required></textarea>
+                                        <textarea name='textarea' className="textarea w-[600px] placeholder:text-[14px] bg-[#ddd] input-bordered " placeholder="Your question" required></textarea>
 
                                     </div>
                                     {/*footer*/}
-                                    <div className="flex items-center justify-end  border-t border-solid border-slate-200 rounded-b">
+                                    <div className="flex items-center justify-end  border-t border-solid border-slate-200 rounded-b my-4">
                                         <button
-                                            className="btn btn-md btn-ghost mr-2"
+                                            className="bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] mr-2"
                                             type="submit"
-
-
                                         >
                                             Post
                                         </button>
