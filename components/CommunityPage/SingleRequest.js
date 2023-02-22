@@ -41,9 +41,19 @@ const SingleRequest = ({ reqSta, refetch }) => {
         <div
 
         >
-            <div className="card border border-inherit">
-                <figure><img src={reqSta.senderImg} alt="Profile Picture" className='h-44 object-cover' /></figure>
-                <div className="items-center text-center flex flex-col mt-2 mb-5">
+            <div className="card border border-inherit flex justify-between">
+                <div className="avatar">
+                    <div className="w-10 rounded-full bg-[#d6e8ff] ring-2 ring-gray-50 mr-2">
+                        {reqSta.senderImg ? (
+                            <img src={reqSta.senderImg} />
+                        ) : (
+                            <span className="flex justify-center mt-[5px] text-[1.2rem] text-[#333]">
+                                {reqSta.senderName?.slice(0, 2)}
+                            </span>
+                        )}
+                    </div>
+                </div>
+                <div className="items-center text-center flex flex-col">
                     <h2 className="card-title my-2">{reqSta.senderName}</h2>
                     <div className="flex">
                         <button className="btn btn-sm btn-primary" onClick={handleAccept}>Accept</button>

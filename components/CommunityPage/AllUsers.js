@@ -75,7 +75,7 @@ const AllUsers = () => {
     };
 
     return (
-        <div className="drawer md:drawer-mobile md:pt-[4.5rem] pt-[4rem] z-[10] fixed left-0 top-0">
+        <div className="drawer md:drawer-mobile  z-[10] left-0 top-0">
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
             <div className="pt-4 bg-[#2D61A0] lg:md:pr-[30px] h-full ">
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
@@ -88,7 +88,7 @@ const AllUsers = () => {
                 {loading ? <Loader />
                     :
                     (
-                        <div className="max-h-[calc(100vh-4.5rem-4rem-80px)] overflow-y-auto scrollbar-hidden mt-2">
+                        <div className="max-h-[calc(100vh)] overflow-y-auto scrollbar-hidden mt-2">
                             {nonFriends.map((user) => (
                                 <div key={user.id} className="flex items-center p-3">
                                     <div className="avatar">
