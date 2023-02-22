@@ -169,6 +169,9 @@ input::placeholder {
 .result {
   color: #666ee8;
 }
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
 
 /* 
 The StripeElement class is applied to the Element container by default.
