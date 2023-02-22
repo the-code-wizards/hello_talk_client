@@ -54,15 +54,15 @@ const Single = ({ singlePost }) => {
 
     const handleAddFriend = () => {
         const friendData = {
-            senderEmail: singleUser.email,
-            senderImg: singleUser.photoUrl,
+            senderEmail: user.email,
+            senderImg: singleUser.photoURL,
             senderName: singleUser.name,
             reciverEmail: email,
             reciverImg: photoUrl,
             reciverName: name,
             status: "pending"
         }
-        fetch("https://hello-talk-webserver.vercel.app/connect", {
+        fetch("https://hello-talk-webserver.vercel.app/community/connect", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -71,6 +71,7 @@ const Single = ({ singlePost }) => {
         })
             .then(res => res.json())
             .then(res => {
+                console.log(res)
                 if (res.insertedId) {
                     // console.log(res)
                     refetch()
