@@ -5,14 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { BsArrowBarLeft, IconName } from "react-icons/bs";
 import useSingleUser from '../../components/hooks/useSingleUser';
 import Navbar from '../../components/Shared/Navbar/Navbar';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 
 const Coursedetails = () => {
-  const [user, error] = useAuthState(auth);
-  if (!user) {
-    window.location.href = '/signin';
-  }
   const [singleUser] = useSingleUser()
   const [courseDetails, setCourseDetails] = useState({});
   const { title, picture, details, offer_price, price, date } = courseDetails;

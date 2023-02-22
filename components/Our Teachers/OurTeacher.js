@@ -3,38 +3,25 @@ import React from "react";
 import Link from "next/link";
 
 const OurTeacher = ({ teacher }) => {
-  const { _id, name, image, qualification } = teacher;
+  const { _id, name, image, qualification, details } = teacher;
   return (
-    // <Card>
-    <div className="flex md:flex-row flex-col items-center gap-2 rounded-xl shadow-xl hover:shadow-2xl p-10">
-      <div className="avatar">
-        <div className="w-24  rounded-full">
-          <img src={image} />
-        </div>
-      </div>
-      {/* <div className="flex items-end justify-start">
-        <img
-          src={image}
-          className="lg:md:rounded-l-lg rounded-lg object-cover lg:md:h-40 lg:md:w-40 w-full lg:md:p-0 p-4"
-          alt="teacher-img"
-        />
-      </div> */}
-      <div className="flex-1 px-5">
-        <div className="">
-          <h2 className="font-bold lg:md:text-2xl text-xl text-[#58cc02]">
-            {name}
-          </h2>
-          <p className="text-[15px]">{qualification}</p>
-        </div>
-        <div className="flex justify-end items-center py-2 mx-3">
-          <Link className="flex items-center" href={`/ourteacher/${_id}`}>
-          <p className="px-3">Details</p>
-            <FaArrowRight></FaArrowRight>
-          </Link>
-        </div>
-      </div>
+    <div className="card bg-base-100 shadow-xl max-h-[500px] border-[#58cc02] border-2">
+  {/* <figure className="px-10 pt-10"> */}
+  <div className="avatar flex justify-center items-center mt-5">
+  <div className="w-32 rounded-full">
+    <img src={image} alt={name}/>
+  </div>
+</div>
+  {/* </figure> */}
+  <div className="card-body items-center text-center">
+    <h2 className="card-title text-2xl font-featherBold">{name}</h2>
+    <p>{qualification}</p>
+    <div className="card-actions">
     </div>
-    // </Card>
+     <Link href={`/ourteacher/${_id}`}> <button className="btn bg-[#58cc02] border-none w-full gap-3 hover:scale-90 animation-200">View Details <FaArrowRight className=""></FaArrowRight></button></Link>
+  </div>
+</div>
+
   );
 };
 

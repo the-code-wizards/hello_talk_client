@@ -26,7 +26,6 @@ const AddTeacherCard = ({applied, refetch}) => {
         .then(data => {
             if(data.acknowledged){
                 alert('Teacher added')
-                console.log(data)
                 refetch
             }
         })

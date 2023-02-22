@@ -2,8 +2,8 @@ import Head from 'next/head';
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AllCourses from '../../components/Dashboard/UserComps/AllCourses';
-import PrivateRoute from '../../components/hooks/privateRoute';
 import Navbar from '../../components/Shared/Navbar/Navbar';
+// import PrivateRoute from '../../components/hooks/privateRoute';
 
 const allcourses = () => {
   return (

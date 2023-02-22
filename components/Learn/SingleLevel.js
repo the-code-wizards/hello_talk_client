@@ -22,6 +22,8 @@ const SingleLevel = () => {
   const [gems, setGems] = useState();
   const [singleUser, loading] = useSingleUser();
   const [token, setToken] = useState();
+  const [goNext, setGoNext] = useState();
+  const [goPrev, setGoPrev] = useState();
   console.log('Gem: ', gems);
   const mygem = {
     mGem: gems,
@@ -83,29 +85,28 @@ const SingleLevel = () => {
     }
   };
   const prevLevel = () => {
+    window.location.href = `/level/${parseInt(lv?.level) - 1}`;
     // router.push(`/level/${parseInt(lv?.level) - 1}`);
-    window.location.href = `/level/${parseInt(lv?.level) - 1}`
   };
+  // useEffect(()=>{
   const nextLevel = () => {
     if (singleUser?.completed_lv?.includes(lv?.level)) {
       setGems(0);
+      window.location.href = `/level/${parseInt(lv?.level) + 1}`;
     } else {
       if (score !== null) {
         const percentage = score / lv?.question?.length;
-        console.log(percentage)
-        if (percentage > 0.5 ) {
+        if (percentage > 0.5) {
           setGems(3);
-          window.location.href = `/level/${parseInt(lv?.level) + 1}`
-          // router.push(`/level/${parseInt(lv?.level) + 1}`);
-        } else if (percentage > 0 && percentage <= 0.5) {
+        } else {
           setGems(2);
-           window.location.href = `/level/${parseInt(lv?.level) + 1}`
-          // router.push(`/level/${parseInt(lv?.level) + 1}`);
         }
+        window.location.href = `/level/${parseInt(lv?.level) + 1}`;
+        // router.push(`/level/${parseInt(lv?.level) + 1}`);
       } else {
         setGems(1);
-         window.location.href = `/level/${parseInt(lv?.level) + 1}`
         // router.push(`/level/${parseInt(lv?.level) + 1}`);
+        window.location.href = `/level/${parseInt(lv?.level) + 1}`;
       }
 
       fetch(`https://hello-talk-webserver.vercel.app/savelevel?email=${user?.email}`, {
@@ -124,6 +125,7 @@ const SingleLevel = () => {
         });
     }
   };
+  // }, [])
   if (loading || loadingTwo) {
     return (
       <div className="w-[300px] h-[300px] mx-auto">
@@ -136,7 +138,7 @@ const SingleLevel = () => {
       <Head>
         <title>Level {lv?.level}</title>
       </Head>
-      <div className="px-16 pt-8">
+      <div className="lg:md:px-16 px-10 pt-8">
         {/* <Link href="/learn" className=''>Go Back</Link> */}
         {!user ? (
           <>
@@ -146,7 +148,7 @@ const SingleLevel = () => {
           </>
         ) : (
           <>
-            <div className="px-8 pb-8 shadow-xl">
+            <div className="lg:md:px-8 px-3 pb-8 shadow-xl">
               {showScore ? (
                 <>
                   <div className="w-[300px] h-[300px]  mx-auto">
@@ -160,15 +162,15 @@ const SingleLevel = () => {
               ) : singleLevel[0]?.question ? (
                 <>
                   <div className="mb-4">
-                    <h2 className="text-xl text-green-500 font-bold text-center mb-2">
+                    <h2 className="lg:md:text-xl text-lg text-green-500 font-bold text-center lg:md:mb-2 mb-4">
                       {lv?.question[currentQuestion]?.question_no}.{' '}
                       <span>{lv?.question[currentQuestion]?.question}</span>
                     </h2>
                     {lv?.question[currentQuestion]?.options.map((opt) => (
                       <div key={opt?.opt} className="form-control">
                         <button
-                          className="btn bg-[#fff] border-[2px] 
-                                            border-[rgb(13,201,75)] hover:border-[rgb(13,201,75)] hover:bg-[#d3f7de] mb-2"
+                          className="lg:md:text-xl text-md btn bg-[#fff] border-[2px] 
+                                            border-[rgb(13,201,75)] hover:border-[rgb(13,201,75)] hover:bg-[#d3f7de] mb-2 text-[#AAADBA] "
                           onClick={() => handleAnswerOptionClick(opt?.opt)}
                         >
                           {opt?.opt}

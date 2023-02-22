@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 
 const useOrderList = () => {
     const [levels, setLevels] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading2, setLoading2] = useState(true);
 
 
 
     useEffect(() => {
-        setLoading(true);
+        setLoading2(true);
         axios.get(`https://hello-talk-webserver.vercel.app/levels`)
             .then((res) => {
                 setLevels(res.data);
@@ -17,11 +17,11 @@ const useOrderList = () => {
                 console.log(err);
             })
             .finally(() => {
-                setLoading(false);
+                setLoading2(false);
             });
     }, []);
 
-    return [levels, loading];
+    return [levels, loading2];
 };
 
 export default useOrderList;

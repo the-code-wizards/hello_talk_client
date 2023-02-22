@@ -1,15 +1,17 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 
 const Footer = () => {
+  const router = useRouter();
   const [user] = useAuthState(auth);
   const getStarted = () => {
     if (!user) {
-      window.location.href = '/signin';
+      router.push('/signin');
     } else {
-      window.location.href = '/learn';
+      router.push('/learn');
     }
   };
   return (
@@ -50,8 +52,6 @@ const Footer = () => {
             <Link href="/contact/" className=" link link-hover">
               Contact
             </Link>
-            {/* <Link href="/" className=" link link-hover">Jobs</Link>
-                        <Link href="/" className=" link link-hover">Press kit</Link> */}
           </div>
           <div>
             <span className=" footer-title">Legal</span>
@@ -61,7 +61,6 @@ const Footer = () => {
             <Link href="/privacy/" className=" link link-hover">
               Privacy policy
             </Link>
-            {/* <Link href="/" className=" link link-hover">Cookie policy</Link> */}
           </div>
         </footer>
       </div>

@@ -17,24 +17,25 @@ const Navbar = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [nav, setNav] = useState(false);
-  const [color, setColor] = useState('rgba(255, 255, 255, 1)');
-  const [backgroundColor, setBackgroundColor] = useState('rgba(0, 0, 0, 0)');
+  const [color, setColor] = useState('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#a855f7)');
+  const [backgroundColor, setBackgroundColor] = useState('rgba(255, 255, 255, 1)');
   const [textColor, setTextColor] = useState('white');
   const [headerText, setHeaderText] = useState('HelloTalk');
 
-  console.log(router);
-  useEffect(() => {
-    if (router.pathname.includes('/') || router.pathname.includes('/community')) {
-      setBackgroundColor('rgba(0, 0, 0, 0)')
-    }
-    if (router.pathname.includes('/community')) {
-      setHeaderText('HelloTalk Cmnty');
-    } else {
-      setHeaderText('HelloTalk');
-    }
-  }, []);
+  // console.log(router);
+  // useEffect(() => {
+  //   if (router.pathname.includes('/') || router.pathname.includes('/community')) {
 
-  console.log(user);
+  //     setBackgroundColor('rgba(0, 0, 0, 0)')
+  //   }
+  //   if (router.pathname.includes('/community')) {
+  //     setHeaderText('HelloTalk Cmnty');
+  //   } else {
+  //     setHeaderText('HelloTalk');
+  //   }
+  // }, [router.pathname]);
+
+  // console.log(user);
   useEffect(() => {
     if (!user) return;
 
@@ -42,7 +43,7 @@ const Navbar = () => {
     axios
       .get(`https://hello-talk-webserver.vercel.app/profile?email=${user?.email}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setSingleUser(res.data);
         setLoading(false);
       })
@@ -66,7 +67,7 @@ const Navbar = () => {
   useEffect(() => {
     const changeColor = () => {
       if (router.pathname === '/' || router.pathname === '/community') {
-        if (window.scrollY >= 200) {
+        if (window.scrollY >= 150) {
           setColor('linear-gradient(to right,  rgb(25, 72, 129), rgb(63 121 193),#a855f7)');
           setBackgroundColor('rgba(0, 0, 0, 0)');
           setTextColor('#ffffff');
@@ -88,10 +89,10 @@ const Navbar = () => {
   }, [router.pathname]);
 
   return (
-    <nav className="relative z-10">
+    <nav className="relative z-40">
       <div
         style={{ background: color, backgroundColor: backgroundColor }}
-        className="lg:md:px-10 px-0 shadow-xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300"
+        className="lg:md:px-10 px-0 shadow-2xl navbar mx-auto fixed py-0  left-0 top-0 w-full ease-out duration-300"
       >
         <div className="navbar-start ">
           <div className="dropdown">
@@ -166,6 +167,15 @@ const Navbar = () => {
                     <Link href="/dashboard">Dashboard</Link>
                   </li>
                   <li>
+                    <Link href="/helpsupport">Help & Support</Link>
+                  </li>
+                  <li>
+                    <Link href="/messages">Messages</Link>
+                  </li>
+                  <li>
+                    <Link href="/friendrequest">Friend Requests</Link>
+                  </li>
+                  <li>
                     {' '}
                     <button
                       className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
@@ -198,7 +208,11 @@ const Navbar = () => {
               height={50}
             />
             <p className="ml-2 w-full normal-case text-xl lg:text-2xl text-white font-featherBold">
+<<<<<<< HEAD
            {headerText}
+=======
+              {headerText}
+>>>>>>> 44172959292b153b5c20c284b97b899d7a5c863b
             </p>
           </Link>
         </div>
@@ -273,6 +287,15 @@ const Navbar = () => {
                             <Link href="/dashboard">Dashboard</Link>
                           </li>
                           <li>
+                            <Link href="/helpsupport">Help & Support</Link>
+                          </li>
+                          <li>
+                            <Link href="/messages">Messages</Link>
+                          </li>
+                          <li>
+                            <Link href="/friendrequest">Friend Requests</Link>
+                          </li>
+                          <li>
                             {' '}
                             <button
                               className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002] lg:md:w-full w-[100px] lg:md:mx-0 mx-auto"
@@ -285,7 +308,10 @@ const Navbar = () => {
                       ) : (
                         <>
                           <li>
-                            <Link href="/dashboard/myprofile">My Profile</Link>
+                            <Link href="/dashboard">Dashboard</Link>
+                          </li>
+                          <li>
+                            <Link href="/helpsupport">Help & Support</Link>
                           </li>
                           <li>
                             <Link href="/messages">Messages</Link>

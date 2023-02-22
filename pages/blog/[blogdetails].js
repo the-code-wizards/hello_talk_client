@@ -4,12 +4,9 @@ import { useRouter } from "next/router";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import Link from "next/link";
 import Head from "next/head";
-import Lottie from "lottie-react";
-import loader from "../../resources/lottieJson/loader.json"
-
 const Blogdetails = () => {
   const [blogDetails, setBlogDetails] = useState({});
-  const [loading, setLoading] = useState(true);
+
   const router = useRouter();
   const blogid = router.query.blogdetails;
 
@@ -26,19 +23,11 @@ const Blogdetails = () => {
   } = blogDetails;
 
   useEffect(() => {
-    setLoading(true);
     fetch(`https://hello-talk-webserver.vercel.app/blogs/${blogid}`)
       .then((res) => res.json())
-      .then((data) => {
-        setBlogDetails(data)
-        setLoading(false);
-      });  
+      .then((data) => setBlogDetails(data));
   }, [blogid]);
-  if (loading) {
-    return <div className="w-[300px] h-[300px] mx-auto">
-      <Lottie animationData={loader} loop={true} />
-    </div>;
-  }
+
   return (
     <>
       <Head>

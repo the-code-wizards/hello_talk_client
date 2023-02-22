@@ -1,10 +1,11 @@
-import Head from "next/head";
-import { Inter } from "@next/font/google";
-import HomePage from "../components/Home/HomePage";
-import Flashcards from "../components/Flashcards/Flashcards";
-import Community from "../components/CommunityPage/Community";
-import Cert from "../components/Learn/Cert";
-const inter = Inter({ subsets: ["latin"] });
+import Head from 'next/head';
+import { Inter } from '@next/font/google';
+import HomePage from '../components/Home/HomePage';
+import Flashcards from '../components/Flashcards/Flashcards';
+import Community from '../components/CommunityPage/Community';
+import Cert from '../components/Learn/Cert';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (

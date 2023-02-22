@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import DashSidebar from '../../components/Dashboard/DashSidebar';
 import AddCourse from '../../components/Dashboard/UserComps/AddCourse';
-import PrivateRoute from '../../components/hooks/privateRoute';
+// import PrivateRoute from '../../components/hooks/privateRoute';
 import Navbar from '../../components/Shared/Navbar/Navbar';
 
 const index = () => {
@@ -19,9 +19,15 @@ const index = () => {
             <AddCourse />
           </div>
         </div>
+<<<<<<< HEAD
       {/* </PrivateRoute> */}
     </div>
   );
+=======
+        {/* </PrivateRoute> */}
+        </div>
+    );
+>>>>>>> 44172959292b153b5c20c284b97b899d7a5c863b
 };
 
 export default index;

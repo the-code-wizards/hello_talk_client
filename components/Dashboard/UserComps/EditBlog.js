@@ -47,7 +47,7 @@ const EditBlog = () => {
         setBlogDetails(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       })
       .finally(() => {
         setLoading(false);
@@ -146,7 +146,7 @@ const EditBlog = () => {
 
   return (
     <div>
-      <div className=" pt-[4.5rem] w-full -z-10">
+      <div className=" pt-[4.5rem] w-full  ">
         <div className="">
           <div className="card-body">
             <h2 className="card-title text-[#333]">Edit Blog</h2>

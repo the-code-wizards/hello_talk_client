@@ -61,7 +61,7 @@ const PrivacyPolicy = () => {
   };
 
   return (
-    <div className="py-24 w-[90%] mx-auto -z-10">
+    <div className="py-24 w-[90%] mx-auto  ">
       <div className="bg-[#1A4982] py-3 rounded-xl">
         <h2 className="py-3 capitalize text-lg text-white text-center">Add Privacy and Policy</h2>
         <div className="">

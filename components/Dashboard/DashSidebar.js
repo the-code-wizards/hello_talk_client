@@ -7,8 +7,7 @@ import useSingleUser from '../hooks/useSingleUser';
 
 const DashSidebar = () => {
   const [user] = useAuthState(auth);
-  const [singleUser] = useSingleUser({});
-  console.log(singleUser);
+  const [singleUser] = useSingleUser();
   return (
     <div className="drawer md:drawer-mobile md:pt-[4.5rem] pt-[4rem] md:sticky fixed left-0 top-0 h-screen">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -127,24 +126,64 @@ const DashSidebar = () => {
             <>
               {singleUser?.role === 'teacher' ? (
                 <>
+                    <li>
+                      <Link href="/dashboard">Dashboard</Link>
+                    </li>
                 <li>
                     <Link href="/dashboard/myprofile">My Profile</Link>
                 </li>
                 <li>
                     <Link href="/dashboard/makelive/">Make Live</Link>
                 </li>
+                    <div className="collapse">
+                      <input type="checkbox" className="peer" />
+                      <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
+                        Blogs
+                        <div className="ml-2">
+                          <BsChevronDown />
+                        </div>
+                      </div>
+                      <div className="collapse-content bg-[#194881] text-primary-content peer-checked:bg-[#194881] peer-checked:text-secondary-content">
+                        <li>
+                          <Link href="/dashboard/addblog">Add Blog</Link>
+                        </li>
+                        <li>
+                          <Link href="/dashboard/allblogs">All Blogs</Link>
+                        </li>
+                      </div>
+                    </div>
                 <li>
                     <Link href="/dashboard/premiumblog">Premium Blog</Link>
                 </li>
                 </>
               ) : (
-                <>
+                    <>
+                      <li>
+                        <Link href="/dashboard">Dashboard</Link>
+                      </li>
                   <li>
                     <Link href="/dashboard/myprofile">My Profile</Link>
                   </li>
                   <li>
                     <Link href="/dashboard/mycourses">My Courses</Link>
                   </li>
+                      <div className="collapse">
+                        <input type="checkbox" className="peer" />
+                        <div className="collapse-title flex items-center bg-[#194881] text-primary-content peer-checked:bg-[#194881]peer-checked:text-secondary-content">
+                          Blogs
+                          <div className="ml-2">
+                            <BsChevronDown />
+                          </div>
+                        </div>
+                        <div className="collapse-content bg-[#194881] text-primary-content peer-checked:bg-[#194881] peer-checked:text-secondary-content">
+                          <li>
+                            <Link href="/dashboard/addblog">Add Blog</Link>
+                          </li>
+                          <li>
+                            <Link href="/dashboard/allblogs">All Blogs</Link>
+                          </li>
+                        </div>
+                      </div>
                   <li>
                     <Link href="/dashboard/premiumblog">Premium Blog</Link>
                   </li>

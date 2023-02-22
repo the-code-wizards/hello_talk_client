@@ -19,7 +19,7 @@ const Pagination = ({ postsPerPage, SetCurrentPage, filtered, currentPage }) => 
                             <>
                             </>
                             :
-                            <li>
+                            <li className='bg-[#ffff]'>
                                 <a onClick={() => SetCurrentPage(currentPage - 1)} className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
                             </li>
                     }
@@ -27,6 +27,7 @@ const Pagination = ({ postsPerPage, SetCurrentPage, filtered, currentPage }) => 
                         pageNumbers.map((pageNumber, i) =>
                             <li
                                 key={i}
+                                className='bg-[#ffff]'
                             >
                                 <a onClick={() => SetCurrentPage(pageNumber)} className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{pageNumber}</a>
                             </li>
@@ -38,7 +39,7 @@ const Pagination = ({ postsPerPage, SetCurrentPage, filtered, currentPage }) => 
                             <></>
                             :
 
-                            <li>
+                            <li className='bg-[#ffff]'>
                                 <a onClick={() => SetCurrentPage(currentPage + 1)} className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
                             </li>
 
