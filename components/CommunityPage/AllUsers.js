@@ -88,7 +88,7 @@ const AllUsers = () => {
                 {loading ? <Loader />
                     :
                     (
-                        <div className="max-h-[calc(100vh)] overflow-y-auto scrollbar-hidden mt-2">
+                        <div className="max-h-[calc(100vh)-10vh] overflow-y-auto scrollbar-hidden mt-2">
                             {nonFriends.map((user) => (
                                 <div key={user.id} className="flex items-center p-3">
                                     <div className="avatar">
