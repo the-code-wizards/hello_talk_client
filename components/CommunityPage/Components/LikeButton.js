@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiTwotoneLike } from 'react-icons/ai';
 import { useQuery } from 'react-query';
-const LikeButton = ({ id, email }) => {
+import auth from '../../../firebase.init';
+const LikeButton = ({ id }) => {
+    const [user, error] = useAuthState(auth);
     const [likeButton, SetLikeButton] = useState(false)
     const [likeCount, setLikeCount] = useState(0)
 
+    const { email } = user;
+
     const { data: getlikes = [], refetch } = useQuery({
-        queryKey: ["getlikes"],
+        queryKey: ["getlikes", id],
         queryFn: async () => {
             const res = await fetch(`https://hello-talk-webserver.vercel.app/community/totallikes?id=${id}`)
             const data = await res.json();
@@ -44,7 +49,7 @@ const LikeButton = ({ id, email }) => {
         })
             .then(res => res.json())
             .then(res => {
-                // console.log(res)
+                console.log(res)
                 if (res.insertedId) {
                     SetLikeButton(true)
                     refetch()
@@ -57,9 +62,7 @@ const LikeButton = ({ id, email }) => {
     }
 
     const handleUnlike = () => {
-        fetch(`https://hello-talk-webserver.vercel.app/community/like/${id}`, {
-            method: "DELETE",
-        })
+        fetch(`https://hello-talk-webserver.vercel.app/community/unlike?email=${email}&id=${id}`)
             .then(res => res.json())
             .then(res => {
                 console.log(res)
@@ -77,11 +80,11 @@ const LikeButton = ({ id, email }) => {
             {
                 likeButton ?
                     <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span>
-                        <span className='pl-2'>{likeCount}</span>
+                        <span className='pl-2'>{getlikes?.length}</span>
                     </button>
                     :
                     <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span>
-                        <span className='pl-2'>{likeCount}</span>
+                        <span className='pl-2'>{getlikes?.length}</span>
                     </button>
             }
         </div>
