@@ -21,9 +21,9 @@ const Modal = ({ singlePost, setShowModal }) => {
         const postComment = {
             name: user.displayName,
             comment: comment,
-            email: user.email,
+            email: singleUser?.email,
             postTime: Date(),
-            photoUrl: user.photoUrl,
+            photoUrl: singleUser?.photoUrl,
             pid: _id
         }
         // console.log(postComment)
