@@ -6,8 +6,8 @@ const AllFriends = () => {
     const [friends, loading3] = useFriends()
     return (
         <div>
-            <div className="p-4 bg-[#ddd] shadow-xl mb-2">
-                <h2>My Friends</h2>
+            <div className="p-4 bg-[#f5f5f4] shadow-xl mb-2 rounded-md">
+                <h2 className="text-2xl font-bold text-[#333]">My Friends</h2>
                 {
                     loading3 ? <Loader />
                         :
@@ -34,7 +34,7 @@ const AllFriends = () => {
                                 )
                             }):
                                 <div>
-                                    <h2 className="font-bold text-2xl text-center">No Friends in the list yet. <span>Add Some!</span></h2>
+                                    <h2 className="font-bold text-xl text-center">No Friends in the list yet. <span>Add Some!</span></h2>
                                 </div>
                             }
                         </div>
