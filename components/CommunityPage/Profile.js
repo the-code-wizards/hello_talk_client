@@ -16,7 +16,7 @@ const Profile = () => {
     return (
         <div>
 
-            { loading || loading3 ? <Loader/> :
+            {loading || loading3 ? <Loader /> :
                 user &&
                 <>
                     <div className=" w-80 shadow-xl relative mb-40">
@@ -25,16 +25,18 @@ const Profile = () => {
 
                         <div className=' rounded-t-lg p-5 absolute top-4 right-[100px] z-30'>
                             <div className='grid grid-cols-1 place-items-center'>
-                                <div className="avatar ">
-                                    <div className="w-24 rounded-full">
-                                        {
-                                            singleUser?.photoURL ?
-                                                <img src={singleUser?.photoURL} alt="Profile Picture" />
-                                                :
-                                                <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
-                                        }
+                                <Link href="/dashboard/myprofile" target="_blank" className="cursor-pointer">
+                                    <div className="avatar ">
+                                        <div className="w-24 rounded-full">
+                                            {
+                                                singleUser?.photoURL ?
+                                                    <img src={singleUser?.photoURL} alt="Profile Picture" />
+                                                    :
+                                                    <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
+                                            }
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                         <div className='bg-white rounded-t-[25px] rounded-b-lg text-[#404854] absolute top-[100px] h-44 w-full z-20 '>
