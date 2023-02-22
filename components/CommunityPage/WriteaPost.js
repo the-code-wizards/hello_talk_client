@@ -29,7 +29,7 @@ const WriteaPost = () => {
             email: user.email,
             postTime: date,
             title: title,
-            photoUrl: user.photoURL
+            photoUrl: singleUser.photoURL
         }
 
         fetch("https://hello-talk-webserver.vercel.app/community/addapost", {
@@ -56,7 +56,7 @@ const WriteaPost = () => {
 
     return (
         <div>
-            <div className='mt-8 bg-white p-5 rounded-lg flex '>
+            <div className=' bg-white p-5 rounded-lg flex border border-[#005C85]'>
                 <div className='grid grid-cols-1 place-items-center'>
                     <div className="avatar">
                         <div className="w-10 rounded-full bg-[#d6e8ff] ring-2 ring-gray-50">
@@ -70,7 +70,7 @@ const WriteaPost = () => {
                         </div>
                     </div>
                 </div>
-                <input type="text" name="" id="" className='input input-bordered rounded-full input-primary  ml-2  w-full bg-[#F0F2F5] px-2' readOnly onClick={() => setShowModal(true)} placeholder="Post your question..." />
+                <input type="text" name="" id="" className='input input-bordered  rounded-full border-[#005C85]  ml-2  w-full bg-[#F0F2F5] px-2' readOnly onClick={() => setShowModal(true)} placeholder="Post your question..." />
             </div>
             {showModal ? (
                 <>

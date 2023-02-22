@@ -169,7 +169,7 @@ const Single = ({ singlePost }) => {
                             <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
                         </div>
                     </div>
-                    <div>
+                    <div className='hidden lg:block'>
                         <p className='text-[12px]'>Last Activity: {name} | {postTime}</p>
                     </div>
                 </div>

@@ -57,9 +57,15 @@ const Community = () => {
                         </form>
                     </div>
                 </div>
-                <div className='grid grid-cols-12  gap-5 max-w-[1380px] mx-auto'>
-                    <div className=' col-span-3 mt-8 '>
-                        <TopQuestions></TopQuestions>
+                <div className='grid grid-cols-3 md:lg:grid-cols-3 lg:grid-cols-12 gap-5 max-w-[1380px] mx-auto mt-8'>
+                    <div className=' col-span-3'>
+                        <div className='hidden lg:block  '>
+                            <TopQuestions></TopQuestions>
+                        </div>
+                        <div className='block lg:hidden  '>
+                            <Profile></Profile>
+                        </div>
+
                     </div>
 
                     <div className='col-span-6'>
@@ -78,12 +84,13 @@ const Community = () => {
                             ></Posts>
                         </div>
                     </div>
-                    <div className='col-span-3 mt-8 mr-10'>
-                        {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
-                        <Profile></Profile>
-                        {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}
-                        <TopAuthor></TopAuthor>
-
+                    <div className='col-span-3  mr-10'>
+                        <div className='hidden lg:block'>
+                            {/* >>>>>>>>>>>>>>>>>>>> Profile <<<<<<<<<<<<<<<<<< */}
+                            <Profile></Profile>
+                            {/* >>>>>>>>>>>>>>>>>>>>>>>>>Leader borad<<<<<<<<<<<<<<<<<<< */}
+                            <TopAuthor></TopAuthor>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ const TopQuestions = () => {
     })
 
     return (
-        <div className='w-76 bg-white rounded-lg p-3 border border-[#005C85]'>
+        <div className='w-76 bg-white rounded-lg p-3 border '>
             <h1 className='text-center font-semibold text-[20px]'>Top Questions</h1>
             <div className="divider "></div>
             {
