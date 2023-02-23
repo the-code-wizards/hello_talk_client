@@ -108,7 +108,7 @@ const MyProfile = () => {
             <span>Are you a teacher? If you are a teacher you can now apply for a teaching role.</span>
           </div>
           <div className="">
-            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c]">Apply now</button></Link>
+            <Link href='/dashboard/applyteacher'><button className="btn btn-sm bg-[#2C5F9E] border-b-4 border-[#264d7c] text-[#fff]">Apply now</button></Link>
           </div>
         </div>
       </div>

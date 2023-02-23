@@ -22,20 +22,6 @@ const Navbar = () => {
   const [textColor, setTextColor] = useState('white');
   const [headerText, setHeaderText] = useState('HelloTalk');
 
-  // console.log(router);
-  // useEffect(() => {
-  //   if (router.pathname.includes('/') || router.pathname.includes('/community')) {
-
-  //     setBackgroundColor('rgba(0, 0, 0, 0)')
-  //   }
-  //   if (router.pathname.includes('/community')) {
-  //     setHeaderText('HelloTalk Cmnty');
-  //   } else {
-  //     setHeaderText('HelloTalk');
-  //   }
-  // }, [router.pathname]);
-
-  // console.log(user);
   useEffect(() => {
     if (!user) return;
 
@@ -50,7 +36,7 @@ const Navbar = () => {
       .catch((err) => {
         setLoading(false);
       });
-  }, [user?.email]);
+  }, [user?.email, singleUser, user]);
 
   const logout = () => {
     signOut(auth);
