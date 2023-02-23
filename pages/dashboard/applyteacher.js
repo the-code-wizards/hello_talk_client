@@ -21,3 +21,5 @@ const applyteacher = () => {
         </div>
     );
 };
+
+export default applyteacher;
