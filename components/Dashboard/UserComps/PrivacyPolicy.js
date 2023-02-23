@@ -1,7 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import JoditEditor from 'jodit-react';
+import dynamic from 'next/dynamic';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
+
+const JoditEditor = dynamic(() => {
+  if (typeof window !== 'undefined') {
+    // Load jodit-react on the client-side
+    return import('jodit-react');
+  }
+  return null;
+}, { ssr: false });
 
 const PrivacyPolicy = () => {
+
   const editor = useRef(null);
   const [privacyContent, setPrivacyContent] = useState('');
   const [termsContent, setTermsContent] = useState('');
