@@ -5,14 +5,8 @@ import PrivacyPolicy from '../../components/Dashboard/UserComps/PrivacyPolicy';
 import Navbar from '../../components/Shared/Navbar/Navbar';
 
 const general = () => {
-<<<<<<< HEAD
-  return (
-    <div>
-      {/* <PrivateRoute> */}
-=======
     return (
         <div>
->>>>>>> 568bef749b3d4beb766990f21992458d64d2bd2f
         <div>
           <Head>
             <title>General - HelloTalk</title>
@@ -23,17 +17,8 @@ const general = () => {
             <PrivacyPolicy></PrivacyPolicy>
           </div>
         </div>
-<<<<<<< HEAD
-      {/* </PrivateRoute> */}
-    </div>
+        </div>
   );
 };
 
-export default general;
-=======
-        </div>
-    );
-};
-
-export default general;
->>>>>>> 568bef749b3d4beb766990f21992458d64d2bd2f
+export default general

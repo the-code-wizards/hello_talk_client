@@ -9,17 +9,6 @@ const applyteacher = () => {
     return (
         <div>
             <div>
-<<<<<<< HEAD
-        <Head>
-            <title>Apply for teacher - HelloTalk</title>
-        </Head>
-          <Navbar />
-          <div className="grid  lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
-            <DashSidebar />
-            <ApplyTeacher />
-          </div>
-      </div>
-=======
                 <Head>
                     <title>Apply for teacher - HelloTalk</title>
                 </Head>
@@ -29,13 +18,8 @@ const applyteacher = () => {
                     <ApplyTeacher />
                 </div>
             </div>
->>>>>>> 568bef749b3d4beb766990f21992458d64d2bd2f
         </div>
     );
 };
 
-<<<<<<< HEAD
-export default applyteacher
-=======
 export default applyteacher;
->>>>>>> 568bef749b3d4beb766990f21992458d64d2bd2f
