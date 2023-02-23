@@ -42,7 +42,7 @@ const BlogsCard = ({ blog }) => {
   else{
       setLoading(true)
       const updatedeGem = {
-        gems: singleUser?.gems - gems
+        gems: singleUser?.gems - 3
     }
       fetch(`https://hello-talk-webserver.vercel.app/updategem?email=${user?.email}`, {
         method: "POST",
