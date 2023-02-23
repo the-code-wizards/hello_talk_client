@@ -50,7 +50,7 @@ const Navbar = () => {
       .catch((err) => {
         setLoading(false);
       });
-  }, [user?.email]);
+  }, [user?.email, singleUser, user]);
 
   const logout = () => {
     signOut(auth);
