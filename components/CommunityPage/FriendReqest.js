@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import useSingleUser from '../hooks/useSingleUser';
 import SingleRequest from './SingleRequest';
+import Loader from '../Shared/Loader'
 
 const FriendReqest = () => {
     const [singleUser] = useSingleUser({});
     const [reqStatus, setReqStatus] = useState([])
     const [loader, setLoader] = useState(true)
-
-
 
     const { data: reqStatu = [], refetch, isLoading } = useQuery({
         queryKey: ["reqStatu", singleUser?.email],
@@ -31,22 +30,15 @@ const FriendReqest = () => {
 
 
     if (loader) {
-        return (
-            <div className="flex items-center justify-center space-x-2">
-                <div className="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        )
+        return <Loader/>
 
     }
 
     return (
-        <div className='ml-5 mt-16'>
-            <h1 className='text-center pt-2 text-[24px] font-bold'>Friend Requests</h1>
-            <div className="divider mt-[-4px]"></div>
-            {
-                reqStatus.map((reqSta, i) =>
+        <div className='p-4 bg-[#f5f5f4] shadow-xl mb-6 rounded-md '>
+            <h1 className="text-2xl font-bold text-[#333]">Friend Requests</h1>
+            { 
+                reqStatus.length > 0 ? reqStatus.map((reqSta, i) =>
                     <SingleRequest
                         key={i}
                         reqSta={reqSta}
@@ -54,7 +46,7 @@ const FriendReqest = () => {
                     >
                     </SingleRequest>
 
-                )
+                ) : <div><h2 className="font-bold text-xl text-center">No friend request</h2></div>
             }
         </div>
     );

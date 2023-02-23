@@ -9,24 +9,6 @@ import Cert from './Cert';
 import ReactToPrint from 'react-to-print';
 import Loader from '../Shared/Loader';
 
-// const CertPrinter = () => {
-//   let componentRef = useRef()
-//   return (
-//     <>
-//       <Cert ref={componentRef} />
-//       <ReactToPrint
-//         trigger={() => (
-//           <button className="btn btn-primary text-white my-3 w-25 mx-auto">Print Certificate</button>
-//         )}
-//         content={() => componentRef?.current}
-//         pageStyle={`@page {
-//                     size: 500mm 297mm;
-//                   }`}
-//       />
-//     </>
-//   )
-// }
-
 const LevelBlocks = () => {
   const [user, error] = useAuthState(auth);
   const [levels, loading2] = useLevels();
@@ -37,13 +19,13 @@ const LevelBlocks = () => {
     return <Loader/>
   }
   const sortedLevels = [...levels].sort((a, b) => a.level - b.level);
-  const nextLevel = sortedLevels.find(level => !singleUser.completed_lv.includes(level.level.toString()));
+  const nextLevel = singleUser.completed_lv && sortedLevels.find(level => !singleUser.completed_lv.includes(level.level.toString()));
   console.log(nextLevel)
   return (
     <div className="flex flex-col items-center">
       {singleUser?.completed_lv && singleUser?.completed_lv.length === levels?.length &&
         <>
-          <Link href="/printcert"><button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[100%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px]">Print Your Certificate</button></Link>
+          <Link href="/printcert"><button className="mt-[15px] bg-[#1FC2FF] border-[#1AA8EB] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[10px] lg:md:w-[100%] w-[50%] rounded-xl text-[#fff] font-bold lg:md:text-[15px] text-[12px] focus:border-b-[2px] px-2">Print Your Certificate</button></Link>
         </>}
 
       <div className="grid lg:md:grid-cols-6 grid-cols-3 gap-x-[10px] lg:md:mt-4 m-4 lg:md:gap-x-[12px] h-[10px] lg:md:ml-4">

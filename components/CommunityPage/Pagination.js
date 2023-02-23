@@ -12,15 +12,15 @@ const Pagination = ({ postsPerPage, SetCurrentPage, filtered, currentPage }) => 
 
     return (
         <div>
-            <nav aria-label="Page navigation example">
-                <ul className="inline-flex -space-x-px">
+            <nav aria-label="Page navigation example ">
+                <ul className="inline-flex space-x-1">
                     {
                         currentPage === 1 ?
                             <>
                             </>
                             :
                             <li className='bg-[#ffff]'>
-                                <a onClick={() => SetCurrentPage(currentPage - 1)} className="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                                <a onClick={() => SetCurrentPage(currentPage - 1)} className="px-3 py-2 ml-0 leading-tight text-[#fff] font-bold bg-[#14678F] border-[2px] border-[#14678F] rounded-md hover:bg-[#51a6d1] hover:text-gray-700  cursor-pointer">Previous</a>
                             </li>
                     }
                     {
@@ -29,7 +29,7 @@ const Pagination = ({ postsPerPage, SetCurrentPage, filtered, currentPage }) => 
                                 key={i}
                                 className='bg-[#ffff]'
                             >
-                                <a onClick={() => SetCurrentPage(pageNumber)} className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{pageNumber}</a>
+                                <a onClick={() => SetCurrentPage(pageNumber)} className={` px-3 py-2 ml-0 leading-tight  font-bold  border-[2px] border-[#14678F] rounded-md cursor-pointer hover:bg-[#51a6d1] hover:text-gray-700 ${pageNumber === currentPage ? 'bg-[#ffffff] text-black' : "bg-[#14678F] text-[#fff]"}`}>{pageNumber}</a>
                             </li>
 
                         )
@@ -40,7 +40,7 @@ const Pagination = ({ postsPerPage, SetCurrentPage, filtered, currentPage }) => 
                             :
 
                             <li className='bg-[#ffff]'>
-                                <a onClick={() => SetCurrentPage(currentPage + 1)} className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                                <a onClick={() => SetCurrentPage(currentPage + 1)} className="px-3 py-2 ml-0 leading-tight text-[#fff] font-bold bg-[#14678F] border-[2px] border-[#14678F] rounded-md hover:bg-[#51a6d1] hover:text-gray-700  cursor-pointer">Next</a>
                             </li>
 
                     }

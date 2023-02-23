@@ -21,9 +21,9 @@ const Modal = ({ singlePost, setShowModal }) => {
         const postComment = {
             name: user.displayName,
             comment: comment,
-            email: user.email,
+            email: singleUser?.email,
             postTime: Date(),
-            photoUrl: user.photoUrl,
+            photoUrl: singleUser?.photoUrl,
             pid: _id
         }
         // console.log(postComment)
@@ -105,7 +105,7 @@ const Modal = ({ singlePost, setShowModal }) => {
                                         <button onClick={() => setShowModal(true)} className="flex items-center"><BiCommentDetail /> <h1 className='ml-1'>{comments.length} replies</h1></button>
                                     </div>
                                 </div>
-                                <div>
+                                <div className='hidden lg:block'>
                                     <p className='text-[12px]'>Last Activity: {name} | {postTime}</p>
                                 </div>
                             </div>
@@ -148,8 +148,8 @@ const Modal = ({ singlePost, setShowModal }) => {
                                         <div className="avatar">
                                             <div className="w-8 rounded-full">
                                                 {
-                                                    user?.photoUrl ?
-                                                        <img src={user?.photoUrl} alt="Profile Picture" />
+                                                    singleUser ?
+                                                        <img src={singleUser?.photoURL} alt="Profile Picture" />
                                                         :
                                                         <img src="https://i.ibb.co/WnxWNTP/User-Profile-PNG.png" alt="Profile Picture" />
                                                 }
