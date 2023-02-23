@@ -64,7 +64,7 @@ const ChatSidebar = ({ setCurrent }) => {
                                                                 </span>
                                                             </div>
                                                         </div>
-                                                        <h2 className="capitalize text-semibold text-md text-[#fff]">{user?.name}</h2>
+                                                        <h2 className="capitalize text-semibold text-md text-[#fff]">{user?.senderName}</h2>
                                                     </div>
                                                 )
                                             })}

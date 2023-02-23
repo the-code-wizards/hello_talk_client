@@ -80,7 +80,7 @@ const Messages = ({ current }) => {
                                 <img alt="/" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
                             </div>
                         </div>
-                        <h2 className="capitalize font-bold text-md text-[#333]">{current?.name}</h2>
+                        <h2 className="capitalize font-bold text-md text-[#333]">{current?.senderName}</h2>
                     </div>
 
                     <div className="text-center z-[-1]">
@@ -89,9 +89,9 @@ const Messages = ({ current }) => {
                                 <img alt="/" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGh1bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
                             </div>
                         </div>
-                        <h2 className="text-xl font-bold">{current?.name}</h2>
+                        <h2 className="text-xl font-bold">{current?.senderName}</h2>
                         <p className="text-sm font-semibold">Oxford Brookes University</p>
-                        <p className="font-semibold text-sm">Email: <span className="text-blue-400 font-medium">{current?.email}</span></p>
+                        <p className="font-semibold text-sm">Email: <span className="text-blue-400 font-medium">{current?.senderEmail}</span></p>
                     </div>
 
                     <div>
