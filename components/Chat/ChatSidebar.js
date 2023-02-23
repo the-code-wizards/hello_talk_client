@@ -60,7 +60,7 @@ const ChatSidebar = ({ setCurrent }) => {
                                                         <div className="avatar ">
                                                             <div className=" w-10 rounded-full bg-green-400 ring-2 ring-gray-50">
                                                                 <span className="flex justify-center text-2xl mt-[5px] capitalize font-bold text-[#fff] ">
-                                                                    {user?.name.slice(0, 2)}
+                                                                    {user?.senderName.slice(0, 2)}
                                                                 </span>
                                                             </div>
                                                         </div>

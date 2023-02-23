@@ -9,24 +9,6 @@ import Cert from './Cert';
 import ReactToPrint from 'react-to-print';
 import Loader from '../Shared/Loader';
 
-// const CertPrinter = () => {
-//   let componentRef = useRef()
-//   return (
-//     <>
-//       <Cert ref={componentRef} />
-//       <ReactToPrint
-//         trigger={() => (
-//           <button className="btn btn-primary text-white my-3 w-25 mx-auto">Print Certificate</button>
-//         )}
-//         content={() => componentRef?.current}
-//         pageStyle={`@page {
-//                     size: 500mm 297mm;
-//                   }`}
-//       />
-//     </>
-//   )
-// }
-
 const LevelBlocks = () => {
   const [user, error] = useAuthState(auth);
   const [levels, loading2] = useLevels();
