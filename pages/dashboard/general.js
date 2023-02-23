@@ -4,19 +4,18 @@ import DashSidebar from '../../components/Dashboard/DashSidebar';
 import PrivacyPolicy from '../../components/Dashboard/UserComps/PrivacyPolicy';
 import Navbar from '../../components/Shared/Navbar/Navbar';
 
-const index = () => {
+const general = () => {
   return (
     <div>
       {/* <PrivateRoute> */}
         <div>
           <Head>
-            <title>HelloTalk - General</title>
+            <title>General - HelloTalk</title>
           </Head>
           <Navbar />
           <div className="grid lg:md:grid-cols-[300px_minmax(900px,_1fr)]">
             <DashSidebar />
             <PrivacyPolicy></PrivacyPolicy>
-            {/* <AllBlogs /> */}
           </div>
         </div>
       {/* </PrivateRoute> */}
@@ -24,4 +23,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default general;
