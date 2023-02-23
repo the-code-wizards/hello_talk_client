@@ -82,12 +82,10 @@ const SingleLevel = () => {
   const handleNextLevel = () => {
     const completedLv = [...singleUser?.completed_lv];
     completedLv.push(lv?.level);
-    const newScore = singleUser?.gems + gems;
     axios
-      .post(`https://hello-talk-webserver.vercel.app/users/${user?.uid}`,
+      .post(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`,
         {
-          completed_lv: completedLv,
-          gems: newScore,
+          mGem: gems,
         },
         {
           headers: {
@@ -100,6 +98,20 @@ const SingleLevel = () => {
       })
       .catch((err) => {
         console.log(err);
+      });
+    fetch(`https://hello-talk-webserver.vercel.app/savelevel?email=${user?.email}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(comp_level),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
       });
     setShowScore(false);
     setScore(0);
