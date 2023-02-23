@@ -8,7 +8,7 @@ const index = () => {
     <>
       <Navbar></Navbar>
       <Head>
-        <title>Blog - HELLO-TALK</title>
+        <title>HelloTalk - Blog</title>
       </Head>
       <div className="py-14">
         <Blog></Blog>

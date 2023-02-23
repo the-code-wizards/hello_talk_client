@@ -1,14 +1,18 @@
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { FaRegGem } from "react-icons/fa";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useSingleUser from "../hooks/useSingleUser";
 import swal from 'sweetalert';
+import { useRouter } from "next/router";
+import Loader from "../Shared/Loader";
 
 const BlogsCard = ({ blog }) => {
   const [user] = useAuthState(auth);
   const [singleUser] = useSingleUser()
+  const [loading, setLoading] = useState(false)
+  const router = useRouter();
   const {
     _id,
     title,
@@ -25,20 +29,22 @@ const BlogsCard = ({ blog }) => {
   console.log(singleUser?.gems)
   console.log(gems)
   const buyBlog = () => {
+
     if (singleUser?.gems < gems) {
       Swal.fire({
         icon: 'error',
-        text: "You are broke",
+        text: "You are broke :(",
         title: 'OOOPS',
         showConfirmButton: false,
         timer: 1500
       })
     }
   else{
+      setLoading(true)
       const updatedeGem = {
-        gems: singleUser?.gems - gems
+        gems: singleUser?.gems - 3
     }
-      fetch(`https://hello-talk-webserver.vercel.app/addgem?email=${user?.email}`, {
+      fetch(`https://hello-talk-webserver.vercel.app/updategem?email=${user?.email}`, {
         method: "POST",
         headers: {
           'content-type': 'application/json'
@@ -47,10 +53,14 @@ const BlogsCard = ({ blog }) => {
       })
         .then(res => res.json())
         .then(data => {
+          setLoading(false)
           console.log(data);
-          
+          router.push(`/blog/${_id}`);
         })
-        .catch((e) => { console.log(e) })
+        .catch((e) => { 
+          setLoading(false)
+          console.log(e)
+        })
   }
   }
   return (
@@ -87,7 +97,7 @@ const BlogsCard = ({ blog }) => {
             <button className="cursor-pointer bg-[#58cc02] flex items-center border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002] flex items-center">             
               <label htmlFor="my-blog-6">
                 <span className="mr-2 flex items-center ">
-                  <span className="mr-2 flex items-center "><FaRegGem className="mr-1"></FaRegGem>
+                  <span className="mr-2 flex items-center cursor-pointer"><FaRegGem className="mr-1"></FaRegGem>
                     {gems}</span>
                     Unlock               
               </span></label>
@@ -96,9 +106,10 @@ const BlogsCard = ({ blog }) => {
         </div>
         <input type="checkbox" id="my-blog-6" className="modal-toggle" />
         <div className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box p-6">
+          <div className="modal-box p-6 bg-[#fff]">
             <h3 className="font-bold text-[#61B800] text-2xl text-center">{title}</h3>
-            <p className="py-4">Are you sure you want to unlock with {gems}?</p>
+            {loading ? <Loader/> : <div>
+              <p className="py-4 text-[#333]">Are you sure you want to unlock this blog with your precious gems?</p>
             <div className="modal-action">
               <button onClick={() => buyBlog()} className="bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] my-3 py-[6px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px]  hover:bg-[#61E002]">
               Yes
@@ -109,7 +120,9 @@ const BlogsCard = ({ blog }) => {
               >
                No
               </label>
-            </div>
+              </div>
+              
+            </div> }
           </div>
         </div>
       </div>
