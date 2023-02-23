@@ -35,11 +35,10 @@ const FriendReqest = () => {
     }
 
     return (
-        <div className='ml-5 mt-16'>
-            <h1 className='text-center pt-2 text-[24px] font-bold'>Friend Requests</h1>
-            <div className="divider mt-[-4px]"></div>
-            {
-                reqStatus.map((reqSta, i) =>
+        <div className='p-4 bg-[#f5f5f4] shadow-xl mb-6 rounded-md '>
+            <h1 className="text-2xl font-bold text-[#333]">Friend Requests</h1>
+            { 
+                reqStatus.length > 0 ? reqStatus.map((reqSta, i) =>
                     <SingleRequest
                         key={i}
                         reqSta={reqSta}
@@ -47,7 +46,7 @@ const FriendReqest = () => {
                     >
                     </SingleRequest>
 
-                )
+                ) : <div><h2 className="font-bold text-xl text-center">No friend request</h2></div>
             }
         </div>
     );
