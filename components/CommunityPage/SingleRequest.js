@@ -41,7 +41,7 @@ const SingleRequest = ({ reqSta, refetch }) => {
         <div
 
         >
-            <div className="card border border-inherit flex justify-between">
+            <div className="card border border-inherit flex justify-around bg-[#ddd]">
                 <div className="avatar">
                     <div className="w-10 rounded-full bg-[#d6e8ff] ring-2 ring-gray-50 mr-2">
                         {reqSta.senderImg ? (
