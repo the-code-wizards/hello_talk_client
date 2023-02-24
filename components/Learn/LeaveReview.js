@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import Loader from "../Shared/Loader";
 
 const LeaveReview = () => {
     const [user] = useAuthState(auth);
@@ -49,7 +50,7 @@ const LeaveReview = () => {
             });
     };
     if (loading) {
-        return <h2>loading</h2>;
+        return <Loader/>;
     }
     return (
         <div className="lg:md:mt-0 mt-[30rem] lg:md:pr-[15px] lg:md:pl-0 pl-[20px] lg:md:mb-0 mb-[6rem]">

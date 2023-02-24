@@ -84,7 +84,8 @@ const Signup = () => {
             age,
             role: 'user',
             joined_date: date,
-            gems: 0
+            gems: 0,
+            completed_lv: []
         }
         fetch(`https://hello-talk-webserver.vercel.app/user`, {
             method: "POST",
