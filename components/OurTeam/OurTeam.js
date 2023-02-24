@@ -7,9 +7,9 @@ const OurTeam = () => {
   return (
     <div>
       <Navbar />
-      <section className="py-6 text-gray-800">
+      <section className="py-6">
         <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
-          <p className="p-2 mt-5 text-sm  tracking-wider text-center uppercase font-featherbold">
+          <p className="text-[#4b4b4b] font-semibold p-2 mt-5 text-sm  tracking-wider text-center uppercase font-featherbold">
             HelloTalk Team
           </p>
           <h1 className="mb-10 md:mx-32 mx-3 sm:mx-32 text-[#61B800] text-center text-4xl font-bold">
