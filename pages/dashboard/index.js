@@ -8,7 +8,11 @@ const index = () => {
   return (
     <div>
       {/* <PrivateRoute> */}
+<<<<<<< HEAD
+        <div>
+=======
       <div>
+>>>>>>> 44172959292b153b5c20c284b97b899d7a5c863b
         <Head>
           <title>HelloTalk - Dashboard</title>
         </Head>
@@ -19,7 +23,11 @@ const index = () => {
           </div>
           <Dashboard />
         </div>
+<<<<<<< HEAD
+        </div>
+=======
       </div>
+>>>>>>> 44172959292b153b5c20c284b97b899d7a5c863b
       {/* </PrivateRoute> */}
     </div>
   );

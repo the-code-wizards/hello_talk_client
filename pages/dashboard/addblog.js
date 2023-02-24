@@ -25,7 +25,13 @@ const AdBlog = () => {
       </div>
       {/* </PrivateRoute > */}
         </div>
+<<<<<<< HEAD
+      {/* </PrivateRoute> */}
+    </div>
+  );
+=======
     );
+>>>>>>> 44172959292b153b5c20c284b97b899d7a5c863b
 };
 
 export default AdBlog;

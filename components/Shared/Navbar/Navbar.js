@@ -177,7 +177,11 @@ const Navbar = () => {
               height={50}
             />
             <p className="ml-2 w-full normal-case text-xl lg:text-2xl text-white font-featherBold">
+<<<<<<< HEAD
+           {headerText}
+=======
               {headerText}
+>>>>>>> 44172959292b153b5c20c284b97b899d7a5c863b
             </p>
           </Link>
         </div>

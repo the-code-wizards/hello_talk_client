@@ -18,7 +18,7 @@ const general = () => {
           </div>
         </div>
         </div>
-    );
+  );
 };
 
-export default general;
+export default general
