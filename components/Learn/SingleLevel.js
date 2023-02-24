@@ -22,6 +22,7 @@ const SingleLevel = () => {
   const [gems, setGems] = useState();
   const [singleUser, loading] = useSingleUser();
   const [token, setToken] = useState();
+  const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
@@ -50,6 +51,9 @@ const SingleLevel = () => {
   const comp_level = {
     completed_lv: lv?.level,
   };
+  // const checkAllQuestionsAnswered = () => {
+  //   return singleLevel.length === currentQuestion;
+  // };
   const handleAnswerOptionClick = (opt) => {
     if (opt === lv?.question[currentQuestion]?.answer) {
       setScore(score + 1);
@@ -126,9 +130,11 @@ const SingleLevel = () => {
       <Head>
         <title>Level {lv?.level}</title>
       </Head>
+
       {loading || loadingTwo ? <Loader />
         : (
           <div className="lg:md:px-8 px-3 pb-8 shadow-xl">
+            
             {showScore ? (
               <div>
                 <div className="w-[300px] h-[300px]  mx-auto">
@@ -178,6 +184,7 @@ const SingleLevel = () => {
               >
                 PREV
               </button>
+              {/* {singleLevel[0]?.question.length === currentQuestion} */}
               <button
                 onClick={handleNextLevel}
                 className="mt-4 bg-[#58cc02] border-[#61B800] border-t-[2px] border-b-[5px] border-l-[2px] border-r-[2px] py-[8px] px-5 rounded-xl text-white font-bold text-[14px] focus:border-b-[2px] hover:bg-[#61E002]"
