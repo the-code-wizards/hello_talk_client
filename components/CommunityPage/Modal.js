@@ -165,10 +165,7 @@ const Modal = ({ singlePost, setShowModal }) => {
                                 </div>
                                 :
                                 <>
-                                    <div className='flex'>
-                                        <input type="text" name="" id="" className='input input-bordered rounded-full input-primary mr-2 h-[36px] w-full  bg-[#F0F2F5] col-span-11 mb-2 px-6' onClick={() => router.push("/signin/")} />
-                                        <button type='submit' className=' btn-ghost rounded-lg'><IoMdSend className='h-7 w-7' /></button>
-                                    </div>
+
                                 </>
                         }
 
