@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useUsers from '../hooks/useUsers';
 import useFriends from '../hooks/useFriends';
 import Loader from '../Shared/Loader';
@@ -15,6 +15,16 @@ const AllUsers = () => {
     const [isConfirming, setIsConfirming] = useState(false);
     const [reqButtonS, setReqButtonS] = useState(false);
     const nonFriends = users.filter((user) => !friends.includes(user.id));
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/myfriends?email=${singleUser?.email}`)
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }, [singleUser?.email])
+
+
+
 
     const handleAddFriend = () => {
         const friendData = {
@@ -71,6 +81,7 @@ const AllUsers = () => {
 
     const handleAddFriendClick = (user) => {
         setChosenUser(user);
+        handleAddFriend()
         setIsConfirming(true);
     };
 

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiTwotoneLike } from 'react-icons/ai';
@@ -8,7 +9,6 @@ const LikeButton = ({ id }) => {
     const [likeButton, SetLikeButton] = useState(false)
     const [likeCount, setLikeCount] = useState(0)
 
-    const { email } = user;
 
     const { data: getlikes = [], refetch } = useQuery({
         queryKey: ["getlikes", id],
@@ -21,7 +21,7 @@ const LikeButton = ({ id }) => {
     })
 
     useEffect(() => {
-        fetch(`https://hello-talk-webserver.vercel.app/community/like?email=${email}&id=${id}`)
+        fetch(`https://hello-talk-webserver.vercel.app/community/like?email=${user?.email}&id=${id}`)
             .then(res => res.json())
             .then(res => {
                 if (res.length >= 1) {
@@ -31,12 +31,12 @@ const LikeButton = ({ id }) => {
             })
 
 
-    }, [email, id])
+    }, [user?.email, id])
 
     const handleLike = () => {
         SetLikeButton(true)
         const postLike = {
-            email: email,
+            email: user?.email,
             postTime: Date(),
             pid: id
         }
@@ -62,7 +62,7 @@ const LikeButton = ({ id }) => {
     }
 
     const handleUnlike = () => {
-        fetch(`https://hello-talk-webserver.vercel.app/community/unlike?email=${email}&id=${id}`)
+        fetch(`https://hello-talk-webserver.vercel.app/community/unlike?email=${user?.email}&id=${id}`)
             .then(res => res.json())
             .then(res => {
                 console.log(res)
@@ -78,14 +78,25 @@ const LikeButton = ({ id }) => {
     return (
         <div>
             {
-                likeButton ?
-                    <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span>
-                        <span className='pl-2'>{getlikes?.length}</span>
-                    </button>
+                user ?
+                    <div>
+                        {
+                            likeButton ?
+                                <button className='flex bg-[#F0F2F5] px-2 items-center ' onClick={handleUnlike}><AiTwotoneLike /><span className='ml-1'>Liked</span>
+                                    <span className='pl-2'>{getlikes?.length}</span>
+                                </button>
+                                :
+                                <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span>
+                                    <span className='pl-2'>{getlikes?.length}</span>
+                                </button>
+                        }
+                    </div>
                     :
-                    <button onClick={handleLike} className='flex  hover:bg-[#F0F2F5] px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span>
-                        <span className='pl-2'>{getlikes?.length}</span>
-                    </button>
+                    <Link href="/signin">
+                        <button className='flex px-2 items-center '><AiTwotoneLike /><span className='ml-1'>Like</span>
+                            <span className='pl-2'>{getlikes?.length}</span>
+                        </button>
+                    </Link>
             }
         </div>
     );

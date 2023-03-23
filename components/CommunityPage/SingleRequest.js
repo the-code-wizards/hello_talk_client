@@ -36,7 +36,7 @@ const SingleRequest = ({ reqSta, refetch }) => {
                 refetch
             })
     }
-    console.log(reqSta)
+    // console.log(reqSta)
     return (
         <div
 

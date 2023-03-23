@@ -192,8 +192,18 @@ const Navbar = () => {
             <li>
               <Link href="/courses">Courses</Link>
             </li>
+            {
+              user ?
+                <li>
+                  <Link href="/learn">Learn</Link>
+                </li>
+                :
+                <li>
+                  <Link href="/signin">Learn</Link>
+                </li>
+            }
             <li>
-              <Link href="/learn">Learn</Link>
+              <Link href="/community">Community</Link>
             </li>
             <li>
               <Link href="/ourteam">Team</Link>
